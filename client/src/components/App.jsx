@@ -12,8 +12,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // 
-    }
+      //
+    };
   }
 
   componentDidMount() {
@@ -34,8 +34,12 @@ export default class App extends React.Component {
             <Route path="/results">
               <Results />
             </Route>
-            <Route path="/post"><ListingForm /></Route>
-            <Route path="/listing"><Listing /></Route>
+            <Route path="/post">
+              <ListingForm />
+            </Route>
+            <Route path="/listing">
+              <Listing />
+            </Route>
           </Switch>
           {/* <Footer /> */}
         </Router>
