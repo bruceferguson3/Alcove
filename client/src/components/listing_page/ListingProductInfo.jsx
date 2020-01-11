@@ -1,5 +1,6 @@
 import React from "react";
 import ListingProductBullets from "./ListingProductBullets.jsx";
+import ListingProductDescription from "./ListingProductDescription.jsx";
 
 const ListingProductInfo = props => {
   return (
@@ -14,6 +15,7 @@ const ListingProductInfo = props => {
         </div>
       </div>
       <ListingProductBullets bullets={props.listing.filters} />
+      <ListingProductDescription description={props.listing.description} />
     </div>
   );
 };

@@ -28,19 +28,30 @@ const ListingProductBullets = ({ bullets }) => {
   ) : (
     ""
   );
+
+  //TODO - Need to clarify what this is
+  let easeOfAccessText;
+  if (bullets.easeOfAccess === 1) {
+    easeOfAccessText = "Not locked at all";
+  } else if (bullets.easeOfAccess === 2) {
+    easeOfAccessText = "Padlocked";
+  } else {
+    easeOfAccessText = "Chain link fence";
+  }
+
   let durationText;
   if (bullets.duration === 1) {
     durationText = "One day";
   } else if (bullets.duration === 2) {
     durationText = "One Week";
   } else if (bullets.duration === 3) {
-    durationText = "Many Weeks";
-  } else if (bullets.duration === 4) {
     durationText = "One Month";
+  } else if (bullets.duration === 4) {
+    durationText = "Three Months";
   } else if (bullets.duration === 5) {
-    durationText = "Three Month";
-  } else {
     durationText = "Six Months";
+  } else {
+    durationText = "One Year";
   }
   //TODO - Format according to data passed in
   let size;
@@ -97,6 +108,10 @@ const ListingProductBullets = ({ bullets }) => {
       <div className="listingProductAccessType">
         <div className="listingProductAccessIcon">Access Type Icon</div>
         <div>{durationText}</div>
+      </div>
+      <div className="listingProductAccess">
+        <div className="listingProductAccessIcon"></div>
+        <div>{easeOfAccessText}</div>
       </div>
     </div>
   );
