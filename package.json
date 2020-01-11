@@ -1,19 +1,19 @@
 {
-  "name": "reacting-to-tasks",
-  "version": "1.0.0",
+  "name": "Alcove",
+  "version": "1.0.1",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon client/server/index.js",
-    "server": "nodemon server/index.js"
+    "server-dev": "nodemon client/server/server.js",
+    "server": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
-  "author": "Tom Chandler",
+  "author": "Alcove",
   "license": "ISC",
   "bugs": {
     "url": "http://www.github.com"
