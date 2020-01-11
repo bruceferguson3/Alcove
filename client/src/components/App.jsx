@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 // import LandingPage from './landing_page/LandingPage.jsx';
-// import Listing from './listing_page/Listing.jsx';
+import Listing from './listing_page/Listing.jsx';
 // import ListingForm from './post_page/ListingForm.jsx';
 import Results from './results_page/Results.jsx';
 // import Header from './Header.jsx';
@@ -34,7 +34,7 @@ export default class App extends React.Component {
               <Results />
             </Route>
             <Route path="/post">{/* <ListingForm /> */}</Route>
-            <Route path="/listing">{/* <Listing /> */}</Route>
+            <Route path="/listing"><Listing /></Route>
           </Switch>
           {/* <Footer /> */}
         </Router>
