@@ -11,6 +11,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
+
+
+// PUT ALL OTHER ROUTES ABOVE THIS ENDPOINT (It's for allowing page refreshes to certain endpoints with react-router)
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 app.listen(3030, (err) => {
   if (err) throw err;
   else console.log('Listening on port 3030...');
