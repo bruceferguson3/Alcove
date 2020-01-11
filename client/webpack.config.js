@@ -26,6 +26,9 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json']
+  },
   devServer: {
     contentBase: DIST_DIR,
     compress: true,
