@@ -34,7 +34,9 @@ export default class App extends React.Component {
               <Results />
             </Route>
             <Route path="/post">{/* <ListingForm /> */}</Route>
-            <Route path="/listing"><Listing /></Route>
+            <Route path="/listing">
+              <Listing />
+            </Route>
           </Switch>
           {/* <Footer /> */}
         </Router>
