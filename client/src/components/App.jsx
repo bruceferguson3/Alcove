@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Listing from './listing_page/Listing.jsx';
 import ListingForm from './post_page/ListingForm.jsx';
 import Results from './results_page/Results.jsx';
-// import Header from './Header.jsx';
+import Header from './Header.jsx';
 // import Footer from './Footer.jsx';
-import 'react-bootstrap';
+import 'react-bootstrap/dist/react-bootstrap.min.js';
 
 export default class App extends React.Component {
   constructor(props) {
