@@ -1,13 +1,15 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import FilterList from "./FilterList.jsx";
 
 export default class ListingForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             
-        }
+        };
+
         this.handleSubmit = this.handleSubmit.bind(this);
         // const [validated, setValidated] = useState(false);
     }
@@ -48,6 +50,7 @@ export default class ListingForm extends React.Component {
                         />
                     </Form.Group>
                 </Form.Row>
+                <FilterList />
                 <Button type="submit">Submit form</Button>
             </Form>
         )
