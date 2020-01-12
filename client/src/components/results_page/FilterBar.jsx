@@ -1,9 +1,9 @@
 import React from 'react';
-import FilterBar from './FilterBar.jsx';
 
-export default class Results extends React.Component {
+export default class FilterBar extends React.Component {
   constructor() {
     super();
+
     this.state = {
       filters: {
         listingType: 'space',
@@ -15,18 +15,15 @@ export default class Results extends React.Component {
           locked: true,
           climateControl: true,
           standAlone: false,
-          indoors: true,
+          indoors: true
         }
       }
-    }
+    };
   }
 
   render() {
-
     return (
-      <div>
-        Results Page
-      </div>
+      <div>Filter Bar</div>
     )
   }
 }
