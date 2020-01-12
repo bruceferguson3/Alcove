@@ -11,6 +11,8 @@ export default class PriceFilter extends React.Component {
   }
 
   render() {
-    //
+    return (
+      <div>PriceFilter</div>
+    )
   }
 }
