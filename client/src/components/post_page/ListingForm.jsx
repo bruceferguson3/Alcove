@@ -2,6 +2,8 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FilterList from "./FilterList.jsx";
+import UserInfo from "./UserInfo.jsx";
+import Descriptions from "./Descriptions.jsx";
 
 export default class ListingForm extends React.Component {
     constructor(props) {
@@ -20,39 +22,15 @@ export default class ListingForm extends React.Component {
 
     render() {
         return(
+            <div className='jumbotron'>
+            <h1 className="display-4">Please submit this form</h1>
             <Form onSubmit={this.handleSubmit}>
-                <Form.Row>
-                    <Form.Group md="4" controlId="validationCustom01">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control
-                            required
-                            type="text"
-                            placeholder="Name"
-                            defaultValue=""
-                        />
-                    </Form.Group>
-                    <Form.Group md="4" controlId="validationCustom01">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control
-                            required
-                            type="email"
-                            placeholder="Email"
-                            defaultValue=""
-                        />
-                    </Form.Group>
-                    <Form.Group md="4" controlId="validationCustom01">
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control
-                            required
-                            type="phone"
-                            placeholder="Phone"
-                            defaultValue=""
-                        />
-                    </Form.Group>
-                </Form.Row>
+                <UserInfo />
                 <FilterList />
-                <Button type="submit">Submit form</Button>
+                <Descriptions />
+                <Button className='ml-3 mt-4' type="submit">Submit form</Button>
             </Form>
+            </div>
         )
     }
 }

@@ -16,36 +16,58 @@ export default class FilterList extends React.Component {
 
     render() {
         return(
-                <Form.Row>
-                    <Form.Group  md="4" controlId="validationCustom04">
-                        <Form.Label>Climate Control</Form.Label>
-                        <Form.Control
-                            required
-                            type="checkbox"
-                            placeholder="Climate Control"
-                        />
-                    </Form.Group>
-                    <Form.Group md="4" controlId="validationCustom05">
-                        <Form.Label> Climate Control </Form.Label>
-                        <Form.Control
-                        type="checkbox"
-                        placeholder="Stand Alone Storage"/>
-                    </Form.Group>
-                    <Form.Group md="4" controlId="validationCustom06">
-                        <Form.Label>Locked</Form.Label>
-                        <Form.Control
-                            type="checkbox"
-                            placeholder="Locked"
-                        />
-                    </Form.Group>
-                    <Form.Group md="4" controlId="validationCustom07">
-                        <Form.Label>Indoors</Form.Label>
-                        <Form.Control
-                            type="checkbox"
-                            placeholder="Indoor"
-                        />
-                    </Form.Group>
+                <Form.Row className='col'>
+                    <ul>
+                        <h4>
+                            Would you like to post a storage space or item?
+                        </h4>
+                        <div className="custom-control custom-radio">
+                            <input type="radio" id="customRadio1" name="customRadio" className="custom-control-input"/>
+                                <label className="custom-control-label" htmlFor="customRadio1">Item</label>
+                        </div>
+                        <div className="custom-control custom-radio">
+                            <input type="radio" id="customRadio2" name="customRadio" className="custom-control-input"/>
+                                <label className="custom-control-label" htmlFor="customRadio2">Storage Space</label>
+                        </div>
+                    </ul>
+                    <ul>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck3"/>
+                            <label className="form-check-label">Climate Control</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck4"/>
+                            <label className="form-check-label">Size</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck5"/>
+                            <label className="form-check-label">Ease of Access</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck6"/>
+                            <label className="form-check-label">Locked</label>
+                        </div>
+                    </ul>
+                    <ul>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck7"/>
+                            <label className="form-check-label">Stand Alone Storage</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck8"/>
+                            <label className="form-check-label">Price per/day</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck9"/>
+                            <label className="form-check-label">Indoors</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck10"/>
+                            <label className="form-check-label">Duration</label>
+                        </div>
+                    </ul>
                 </Form.Row>
+
         )
     }
 }
