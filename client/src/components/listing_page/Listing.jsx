@@ -3,6 +3,7 @@ import dummyData from "./dummyData.js";
 import ListingProductInformation from "./ListingProductInfo.jsx";
 import ListingContactInfo from './ListingContactInfo.jsx';
 import ListingImages from './ListingImages.jsx';
+import ListingMap from './ListingMap.jsx';
 import { Container, Row, Col} from "react-bootstrap";
 
 class Listing extends React.Component {
@@ -24,6 +25,7 @@ class Listing extends React.Component {
           </Col>
           <Col md={4}>
             <Row>
+              <ListingMap />
             </Row>
             <Row>
               <ListingContactInfo />
