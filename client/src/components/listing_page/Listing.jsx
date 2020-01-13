@@ -3,6 +3,7 @@ import dummyData from "./dummyData.js";
 import ListingProductInformation from "./ListingProductInfo.jsx";
 import ListingContactInfo from './ListingContactInfo.jsx';
 import ListingImages from './ListingImages.jsx';
+import TestCalendar from './TestCalendar.jsx';
 
 class Listing extends React.Component {
   constructor(props) {
