@@ -4,6 +4,7 @@ import ListingProductInformation from "./ListingProductInfo.jsx";
 import ListingContactInfo from './ListingContactInfo.jsx';
 import ListingImages from './ListingImages.jsx';
 import TestCalendar from './TestCalendar.jsx';
+import TestReactiveSearch from './TestReactiveSearch.jsx';
 
 class Listing extends React.Component {
   constructor(props) {
@@ -18,6 +19,8 @@ class Listing extends React.Component {
         <ListingImages />
         <ListingProductInformation listing={this.state.listing} />
         <ListingContactInfo />
+        <TestCalendar />
+        <TestReactiveSearch />
       </div>
     );
   }
