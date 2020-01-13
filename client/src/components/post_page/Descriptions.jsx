@@ -4,18 +4,27 @@ import Form from "react-bootstrap/Form";
 const Descriptions = (props) => {
 
     return (
-            <Form.Row >
-                <div className="custom-file col-4 mb-2">
+            <div className='d-flex flex-wrap'>
+                <div className='col-2'>
+                    <Form.Label>Title for listing</Form.Label>
+                    <Form.Control
+                        required
+                        type="text"
+                        placeholder="Title"
+                        onChange={(e) => props.recordStateInfo(e, '', 'title')}
+                    />
+                </div>
+                <div className="custom-file col-2">
                     <input type="file" className="custom-file-input" id="customFile"/>
                     <label className="custom-file-label" htmlFor="customFile">Upload Images</label>
                 </div>
-                <div className="input-group">
+                <div className="input-group row-1">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Description</span>
                     </div>
-                    <textarea className="form-control" aria-label="With textarea"/>
+                    <textarea className="form-control" onChange={(e) => props.recordStateInfo(e, '', 'description')}/>
                 </div>
-            </Form.Row>
+            </div>
         )
 };
 

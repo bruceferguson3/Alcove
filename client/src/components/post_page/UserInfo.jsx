@@ -6,7 +6,7 @@ import FormContext from "react-bootstrap/cjs/FormContext";
 const UserInfo = (props) => {
 
     return(
-                <Form.Row className='col'>
+                <Form.Row className='col d-flex flex-direction-column flex-md-wrap '>
                     <Form.Group md="4" controlId="validationCustom01" className='w-75 col'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
