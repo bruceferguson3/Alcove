@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form } from 'react-bootstrap';
+import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
 
@@ -32,7 +33,7 @@ class ListingContactInfo extends React.Component {
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
             <Form.Label>Enter your name:</Form.Label>
-            <Form.Control type="text" placeholder="Example:  John Doe" />
+            <Form.Control type="text" placeholder="Example:  Jane Doe" />
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your e-mail address:</Form.Label>
@@ -47,6 +48,20 @@ class ListingContactInfo extends React.Component {
           </Form.Group>
           <Form.Group>
             <Form.Label>Select your dates:</Form.Label>
+            <ReactiveBase app="alcove-app" credentials="password">
+            <div className="dropdown">
+                <div className="dropdown-content">
+                    <DateRange
+                        dataField="date_from"
+                        componentId="DateRangeSensor"
+                        numberOfMonths={2}
+                        queryFormat="basic_date"
+                        initialMonth={new Date("04/01/2017")}
+                        className="dateFilter"
+                    />
+                </div>
+              </div>
+            </ReactiveBase>
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your message:</Form.Label>

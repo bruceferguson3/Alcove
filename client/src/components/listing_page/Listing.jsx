@@ -3,7 +3,6 @@ import dummyData from "./dummyData.js";
 import ListingProductInformation from "./ListingProductInfo.jsx";
 import ListingContactInfo from './ListingContactInfo.jsx';
 import ListingImages from './ListingImages.jsx';
-import TestReactiveSearch from './TestReactiveSearch.jsx';
 
 class Listing extends React.Component {
   constructor(props) {
@@ -18,7 +17,6 @@ class Listing extends React.Component {
         <ListingImages />
         <ListingProductInformation listing={this.state.listing} />
         <ListingContactInfo />
-        <TestReactiveSearch />
       </div>
     );
   }
