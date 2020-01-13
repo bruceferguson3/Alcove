@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-export default FilterList = (props) => {
+const FilterList = (props) => {
 
         return (
                 <Form.Row className="col-9">
@@ -24,27 +24,27 @@ export default FilterList = (props) => {
                             <label className="form-check-label">Climate Control</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="Size" id="defaultCheck4" onClick={props.showSizeList}/>
+                            <input className="form-check-input" type="checkbox" value="size" id="defaultCheck4" onClick={() => props.showList('sizeList')}/>
                             <label className="form-check-label">Size</label>
                             <ul hidden id='sizeList' className='mt-1 mb-1'>
                                 <div>
-                                    <input className="form-check-radio" type="checkbox" value="1" id="size1"/>
+                                    <input className="form-check-input" type="checkbox" value="1" id="size1" onChange={(e) => props.recordStateInfo(e, 'filters', 'size')}/>
                                     <label className="form-check-label">X-Small</label>
                                 </div>
                                 <div>
-                                    <input className="form-check-input" type="checkbox" value="2" id="size1"/>
+                                    <input className="form-check-input" type="checkbox" value="2" id="size2" onChange={(e) => props.recordStateInfo(e, 'filters', 'size')}/>
                                     <label className="form-check-label">Small</label>
                                 </div>
                                 <div>
-                                    <input className="form-check-input" type="checkbox" value="3" id="size1"/>
+                                    <input className="form-check-input" type="checkbox" value="3" id="size3" onChange={(e) => props.recordStateInfo(e, 'filters', 'size')}/>
                                     <label className="form-check-label">Medium</label>
                                 </div>
                                 <div>
-                                    <input className="form-check-input" type="checkbox" value="4" id="size1"/>
+                                    <input className="form-check-input" type="checkbox" value="4" id="size4" onChange={(e) => props.recordStateInfo(e, 'filters', 'size')}/>
                                     <label className="form-check-label">Large</label>
                                 </div>
                                 <div>
-                                    <input className="form-check-input" type="checkbox" value="5" id="size1"/>
+                                    <input className="form-check-input" type="checkbox" value="5" id="size5" onChange={(e) => props.recordStateInfo(e, 'filters', 'size')}/>
                                     <label className="form-check-label">X-Large</label>
                                 </div>
 
@@ -52,8 +52,22 @@ export default FilterList = (props) => {
 
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck5"/>
+                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck5" onClick={() => props.showList('easeOfAccessList')}/>
                             <label className="form-check-label">Ease of Access</label>
+                            <ul hidden id='easeOfAccessList' className='mt-1 mb-1'>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="1" id="access1" onChange={(e) => props.recordStateInfo(e, 'filters', 'easeOfAccess')}/>
+                                    <label className="form-check-label">Frequent</label>
+                                </div>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="2" id="access2" onChange={(e) => props.recordStateInfo(e, 'filters', 'easeOfAccess')}/>
+                                    <label className="form-check-label">InFrequent</label>
+                                </div>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="3" id="access3" onChange={(e) => props.recordStateInfo(e, 'filters', 'easeOfAccess')}/>
+                                    <label className="form-check-label">Once</label>
+                                </div>
+                            </ul>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="defaultCheck6"/>
@@ -77,4 +91,6 @@ export default FilterList = (props) => {
                 </Form.Row>
 
         )
-}
+};
+
+export default FilterList

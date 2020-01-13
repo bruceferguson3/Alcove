@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-export default Descriptions = (props) => {
+const Descriptions = (props) => {
 
     return (
             <Form.Row >
@@ -17,4 +17,6 @@ export default Descriptions = (props) => {
                 </div>
             </Form.Row>
         )
-}
+};
+
+export default Descriptions
