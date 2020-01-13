@@ -19,8 +19,16 @@ class Listing extends React.Component {
           <ListingImages />
         </Row>
         <Row md={8}>
-          <ListingProductInformation listing={this.state.listing} />
-          <ListingContactInfo />
+          <Col md={8}>
+            <ListingProductInformation listing={this.state.listing} />
+          </Col>
+          <Col md={4}>
+            <Row>
+            </Row>
+            <Row>
+              <ListingContactInfo />
+            </Row>
+          </Col>
         </Row>
       </ Container>
     );
