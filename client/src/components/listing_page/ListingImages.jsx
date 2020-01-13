@@ -11,7 +11,7 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col md={3}></Col>
-          <Col md={6}>{images[0]}</Col>
+          <Col md={6}><img src={images[0]} /></Col>
           <Col md={3}></Col>
         </Row>
       </Container>
@@ -22,8 +22,8 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col>{images[0]}</Col>
-          <Col>{images[1]}</Col>
+          <Col><img src={images[0]} /></Col>
+          <Col><img src={images[1]} /></Col>
         </Row>
       </Container>
     )
@@ -33,9 +33,9 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col>{images[0]}</Col>
-          <Col>{images[1]}</Col>
-          <Col>{images[2]}</Col>
+          <Col><img src={images[0]} /></Col>
+          <Col><img src={images[1]} /></Col>
+          <Col><img src={images[2]} /></Col>
         </Row>
       </Container>
     )
@@ -45,15 +45,15 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col md={6}>{images[0]}</Col>
+          <Col md={6}><img src={images[0]} /></Col>
           <Col md={6}>
             <Row>
-              <Col md={6}>{images[1]}</Col>
-              <Col md={6}>{images[1]}</Col>
+              <Col md={6}><img src={images[1]} /></Col>
+              <Col md={6}><img src={images[2]} /></Col>
             </Row>
             <Row>
-              <Col md={6}>{images[1]}</Col>
-              <Col md={6}>{images[1]}</Col>
+              <Col md={6}><img src={images[3]} /></Col>
+              <Col md={6}><img src={images[4]} /></Col>
             </Row>
           </Col>
         </Row>
