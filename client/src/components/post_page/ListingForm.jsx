@@ -9,26 +9,48 @@ export default class ListingForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+            data: {
+                userInfo: {
+                    name: '',
+                    email: '',
+                    phone: ''
+                },
+                dateSubmitted: '',
+                filters: {
+                    climateControl: false,
+                    size: 0,
+                    easeOfAccess: '',
+                    locked: false,
+                    standAlone: false,
+                    price: 0.00,
+                    indoors: false,
+                    duration: 0
+                },
+                description: '',
+                thumbs: [],
+                title: '',
+                reviews: '',
+                geoLocation: [],
+                zip: ''
+            }
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        // const [validated, setValidated] = useState(false);
     }
     
-    handleSubmit(event) {
-        console.log('get money')
+    handleSubmit() {
+        //send current state to database and render new product page
     }
 
     render() {
         return(
             <div className='jumbotron'>
             <h1 className="display-4 ">Please submit this form</h1>
-            <Form onSubmit={this.handleSubmit}>
+            <Form >
                 <UserInfo />
                 <FilterList />
                 <Descriptions />
-                <Button className='mt-3' type="submit">Submit form</Button>
+                <Button className='mt-3' type="submit" onClick={this.handleSubmit}>Submit form</Button>
             </Form>
             </div>
         )
