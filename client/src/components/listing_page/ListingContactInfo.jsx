@@ -15,17 +15,26 @@ class ListingContactInfo extends React.Component {
     let userName = listing.userInfo.name;
     let userEmail = listing.userInfo.email;
     let userPhone = listing.userInfo.phone;
-    let textPermission = `I am giving ${userName} permission to contact me via text message.`
+    let posterTextPermission = listing.userInfo.text;
+    let userTextPermission = `I am giving ${userName} permission to contact me via text message.`
     let helpfulDetails = "Please include a description of your item(s) if you are looking for storage space or a description of your space if you have storage availability.  Feel free to attach a picture of your item(s) or storage space."
     let contactText;
 
     if (userEmail && !userPhone) {
       contactText = `You may also reach out to ${userName} via e-mail at ${userEmail}.`
-    } else if (userPhone && !userEmail) {
+    } else if (userPhone && !userEmail && !posterTextPermission) {
       contactText = `You may also reach out to ${userName} via phone at ${userPhone}.`
-    } else if (userEmail && userPhone) {
+    } else if (userEmail && userPhone && !posterTextPermission) {
       contactText = `You may also reach out to ${userName} via phone at ${userPhone} or e-mail at ${userEmail}.`
+    } else if (userPhone && posterTextPermission && !userEmail) {
+      contactText = `You may also reach out to ${userName} via phone or text message at ${userPhone}.`
+    } else if (userPhone && posterTextPermission && userEmail) {
+      contactText = `You may also reach out to ${userName} via phone or text message at ${userPhone} or e-mail at ${userEmail}.`
     }
+
+    // To Do:  Conditionally render date range picker so that if the user picks a
+    // range that is greater than the number of available days indicated by the poster,
+    // an error message appears.
 
     return (
       < >
@@ -44,7 +53,7 @@ class ListingContactInfo extends React.Component {
             <Form.Control type="text" placeholder="Example: (555) 555-5555" />
           </Form.Group>
           <Form.Group>
-            <Form.Check type="checkbox" label={textPermission} />
+            <Form.Check type="checkbox" label={userTextPermission} />
           </Form.Group>
           <Form.Group>
             <Form.Label>Select your dates:</Form.Label>
