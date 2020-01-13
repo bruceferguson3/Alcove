@@ -1,27 +1,10 @@
-// const MongoClient = require("mongodb").MongoClient;
-// const uri =
-//   "mongodb+srv://jdiaz:teamAlcove123@cluster0-s2rqe.mongodb.net/test?retryWrites=true&w=majority";
-
-// const client = new MongoClient(
-//   uri,
-//   { useNewUrlParser: true },
-//   { useNewUrlParser: true },
-//   { useCreateIndex: true },
-//   { useUnifiedTopology: true }
-// );
-// client.connect(err => {
-//   const collection = client.db("alcoveDB").collection("alcoveCol");
-//   // perform actions on the collection object
-//   console.log("YOUNG MULA BABY!");
-//   // client.close();
-// });
-
-const mongooseConfig = require("./dbConfig/db.mongo.config");
 const mongoose = require("mongoose");
+const mongooseConfig = require("./dbConfig/db.mongo.config");
+const mongooseSecret = require("./dbConfig/db.mongo.configSecrets");
 
 mongoose
   .connect(
-    "mongodb+srv://userone:userpassword123@cluster0-s2rqe.mongodb.net/test?retryWrites=true&w=majority",
+    `mongodb+srv://userone:${mongooseSecret.password}@cluster0-s2rqe.mongodb.net/test?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
