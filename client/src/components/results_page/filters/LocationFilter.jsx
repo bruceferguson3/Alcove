@@ -10,6 +10,8 @@ export default class LocationFilter extends React.Component {
   }
 
   render() {
-    //
+    return (
+      <div>LocationFilter</div>
+    )
   }
 }

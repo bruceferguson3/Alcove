@@ -15,6 +15,8 @@ export default class OtherOptionsFilter extends React.Component {
   }
 
   render() {
-    //
+    return (
+      <div>Other Options</div>
+    )
   }
 }

@@ -10,6 +10,8 @@ export default class AccessFilter extends React.Component {
   }
 
   render() {
-    //
+    return (
+      <div>AccessFilter</div>
+    )
   }
 }
