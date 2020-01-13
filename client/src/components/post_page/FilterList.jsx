@@ -21,7 +21,7 @@ export default class FilterList extends React.Component {
 
     render() {
         return(
-                <Form.Row >
+                <Form.Row className="col-9">
                     <ul className='col'>
                         <h4>
                             Would you like to post a storage space or item?
@@ -42,10 +42,10 @@ export default class FilterList extends React.Component {
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="Size" id="defaultCheck4" onClick={this.showSizeList}/>
-                            <label className="form-check-label" onClick={this.showSizeList}>Size</label>
+                            <label className="form-check-label">Size</label>
                             <ul hidden id='sizeList' className='mt-1 mb-1'>
                                 <div>
-                                    <input className="form-check-input" type="checkbox" value="1" id="size1"/>
+                                    <input className="form-check-radio" type="checkbox" value="1" id="size1"/>
                                     <label className="form-check-label">X-Small</label>
                                 </div>
                                 <div>
