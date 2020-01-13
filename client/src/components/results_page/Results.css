@@ -1,3 +1,26 @@
-div.results-container {
-  color: purple;
+span, h4 {
+  margin-bottom: 0;
+}
+
+.flex-centered {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-slider {
+  display: block;
+}
+
+#filters-display-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#price-filter-container {
+  margin: 1rem auto;
 }
