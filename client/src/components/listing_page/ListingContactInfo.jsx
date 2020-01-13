@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form } from 'react-bootstrap';
+import { DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
 
@@ -28,7 +29,7 @@ class ListingContactInfo extends React.Component {
 
     return (
       <Form>
-        <h4>Send {userName} a message:</h4>
+        <h4>Reach out to {userName} about this listing:</h4>
         <Form.Group>
           <Form.Label>Enter your name:</Form.Label>
           <Form.Control type="text" placeholder="Example:  John Doe" />
@@ -52,7 +53,7 @@ class ListingContactInfo extends React.Component {
           <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
         </Form.Group>
         <p>{contactText}</p>
-        <Button variant="primary" block>Insert catchy Internet phrase here.</Button>
+        <Button variant="primary" block>Submit</Button>
       </Form>
     );
   };

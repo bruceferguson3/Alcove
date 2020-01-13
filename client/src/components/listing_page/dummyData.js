@@ -17,7 +17,7 @@ let test = {
       duration: 1 - 6
     },
     description: "The spot to be",
-    thumbs: ["llweflkwem.com", "lekfweklme.com", "lweflewnflk.org"],
+    thumbs: ["https://unsplash.com/photos/OxzhYtL-00Y", "https://unsplash.com/photos/6ZkgwxMdfJ4"],
     title: "Ish Sucks",
     reviews: ["", "", ""],
     geoLocation: [175.12, 51.12],
