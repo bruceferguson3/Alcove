@@ -20,12 +20,10 @@ export default class Results extends React.Component {
         price: 60,
         zip: null,
         easeOfAccess: 2,
-        otherOptions: {
-          locked: true,
-          climateControl: true,
-          standAlone: false,
-          indoors: true,
-        }
+        locked: true,
+        climateControl: true,
+        standAlone: false,
+        indoors: true,
       },
       listings: dummyData,
     }
