@@ -57,25 +57,15 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col md={6}>
-            <img src={images[0]} />
-          </Col>
+          <Col md={6}>{images[0]}</Col>
           <Col md={6}>
             <Row>
-              <Col md={6}>
-                <img src={images[1]} />
-              </Col>
-              <Col md={6}>
-                <img src={images[2]} />
-              </Col>
+              <Col md={6}>{images[1]}</Col>
+              <Col md={6}>{images[2]}</Col>
             </Row>
             <Row>
-              <Col md={6}>
-                <img src={images[3]} />
-              </Col>
-              <Col md={6}>
-                <img src={images[4]} />
-              </Col>
+              <Col md={6}>{images[3]}</Col>
+              <Col md={6}>{images[4]}</Col>
             </Row>
           </Col>
         </Row>
