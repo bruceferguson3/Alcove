@@ -56,7 +56,11 @@ export default class ListingForm extends React.Component {
         if (dataset) {
             if (property === 'price' || property === 'duration' || property === 'size' || property === 'easeOfAccess') {
                 stateObject[dataset][property] = Number(e.target.value);
-            } else {
+            }
+            if (e.target.value === 'true') {
+                stateObject[dataset][property] = true
+            }
+            if (dataset === 'userInfo') {
                 stateObject[dataset][property] = e.target.value;
             }
         } else {
@@ -67,8 +71,8 @@ export default class ListingForm extends React.Component {
 
     render() {
         return(
-            <div className='jumbotron'>
-            <h1 className="display-4 ">Please submit this form</h1>
+            <div className='jumbotron '>
+            <h1 className="display-4">Please submit this form</h1>
             <Form>
                 <UserInfo recordStateInfo={this.recordStateInfo}
                           zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
