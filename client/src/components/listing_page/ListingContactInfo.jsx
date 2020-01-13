@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Form } from 'react-bootstrap';
-import { DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
 
@@ -28,33 +27,36 @@ class ListingContactInfo extends React.Component {
     }
 
     return (
-      <Form>
-        <h4>Reach out to {userName} about this listing:</h4>
-        <Form.Group>
-          <Form.Label>Enter your name:</Form.Label>
-          <Form.Control type="text" placeholder="Example:  John Doe" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Enter your e-mail address:</Form.Label>
-          <Form.Control type="email" placeholder="Example:  name@example.com" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Enter your phone number:</Form.Label>
-          <Form.Control type="text" placeholder="Example: (555) 555-5555" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Check type="checkbox" label={textPermission} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Select your dates:</Form.Label>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Enter your message:</Form.Label>
-          <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
-        </Form.Group>
-        <p>{contactText}</p>
-        <Button variant="primary" block>Submit</Button>
-      </Form>
+      < >
+        <Form>
+          <h4>Reach out to {userName} about this listing:</h4>
+          <Form.Group>
+            <Form.Label>Enter your name:</Form.Label>
+            <Form.Control type="text" placeholder="Example:  John Doe" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Enter your e-mail address:</Form.Label>
+            <Form.Control type="email" placeholder="Example:  name@example.com" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Enter your phone number:</Form.Label>
+            <Form.Control type="text" placeholder="Example: (555) 555-5555" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Check type="checkbox" label={textPermission} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Select your dates:</Form.Label>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Enter your message:</Form.Label>
+            <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
+          </Form.Group>
+          <input type="file" label="Upload" accept=".jpg" ref="fileUpload" />
+          <p>{contactText}</p>
+          <Button variant="primary" block>Submit</Button>
+        </Form>
+      </ >
     );
   };
 };
