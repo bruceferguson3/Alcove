@@ -1,6 +1,8 @@
 import React from "react";
 import dummyData from "./dummyData.js";
 import ListingProductInformation from "./ListingProductInfo.jsx";
+import ListingContactInfo from './ListingContactInfo.jsx';
+import ListingImages from './ListingImages.jsx';
 
 class Listing extends React.Component {
   constructor(props) {
@@ -12,7 +14,9 @@ class Listing extends React.Component {
   render() {
     return (
       <div>
+        <ListingImages />
         <ListingProductInformation listing={this.state.listing} />
+        <ListingContactInfo />
       </div>
     );
   }

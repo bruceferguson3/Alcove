@@ -1,11 +1,7 @@
 import React from 'react';
 
-export default class SizeFilter extends React.Component {
-  constructor() {
-    super();
+const SizeFilter = (props) => (
+  <div>Size Filter</div>
+);
 
-    this.state = {
-      size: 2,
-    }
-  }
-}
+export default SizeFilter;

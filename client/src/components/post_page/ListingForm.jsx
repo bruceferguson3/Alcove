@@ -42,13 +42,18 @@ export default class ListingForm extends React.Component {
         //send current state to database and render new product page
     }
 
+    showSizeList() {
+        let sizeList = document.getElementById('sizeList');
+        sizeList.hidden = sizeList.hidden !== true;
+    }
+
     render() {
         return(
             <div className='jumbotron'>
             <h1 className="display-4 ">Please submit this form</h1>
             <Form >
                 <UserInfo />
-                <FilterList />
+                <FilterList showSizeList={this.showSizeList}/>
                 <Descriptions />
                 <Button className='mt-3' type="submit" onClick={this.handleSubmit}>Submit form</Button>
             </Form>

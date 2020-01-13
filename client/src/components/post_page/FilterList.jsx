@@ -1,26 +1,9 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-export default class FilterList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filters: {
+export default FilterList = (props) => {
 
-
-            }
-        };
-
-    }
-
-    showSizeList() {
-        let sizeList = document.getElementById('sizeList');
-        sizeList.hidden = sizeList.hidden !== true;
-    }
-
-
-    render() {
-        return(
+        return (
                 <Form.Row className="col-9">
                     <ul className='col'>
                         <h4>
@@ -41,7 +24,7 @@ export default class FilterList extends React.Component {
                             <label className="form-check-label">Climate Control</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="Size" id="defaultCheck4" onClick={this.showSizeList}/>
+                            <input className="form-check-input" type="checkbox" value="Size" id="defaultCheck4" onClick={props.showSizeList}/>
                             <label className="form-check-label">Size</label>
                             <ul hidden id='sizeList' className='mt-1 mb-1'>
                                 <div>
@@ -94,5 +77,4 @@ export default class FilterList extends React.Component {
                 </Form.Row>
 
         )
-    }
 }

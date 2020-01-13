@@ -1,18 +1,9 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-export default class Descriptions extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+export default Descriptions = (props) => {
 
-        };
-
-    }
-
-
-    render() {
-        return(
+    return (
             <Form.Row >
                 <div className="custom-file col-4 mb-2">
                     <input type="file" className="custom-file-input" id="customFile"/>
@@ -26,5 +17,4 @@ export default class Descriptions extends React.Component {
                 </div>
             </Form.Row>
         )
-    }
 }
