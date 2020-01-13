@@ -22,13 +22,13 @@ export default class ListingForm extends React.Component {
 
     render() {
         return(
-            <div className='jumbotron'>
-            <h1 className="display-4">Please submit this form</h1>
+            <div className='jumbotron align-items-center'>
+            <h1 className="display-4 ">Please submit this form</h1>
             <Form onSubmit={this.handleSubmit}>
                 <UserInfo />
                 <FilterList />
                 <Descriptions />
-                <Button className='ml-3 mt-4' type="submit">Submit form</Button>
+                <Button className='mt-4' type="submit">Submit form</Button>
             </Form>
             </div>
         )

@@ -13,11 +13,16 @@ export default class FilterList extends React.Component {
 
     }
 
+    showSizeList() {
+        let sizeList = document.getElementById('sizeList');
+        sizeList.hidden = sizeList.hidden !== true;
+    }
+
 
     render() {
         return(
-                <Form.Row className='col'>
-                    <ul>
+                <Form.Row >
+                    <ul className='col'>
                         <h4>
                             Would you like to post a storage space or item?
                         </h4>
@@ -32,12 +37,36 @@ export default class FilterList extends React.Component {
                     </ul>
                     <ul>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck3"/>
+                            <input className="form-check-input" type="checkbox" value="Climate Control" id="defaultCheck3"/>
                             <label className="form-check-label">Climate Control</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck4"/>
-                            <label className="form-check-label">Size</label>
+                            <input className="form-check-input" type="checkbox" value="Size" id="defaultCheck4" onClick={this.showSizeList}/>
+                            <label className="form-check-label" onClick={this.showSizeList}>Size</label>
+                            <ul hidden id='sizeList' className='mt-1 mb-1'>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="1" id="size1"/>
+                                    <label className="form-check-label">X-Small</label>
+                                </div>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="2" id="size1"/>
+                                    <label className="form-check-label">Small</label>
+                                </div>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="3" id="size1"/>
+                                    <label className="form-check-label">Medium</label>
+                                </div>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="4" id="size1"/>
+                                    <label className="form-check-label">Large</label>
+                                </div>
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value="5" id="size1"/>
+                                    <label className="form-check-label">X-Large</label>
+                                </div>
+
+                            </ul>
+
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="defaultCheck5"/>
@@ -52,10 +81,6 @@ export default class FilterList extends React.Component {
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="defaultCheck7"/>
                             <label className="form-check-label">Stand Alone Storage</label>
-                        </div>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="defaultCheck8"/>
-                            <label className="form-check-label">Price per/day</label>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="defaultCheck9"/>
