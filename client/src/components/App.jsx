@@ -26,7 +26,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Router>
-          {/* <Header /> */}
+          <Header />
           <Switch>
             <Route exact path="/">
               {/* <LandingPage /> */}
