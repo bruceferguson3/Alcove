@@ -47,10 +47,7 @@ export default class ListingForm extends React.Component {
     }
 
     GetLocation() {
-        axios.get(`https://www.zipcodeapi.com/rest/IKmS9A5LoxICukeD4LV03RauroKEFuGO7GQyKy3PcT5jpJbbl389UXTyVOkqiGLs/info.json/${this.state.data.zip}/degrees`)
-            .then((coords) => {
-                this.setState({geoLocation: coords})
-            })
+
     };
 
     handleSubmit(e) {
@@ -66,7 +63,8 @@ export default class ListingForm extends React.Component {
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
 
         this.setState({data: {...this.state.data, dateSubmitted: date, thumbs: saveableFileList}}, () => {
-
+            axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
+                .then(() => console.log('Sent to server'))
         })
 
     }
