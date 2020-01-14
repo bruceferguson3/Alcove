@@ -34,7 +34,8 @@
       userInfo: {
         name: null, // string
         email: null, // string
-        phone: null // string
+        phone: null, // string
+        text: null // boolean
       },
       dateSubmitted: null, // string
       filters: {

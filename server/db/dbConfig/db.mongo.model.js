@@ -81,6 +81,6 @@ const AlcoveSchema = new mongoose.Schema({
   }
 });
 
-const AlcoveDb = mongoose.model("Alcove", AlcoveSchema);
+const alcoveDb = mongoose.model("Alcove", AlcoveSchema, "alcoveCol");
 
-module.exports = AlcoveDb;
+module.exports = alcoveDb;
