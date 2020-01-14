@@ -1,0 +1,34 @@
+.footer {
+    height: 250px;
+}
+
+#footerNavBar {
+    height: 250px;
+}
+
+#footerBrandContainer {
+    width: 20%;
+    height: 100%;
+    align-items: center;
+}
+
+#footerBrand {
+    font-size: 45px;
+    padding-left: 35px;
+}
+
+#footerDescription {
+    width: 60%;
+    height: 100%;
+    color: white;
+}
+
+#footerNamesContainer {
+    width: 20%;
+    height: 100%;
+}
+
+#footerNamesContainer div {
+    color: white;
+    padding-left: 50px;
+}

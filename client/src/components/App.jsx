@@ -17,6 +17,7 @@ export default class App extends React.Component {
       queriedZipCode: null,
       searchResults: null
     };
+    this.teamInfoModal = this.teamInfoModal.bind(this);
   }
 
   getSelectedListing(id) {
@@ -29,6 +30,10 @@ export default class App extends React.Component {
 
   landingSearch(zip) {
     //
+  }
+
+  teamInfoModal() {
+    // open team info modal
   }
 
   render() {
@@ -52,7 +57,7 @@ export default class App extends React.Component {
               <Listing listing={currentListing} />
             </Route>
           </Switch>
-          <Footer />
+          <Footer teamInfoModal={this.teamInfoModal} />
         </Router>
       </div>
     );
