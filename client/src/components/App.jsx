@@ -6,7 +6,7 @@ import Listing from './listing_page/Listing.jsx';
 import ListingForm from './post_page/ListingForm.jsx';
 import Results from './results_page/Results.jsx';
 import Header from './Header.jsx';
-// import Footer from './Footer.jsx';
+import Footer from './Footer.jsx';
 import 'react-bootstrap/dist/react-bootstrap.min.js';
 
 export default class App extends React.Component {
@@ -17,6 +17,7 @@ export default class App extends React.Component {
       queriedZipCode: null,
       searchResults: null
     };
+    this.returnToTop = this.returnToTop.bind(this);
   }
 
   getSelectedListing(id) {
@@ -29,6 +30,14 @@ export default class App extends React.Component {
 
   landingSearch(zip) {
     //
+  }
+
+  returnToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   render() {
@@ -52,7 +61,7 @@ export default class App extends React.Component {
               <Listing listing={currentListing} />
             </Route>
           </Switch>
-          {/* <Footer /> */}
+          <Footer returnToTop={this.returnToTop} />
         </Router>
       </div>
     );
