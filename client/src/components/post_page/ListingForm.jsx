@@ -78,8 +78,7 @@ export default class ListingForm extends React.Component {
         List.hidden = List.hidden !== true;
     }
 
-    recordStateInfo(e, dataset, property) {
-        console.log(e.target.value);
+    recordStateInfo(e, dataset, property, id) {
         var stateObject = {...this.state.data};
 
         if (dataset) {
@@ -95,6 +94,9 @@ export default class ListingForm extends React.Component {
 
             if (dataset === 'userInfo' || property === 'type') {
                 stateObject[dataset][property] = e.target.value;
+            }
+            if (id === 'defaultCheck6' || id === 'defaultCheck7') {
+                stateObject[dataset][property] = !!document.getElementById(id).checked;
             }
         } else {
             stateObject[property] = e.target.value

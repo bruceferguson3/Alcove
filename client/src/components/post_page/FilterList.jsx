@@ -66,13 +66,13 @@ const FilterList = (props) => {
                             </ul>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value={true} id="defaultCheck6" onChange={(e) => props.recordStateInfo(e, 'filters', 'locked')}/>
+                            <input className="form-check-input" type="checkbox"  id="defaultCheck6" onClick={(e) => props.recordStateInfo(e, 'filters', 'locked', 'defaultCheck6')}/>
                             <label className="form-check-label">Locked</label>
                         </div>
                     </ul>
                     <ul>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value={true} id="defaultCheck7" onChange={(e) => props.recordStateInfo(e, 'filters', 'standAlone')}/>
+                            <input className="form-check-input" type="checkbox"  id="defaultCheck7" onChange={(e) => props.recordStateInfo(e, 'filters', 'standAlone', 'defaultCheck7')}/>
                             <label className="form-check-label">Stand Alone Storage</label>
                         </div>
                         <div className="form-check">
