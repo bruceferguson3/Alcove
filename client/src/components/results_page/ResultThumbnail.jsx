@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const ResultThumbnail = ({ listing }) => {
   const isSpace = listing.filters.listingType === 'space';
-  const border = isSpace ? '3px inset skyblue' : '3px inset purple';
+  const border = isSpace ? '3px solid skyblue' : '3px inset purple';
 
   return (
     <Card

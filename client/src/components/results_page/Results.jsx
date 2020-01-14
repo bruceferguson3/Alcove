@@ -36,7 +36,7 @@ export default class Results extends React.Component {
           zip: '01106',
       }
     };
-  }
+  };
 
   searchZip() {
     const { newZip, filters } = this.state;
@@ -52,7 +52,7 @@ export default class Results extends React.Component {
         });
       })
       .catch(console.log)
-  }
+  };
 
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
@@ -74,7 +74,7 @@ export default class Results extends React.Component {
         );
       })
       .catch(console.log);
-  }
+  };
 
   typeChange(listingType) {
     const { filters } = this.state;
@@ -86,7 +86,7 @@ export default class Results extends React.Component {
         this.applyFilters();
       }
     );
-  }
+  };
 
   sizeChange(size) {
     const { filters } = this.state;
@@ -96,7 +96,7 @@ export default class Results extends React.Component {
     },
     () => this.applyFilters()
     );
-  }
+  };
 
   durationChange(val) {
     const { filters } = this.state;
@@ -107,7 +107,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  }
+  };
 
   locationChange(newZip) {
     if(newZip.match(/\d+/) || newZip === '') {
@@ -115,7 +115,7 @@ export default class Results extends React.Component {
         newZip,
       });
     }
-  }
+  };
 
   accessChange(easeOfAccess) {
     const { filters } = this.state;
@@ -126,7 +126,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  }
+  };
 
   indoorsChange(indoors) {
     const { filters } = this.state;
@@ -137,7 +137,7 @@ export default class Results extends React.Component {
       }, 
       () => this.applyFilters()
     );
-  }
+  };
 
   climateChange(climate) {
     const { filters } = this.state;
@@ -148,7 +148,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  }
+  };
 
   lockedChange(locked) {
     const { filters } = this.state;
@@ -159,7 +159,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  }
+  };
 
   standaloneChange(standAlone) {
     const { filters } = this.state;
@@ -170,7 +170,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  }
+  };
 
   minChange(priceMin) {
     if(priceMin % 10 === 0) {
@@ -181,7 +181,7 @@ export default class Results extends React.Component {
         () => this.maxMatch()
       );
     }
-  }
+  };
 
   maxChange(priceMax) {
     if(priceMax % 10 === 0) {
@@ -192,7 +192,7 @@ export default class Results extends React.Component {
         () => this.minMatch()
       );
     }
-  }
+  };
 
   maxMatch() {
     const { priceMax, priceMin } = this.state;
@@ -202,7 +202,7 @@ export default class Results extends React.Component {
         priceMax: priceMin + 10,
       });
     }
-  }
+  };
 
   minMatch() {
     const { priceMax, priceMin } = this.state;
@@ -212,7 +212,7 @@ export default class Results extends React.Component {
         priceMin: priceMax - 10,
       });
     }
-  }
+  };
 
   applyFilters() {
     const { filters, listings } = this.state;
@@ -222,7 +222,7 @@ export default class Results extends React.Component {
     this.setState({
       filteredResults,
     });
-  }
+  };
 
   clearFilter(filterType) {
     const { filters } = this.state;
@@ -235,7 +235,7 @@ export default class Results extends React.Component {
         () => this.applyFilters()
       );
     }
-  }
+  };
 
   render() {
     const { filters, priceMin, priceMax, filteredResults, listings, newZip } = this.state;
@@ -265,7 +265,9 @@ export default class Results extends React.Component {
             <div className="results-filter-bar flex-column">
               <label className="filter-section-title">Current Zip-Code:</label>
               {zip}
-              <label className="filter-section-title" htmlFor="location">Enter New Zip Code:</label>
+              <label className="filter-section-title" htmlFor="location">
+                Enter New Zip Code:
+              </label>
               <input
                 type="text"
                 name="location"
@@ -298,7 +300,11 @@ export default class Results extends React.Component {
               <h4 className="results">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
                 <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
-                <DropdownButton as={ButtonGroup} title="Duration">
+                <DropdownButton
+                  as={ButtonGroup}
+                  title="Duration"
+                  variant="info"
+                >
                   <Dropdown.Item
                     data-value={1}
                     onClick={() =>
@@ -340,7 +346,7 @@ export default class Results extends React.Component {
                     More than 6 months
                   </Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Size">
+                <DropdownButton as={ButtonGroup} title="Size" variant="info">
                   <Dropdown.Item
                     data-value={1}
                     onClick={() => this.sizeChange(event.target.dataset.value)}
@@ -372,7 +378,11 @@ export default class Results extends React.Component {
                     Extra Large (Open Area)
                   </Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Access Frequency">
+                <DropdownButton
+                  as={ButtonGroup}
+                  title="Access Frequency"
+                  variant="info"
+                >
                   <Dropdown.Item
                     data-value={1}
                     onClick={() =>
@@ -398,7 +408,11 @@ export default class Results extends React.Component {
                     Frequent
                   </Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Indoors/Outdoors">
+                <DropdownButton
+                  as={ButtonGroup}
+                  title="Indoors/Outdoors"
+                  variant="info"
+                >
                   <Dropdown.Item
                     onClick={() => {
                       this.indoorsChange(true);
@@ -441,5 +455,5 @@ export default class Results extends React.Component {
         </Row>
       </Container>
     );
-  }
-}
+  };
+};
