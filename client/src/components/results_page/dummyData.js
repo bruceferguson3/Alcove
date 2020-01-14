@@ -46,7 +46,8 @@ module.exports = [
       indoors: true,
       duration: 2
     },
-    description: 'The spot to be',
+    description:
+      "The spot to be hot diggity dawg lookit this shit I'm going hog wild wooooooo doggy slamalamajamma! The spot to be hot diggity dawg lookit this shit I'm going hog wild wooooooo doggy slamalamajamma!",
     thumbs: [
       'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12193133/German-Shepherd-Puppy-Fetch.jpg',
       'lekfweklme.com',

@@ -3,7 +3,7 @@ const filterResults = (filters, listings) =>
     Object.entries(filters).reduce((accum, options) =>
       options[0] === 'price' || options[0] === 'zip' || options[1] === null
         ? accum
-        : accum && listing.filters[options[0]] === options[1]
+        : accum && listing.filters[options[0]] === options[1], true
     )
   );
 
