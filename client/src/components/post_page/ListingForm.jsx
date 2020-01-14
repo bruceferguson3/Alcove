@@ -4,6 +4,9 @@ import Button from 'react-bootstrap/Button';
 import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
 import Descriptions from "./Descriptions.jsx";
+const axios = require('axios');
+
+
 
 export default class ListingForm extends React.Component {
     constructor(props) {
@@ -39,18 +42,36 @@ export default class ListingForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.recordStateInfo = this.recordStateInfo.bind(this);
+        this.GetLocation = this.GetLocation.bind(this);
 
     }
-    
+
+    GetLocation() {
+        axios.get(`https://www.zipcodeapi.com/rest/IKmS9A5LoxICukeD4LV03RauroKEFuGO7GQyKy3PcT5jpJbbl389UXTyVOkqiGLs/info.json/${this.state.data.zip}/degrees`)
+            .then((coords) => {
+                this.setState({geoLocation: coords})
+            })
+    };
+
     handleSubmit(e) {
         //send current state to database and render new product page
         e.preventDefault();
-        let date = Date.now();
-        this.setState({dateSubmitted: date}, () => {
-            console.log("Clicked and sent")
+        let fileList = document.getElementById('photo').files;
+        let newFileList = Array.from(fileList);
+        let saveableFileList = [];
+        newFileList.map((file) => saveableFileList.push(file));
+        let date = JSON.stringify(Date.now());
+        this.GetLocation();
+
+        // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
+
+        this.setState({data: {...this.state.data, dateSubmitted: date, thumbs: saveableFileList}}, () => {
+
         })
 
     }
+
+
 
     showList(id) {
         let List = document.getElementById(id);
@@ -104,7 +125,7 @@ export default class ListingForm extends React.Component {
 
                 <Descriptions recordStateInfo={this.recordStateInfo}
                 description={this.state.data.description} thumbs={this.state.data.thumbs}/>
-                <Button className='mt-3 ml-3' onClick={this.handleSubmit}>Submit form</Button>
+                <Button className='mt-3 ml-3' type='submit' onClick={this.handleSubmit}>Submit form</Button>
             </Form>
             </div>
         )
