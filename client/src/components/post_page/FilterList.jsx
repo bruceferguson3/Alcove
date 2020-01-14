@@ -19,8 +19,8 @@ const FilterList = (props) => {
                         </div>
                     </ul>
                     <ul>
-                        <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="size" id="defaultCheck4" onClick={() => props.showList('sizeList')}/>
+                        <div className="form-check" >
+                            <input className="form-check-input" type="checkbox" value="size" id="defaultCheck4" onClick={() => props.showList('sizeList')} required/>
                             <label className="form-check-label">Size</label>
                             <ul hidden id='sizeList' className='p-1'>
                                 <div className="custom-control custom-radio">
