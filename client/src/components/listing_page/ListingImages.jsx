@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
-import dummyData from './dummyData.js';
+import dummyData from "./dummyData.js";
 
 const ListingImages = props => {
   let images = dummyData.test.data.thumbs;
@@ -11,34 +11,46 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col md={3}></Col>
-          <Col md={6}><img src={images[0]} /></Col>
+          <Col md={6}>
+            <img src={images[0]} />
+          </Col>
           <Col md={3}></Col>
         </Row>
       </Container>
-    )
+    );
   }
 
   if (images.length === 2) {
     return (
       <Container>
         <Row>
-          <Col><img src={images[0]} /></Col>
-          <Col><img src={images[1]} /></Col>
+          <Col>
+            <img src={images[0]} />
+          </Col>
+          <Col>
+            <img src={images[1]} />
+          </Col>
         </Row>
       </Container>
-    )
+    );
   }
 
   if (images.length === 3 || images.length === 4) {
     return (
       <Container>
         <Row>
-          <Col><img src={images[0]} /></Col>
-          <Col><img src={images[1]} /></Col>
-          <Col><img src={images[2]} /></Col>
+          <Col>
+            <img src={images[0]} />
+          </Col>
+          <Col>
+            <img src={images[1]} />
+          </Col>
+          <Col>
+            <img src={images[2]} />
+          </Col>
         </Row>
       </Container>
-    )
+    );
   }
 
   if (images.length >= 5) {
@@ -58,11 +70,12 @@ const ListingImages = props => {
           </Col>
         </Row>
       </Container>
-    )
+    );
   }
 
   return (
-    <div>Hello, World!</div>
+    <div>
+    </div>
   )
 };
 

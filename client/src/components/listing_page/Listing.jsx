@@ -1,10 +1,10 @@
 import React from "react";
 import dummyData from "./dummyData.js";
 import ListingProductInformation from "./ListingProductInfo.jsx";
-import ListingContactInfo from './ListingContactInfo.jsx';
-import ListingImages from './ListingImages.jsx';
-import ListingMap from './ListingMap.jsx';
-import { Container, Row, Col} from "react-bootstrap";
+import ListingContactInfo from "./ListingContactInfo.jsx";
+import ListingImages from "./ListingImages.jsx";
+import ListingMap from "./ListingMap.jsx";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Listing extends React.Component {
   constructor(props) {
@@ -29,13 +29,12 @@ class Listing extends React.Component {
             </Row>
           </Col>
         </Row>
-      </ Container>
+      </Container>
     );
   }
 }
 
 export default Listing;
-
 
 // <Container>
 //   <ListingImages />
