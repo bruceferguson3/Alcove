@@ -1,21 +1,17 @@
-// import React from 'react';
-// import {} from 'react-bootstrap';
+import React from 'react';
+import { Card } from 'react-bootstrap';
 
-// const Footer = props => {
-//     <Footer
-//     columns={[
-//       {
-//         icon: (
-//           <img src="https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg" />
-//         ),
-//         title: '语雀',
-//         url: 'https://yuque.com',
-//         description: '知识创作与分享工具',
-//         openExternal: true,
-//       },
-//     ]}
-//     bottom="Made with ❤️ by AFX"
-//   />
-// }
+const Footer = props => {
+    <Card>
+        <Card.Header>Featured</Card.Header>
+        <Card.Body>
+            <Card.Title>Special title treatment</Card.Title>
+            <Card.Text>
+            With supporting text below as a natural lead-in to additional content.
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+    </Card>
+}
 
-// export default Footer;
+export default Footer;
