@@ -1,9 +1,14 @@
-import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import ListingModal from "./ListingModal.jsx";
 
 import dummyData from "./dummyData.js";
 
 const ListingImages = props => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   let images = dummyData.test.data.thumbs;
 
   if (images.length === 1) {
@@ -65,7 +70,17 @@ const ListingImages = props => {
             </Row>
             <Row>
               <Col md={6}>{images[3]}</Col>
-              <Col md={6}>{images[4]}</Col>
+              <Col md={6}>
+                {images[4]}
+                <Button onClick={handleShow}>
+                  Launch the super cool modal!
+                </Button>
+                <ListingModal
+                  images={images}
+                  show={show}
+                  handleClose={handleClose}
+                />
+              </Col>
             </Row>
           </Col>
         </Row>
@@ -75,8 +90,10 @@ const ListingImages = props => {
 
   return (
     <div>
+      <Button onClick={handleShow}>Launch the super cool modal!</Button>
+      <ListingModal images={images} show={show} handleClose={handleClose} />
     </div>
-  )
+  );
 };
 
 export default ListingImages;
