@@ -17,7 +17,7 @@ export default class App extends React.Component {
       queriedZipCode: null,
       searchResults: null
     };
-    this.teamInfoModal = this.teamInfoModal.bind(this);
+    this.returnToTop = this.returnToTop.bind(this);
   }
 
   getSelectedListing(id) {
@@ -32,8 +32,12 @@ export default class App extends React.Component {
     //
   }
 
-  teamInfoModal() {
-    // open team info modal
+  returnToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   render() {
@@ -57,7 +61,7 @@ export default class App extends React.Component {
               <Listing listing={currentListing} />
             </Route>
           </Switch>
-          <Footer teamInfoModal={this.teamInfoModal} />
+          <Footer returnToTop={this.returnToTop} />
         </Router>
       </div>
     );

@@ -1,9 +1,9 @@
 .footer {
-    height: 250px;
+    height: 36vh;
 }
 
 #footerNavBar {
-    height: 250px;
+    height: 36vh;
 }
 
 #footerBrandContainer {
@@ -13,6 +13,7 @@
 }
 
 #footerBrand {
+    font-family: Georgia, serif;
     font-size: 45px;
     padding-left: 35px;
 }
@@ -31,4 +32,12 @@
 #footerNamesContainer div {
     color: white;
     padding-left: 50px;
+}
+
+.footerDescriptionParagraphs {
+    font-family: Georgia, serif;
+}
+
+.headerLinks {
+    color: white;
 }
