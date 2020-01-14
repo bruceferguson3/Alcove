@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 import dummyData from "./dummyData.js";
 
@@ -73,7 +73,10 @@ const ListingImages = props => {
     );
   }
 
-  return <div>Hello, World!</div>;
+  return (
+    <div>
+    </div>
+  )
 };
 
 export default ListingImages;
