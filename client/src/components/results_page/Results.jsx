@@ -14,7 +14,7 @@ export default class Results extends React.Component {
     super(props);
     this.state = {
       applyFilters: false,
-      priceMin: 5,
+      priceMin: 10,
       priceMax: 20,
       newZip: null,
       filters: {
@@ -31,26 +31,32 @@ export default class Results extends React.Component {
     };
   }
 
-  locationChange(newZip) {
-    this.setState({
-      newZip,
-    });
-  }
-
   searchZip() {
     const { newZip, filters } = this.state;
-    // DO AXIOS CALL HERE FOR NEW SEARCH AREA
-    filters.zip = newZip;
-    this.setState({
-      filters,
-    });
+    const { api } = this.props;
+
+    Axios.get(`${api}/getall`, { params: newZip })
+      .then((data) => {
+        console.log('Results New Zip Results:', data);
+        filters.zip = newZip;
+        this.setState({
+          filters,
+        });
+      
+      })
+      .catch(console.log)
   }
 
-  priceChange(priceMin, priceMax) {
-    this.setState({
-      priceMin,
-      priceMax,
-    });
+  searchPrice(priceMin, priceMax) {
+    // AXIOS REQUEST FOR PRICE RANGE 
+  }
+
+  locationChange(newZip) {
+    if(Number(newZip) !== NaN) {
+      this.setState({
+        newZip,
+      });
+    }
   }
 
   sizeChange(size) {
@@ -87,19 +93,57 @@ export default class Results extends React.Component {
   }
 
   minChange(priceMin) {
-    if(priceMin % 5 === 0) {
-      this.setState({
-        priceMin,
-      });
+    if(priceMin % 10 === 0) {
+      this.setState(
+        {
+          priceMin
+        },
+        () => this.maxMatch()
+      );
     }
   }
 
   maxChange(priceMax) {
-    if (priceMax % 5 === 0) {
+    if(priceMax % 10 === 0) {
+      this.setState(
+        {
+          priceMax,
+        },
+        () => this.minMatch()
+      );
+    }
+  }
+
+  maxMatch() {
+    const { priceMax, priceMin } = this.state;
+
+    if(priceMax < priceMin) {
       this.setState({
-        priceMax
+        priceMax: priceMin + 10,
       });
     }
+  }
+
+  minMatch() {
+    const { priceMax, priceMin } = this.state;
+
+    if(priceMax < priceMin) {
+      this.setState({
+        priceMin: priceMax - 10,
+      });
+    }
+  }
+
+  applyFilters() {
+    const { filters, listings } = this.state;
+
+    // const filteredListings = filterResults(filters, listings)
+
+    this.setState({
+      filteredListings: '',
+    });
+
+    console.log(filters);
   }
 
   clearFilter(filterType) {
@@ -110,15 +154,6 @@ export default class Results extends React.Component {
         filters,
       });
     }
-  }
-
-  applyFilters() {
-    const { filters } = this.state;
-    this.setState({
-      // applyFilters: true,
-    });
-
-    console.log(filters);
   }
 
   render() {
@@ -168,10 +203,12 @@ export default class Results extends React.Component {
                 maxChange={this.maxChange.bind(this)}
                 priceMin={priceMin}
                 priceMax={priceMax}
+                maxMatch={this.maxMatch.bind(this)}
+                minMatch={this.minMatch.bind(this)}
               />
               <Button
                 variant="info"
-                onClick={() => this.applyFilters()}
+                onClick={() => this.searchPrice()}
                 className="mb-3"
               >
                 Search Price Range

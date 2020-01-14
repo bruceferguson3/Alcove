@@ -9,6 +9,8 @@ import Header from './Header.jsx';
 // import Footer from './Footer.jsx';
 import 'react-bootstrap/dist/react-bootstrap.min.js';
 
+const baseURL = 'AlcoveAPI.us-east-2.elasticbeanstalk.com';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ export default class App extends React.Component {
   }
 
   getSelectedListing(id) {
-    //  Axios.get('/FILL_ENDPOINT', { params: id })
+    //  Axios.get(`${baseURL}/getone`, { params: id })
     //   .then((data) => {
     //     console.log('Data From Get Request', data);
     //   })
@@ -28,7 +30,11 @@ export default class App extends React.Component {
   }
 
   landingSearch(zip) {
-    //
+    // Axios.get(`${baseURL}/getall`, { params: zip })
+    //   .then((data) => {
+    //     console.log('Data from Zip Submission', data);
+    //   })
+    //   .catch(console.log);
   }
 
   render() {
@@ -43,7 +49,7 @@ export default class App extends React.Component {
               <LandingPage search={this.landingSearch.bind(this)} />
             </Route>
             <Route path="/results">
-              <Results listings={searchResults} zip={queriedZipCode} />
+              <Results listings={searchResults} zip={queriedZipCode} api={baseURL} />
             </Route>
             <Route path="/post">
               <ListingForm />
