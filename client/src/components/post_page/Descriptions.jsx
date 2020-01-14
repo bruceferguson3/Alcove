@@ -14,7 +14,7 @@ const Descriptions = (props) => {
                         onChange={(e) => props.recordStateInfo(e, '', 'title')}
                     />
                 </Form.Group>
-                <input className='ml-4 mt-5 p-1 pb-4' type="file" label="Upload" accept=".jpg, .png" />
+                <input className=' ml-4 mt-5 p-1 pb-4' type="file" label="Upload" accept=".jpg, .png" id='photo' multiple/>
                 <div className="input-group row m-1 shadow-lg">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Description</span>
