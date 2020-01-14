@@ -4,17 +4,17 @@ import Form from "react-bootstrap/Form";
 const FilterList = (props) => {
 
         return (
-                <Form.Row className="col-9">
+                <Form.Row className="container">
                     <ul className='col'>
                         <h4>
                             Would you like to post a storage space or item?
                         </h4>
                         <div className="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="customRadio" className="custom-control-input"/>
+                            <input type="radio" id="customRadio1" name="choiceCustomRadio" value='item' className="custom-control-input" onChange={(e) => props.recordStateInfo(e, 'filters', 'type')}/>
                                 <label className="custom-control-label" htmlFor="customRadio1">Item</label>
                         </div>
                         <div className="custom-control custom-radio">
-                            <input type="radio" id="customRadio2" name="customRadio" className="custom-control-input"/>
+                            <input type="radio" id="customRadio2" name="choiceCustomRadio" value='space' className="custom-control-input" onChange={(e) => props.recordStateInfo(e, 'filters', 'type')}/>
                                 <label className="custom-control-label" htmlFor="customRadio2">Storage Space</label>
                         </div>
                     </ul>
@@ -82,6 +82,10 @@ const FilterList = (props) => {
                                 <div className="custom-control custom-radio">
                                     <input type="radio" name="climateCustomRadio" className="custom-control-input" value={true} id="climateControl" onChange={(e) => props.recordStateInfo(e, 'filters', 'climateControl')}/>
                                     <label className="custom-control-label" htmlFor="climateControl">Climate Control</label>
+                                </div>
+                                <div className="custom-control custom-radio">
+                                    <input type="radio" name="climateCustomRadio" className="custom-control-input" value={false} id="climateControl2" onChange={(e) => props.recordStateInfo(e, 'filters', 'climateControl')}/>
+                                    <label className="custom-control-label" htmlFor="climateControl2">No Preference</label>
                                 </div>
                             </ul>
                         </div>

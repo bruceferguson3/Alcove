@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 const Descriptions = (props) => {
 
     return (
-            <div className='d-flex flex-wrap'>
-                <div className='col-2'>
+            <Form.Row className='container'>
+                <Form.Group className='row m-1 align-baseline' >
                     <Form.Label>Title for listing</Form.Label>
                     <Form.Control
                         required
@@ -13,18 +13,15 @@ const Descriptions = (props) => {
                         placeholder="Title"
                         onChange={(e) => props.recordStateInfo(e, '', 'title')}
                     />
-                </div>
-                <div className="custom-file col-2">
-                    <input type="file" className="custom-file-input" id="customFile"/>
-                    <label className="custom-file-label" htmlFor="customFile">Upload Images</label>
-                </div>
-                <div className="input-group row-1">
+                </Form.Group>
+                <input className='ml-4 mt-5 p-1 pb-4' type="file" label="Upload" accept=".jpg, .png" />
+                <div className="input-group row m-1 shadow-lg">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Description</span>
                     </div>
                     <textarea className="form-control" onChange={(e) => props.recordStateInfo(e, '', 'description')}/>
                 </div>
-            </div>
+            </Form.Row>
         )
 };
 
