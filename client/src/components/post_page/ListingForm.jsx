@@ -3,8 +3,36 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
+import Step2 from "./Step2.jsx"
 import Descriptions from "./Descriptions.jsx";
+import './PostForm.css'
 const axios = require('axios');
+
+
+// <div className='jumbotron container col mb-2'>
+//             <h1 className="display-4 mt-2">Please submit this form</h1>
+//             <div className='col shadow-lg p-3'>
+//                 <Step2 recordStateInfo={this.recordStateInfo}
+//                           zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
+//                                      email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
+//
+//                 <FilterList recordStateInfo={this.recordStateInfo} showList={this.showList}
+//                 filters={{
+//                     climateControl: this.state.data.filters.climateControl,
+//                     size: this.state.data.filters.size,
+//                     easeOfAccess: this.state.data.filters.easeOfAccess,
+//                     locked: this.state.data.filters.locked,
+//                     standAlone: this.state.data.filters.standAlone,
+//                     indoors: this.state.data.filters.indoors,
+//                     duration: this.state.data.filters.duration,
+//                     type: this.state.data.filters.type,
+//                     textAllowed: this.state.data.filters.textAllowed}} title={this.state.data.title}/>
+//
+//                 <Descriptions recordStateInfo={this.recordStateInfo}
+//                 description={this.state.data.description} thumbs={this.state.data.thumbs}/>
+//                 <Button className='mt-3 ml-3' type='submit' onClick={this.handleSubmit}>Submit form</Button>
+//             </div>
+//             </div>
 
 
 
@@ -37,7 +65,8 @@ export default class ListingForm extends React.Component {
                 reviews: '',
                 geoLocation: [],
                 zip: ''
-            }
+            },
+            cardCounter: 0
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -63,8 +92,9 @@ export default class ListingForm extends React.Component {
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
 
         this.setState({data: {...this.state.data, dateSubmitted: date, thumbs: saveableFileList}}, () => {
-            axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
-                .then(() => console.log('Sent to server'))
+            // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
+            //     .then(() => console.log('Sent to server'))
+            //     .catch((err) => console.log(err))
         })
 
     }
@@ -103,30 +133,15 @@ export default class ListingForm extends React.Component {
     }
 
     render() {
-        return(
-            <div className='jumbotron container col mb-2'>
+
+        return (
+            <div className='mycustom-jumbotron jumbotron container col mb-0'>
             <h1 className="display-4 mt-2">Please submit this form</h1>
-            <Form className='col shadow-lg p-3'>
-                <UserInfo recordStateInfo={this.recordStateInfo}
+            <div className='postFormContainer col shadow-lg p-3'>
+                <Step2 recordStateInfo={this.recordStateInfo}
                           zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
                                      email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
-
-                <FilterList recordStateInfo={this.recordStateInfo} showList={this.showList}
-                filters={{
-                    climateControl: this.state.data.filters.climateControl,
-                    size: this.state.data.filters.size,
-                    easeOfAccess: this.state.data.filters.easeOfAccess,
-                    locked: this.state.data.filters.locked,
-                    standAlone: this.state.data.filters.standAlone,
-                    indoors: this.state.data.filters.indoors,
-                    duration: this.state.data.filters.duration,
-                    type: this.state.data.filters.type,
-                    textAllowed: this.state.data.filters.textAllowed}} title={this.state.data.title}/>
-
-                <Descriptions recordStateInfo={this.recordStateInfo}
-                description={this.state.data.description} thumbs={this.state.data.thumbs}/>
-                <Button className='mt-3 ml-3' type='submit' onClick={this.handleSubmit}>Submit form</Button>
-            </Form>
+            </div>
             </div>
         )
     }
