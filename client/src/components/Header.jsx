@@ -4,7 +4,7 @@ import './Header.css';
 
 const Header = props => {
   return (
-    <header className="it-header" style={{ position: 'fixed', width: '100vw' }}>
+    <header className="it-header">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">Alcove</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
