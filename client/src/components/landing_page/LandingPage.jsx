@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './LandingPage.css';
 
@@ -17,7 +16,7 @@ const LandingPage = props => (
             Find Storage Units
           </button>
           <button variant="outline-secondary" className="btn btn-outline-secondary it-btn">
-            Post The Shits
+            Post Items
           </button>
         </div>
       </div>
