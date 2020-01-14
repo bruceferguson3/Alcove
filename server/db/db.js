@@ -33,10 +33,10 @@ let getOne = params => {
 };
 
 let getAll = params => {
-  // const queryZip = params.zip;
+  console.log(params);
   return new Promise((resolve, reject) => {
     mongooseConfig
-      .find({ "data.zip": "78701" })
+      .find({ "data.zip": params })
       .then(docs => {
         resolve(docs);
       })

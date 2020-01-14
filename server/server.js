@@ -86,7 +86,8 @@ app.get("/getone", (req, res) => {
 });
 
 app.get("/getall", (req, res) => {
-  db.getAll()
+  let zip = req.query.zip;
+  db.getAll(zip)
     .then(response => {
       res.send(response);
     })
@@ -97,7 +98,8 @@ app.get("/getall", (req, res) => {
 });
 
 app.post("/postlisting", (req, res) => {
-  db.postListing(dummyDataPost)
+  let newDocument = req.body.data;
+  db.postListing(newDocument)
     .then(response => {
       res.end("Posted");
     })
