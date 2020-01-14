@@ -73,7 +73,7 @@ module.exports = [
       standAlone: false,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 4
     },
     description: 'The spot to be',
     thumbs: [
@@ -128,7 +128,7 @@ module.exports = [
       size: 3,
       easeOfAccess: 2,
       locked: false,
-      standAlone: false,
+      standAlone: true,
       price: 56.99,
       indoors: true,
       duration: 5
@@ -154,13 +154,13 @@ module.exports = [
     filters: {
       listingType: 'space',
       climateControl: true,
-      size: 3,
+      size: 1,
       easeOfAccess: 1,
       locked: false,
       standAlone: false,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 4
     },
     description: 'The spot to be',
     thumbs: [
@@ -183,7 +183,7 @@ module.exports = [
     filters: {
       listingType: 'space',
       climateControl: true,
-      size: 3,
+      size: 5,
       easeOfAccess: 1,
       locked: false,
       standAlone: false,
@@ -215,10 +215,10 @@ module.exports = [
       size: 3,
       easeOfAccess: 1,
       locked: false,
-      standAlone: false,
+      standAlone: true,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 3
     },
     description: 'The spot to be',
     thumbs: [
@@ -241,7 +241,7 @@ module.exports = [
     filters: {
       listingType: 'item',
       climateControl: true,
-      size: 3,
+      size: 2,
       easeOfAccess: 2,
       locked: false,
       standAlone: false,
@@ -269,14 +269,14 @@ module.exports = [
     dateSubmitted: '03/17/2019',
     filters: {
       listingType: 'space',
-      climateControl: true,
-      size: 3,
+      climateControl: false,
+      size: 4,
       easeOfAccess: 1,
       locked: false,
-      standAlone: false,
+      standAlone: true,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 1
     },
     description: 'The spot to be',
     thumbs: [

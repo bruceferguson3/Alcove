@@ -17,14 +17,14 @@ export default class FiltersDisplay extends React.Component {
     return (
       <div id="filters-display-container">
         {Object.entries(filters).map((filter) =>
-          filter[1] ? (
+          filter[1] === null ? null : (
             <ActiveFilter
               filterType={filter[0]}
               filterValue={filter[1]}
               key={`${filter[0]}`}
               clearFilter={clearFilter}
             />
-          ) : null
+          )
         )}
       </div>
     );

@@ -1,33 +1,37 @@
 import React from 'react';
 import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import PriceFilter from './filters/PriceFilter.jsx';
+import ListingTypeFilter from './filters/ListingTypeFilter.jsx';
+import LockedFilter from './filters/LockedFilter.jsx';
+import StandaloneFilter from './filters/StandaloneFilter.jsx';
 import FiltersDisplay from './filters/FiltersDisplay.jsx';
 import ResultsList from './ResultsList.jsx';
 import './Results.css';
 import filterResults from './filters/filterResults.js'
 
-// Remove later
+// REMOVE LATER //
 import dummyData from './dummyData.js';
-// ============
+// ============ //
 
 export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       applyFilters: false,
+      listings: dummyData,
+      filteredResults: null,
       priceMin: 10,
       priceMax: 20,
       newZip: null,
       filters: {
-          listingType: 'space',
-          climateControl: true,
-          size: 3,
-          easeOfAccess: 2,
-          locked: false,
-          standAlone: false,
-          price: 56.99,
-          indoors: true,
-          duration: 5,
+          listingType: null,
+          climateControl: null,
+          size: null,
+          easeOfAccess: null,
+          locked: null,
+          standAlone: null,
+          indoors: null,
+          duration: null,
           zip: '01106',
       }
     };
@@ -49,27 +53,46 @@ export default class Results extends React.Component {
       .catch(console.log)
   }
 
-  searchPrice(priceMin, priceMax) {
-    // AXIOS REQUEST FOR PRICE RANGE 
-    /* APPLY FILTERS HERE */
+  searchPrice() {
+    const { priceMin, priceMax, filters } = this.state;
+    const { zip } = filters;
+    const queryParams = {
+      zip,
+      priceMin,
+      priceMax,
+    };
+
+    Axios.get(`${api}/getall`, { params: queryParams })
+      .then((data) => {
+        console.log(data);
+
+        this.setState({
+          listings: data.data,
+        },
+        () => this.applyFilters()
+        );
+      })
+      .catch(console.log);
   }
 
-  locationChange(newZip) {
-    if(Number(newZip) !== NaN) {
-      this.setState({
-        newZip,
-      });
-    }
+  typeChange(listingType) {
+    const { filters } = this.state;
+    filters.listingType = listingType;
+    console.log(listingType);
+    this.setState({
+      filters,
+    },
+      () => this.applyFilters()
+    );
   }
 
   sizeChange(size) {
     const { filters } = this.state;
     filters.size = Number(size);
-    this.setState(
-      {
-        filters
-      },
-       /* APPLY FILTERS HERE */
+    this.setState({
+      filters
+    },
+    () => this.applyFilters()
     );
   }
 
@@ -80,8 +103,16 @@ export default class Results extends React.Component {
       {
         filters
       },
-       /* APPLY FILTERS HERE */
+      () => this.applyFilters()
     );
+  }
+
+  locationChange(newZip) {
+    if(Number(newZip) !== NaN) {
+      this.setState({
+        newZip,
+      });
+    }
   }
 
   accessChange(easeOfAccess) {
@@ -91,41 +122,53 @@ export default class Results extends React.Component {
       {
         filters
       },
-       /* APPLY FILTERS HERE */
+      () => this.applyFilters()
     );
   }
 
-  indoorsChange(indoors, climate) {
+  indoorsChange(indoors) {
     const { filters } = this.state;
     filters.indoors = indoors;
-    filters.climateControl = climate || false;
     this.setState(
       {
         filters
       }, 
-      /* APPLY FILTERS HERE */
+      () => this.applyFilters()
     );
   }
 
-  lockedChange() {
+  climateChange(climate) {
     const { filters } = this.state;
-    filters.locked = true;
+    filters.climateControl = climate;
     this.setState(
       {
         filters
-      }
-      /* APPLY FILTERS HERE */
-    );  }
+      },
+      () => this.applyFilters()
+    );
+  }
 
-  standAloneChange() {
+  lockedChange(locked) {
     const { filters } = this.state;
-    filters.standAlone = true;
+    filters.locked = locked;
     this.setState(
       {
         filters
-      }
-      /* APPLY FILTERS HERE */
-    );  }
+      },
+      () => this.applyFilters()
+    );
+  }
+
+  standaloneChange(standAlone) {
+    const { filters } = this.state;
+    filters.standAlone = standAlone;
+    this.setState(
+      {
+        filters
+      },
+      () => this.applyFilters()
+    );
+  }
 
   minChange(priceMin) {
     if(priceMin % 10 === 0) {
@@ -170,15 +213,13 @@ export default class Results extends React.Component {
   }
 
   applyFilters() {
-    const { filters, listings } = this.state;
+    const { filters, listings }= this.state;
 
-    // const filteredListings = filterResults(filters, listings);
+    const filteredResults = filterResults(filters, listings);
 
     this.setState({
-      filteredListings,
+      filteredResults,
     });
-
-    console.log(filters);
   }
 
   clearFilter(filterType) {
@@ -189,21 +230,17 @@ export default class Results extends React.Component {
         {
           filters
         },
-         /* APPLY FILTERS HERE */
+        () => this.applyFilters()
       );
     }
   }
 
   render() {
-    const { filters, priceMin, priceMax } = this.state;
+    const { filters, priceMin, priceMax, filteredResults, listings } = this.state;
     const { zip } = filters;
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });
-
-    // ===REMOVE ME LATER===
-    const listings = dummyData; 
-    // =====================
 
     return (
       <Container>
@@ -255,6 +292,7 @@ export default class Results extends React.Component {
               </Button>
               <h4 className="results">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
+                <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
                 <DropdownButton as={ButtonGroup} title="Duration">
                   <Dropdown.Item
                     data-value={1}
@@ -358,28 +396,37 @@ export default class Results extends React.Component {
                 <DropdownButton as={ButtonGroup} title="Indoors/Outdoors">
                   <Dropdown.Item
                     onClick={() => {
-                      this.indoorsChange(true, true);
+                      this.indoorsChange(true);
+                      this.climateChange(true);
                     }}
                   >
                     Indoors with Climate Control
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={() => this.indoorsChange(true, false)}
+                    onClick={() => {
+                      this.indoorsChange(true);
+                      this.climateChange(null);
+                    }}
                   >
                     Indoors without Climate Control
                   </Dropdown.Item>
                   <Dropdown.Item
-                    onClick={() => this.indoorsChange(false, false)}
+                    onClick={() => {
+                      this.indoorsChange(null);
+                      this.climateChange(null);
+                    }}
                   >
                     No preference
                   </Dropdown.Item>
                 </DropdownButton>
+                <LockedFilter lockedChange={this.lockedChange.bind(this)} />
+                <StandaloneFilter standaloneChange={this.standaloneChange.bind(this)} />
               </ButtonGroup>
             </div>
           </Col>
           <Col>
             <div id="results-list-wrapper">
-              <ResultsList listings={listings} />
+              <ResultsList listings={filteredResults ? filteredResults : listings} />
             </div>
           </Col>
         </Row>
