@@ -18,15 +18,16 @@ export default class Results extends React.Component {
       priceMax: 20,
       newZip: null,
       filters: {
-        listingType: 'space',
-        size: 1,
-        duration: 2,
-        zip: '01106',
-        easeOfAccess: 2,
-        locked: false,
-        climateControl: false,
-        standAlone: false,
-        indoors: false,
+          listingType: 'space',
+          climateControl: true,
+          size: 3,
+          easeOfAccess: 2,
+          locked: false,
+          standAlone: false,
+          price: 56.99,
+          indoors: true,
+          duration: 5,
+          zip: '01106',
       }
     };
   }
@@ -105,6 +106,26 @@ export default class Results extends React.Component {
     );
   }
 
+  lockedChange() {
+    const { filters } = this.state;
+    filters.locked = true;
+    this.setState(
+      {
+        filters
+      }
+      /* APPLY FILTERS HERE */
+    );  }
+
+  standAloneChange() {
+    const { filters } = this.state;
+    filters.standAlone = true;
+    this.setState(
+      {
+        filters
+      }
+      /* APPLY FILTERS HERE */
+    );  }
+
   minChange(priceMin) {
     if(priceMin % 10 === 0) {
       this.setState(
@@ -175,7 +196,6 @@ export default class Results extends React.Component {
   render() {
     const { filters, priceMin, priceMax } = this.state;
     const { zip } = filters;
-    console.log(zip);
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });

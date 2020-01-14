@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
 import LandingPage from './landing_page/LandingPage.jsx';
 import Listing from './listing_page/Listing.jsx';
 import ListingForm from './post_page/ListingForm.jsx';
@@ -39,7 +39,6 @@ export default class App extends React.Component {
 
   render() {
     const { currentListing, searchResults, queriedZipCode } = this.state;
-
     return (
       <div>
         <Router>
