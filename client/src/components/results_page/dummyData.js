@@ -44,7 +44,7 @@ module.exports = [
       standAlone: false,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 2
     },
     description: 'The spot to be',
     thumbs: [
@@ -97,7 +97,7 @@ module.exports = [
       listingType: 'item',
       climateControl: true,
       size: 3,
-      easeOfAccess: 1,
+      easeOfAccess: 3,
       locked: false,
       standAlone: false,
       price: 56.99,
@@ -271,7 +271,7 @@ module.exports = [
       listingType: 'space',
       climateControl: false,
       size: 4,
-      easeOfAccess: 1,
+      easeOfAccess: 3,
       locked: false,
       standAlone: true,
       price: 56.99,

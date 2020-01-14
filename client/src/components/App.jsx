@@ -23,7 +23,7 @@ export default class App extends React.Component {
   }
 
   getSelectedListing(id) {
-    //  Axios.get(`${baseURL}/getone`, { params: id })
+    //  Axios.get(`${baseURL}/getone`, { params: { id } })
     //   .then((data) => {
     //     console.log('Data From Get Request', data);
     //   })

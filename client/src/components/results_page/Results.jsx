@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import PriceFilter from './filters/PriceFilter.jsx';
 import ListingTypeFilter from './filters/ListingTypeFilter.jsx';
@@ -41,14 +42,14 @@ export default class Results extends React.Component {
     const { newZip, filters } = this.state;
     const { api } = this.props;
 
-    Axios.get(`${api}/getall`, { params: newZip })
+    Axios.get(`${api}/getall`, { params: { newZip } })
       .then((data) => {
         console.log('Results New Zip Results:', data);
         filters.zip = newZip;
         this.setState({
           filters,
+          /* SET NEW LISTINGS RECEIVED FROM ZIP CALL HERE */
         });
-      
       })
       .catch(console.log)
   }
@@ -67,7 +68,7 @@ export default class Results extends React.Component {
         console.log(data);
 
         this.setState({
-          listings: data.data,
+          /* listings: data.data, */
         },
         () => this.applyFilters()
         );
@@ -243,7 +244,7 @@ export default class Results extends React.Component {
     });
 
     return (
-      <Container>
+      <Container className="mb-5 pb-5">
         {filtersSelected ? (
           <div className="flex-centered active-filters">
             <h4 className="results">Selected Filters</h4>
@@ -261,7 +262,9 @@ export default class Results extends React.Component {
         <Row>
           <Col>
             <div className="results-filter-bar flex-column">
-              <label htmlFor="location">Enter New Zip Code:</label>
+              <label className="filter-section-title">Current Zip-Code:</label>
+              {zip}
+              <label className="filter-section-title" htmlFor="location">Enter New Zip Code:</label>
               <input
                 type="text"
                 name="location"
@@ -420,13 +423,17 @@ export default class Results extends React.Component {
                   </Dropdown.Item>
                 </DropdownButton>
                 <LockedFilter lockedChange={this.lockedChange.bind(this)} />
-                <StandaloneFilter standaloneChange={this.standaloneChange.bind(this)} />
+                <StandaloneFilter
+                  standaloneChange={this.standaloneChange.bind(this)}
+                />
               </ButtonGroup>
             </div>
           </Col>
           <Col>
             <div id="results-list-wrapper">
-              <ResultsList listings={filteredResults ? filteredResults : listings} />
+              <ResultsList
+                listings={filteredResults ? filteredResults : listings}
+              />
             </div>
           </Col>
         </Row>

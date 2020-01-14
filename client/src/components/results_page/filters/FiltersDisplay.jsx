@@ -7,17 +7,13 @@ export default class FiltersDisplay extends React.Component {
     super(props);
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return true;
-  // }
-
   render() {
     const { filters, clearFilter } = this.props;
     
     return (
       <div id="filters-display-container">
         {Object.entries(filters).map((filter) =>
-          filter[1] === null ? null : (
+          filter[1] === null || filter[0] === 'zip' ? null : (
             <ActiveFilter
               filterType={filter[0]}
               filterValue={filter[1]}

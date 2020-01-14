@@ -37,6 +37,8 @@ const filterDisplays = (filterType, filterValue) => {
       return 'Climate Controlled';
     case 'duration':
       return `Duration: ${filterDuration(filterValue)}`;
+    case 'standAlone':
+      return 'Exclusive Storage';
     default:
       if(typeof Number(filterType) !== 'number'){
         return 'Filter Error!';

@@ -8,14 +8,14 @@ const StandaloneFilter = ({ standaloneChange }) => (
         standaloneChange(true)
       }
     >
-      Exclusive Storage
+      I Want Exclusive Storage
     </Dropdown.Item>
     <Dropdown.Item
       onClick={() =>
         standaloneChange(null)
       }
     >
-      Shared Space/No Preference
+      No Preference
     </Dropdown.Item>
   </DropdownButton>);
 
