@@ -37,6 +37,15 @@ export default class Results extends React.Component {
     });
   }
 
+  searchZip() {
+    const { newZip, filters } = this.state;
+    // DO AXIOS CALL HERE FOR NEW SEARCH AREA
+    filters.zip = newZip;
+    this.setState({
+      filters,
+    });
+  }
+
   priceChange(priceMin, priceMax) {
     this.setState({
       priceMin,
@@ -68,22 +77,13 @@ export default class Results extends React.Component {
     });
   }
 
-  indoorsChange(val) {
+  indoorsChange(indoors, climate) {
     const { filters } = this.state;
-    filters.indoors = val;
+    filters.indoors = indoors;
+    filters.climateControl = climate || false;
     this.setState({
       filters,
     });
-  }
-
-  climateChange(val) {
-    const { filters } = this.state;
-    if(filter.indoors) {
-      filters.climateControl = val;
-      this.setState({
-        filters,
-      });
-    }
   }
 
   minChange(priceMin) {
@@ -108,15 +108,6 @@ export default class Results extends React.Component {
     this.setState({
       filters,
     })
-  }
-
-  searchZip() {
-    const { newZip, filters } = this.state;
-    // DO AXIOS CALL HERE FOR NEW SEARCH AREA
-    filters.zip = newZip;
-    this.setState({
-      filters,
-    });
   }
 
   applyFilters() {
@@ -287,16 +278,15 @@ export default class Results extends React.Component {
                 <DropdownButton as={ButtonGroup} title="Indoors/Outdoors">
                   <Dropdown.Item
                     onClick={() => {
-                      this.climateChange(true);
-                      this.indoorsChange(true);
+                      this.indoorsChange(true, true);
                     }}
                   >
                     Indoors with Climate Control
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => this.indoorsChange(true)}>
+                  <Dropdown.Item onClick={() => this.indoorsChange(true, false)}>
                     Indoors without Climate Control
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => this.indoorsChange(false)}>
+                  <Dropdown.Item onClick={() => this.indoorsChange(false, false)}>
                     No preference
                   </Dropdown.Item>
                 </DropdownButton>
