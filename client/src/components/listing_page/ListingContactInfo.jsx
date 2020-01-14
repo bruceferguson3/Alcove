@@ -76,7 +76,7 @@ class ListingContactInfo extends React.Component {
             <Form.Label>Enter your message:</Form.Label>
             <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
           </Form.Group>
-          <input type="file" label="Upload" accept=".jpg" ref="fileUpload" />
+          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" ref="fileUpload" />
           <p>{contactText}</p>
           <Button variant="primary" block>Submit</Button>
         </Form>

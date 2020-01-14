@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Carousel, Button } from 'react-bootstrap';
 
 import dummyData from './dummyData.js';
 
@@ -62,7 +62,8 @@ const ListingImages = props => {
   }
 
   return (
-    <div>Hello, World!</div>
+    <div>
+    </div>
   )
 };
 
