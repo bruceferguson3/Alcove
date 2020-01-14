@@ -49,6 +49,7 @@ export default class Results extends React.Component {
 
   searchPrice(priceMin, priceMax) {
     // AXIOS REQUEST FOR PRICE RANGE 
+    /* APPLY FILTERS HERE */
   }
 
   locationChange(newZip) {
@@ -62,34 +63,46 @@ export default class Results extends React.Component {
   sizeChange(size) {
     const { filters } = this.state;
     filters.size = Number(size);
-    this.setState({
-      filters,
-    });
+    this.setState(
+      {
+        filters
+      },
+       /* APPLY FILTERS HERE */
+    );
   }
 
   durationChange(val) {
     const { filters } = this.state;
     filters.duration = Number(val);
-    this.setState({
-      filters,
-    });
+    this.setState(
+      {
+        filters
+      },
+       /* APPLY FILTERS HERE */
+    );
   }
 
   accessChange(easeOfAccess) {
     const { filters } = this.state;
     filters.easeOfAccess = Number(easeOfAccess);
-    this.setState({
-      filters,
-    });
+    this.setState(
+      {
+        filters
+      },
+       /* APPLY FILTERS HERE */
+    );
   }
 
   indoorsChange(indoors, climate) {
     const { filters } = this.state;
     filters.indoors = indoors;
     filters.climateControl = climate || false;
-    this.setState({
-      filters,
-    });
+    this.setState(
+      {
+        filters
+      }, 
+      /* APPLY FILTERS HERE */
+    );
   }
 
   minChange(priceMin) {
@@ -137,10 +150,10 @@ export default class Results extends React.Component {
   applyFilters() {
     const { filters, listings } = this.state;
 
-    // const filteredListings = filterResults(filters, listings)
+    // const filteredListings = filterResults(filters, listings);
 
     this.setState({
-      filteredListings: '',
+      filteredListings,
     });
 
     console.log(filters);
@@ -150,15 +163,22 @@ export default class Results extends React.Component {
     const { filters } = this.state;
     if (filterType !== 'zip') {
       filters[filterType] = null;
-      this.setState({
-        filters,
-      });
+      this.setState(
+        {
+          filters
+        },
+         /* APPLY FILTERS HERE */
+      );
     }
   }
 
   render() {
     const { filters, priceMin, priceMax } = this.state;
-    const filtersSelected = Object.values(filters).reduce((accum, item) => accum || item);
+    const { zip } = filters;
+    console.log(zip);
+    const filtersSelected = Object.values(filters).reduce((accum, item) => {
+      return accum || (item === zip ? null : item);
+    });
 
     // ===REMOVE ME LATER===
     const listings = dummyData; 
@@ -183,7 +203,6 @@ export default class Results extends React.Component {
         <Row>
           <Col>
             <div className="results-filter-bar flex-column">
-              <h4 className="results">Apply Filters:</h4>
               <label htmlFor="location">Enter New Zip Code:</label>
               <input
                 type="text"
@@ -209,11 +228,12 @@ export default class Results extends React.Component {
               <Button
                 variant="info"
                 onClick={() => this.searchPrice()}
-                className="mb-3"
+                className="mb-1"
               >
                 Search Price Range
               </Button>
-              <ButtonGroup vertical>
+              <h4 className="results">Apply Filters:</h4>
+              <ButtonGroup vertical className="mt-2">
                 <DropdownButton as={ButtonGroup} title="Duration">
                   <Dropdown.Item
                     data-value={1}
@@ -322,10 +342,14 @@ export default class Results extends React.Component {
                   >
                     Indoors with Climate Control
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => this.indoorsChange(true, false)}>
+                  <Dropdown.Item
+                    onClick={() => this.indoorsChange(true, false)}
+                  >
                     Indoors without Climate Control
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => this.indoorsChange(false, false)}>
+                  <Dropdown.Item
+                    onClick={() => this.indoorsChange(false, false)}
+                  >
                     No preference
                   </Dropdown.Item>
                 </DropdownButton>
