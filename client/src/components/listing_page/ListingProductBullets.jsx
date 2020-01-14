@@ -1,30 +1,32 @@
 import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import "./Listing.css";
 
 const ListingProductBullets = ({ bullets }) => {
   const climateControl = bullets.climateControl ? (
-    <div>
-      <div>ClimateControl Icon</div>
-      <div>Climate Controlled</div>
-    </div>
+    <Row>
+      <div id="tsClimateIcon"></div>
+      <div className="tsBulletText">Climate Controlled</div>
+    </Row>
   ) : (
     ""
   );
   const indoorsOrOutdoors = bullets.indoors ? (
-    <div>
-      <div>Indoors Icon</div>
-      <div>Indoors</div>
-    </div>
+    <Row>
+      <div id="tsIndoorsIcon"></div>
+      <div className="tsBulletText">Indoors</div>
+    </Row>
   ) : (
-    <div>
-      <div>Outdoors Icon</div>
-      <div>Outdoors</div>
-    </div>
+    <Row>
+      <div id="tsOutdoorsIcon"></div>
+      <div className="tsBulletText">Outdoors</div>
+    </Row>
   );
   const locked = bullets.locked ? (
-    <div>
-      <div>Locked Icon</div>
-      <div>Locked</div>
-    </div>
+    <Row>
+      <div id="tsBulletIcon"></div>
+      <div className="tsBulletText">Locked</div>
+    </Row>
   ) : (
     ""
   );
@@ -56,64 +58,37 @@ const ListingProductBullets = ({ bullets }) => {
   //TODO - Format according to data passed in
   let size;
   if (bullets.size === 1) {
-    size = (
-      <div>
-        <div className="XS Icon">XS Icon</div>
-        <div>Size: Extra Small</div>
-      </div>
-    );
+    size = "Extra Small";
   } else if (bullets.size === 2) {
-    size = (
-      <div>
-        <div className="S Icon">S Icon</div>
-        <div>Size: Small</div>
-      </div>
-    );
+    size = "Small";
   } else if (bullets.size === 3) {
-    size = (
-      <div>
-        <div className="M Icon">M Icon</div>
-        <div>Size: Medium</div>
-      </div>
-    );
+    size = "Medium";
   } else if (bullets.size === 4) {
-    size = (
-      <div>
-        <div className="L Icon">L Icon</div>
-        <div>Size: Large</div>
-      </div>
-    );
+    size = "Large";
   } else if (bullets.size === 5) {
-    size = (
-      <div>
-        <div className="XL Icon">XL Icon</div>
-        <div>Size: Extra Large</div>
-      </div>
-    );
+    size = "Extra Large";
   } else {
-    size = (
-      <div>
-        <div className="XL Icon">XXL Icon</div>
-        <div>Size: Extra Extra Large</div>
-      </div>
-    );
+    size = "Extra Extra Large";
   }
 
   return (
-    <div className="ListingProductBullets">
+    <Container>
       {climateControl}
       {indoorsOrOutdoors}
       {locked}
-      {size}
-      <div className="listingProductAccessType">
-        <div className="listingProductAccessIcon">Access Type Icon</div>
+      <Row>
+        <div id="tsSizeIcon"></div>
+        <div className="tsBulletText">{size}</div>
+      </Row>
+      <Row>
+        <div id="tsDurationIcon"></div>
         <div>{durationText}</div>
-      </div>
-      <div className="listingProductAccess">
-        <div className="listingProductAccessIcon"></div>
+      </Row>
+      <Row>
+        <div id="tsAccessIcon"></div>
         <div>{easeOfAccessText}</div>
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
