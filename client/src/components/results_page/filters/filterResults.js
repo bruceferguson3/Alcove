@@ -1,14 +1,15 @@
-const dummyData = require('../dummyData.js');
-
-const filterResults = (filters, listings) => {
-  return listings.filter((listing) => {
-    return Object.entries(filters).reduce((accum, options) =>
+const filterResults = (filters, listings) =>
+  listings.filter((listing) =>
+    Object.entries(filters).reduce((accum, options) =>
       options[0] === 'price' || options[0] === 'zip'
         ? accum
         : accum && listing.filters[options[0]] === options[1]
-    );
-  });
-};
+    )
+  );
+
+module.exports = filterResults;
+
+// const dummyData = require('../dummyData.js');
 
 // KEEPING COMMENTS BELOW FOR TESTING DIRECTION //
 
@@ -16,7 +17,7 @@ const filterResults = (filters, listings) => {
 //   listingType: 'space',
 //   climateControl: true,
 //   size: 3,
-//   easeOfAccess: 2,
+//   easeOfAccess: 1,
 //   locked: false,
 //   standAlone: false,
 //   price: 56.99,

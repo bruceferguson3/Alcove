@@ -4,6 +4,7 @@ import PriceFilter from './filters/PriceFilter.jsx';
 import FiltersDisplay from './filters/FiltersDisplay.jsx';
 import ResultsList from './ResultsList.jsx';
 import './Results.css';
+import filterResults from './filters/filterResults.js'
 
 // Remove later
 import dummyData from './dummyData.js';
