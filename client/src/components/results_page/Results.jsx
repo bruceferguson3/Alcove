@@ -104,10 +104,12 @@ export default class Results extends React.Component {
 
   clearFilter(filterType) {
     const { filters } = this.state;
-    filters[filterType] = null;
-    this.setState({
-      filters,
-    })
+    if (filterType !== 'zip') {
+      filters[filterType] = null;
+      this.setState({
+        filters,
+      });
+    }
   }
 
   applyFilters() {
