@@ -1,9 +1,9 @@
-.section-1 {
+.it-section-1 {
   background: linear-gradient(#f882bd, #f6dae8);
   position: relative;
 }
 
-.jumbotron {
+.it-jt {
   height: calc(100vh - 56px);
   display: flex;
   flex-direction: column;
@@ -12,37 +12,37 @@
   margin-bottom: 0;
 }
 
-.form-control {
+.it-search-input {
   width: 25%;
 }
 
-.cta-text {
+.it-cta-text {
   width: 25%;
   margin-left: 300px;
 }
 
-.cta-text h1 {
+.it-cta-text h1 {
   font-size: 46px;
 }
 
-.cta-form {
+.it-cta-form {
   margin: -300px 0 0 300px;
 }
 
-/* img {
+.it-cta-image {
   position: absolute;
   right: 100px;
   top: 150px;
   width: 35%;
-} */
+}
 
-.section-2 {
+.it-section-2 {
   width: 100%;
   height: 100vh;
   background: #caff99;
 }
 
-.section-3 {
+.it-section-3 {
   width: 100%;
   height: 100vh;
   background: tomato;
