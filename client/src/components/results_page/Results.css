@@ -2,11 +2,21 @@ span, h4 {
   margin-bottom: 0;
 }
 
+label {
+  margin-top: .5rem;
+}
+
 .flex-centered {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
 }
 
 .price-slider {

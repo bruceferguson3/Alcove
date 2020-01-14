@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 const ActiveFilter = ({ filterType, filterValue }) => (
-  <Button className="m-1">{filterDisplays(filterType, filterValue)}</Button>
+  <Button className="ml-2 mr-2 mb-3" variant="success" data-filter={filterType} >{filterDisplays(filterType, filterValue)}</Button>
 );
 
 export default ActiveFilter;
@@ -21,15 +21,21 @@ const filterDisplays = (filterType, filterValue) => {
     case 'priceMax':
       return `Maximum Price $${filterValue}`;
     case 'easeOfAccess':
-      return `Access Frequency: ${filterFrequency(filterValue)}`;
+      return `Access: ${filterFrequency(filterValue)}`;
     case 'locked':
       return 'Locked';
     case 'indoors':
       return 'Indoors';
     case 'climateControl':
       return 'Climate Controlled';
+    case 'duration':
+      return `Duration: ${filterDuration(filterValue)}`;
     default:
-      return 'Filter Error!';
+      if(typeof Number(filterType) !== 'number'){
+        return 'Filter Error!';
+      } else {
+        return `Zip Code: ${filterValue}`;
+      }
   }
 };
 
@@ -38,9 +44,9 @@ const filterFrequency = (val) => {
     case 1:
       return 'Never';
     case 2:
-      return 'Sometimes';
+      return 'Infrequent';
     case 3:
-      return 'Frequent Access';
+      return 'Frequent';
     default:
       return 'Filter Error!'
   }
@@ -60,5 +66,22 @@ const filterSize = (val) => {
       return 'Extra-Large';
     default:
       return 'Filter Error!'
+  }
+};
+
+const filterDuration = (val) => {
+  switch (val) {
+    case 1:
+      return 'Less than a week';
+    case 2:
+      return '1 to 4 weeks';
+    case 3:
+      return '1 to 3 months';
+    case 4:
+      return '3 to 6 months';
+    case 5:
+      return 'More than 6 months';
+    default:
+      return 'Filter Error!';
   }
 };
