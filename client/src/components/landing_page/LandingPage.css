@@ -1,0 +1,49 @@
+.section-1 {
+  background: linear-gradient(#f882bd, #f6dae8);
+  position: relative;
+}
+
+.jumbotron {
+  height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: transparent;
+  margin-bottom: 0;
+}
+
+.form-control {
+  width: 25%;
+}
+
+.cta-text {
+  width: 25%;
+  margin-left: 300px;
+}
+
+.cta-text h1 {
+  font-size: 46px;
+}
+
+.cta-form {
+  margin: -300px 0 0 300px;
+}
+
+/* img {
+  position: absolute;
+  right: 100px;
+  top: 150px;
+  width: 35%;
+} */
+
+.section-2 {
+  width: 100%;
+  height: 100vh;
+  background: #caff99;
+}
+
+.section-3 {
+  width: 100%;
+  height: 100vh;
+  background: tomato;
+}
