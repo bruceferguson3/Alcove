@@ -13,7 +13,8 @@ export default class ListingForm extends React.Component {
                 userInfo: {
                     name: '',
                     email: '',
-                    phone: ''
+                    phone: '',
+                    textAllowed: false
                 },
                 dateSubmitted: '',
                 filters: {
@@ -24,7 +25,8 @@ export default class ListingForm extends React.Component {
                     standAlone: false,
                     price: 0.00,
                     indoors: false,
-                    duration: 0
+                    duration: 0,
+                    type: '' //space or item
                 },
                 description: '',
                 thumbs: [],
@@ -40,8 +42,14 @@ export default class ListingForm extends React.Component {
 
     }
     
-    handleSubmit() {
+    handleSubmit(e) {
         //send current state to database and render new product page
+        e.preventDefault();
+        let date = Date.now();
+        this.setState({dateSubmitted: date}, () => {
+            console.log("Clicked and sent")
+        })
+
     }
 
     showList(id) {
@@ -58,9 +66,13 @@ export default class ListingForm extends React.Component {
                 stateObject[dataset][property] = Number(e.target.value);
             }
             if (e.target.value === 'true') {
-                stateObject[dataset][property] = true
+                stateObject[dataset][property] = Boolean(e.target.value)
             }
-            if (dataset === 'userInfo') {
+            if (e.target.value === 'false') {
+                stateObject[dataset][property] = Boolean(e.target.value)
+            }
+
+            if (dataset === 'userInfo' || property === 'type') {
                 stateObject[dataset][property] = e.target.value;
             }
         } else {
@@ -71,12 +83,12 @@ export default class ListingForm extends React.Component {
 
     render() {
         return(
-            <div className='jumbotron '>
-            <h1 className="display-4">Please submit this form</h1>
-            <Form>
+            <div className='jumbotron container col mb-2'>
+            <h1 className="display-4 mt-2">Please submit this form</h1>
+            <Form className='col shadow-lg p-3'>
                 <UserInfo recordStateInfo={this.recordStateInfo}
                           zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
-                                     email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone}}/>
+                                     email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
 
                 <FilterList recordStateInfo={this.recordStateInfo} showList={this.showList}
                 filters={{
@@ -86,11 +98,13 @@ export default class ListingForm extends React.Component {
                     locked: this.state.data.filters.locked,
                     standAlone: this.state.data.filters.standAlone,
                     indoors: this.state.data.filters.indoors,
-                    duration: this.state.data.filters.duration}} title={this.state.data.title}/>
+                    duration: this.state.data.filters.duration,
+                    type: this.state.data.filters.type,
+                    textAllowed: this.state.data.filters.textAllowed}} title={this.state.data.title}/>
 
                 <Descriptions recordStateInfo={this.recordStateInfo}
                 description={this.state.data.description} thumbs={this.state.data.thumbs}/>
-                <Button className='mt-3' type="submit" onClick={this.handleSubmit}>Submit form</Button>
+                <Button className='mt-3 ml-3' onClick={this.handleSubmit}>Submit form</Button>
             </Form>
             </div>
         )

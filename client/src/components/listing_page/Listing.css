@@ -1,0 +1,79 @@
+#tsClimateIcon {
+  background-image: url("../../../dist/assets/weather.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsIndoorsIcon {
+  background-image: url("../../../dist/assets/home.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsOutdoorsIcon {
+  background-image: url("../../../dist/assets/climate.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsLockedIcon {
+  background-image: url("../../../dist/assets/lock.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsAccessIcon {
+  background-image: url("../../../dist/assets/ease.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsDurationIcon {
+  background-image: url("../../../dist/assets/duration.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsSizeIcon {
+  background-image: url("../../../dist/assets/dimension.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#tsSharedIcon {
+  background-image: url("../../../dist/assets/shared.png");
+  height: 2.5vh;
+  width: 2.5vw;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

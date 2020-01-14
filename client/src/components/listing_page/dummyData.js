@@ -11,8 +11,8 @@ let test = {
       climateControl: true,
       size: 1 - 6,
       easeOfAccess: 1 - 3,
-      locked: false,
-      standAlone: false,
+      locked: true,
+      standAlone: true,
       price: 56.99,
       indoors: true,
       duration: 1 - 6

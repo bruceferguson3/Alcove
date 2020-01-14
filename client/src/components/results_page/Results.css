@@ -1,3 +1,43 @@
-div.results-container {
-  color: purple;
+.active-filters {
+  min-height: 7rem;
+}
+
+.results {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.results-label {
+  margin-top: .5rem;
+}
+
+.flex-centered {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.price-slider {
+  display: block;
+  width: 100%;
+  background: transparent;
+}
+
+#filters-display-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#price-filter-container {
+  margin: 1rem auto;
 }
