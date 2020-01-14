@@ -1,4 +1,5 @@
 node_modules/
 .DS_Store
 client/dist/bundle.js
+/server/db/dbConfig/db.mongo.configSecrets.js
 package-lock.json

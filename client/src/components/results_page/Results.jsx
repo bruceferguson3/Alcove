@@ -7,33 +7,33 @@ import './Results.css';
 
 // Remove later
 import dummyData from './dummyData.js';
+// ============
 
 export default class Results extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       applyFilters: false,
+      priceMin: 5,
+      priceMax: 20,
+      newZip: null,
       filters: {
         listingType: 'space',
         size: 1,
         duration: 2,
-        priceMin: 40,
-        priceMax: 100,
         zip: '01106',
         easeOfAccess: 2,
-        locked: true,
-        climateControl: true,
+        locked: false,
+        climateControl: false,
         standAlone: false,
-        indoors: true
+        indoors: false,
       }
     };
   }
 
-  locationChange(zip) {
-    const { filters } = this.state;
-    filters.zip = zip;
+  locationChange(newZip) {
     this.setState({
-      filters,
+      newZip,
     });
   }
 
@@ -45,8 +45,10 @@ export default class Results extends React.Component {
   }
 
   sizeChange(size) {
+    const { filters } = this.state;
+    filters.size = Number(size);
     this.setState({
-      size,
+      filters,
     });
   }
 
@@ -60,79 +62,126 @@ export default class Results extends React.Component {
 
   accessChange(easeOfAccess) {
     const { filters } = this.state;
-    filters.easeOfAccess = easeOfAccess;
+    filters.easeOfAccess = Number(easeOfAccess);
     this.setState({
       filters,
     });
   }
 
-  indoorsChange() {
+  indoorsChange(val) {
     const { filters } = this.state;
-    filters.indoors = !filters.indoors;
+    filters.indoors = val;
     this.setState({
       filters,
     });
   }
 
-  climateChange() {
+  climateChange(val) {
     const { filters } = this.state;
-    filters.climateControl = !filters.climateControl;
-    this.setState({
-      climateControl: !climateControl,
-    })
+    if(filter.indoors) {
+      filters.climateControl = val;
+      this.setState({
+        filters,
+      });
+    }
+  }
+
+  minChange(priceMin) {
+    if(priceMin % 5 === 0) {
+      this.setState({
+        priceMin,
+      });
+    }
+  }
+
+  maxChange(priceMax) {
+    if (priceMax % 5 === 0) {
+      this.setState({
+        priceMax
+      });
+    }
   }
 
   clearFilter(filterType) {
+    const { filters } = this.state;
+    filters[filterType] = null;
     this.setState({
-      [filterType]: null,
+      filters,
     })
+  }
+
+  searchZip() {
+    const { newZip, filters } = this.state;
+    // DO AXIOS CALL HERE FOR NEW SEARCH AREA
+    filters.zip = newZip;
+    this.setState({
+      filters,
+    });
   }
 
   applyFilters() {
     const { filters } = this.state;
     this.setState({
-      applyFilters: true,
+      // applyFilters: true,
     });
 
-    setTimeout(() => {
-      this.setState({
-        applyFilters: false,
-      });
-    }, 500);
     console.log(filters);
   }
 
   render() {
-    const { filters, applyFilters } = this.state;
+    const { filters, priceMin, priceMax } = this.state;
+    const filtersSelected = Object.values(filters).reduce((accum, item) => accum || item);
 
-    //REMOVE ME LATER
-    const listings = dummyData;
+    // ===REMOVE ME LATER===
+    const listings = dummyData; 
+    // =====================
+
     return (
       <Container>
-        <Row>
-          <div className="flex-centered">
-            <h4>Active Filters</h4>
-            <span>(Click to remove)</span>
+        {filtersSelected ? (
+          <div className="flex-centered active-filters">
+            <h4 className="results">Selected Filters</h4>
+            <span className="results-span">(Click to remove)</span>
             <FiltersDisplay
               filters={filters}
               clearFilter={this.clearFilter.bind(this)}
-              applyFilters={applyFilters}
             />
           </div>
-        </Row>
+        ) : (
+          <div className="flex-centered active-filters">
+            <h4>Select Filters to Refine Your Search</h4>
+          </div>
+        )}
         <Row>
           <Col>
-            <div id="results-filter-bar">
-              <h4>Filter Results:</h4>
+            <div className="results-filter-bar flex-column">
+              <h4 className="results">Apply Filters:</h4>
               <label htmlFor="location">Enter New Zip Code:</label>
               <input
                 type="text"
                 name="location"
+                maxLength="5"
                 onChange={() => this.locationChange(event.target.value)}
               />
-              <PriceFilter priceChange={this.priceChange.bind(this)} />
-              <Button onClick={() => this.applyFilters()} className="mb-3">
-                Apply Filters
+              <Button
+                variant="info"
+                onClick={() => this.searchZip()}
+                className="mb-1 mt-1"
+              >
+                Search Zip Code
+              </Button>
+              <PriceFilter
+                minChange={this.minChange.bind(this)}
+                maxChange={this.maxChange.bind(this)}
+                priceMin={priceMin}
+                priceMax={priceMax}
+              />
+              <Button
+                variant="info"
+                onClick={() => this.applyFilters()}
+                className="mb-3"
+              >
+                Search Price Range
               </Button>
               <ButtonGroup vertical>
                 <DropdownButton as={ButtonGroup} title="Duration">
@@ -232,17 +281,22 @@ export default class Results extends React.Component {
                       this.accessChange(event.target.dataset.value)
                     }
                   >
-                    Often
+                    Frequent
                   </Dropdown.Item>
                 </DropdownButton>
                 <DropdownButton as={ButtonGroup} title="Indoors/Outdoors">
-                  <Dropdown.Item onClick={() => this.climateChange()}>
+                  <Dropdown.Item
+                    onClick={() => {
+                      this.climateChange(true);
+                      this.indoorsChange(true);
+                    }}
+                  >
                     Indoors with Climate Control
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => this.indoorsChange()}>
+                  <Dropdown.Item onClick={() => this.indoorsChange(true)}>
                     Indoors without Climate Control
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => this.indoorsChange()}>
+                  <Dropdown.Item onClick={() => this.indoorsChange(false)}>
                     No preference
                   </Dropdown.Item>
                 </DropdownButton>

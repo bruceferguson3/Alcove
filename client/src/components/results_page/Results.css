@@ -1,8 +1,13 @@
-span, h4 {
+.active-filters {
+  min-height: 7rem;
+}
+
+.results {
+  margin-top: 1rem;
   margin-bottom: 0;
 }
 
-label {
+.results-label {
   margin-top: .5rem;
 }
 
@@ -16,11 +21,13 @@ label {
 .flex-column {
   display: flex;
   flex-flow: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .price-slider {
   display: block;
+  width: 100%;
+  background: transparent;
 }
 
 #filters-display-container {

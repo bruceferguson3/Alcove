@@ -1,8 +1,15 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const ActiveFilter = ({ filterType, filterValue }) => (
-  <Button className="ml-2 mr-2 mb-3" variant="success" data-filter={filterType} >{filterDisplays(filterType, filterValue)}</Button>
+const ActiveFilter = ({ filterType, filterValue, clearFilter }) => (
+  <Button
+    className="ml-2 mr-2 mb-3"
+    variant="warning"
+    data-filter={filterType}
+    onClick={() => clearFilter(filterType)}
+  >
+    {filterDisplays(filterType, filterValue)}
+  </Button>
 );
 
 export default ActiveFilter;
