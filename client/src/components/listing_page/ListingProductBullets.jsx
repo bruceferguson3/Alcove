@@ -24,8 +24,16 @@ const ListingProductBullets = ({ bullets }) => {
   );
   const locked = bullets.locked ? (
     <Row>
-      <div id="tsBulletIcon"></div>
+      <div id="tsLockedIcon"></div>
       <div className="tsBulletText">Locked</div>
+    </Row>
+  ) : (
+    ""
+  );
+  const shared = bullets.standAlone ? (
+    <Row>
+      <div id="tsSharedIcon"></div>
+      <div className="tsBulletText">Shared Space</div>
     </Row>
   ) : (
     ""
@@ -88,6 +96,7 @@ const ListingProductBullets = ({ bullets }) => {
         <div id="tsAccessIcon"></div>
         <div>{easeOfAccessText}</div>
       </Row>
+      {shared}
     </Container>
   );
 };
