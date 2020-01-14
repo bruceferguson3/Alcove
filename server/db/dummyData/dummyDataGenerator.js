@@ -83,17 +83,17 @@ let makeFakeData = () => {
     );
     dummyObject.data.description = faker.lorem.paragraphs();
     dummyObject.data.thumbs = [
-      faker.image.city,
-      faker.image.city,
-      faker.image.city,
-      faker.image.city
+      faker.image.city(),
+      faker.image.city(),
+      faker.image.city(),
+      faker.image.city()
     ];
     dummyObject.data.reviews = [];
     dummyObject.data.geoLocation = [
       faker.address.latitude(),
       faker.address.longitude()
     ];
-    dummyObject.data.zip = faker.address.zipCode().toString();
+    dummyObject.data.zip = "78701";
 
     data.push(dummyObject);
   }

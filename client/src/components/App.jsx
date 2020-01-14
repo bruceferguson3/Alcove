@@ -6,10 +6,10 @@ import Listing from './listing_page/Listing.jsx';
 import ListingForm from './post_page/ListingForm.jsx';
 import Results from './results_page/Results.jsx';
 import Header from './Header.jsx';
-// import Footer from './Footer.jsx';
+import Footer from './Footer.jsx';
 import 'react-bootstrap/dist/react-bootstrap.min.js';
 
-const baseURL = 'AlcoveAPI.us-east-2.elasticbeanstalk.com';
+const baseURL = 'http://alcove.us-east-2.elasticbeanstalk.com/';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ export default class App extends React.Component {
       queriedZipCode: null,
       searchResults: null
     };
+    this.returnToTop = this.returnToTop.bind(this);
   }
 
   getSelectedListing(id) {
@@ -30,11 +31,20 @@ export default class App extends React.Component {
   }
 
   landingSearch(zip) {
-    // Axios.get(`${baseURL}/getall`, { params: zip })
-    //   .then((data) => {
-    //     console.log('Data from Zip Submission', data);
-    //   })
-    //   .catch(console.log);
+    // let history = useHistory();
+    Axios.get(`${baseURL}/getall`, { params: { zip } }).then(data => {
+      this.setState({ queriedZipCode: zip });
+      // console.log(data);
+      // history.push('/results');
+    });
+  }
+
+  returnToTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   render() {
@@ -57,7 +67,7 @@ export default class App extends React.Component {
               <Listing listing={currentListing} />
             </Route>
           </Switch>
-          {/* <Footer /> */}
+          <Footer returnToTop={this.returnToTop} />
         </Router>
       </div>
     );
