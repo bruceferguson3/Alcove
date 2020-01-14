@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Modal, Carousel, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 import dummyData from "./dummyData.js";
 
