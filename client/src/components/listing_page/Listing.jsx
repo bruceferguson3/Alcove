@@ -25,9 +25,6 @@ class Listing extends React.Component {
           </Col>
           <Col md={4}>
             <Row>
-              <ListingMap />
-            </Row>
-            <Row>
               <ListingContactInfo />
             </Row>
           </Col>
