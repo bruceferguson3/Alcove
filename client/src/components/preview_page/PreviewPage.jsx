@@ -3,39 +3,39 @@ import { Button, Modal } from 'react-bootstrap';
 
 import dummyData from './dummyData.js';
 
-const PreviewPage = props => {
+const PreviewPage = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
-    <div>
-      <Button onClick={handleShow}>Test the preview page.</Button>
+    < >
+      <Button variant="primary" onClick={handleShow}>
+        Launch the preview modal.
+      </Button>
+
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         show={show}
-        handleClose={handleClose}
+        onHide={handleClose}
       >
-        <Modal.Dialog>
-          <Modal.Header closeButton>
-            <Modal.Title>Preview of Your Post</Modal.Title>
-          </Modal.Header>
+        <Modal.Header closeButton={handleClose}>
+          <Modal.Title>Preview of Your Post</Modal.Title>
+        </Modal.Header>
 
-          <Modal.Body>
-            <p>Test the modal.</p>
-          </Modal.Body>
+        <Modal.Body>This is where the preview will be.</Modal.Body>
 
-          <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button variant="primary">Save and Submit</Button>
-          </Modal.Footer>
-        </Modal.Dialog>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>Save Changes and Submit</Button>
+        </Modal.Footer>
       </Modal>
-    </div>
+    </ >
   );
 };
 
 export default PreviewPage;
+
+// <Button variant="secondary" onClick={handleClose}>Close</Button>
