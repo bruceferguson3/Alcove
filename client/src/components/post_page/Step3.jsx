@@ -124,7 +124,7 @@ const Step3 = ({
     <Card style={{ width: "25rem", height: "30rem" }}>
       <Card.Header>Options</Card.Header>
       <div className="tsDropdownContainer">
-        <DropdownButton id="tsFiltersSizeDropdown" title="Size">
+        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersSizeDropdown" title="Size">
           <Dropdown.Item
             data-value={1}
             onClick={e => {
@@ -171,10 +171,10 @@ const Step3 = ({
             Extra Large
           </Dropdown.Item>
         </DropdownButton>
-        <div className="tsDropdownText">{sizeText}</div>
+        <div className="tsDropdownText"><a>{sizeText}</a></div>
       </div>
       <div className="tsDropdownContainer">
-        <DropdownButton id="tsFiltersFrequencyDropdown" title="Frequency">
+        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersFrequencyDropdown" title="Access Frequency">
           <Dropdown.Item
             data-value={1}
             onClick={e => {
@@ -203,10 +203,10 @@ const Step3 = ({
             Frequent
           </Dropdown.Item>
         </DropdownButton>
-        <div className="tsDropdownText">{frequencyText}</div>
+        <div className="tsDropdownText"><a>{frequencyText}</a></div>
       </div>
       <div className="tsDropdownContainer">
-        <DropdownButton id="tsFiltersDurationDropdown" title="Duration">
+        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersDurationDropdown" title="Duration">
           <Dropdown.Item
             data-value={1}
             onClick={e => {
@@ -253,7 +253,7 @@ const Step3 = ({
             More than 6 months
           </Dropdown.Item>
         </DropdownButton>
-        <div className="tsDropdownText">{durationText}</div>
+        <div className="tsDropdownText"><a>{durationText}</a></div>
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul>
