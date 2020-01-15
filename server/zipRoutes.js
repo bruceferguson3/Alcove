@@ -10,6 +10,9 @@ function getZipsWithinRadius(zip, radius) {
             "x-rapidapi-key": "97cdcb1c2cmshce790b7e04da626p14b3f9jsn19354f3661ba"
         }
     })
+        .then( response => {
+        console.log(response.data);
+    })
 }
 
 function getDistanceBetweenZips(zipOne, zipTwo){
@@ -21,6 +24,9 @@ function getDistanceBetweenZips(zipOne, zipTwo){
             "x-rapidapi-host":"redline-redline-zipcode.p.rapidapi.com",
             "x-rapidapi-key":"97cdcb1c2cmshce790b7e04da626p14b3f9jsn19354f3661ba"
         }
+    })
+        .then( response => {
+        console.log(response);
     })
 }
 
@@ -34,6 +40,9 @@ function getLocationFromZip(zipCode){
             "x-rapidapi-key":"97cdcb1c2cmshce790b7e04da626p14b3f9jsn19354f3661ba"
         }
     })
+        .then( response => {
+        console.log(response);
+    })
 }
 
 function getZipFromCityState(city, state){
@@ -46,7 +55,12 @@ function getZipFromCityState(city, state){
             "x-rapidapi-key":"97cdcb1c2cmshce790b7e04da626p14b3f9jsn19354f3661ba"
         }
     })
+        .then( response => {
+        console.log(response);
+    })
 }
+
+getZipFromCityState('Round Rock', 'TX');
 
 module.exports = getZipFromCityState;
 module.exports = getLocationFromZip;
