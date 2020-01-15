@@ -34,10 +34,10 @@ const Header = props => {
         {props.path !== '/' ? (
           <Form inline>
             <FormControl type="text" placeholder="Enter zip code" className="mr-sm-2 it-search" />
-            <Button variant="primary" className="it-btn it-btn-primary">
+            <Button variant="primary" className="it-btn-header it-btn-primary">
               Find Items/Units
             </Button>
-            <Button variant="secondary" className="it-btn it-btn-secondary">
+            <Button variant="secondary" className="it-btn-header it-btn-secondary">
               Post Items/Units
             </Button>
           </Form>
