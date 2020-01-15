@@ -241,7 +241,7 @@ export default class Results extends React.Component {
   render() {
     const { filters, priceMin, priceMax, filteredResults, listings, newZip } = this.state;
     const { zip } = filters;
-    const { getSelectedListing } = this.props;
+    const { getSelectedListing, queriedZip } = this.props;
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });
@@ -266,7 +266,7 @@ export default class Results extends React.Component {
           <Col>
             <div className="results-filter-bar flex-column">
               <label className="filter-section-title">Current Zip-Code:</label>
-              {zip}
+              {queriedZip}
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
               </label>

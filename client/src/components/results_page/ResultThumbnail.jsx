@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import './Results.css';
 
 const ResultThumbnail = ({ listing, getSelectedListing }) => {
   const isSpace = listing.filters.listingType === 'space';
@@ -8,8 +9,8 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
 
   return (
     <Card
-      className="results-card p-3"
-      style={{ width: '18rem', height: '20.5rem', border: border }}
+      className="p-3"
+      style={{ width: '18rem', height: '26rem', border: border }}
     >
       <Card.Img
         variant="top"
@@ -22,10 +23,11 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
       <div className="results-thumbnail-price">
         ${listing.filters.price} per day
       </div>
-      {/* <Card.Text className="results-thumbnail-description">
-        {listing.description}
-      </Card.Text> */}
+      <Card.Text className="results-thumbnail-description">
+        {listing.description.slice(0, 90) + '...'}
+      </Card.Text>
       <LinkContainer
+        className="thumbnail-button"
         to="/listing"
         onClick={() =>  /* getSelectedListing(listing.id) */ 'FILL WHEN RESULTS FROM SERVER CLARIFIED'}
       >

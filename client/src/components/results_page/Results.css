@@ -89,3 +89,9 @@
 #price-filter-container {
   margin: 1rem auto;
 }
+
+.thumbnail-button {
+  position: absolute;
+  left: 1rem;
+  top: 22.3rem;
+} 
