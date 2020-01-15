@@ -7,6 +7,8 @@ import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
+import Modal from 'react-bootstrap/Modal';
+import PreviewModal from '../preview_page/PreviewModal.jsx';
 const axios = require('axios');
 
 
@@ -58,7 +60,7 @@ export default class ListingForm extends React.Component {
                     price: 0.00,
                     indoors: false,
                     duration: 0,
-                    type: '' //space or item
+                    type: ''
                 },
                 description: '',
                 thumbs: [],
@@ -75,6 +77,7 @@ export default class ListingForm extends React.Component {
         this.GetLocation = this.GetLocation.bind(this);
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
+        // this.toggleModal = this.toggleModal.bind(this);
 
     }
 
@@ -166,7 +169,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton}/>
+                        <Step1 toggleModal={this.toggleModal} recordStateInfo={this.recordStateInfo} nextButton={this.nextButton}/>
                     </div>
                 </div>
             )
@@ -189,6 +192,10 @@ export default class ListingForm extends React.Component {
                         {/*<Step3 nextButton={this.nextButton}/>*/}
                     </div>
                 </div>
+            )
+        } else if (this.state.cardCounter === 3) {
+            return (
+                <PreviewModal />
             )
         }
     }
