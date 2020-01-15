@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
 import dummyData from './dummyData.js';
+import PreviewImages from './PreviewImages.jsx';
 
 const PreviewPage = () => {
   const [show, setShow] = useState(false);
@@ -26,7 +27,9 @@ const PreviewPage = () => {
           <Modal.Title>Preview of Your Post</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>This is where the preview will be.</Modal.Body>
+        <Modal.Body>
+          <PreviewImages />
+        </Modal.Body>
 
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>Save Changes and Submit</Button>
