@@ -74,10 +74,10 @@ const Step2 = (props) => {
             </Form.Group>
             <Form.Group className='step2Input'>
             <span className='step2Button'>
-                <Button onClick={props.nextButton}>Back</Button>
+                <Button onClick={props.backButton}>Back</Button>
             </span>
             <span className='step2Button'>
-                <Button onClick={props.backButton}>Next</Button>
+                <Button onClick={props.nextButton}>Next</Button>
             </span>
 
             </Form.Group>
