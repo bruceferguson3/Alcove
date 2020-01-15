@@ -2,9 +2,9 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-const ResultThumbnail = ({ listing }) => {
+const ResultThumbnail = ({ listing, getSelectedListing }) => {
   const isSpace = listing.filters.listingType === 'space';
-  const border = isSpace ? '3px solid skyblue' : '3px inset purple';
+  const border = isSpace ? '3px solid skyblue' : '3px solid purple';
 
   return (
     <Card
@@ -27,7 +27,7 @@ const ResultThumbnail = ({ listing }) => {
       </Card.Text> */}
       <LinkContainer
         to="/listing"
-        onClick={() => /* FILL WITH AXIOS CALL */ 'HI'}
+        onClick={() =>  /* getSelectedListing(listing.id) */ 'FILL WHEN RESULTS FROM SERVER CLARIFIED'}
       >
         <Button variant="info">See Full Listing</Button>
       </LinkContainer>

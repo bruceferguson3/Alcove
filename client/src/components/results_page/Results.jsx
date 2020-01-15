@@ -56,6 +56,7 @@ export default class Results extends React.Component {
 
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
+    const { api } = this.props;
     const { zip } = filters;
     const queryParams = {
       zip,
@@ -63,7 +64,7 @@ export default class Results extends React.Component {
       priceMax,
     };
 
-    Axios.get(`${api}/getall`, { params: queryParams })
+    Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then((data) => {
         console.log(data);
 
@@ -240,6 +241,7 @@ export default class Results extends React.Component {
   render() {
     const { filters, priceMin, priceMax, filteredResults, listings, newZip } = this.state;
     const { zip } = filters;
+    const { getSelectedListing } = this.props;
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });
@@ -449,6 +451,7 @@ export default class Results extends React.Component {
             <div id="results-list-wrapper">
               <ResultsList
                 listings={filteredResults ? filteredResults : listings}
+                getSelectedListing={getSelectedListing}
               />
             </div>
           </Col>
