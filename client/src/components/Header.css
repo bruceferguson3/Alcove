@@ -7,22 +7,6 @@
   z-index: 1000;
 }
 
-#headerBrand {
-  font-family: Georgia, serif;
-}
-
-.fa-box-open {
-  z-index: -10;
-}
-
-.alcove {
-  position: absolute;
-  color: tomato;
-  top: 15px;
-  left: -50px;
-  z-index: 100;
-}
-
 .it-logo {
   width: 56px;
   margin-right: 10px;
@@ -39,7 +23,7 @@
   margin-right: 10px;
 }
 
-.it-btn {
+.it-btn-header {
   margin-bottom: 0;
 }
 
