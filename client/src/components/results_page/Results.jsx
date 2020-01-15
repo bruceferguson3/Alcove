@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button, Jumbotron } from 'react-bootstrap';
 import PriceFilter from './filters/PriceFilter.jsx';
 import ListingTypeFilter from './filters/ListingTypeFilter.jsx';
 import LockedFilter from './filters/LockedFilter.jsx';
@@ -19,13 +19,11 @@ export default class Results extends React.Component {
     super(props);
     this.state = {
       applyFilters: false,
-      listings: dummyData,
       filteredResults: null,
       priceMin: 10,
       priceMax: 20,
-      newZip: '',
       filters: {
-          listingType: null,
+          type: null,
           climateControl: null,
           size: null,
           easeOfAccess: null,
@@ -33,43 +31,25 @@ export default class Results extends React.Component {
           standAlone: null,
           indoors: null,
           duration: null,
-          zip: '01106',
       }
     };
   };
 
-  searchZip() {
-    const { newZip, filters } = this.state;
-    const { api } = this.props;
-
-    Axios.get(`${api}/getall`, { params: { newZip } })
-      .then((data) => {
-        console.log('Results New Zip Results:', data);
-        filters.zip = newZip;
-        this.setState({
-          filters,
-          /* SET NEW LISTINGS RECEIVED FROM ZIP CALL HERE */
-        });
-      })
-      .catch(console.log)
-  };
-
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
-    const { api } = this.props;
-    const { zip } = filters;
+    const { api, queriedZip } = this.props;
     const queryParams = {
-      zip,
+      zip:  queriedZip,
       priceMin,
       priceMax,
     };
 
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then((data) => {
-        console.log(data);
+        console.log('Price Filters', data);
 
         this.setState({
-          /* listings: data.data, */
+          filterResults: data.data,
         },
         () => this.applyFilters()
         );
@@ -77,9 +57,9 @@ export default class Results extends React.Component {
       .catch(console.log);
   };
 
-  typeChange(listingType) {
+  typeChange(type) {
     const { filters } = this.state;
-    filters.listingType = listingType;
+    filters.type = type;
     this.setState({
       filters,
     },
@@ -216,9 +196,10 @@ export default class Results extends React.Component {
   };
 
   applyFilters() {
-    const { filters, listings } = this.state;
+    const { filters } = this.state;
+    const { searchResults } = this.props;
 
-    const filteredResults = filterResults(filters, listings);
+    const filteredResults = filterResults(filters, searchResults);
 
     this.setState({
       filteredResults,
@@ -239,12 +220,20 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, listings, newZip } = this.state;
+    const { filters, priceMin, priceMax, filteredResults } = this.state;
     const { zip } = filters;
-    const { getSelectedListing } = this.props;
+    const { getSelectedListing, queriedZip, searchResults } = this.props;
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });
+
+    let listings = [];
+
+    if (searchResults) {
+      listings = searchResults;
+    }
+
+    console.log('listings', listings);
 
     return (
       <Container className="mb-5 pb-5">
@@ -265,9 +254,13 @@ export default class Results extends React.Component {
         <Row>
           <Col>
             <div className="results-filter-bar flex-column">
-              <label className="filter-section-title">Current Zip-Code:</label>
-              {zip}
-              <label className="filter-section-title" htmlFor="location">
+              <div id="current-zip-container" className="flex-column">
+                <label className="filter-section-title">
+                  Current Zip-Code:
+                </label>
+                <div>{queriedZip || 'None'}</div>
+              </div>
+              {/* <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
               </label>
               <input
@@ -283,7 +276,10 @@ export default class Results extends React.Component {
                 className="mb-1 mt-1"
               >
                 Search Zip Code
-              </Button>
+              </Button> */}
+              <h4 className="pricefilter-header filter-title">
+                Search By Price:
+              </h4>
               <PriceFilter
                 minChange={this.minChange.bind(this)}
                 maxChange={this.maxChange.bind(this)}
@@ -299,7 +295,7 @@ export default class Results extends React.Component {
               >
                 Search Price Range
               </Button>
-              <h4 className="results">Apply Filters:</h4>
+              <h4 className="results filter-title">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
                 <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
                 <DropdownButton
@@ -449,10 +445,20 @@ export default class Results extends React.Component {
           </Col>
           <Col>
             <div id="results-list-wrapper">
-              <ResultsList
-                listings={filteredResults ? filteredResults : listings}
-                getSelectedListing={getSelectedListing}
-              />
+              {listings.length === 0 ? (
+                <Jumbotron className="no-listings flex-column">
+                  <h4>Sorry!</h4>
+                  <p>
+                    It appears the area you searched has no current listings.
+                  </p>
+                  <p>Please enter a new zip code or location.</p>
+                </Jumbotron>
+              ) : (
+                <ResultsList
+                  listings={filteredResults ? filteredResults : listings}
+                  getSelectedListing={getSelectedListing}
+                />
+              )}
             </div>
           </Col>
         </Row>
