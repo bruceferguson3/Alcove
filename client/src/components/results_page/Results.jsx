@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button, Jumbotron } from 'react-bootstrap';
 import PriceFilter from './filters/PriceFilter.jsx';
 import ListingTypeFilter from './filters/ListingTypeFilter.jsx';
 import LockedFilter from './filters/LockedFilter.jsx';
@@ -47,7 +47,6 @@ export default class Results extends React.Component {
         filters.zip = newZip;
         this.setState({
           filters,
-          /* SET NEW LISTINGS RECEIVED FROM ZIP CALL HERE */
         });
       })
       .catch(console.log)
@@ -65,10 +64,10 @@ export default class Results extends React.Component {
 
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then((data) => {
-        console.log(data);
+        console.log('Price Filters', data);
 
         this.setState({
-          /* listings: data.data, */
+          listings: data.data,
         },
         () => this.applyFilters()
         );
@@ -455,10 +454,20 @@ export default class Results extends React.Component {
           </Col>
           <Col>
             <div id="results-list-wrapper">
-              <ResultsList
-                listings={filteredResults ? filteredResults : listings}
-                getSelectedListing={getSelectedListing}
-              />
+              {listings.length === 0 ? (
+                <Jumbotron className="no-listings flex-column">
+                  <h4>Sorry!</h4>
+                  <p>
+                    It appears the area you searched has no current listings.
+                  </p>
+                  <p>Please enter a new zip code or location.</p>
+                </Jumbotron>
+              ) : (
+                <ResultsList
+                  listings={filteredResults ? filteredResults : listings}
+                  getSelectedListing={getSelectedListing}
+                />
+              )}
             </div>
           </Col>
         </Row>

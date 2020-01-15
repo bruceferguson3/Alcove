@@ -10,7 +10,7 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
   return (
     <Card
       className="p-3"
-      style={{ width: '18rem', height: '27rem', border: border }}
+      style={{ width: '18rem', height: '27rem', border: border, cursor: 'default' }}
     >
       <Card.Img
         variant="top"

@@ -96,3 +96,10 @@
   left: 1rem;
   top: 23.3rem;
 } 
+
+.no-listings {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #be97c6;
+  font-weight: bold;
+}
