@@ -19,30 +19,28 @@ const Header = props => {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <IndexLinkContainer to="/">
-            <Nav.Link>Home</Nav.Link>
+            <Nav.Link onClick={() => props.changePath('/')}>Home</Nav.Link>
           </IndexLinkContainer>
           <LinkContainer to="/about">
-            <Nav.Link>About</Nav.Link>
+            <Nav.Link onClick={() => props.changePath('/about')}>About</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/features">
-            <Nav.Link>Features</Nav.Link>
+            <Nav.Link onClick={() => props.changePath('/features')}>Features</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/contact">
-            <Nav.Link>Contact Us</Nav.Link>
+            <Nav.Link onClick={() => props.changePath('/contact')}>Contact Us</Nav.Link>
           </LinkContainer>
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Enter zip code" className="mr-sm-2" />
-          <Button variant="outline-primary">Find Items/Units</Button>
-          <Button variant="outline-secondary">Post Items/Units</Button>
-        </Form>
+        {props.path !== '/' ? (
+          <Form inline>
+            <FormControl type="text" placeholder="Enter zip code" className="mr-sm-2" />
+            <Button variant="outline-primary">Find Items/Units</Button>
+            <Button variant="outline-secondary">Post Items/Units</Button>
+          </Form>
+        ) : null}
       </Navbar>
     </header>
   );
-};
-
-const handleScroll = evt => {
-  console.log(evt);
 };
 
 export default Header;
