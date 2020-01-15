@@ -59,7 +59,7 @@ export default class App extends React.Component {
           <Header search={this.landingSearch.bind(this)} changePath={this.changePath.bind(this)} path={this.state.path} />
           <Switch>
             <Route exact path="/">
-              <LandingPage search={this.landingSearch.bind(this)} />
+              <LandingPage search={this.landingSearch.bind(this)} changePath={this.changePath.bind(this)} />
             </Route>
             <Route path="/features">
               <Features />
