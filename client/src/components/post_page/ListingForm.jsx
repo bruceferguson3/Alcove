@@ -78,6 +78,7 @@ export default class ListingForm extends React.Component {
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
+        this.loadImageFile = this.loadImageFile.bind(this);
 
     }
 
@@ -85,13 +86,21 @@ export default class ListingForm extends React.Component {
 
     };
 
+    loadImageFile() {
+        this.setState({
+            thumbs: document.getElementById('postImageLoader').files
+        })
+    };
+    
+    // let fileList = document.getElementById('photo').files;
+    // let newFileList = Array.from(fileList);
+    // let saveableFileList = [];
+    // newFileList.map((file) => saveableFileList.push(file));
+
     handleSubmit(e) {
         //send current state to database and render new product page
         e.preventDefault();
-        let fileList = document.getElementById('photo').files;
-        let newFileList = Array.from(fileList);
-        let saveableFileList = [];
-        newFileList.map((file) => saveableFileList.push(file));
+
         let date = JSON.stringify(Date.now());
         this.GetLocation();
 
@@ -215,7 +224,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-5">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step4 />
+                        <Step4 loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
                     </div>
                 </div>
             )
