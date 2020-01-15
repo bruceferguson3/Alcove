@@ -81,7 +81,6 @@ const Step2 = (props) => {
             <span className='step2Button'>
                 <Button onClick={props.nextButton}>Next</Button>
             </span>
-
             </Form.Group>
 
         </Card>
