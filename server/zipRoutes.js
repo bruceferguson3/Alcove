@@ -1,7 +1,8 @@
 const axios = require("axios");
 
 function getZipsWithinRadius(zip, radius) {
-    axios({
+    let allZips = [];
+    return axios({
         "method": "GET",
         "url": `https://redline-redline-zipcode.p.rapidapi.com/rest/radius.json/${zip}/${radius}/mile`,
         "headers": {
@@ -11,12 +12,16 @@ function getZipsWithinRadius(zip, radius) {
         }
     })
         .then( response => {
-        console.log(response.data);
+            response.data.zip_codes.forEach( e => {
+                allZips.push([e.zip_code, e.distance])
+            });
+        allZips.sort(([,a],[,b]) => a - b);
+            return allZips;
     })
 }
 
 function getDistanceBetweenZips(zipOne, zipTwo){
-    axios({
+    return axios({
         "method":"GET",
         "url":`https://redline-redline-zipcode.p.rapidapi.com/rest/distance.json/${zipOne}/${zipTwo}/mile`,
         "headers":{
@@ -31,7 +36,7 @@ function getDistanceBetweenZips(zipOne, zipTwo){
 }
 
 function getLocationFromZip(zipCode){
-    axios({
+   return axios({
         "method":"GET",
         "url":`https://redline-redline-zipcode.p.rapidapi.com/rest/info.json/${zipCode}/degrees`,
         "headers":{
@@ -60,9 +65,6 @@ function getZipFromCityState(city, state){
     })
 }
 
-getZipFromCityState('Round Rock', 'TX');
-
-module.exports = getZipFromCityState;
-module.exports = getLocationFromZip;
-module.exports = getDistanceBetweenZips;
-module.exports = getZipsWithinRadius;
+module.exports = {
+    getZipFromCityState, getZipsWithinRadius, getLocationFromZip, getDistanceBetweenZips
+};

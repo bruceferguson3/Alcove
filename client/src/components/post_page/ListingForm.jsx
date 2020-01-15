@@ -5,7 +5,8 @@ import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
 import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
-import Step3 from "./testFilters.jsx";
+import Step3 from "./Step3.jsx";
+import Step4 from './Step4.jsx';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
 const axios = require('axios');
@@ -59,7 +60,7 @@ export default class ListingForm extends React.Component {
                     price: 0.00,
                     indoors: false,
                     duration: 0,
-                    type: '' //space or item
+                    type: ''
                 },
                 description: '',
                 thumbs: [],
@@ -68,7 +69,7 @@ export default class ListingForm extends React.Component {
                 geoLocation: [],
                 zip: ''
             },
-            cardCounter: 0
+            cardCounter: 3
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -113,17 +114,26 @@ export default class ListingForm extends React.Component {
 
     recordFilterInfo(e, key, value) {
         var stateObject = { ...this.state.data };
-        value = Number(value);
         if (key === 'Duration') {
+            value = Number(value);
             stateObject.filters.duration = value;
         } else if (key === 'Size') {
+            value = Number(value);
             stateObject.filters.size = value;
         } else if (key === 'Frequency') {
             //clarify this
+            value = Number(value);
             stateObject.filters.easeOfAccess = value;
+        } else if (key === 'Indoors') {
+            if (value === 'false') {
+                stateObject.filters.indoors = true;
+            } else {
+                stateObject.filters.climateControl = false;
+                stateObject.filters.indoors = false;
+            }
         }
 
-        this.setState(stateObject);
+        this.setState({ data: stateObject });
     }
 
     recordStateInfo(e, dataset, property, id) {
@@ -205,7 +215,16 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
+                        <Step3 indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} nextButton={this.nextButton} />
+                    </div>
+                </div>
+            )
+        } else if (this.state.cardCounter === 3) {
+            return (
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mt-5">Please submit this form</h1>
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step4 />
                     </div>
                 </div>
             )
