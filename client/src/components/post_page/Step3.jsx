@@ -2,18 +2,6 @@ import React from "react";
 import { Card, Dropdown, DropdownButton, Button } from "react-bootstrap";
 import "./PostForm.css";
 
-//size
-//ease of access
-//locked
-//Stand alone
-//Indoors
-//Duration
-
-//recordStateInfo
-//e, dataset, property
-
-//completed: Size, Frequency, Duration
-
 const Step3 = ({
   size,
   duration,
@@ -24,45 +12,75 @@ const Step3 = ({
   nextButton,
   backButton
 }) => {
-  let climateControlDisplay;
   let sizeText;
   let durationText;
   let frequencyText;
 
-  climateControlDisplay = indoors ? (
-    <div>
-      <ul id="indoorsList" className="p-1">
-        <div className="custom-control custom-radio">
-          <input
-            type="radio"
-            name="climateCustomRadio"
-            className="custom-control-input"
-            value={true}
-            id="climateControl"
-            onChange={e => recordStateInfo(e, "filters", "climateControl")}
-          />
-          <label className="custom-control-label" htmlFor="climateControl">
-            Climate Control
-          </label>
-        </div>
-        <div className="custom-control custom-radio">
-          <input
-            type="radio"
-            name="climateCustomRadio"
-            className="custom-control-input"
-            value={false}
-            id="climateControl2"
-            onChange={e => recordStateInfo(e, "filters", "climateControl")}
-          />
-          <label className="custom-control-label" htmlFor="climateControl2">
-            No Preference
-          </label>
-        </div>
-      </ul>
-    </div>
-  ) : (
-      ""
-    );
+  let climateControlBoolean = indoors ? {} : { visibility: "hidden" };
+
+  // climateControlDisplay = indoors ? (
+  //   <div style={{}}>
+  //     <ul id="indoorsList" className="p-1">
+  //       <div className="custom-control custom-radio">
+  //         <input
+  //           type="radio"
+  //           name="climateCustomRadio"
+  //           className="custom-control-input"
+  //           value={true}
+  //           id="climateControl"
+  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
+  //         />
+  //         <label className="custom-control-label" htmlFor="climateControl">
+  //           Climate Control
+  //         </label>
+  //       </div>
+  //       <div className="custom-control custom-radio">
+  //         <input
+  //           type="radio"
+  //           name="climateCustomRadio"
+  //           className="custom-control-input"
+  //           value={false}
+  //           id="climateControl2"
+  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
+  //         />
+  //         <label className="custom-control-label" htmlFor="climateControl2">
+  //           No Preference
+  //         </label>
+  //       </div>
+  //     </ul>
+  //   </div>
+  // ) : (
+  //   <div style={{ visibility: "hidden" }}>
+  //     <ul id="indoorsList" className="p-1">
+  //       <div className="custom-control custom-radio">
+  //         <input
+  //           type="radio"
+  //           name="climateCustomRadio"
+  //           className="custom-control-input"
+  //           value={true}
+  //           id="climateControl"
+  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
+  //         />
+  //         <label className="custom-control-label" htmlFor="climateControl">
+  //           Climate Control
+  //         </label>
+  //       </div>
+  //       <div className="custom-control custom-radio">
+  //         <input
+  //           type="radio"
+  //           name="climateCustomRadio"
+  //           className="custom-control-input"
+  //           value={false}
+  //           id="climateControl2"
+  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
+  //         />
+  //         <label className="custom-control-label" htmlFor="climateControl2">
+  //           No Preference
+  //         </label>
+  //       </div>
+  //     </ul>
+  //   </div>
+  // );
 
   if (size === 0) {
     sizeText = "";
@@ -106,7 +124,7 @@ const Step3 = ({
     <Card style={{ width: "25rem", height: "30rem" }}>
       <Card.Header>Options</Card.Header>
       <div className="tsDropdownContainer">
-        <DropdownButton id="tsFiltersSizeDropdown" title="Size">
+        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersSizeDropdown" title="Size">
           <Dropdown.Item
             data-value={1}
             onClick={e => {
@@ -153,10 +171,10 @@ const Step3 = ({
             Extra Large
           </Dropdown.Item>
         </DropdownButton>
-        <div className="tsDropdownText">{sizeText}</div>
+        <div className="tsDropdownText"><a>{sizeText}</a></div>
       </div>
       <div className="tsDropdownContainer">
-        <DropdownButton id="tsFiltersFrequencyDropdown" title="Frequency">
+        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersFrequencyDropdown" title="Access Frequency">
           <Dropdown.Item
             data-value={1}
             onClick={e => {
@@ -185,10 +203,10 @@ const Step3 = ({
             Frequent
           </Dropdown.Item>
         </DropdownButton>
-        <div className="tsDropdownText">{frequencyText}</div>
+        <div className="tsDropdownText"><a>{frequencyText}</a></div>
       </div>
       <div className="tsDropdownContainer">
-        <DropdownButton id="tsFiltersDurationDropdown" title="Duration">
+        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersDurationDropdown" title="Duration">
           <Dropdown.Item
             data-value={1}
             onClick={e => {
@@ -235,7 +253,7 @@ const Step3 = ({
             More than 6 months
           </Dropdown.Item>
         </DropdownButton>
-        <div className="tsDropdownText">{durationText}</div>
+        <div className="tsDropdownText"><a>{durationText}</a></div>
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul>
@@ -265,41 +283,51 @@ const Step3 = ({
             <input
               className="form-check-input"
               type="checkbox"
-              value={true}
               id="indoors"
-              onClick={() => showList("indoorsList")}
-              onChange={e => recordStateInfo(e, "filters", "indoors")}
+              value={indoors}
+              onChange={e => recordFilterInfo(e, "Indoors", e.target.value)}
             />
             <label className="form-check-label">Indoors</label>
-            {climateControlDisplay}
-            {/* <ul id="indoorsList" className="p-1">
-            <div className="custom-control custom-radio">
-              <input
-                type="radio"
-                name="climateCustomRadio"
-                className="custom-control-input"
-                value={true}
-                id="climateControl"
-                onChange={e => recordStateInfo(e, "filters", "climateControl")}
-              />
-              <label className="custom-control-label" htmlFor="climateControl">
-                Climate Control
-              </label>
+            <div style={climateControlBoolean}>
+              <ul id="indoorsList" className="p-1">
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    name="climateCustomRadio"
+                    className="custom-control-input"
+                    value={true}
+                    id="climateControl"
+                    onChange={e =>
+                      recordStateInfo(e, "filters", "climateControl")
+                    }
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor="climateControl"
+                  >
+                    Climate Control
+                  </label>
+                </div>
+                <div className="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    name="climateCustomRadio"
+                    className="custom-control-input"
+                    value={false}
+                    id="climateControl2"
+                    onChange={e =>
+                      recordStateInfo(e, "filters", "climateControl")
+                    }
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor="climateControl2"
+                  >
+                    No Preference
+                  </label>
+                </div>
+              </ul>
             </div>
-            <div className="custom-control custom-radio">
-              <input
-                type="radio"
-                name="climateCustomRadio"
-                className="custom-control-input"
-                value={false}
-                id="climateControl2"
-                onChange={e => recordStateInfo(e, "filters", "climateControl")}
-              />
-              <label className="custom-control-label" htmlFor="climateControl2">
-                No Preference
-              </label>
-            </div>
-          </ul> */}
           </div>
         </ul>
         <div>
