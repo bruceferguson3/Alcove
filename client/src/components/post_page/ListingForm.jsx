@@ -135,9 +135,10 @@ export default class ListingForm extends React.Component {
     }
 
     nextButton() {
-        var counter = cardCounter;
+        var counter = this.state.cardCounter;
+        counter++;
         this.setState({
-            cardCounter: counter++
+            cardCounter: counter
         })
     }
 
@@ -151,9 +152,7 @@ export default class ListingForm extends React.Component {
                     </div>
                 </div>
             )
-        }
-
-        if (this.state.cardCounter === 1) {
+        } else if (this.state.cardCounter === 1) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
@@ -164,9 +163,7 @@ export default class ListingForm extends React.Component {
                     </div>
                 </div>
             )
-        }
-
-        if (this.state.cardCounter === 2) {
+        } else if (this.state.cardCounter === 2) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
