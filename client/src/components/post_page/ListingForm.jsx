@@ -78,6 +78,7 @@ export default class ListingForm extends React.Component {
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
+        this.loadImageFile = this.loadImageFile.bind(this);
 
     }
 
@@ -85,19 +86,29 @@ export default class ListingForm extends React.Component {
 
     };
 
+    loadImageFile() {
+        var data = this.state.data;
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
+        this.setState({
+            data: data
+        })
+    };
+    
+    // let fileList = document.getElementById('photo').files;
+    // let newFileList = Array.from(fileList);
+    // let saveableFileList = [];
+    // newFileList.map((file) => saveableFileList.push(file));
+
     handleSubmit(e) {
         //send current state to database and render new product page
         e.preventDefault();
-        let fileList = document.getElementById('photo').files;
-        let newFileList = Array.from(fileList);
-        let saveableFileList = [];
-        newFileList.map((file) => saveableFileList.push(file));
+
         let date = JSON.stringify(Date.now());
         this.GetLocation();
 
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
 
-        this.setState({ data: { ...this.state.data, dateSubmitted: date, thumbs: saveableFileList } }, () => {
+        this.setState({ data: { ...this.state.data, dateSubmitted: date } }, () => {
             // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
             //     .then(() => console.log('Sent to server'))
             //     .catch((err) => console.log(err))
@@ -224,7 +235,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-5">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step4 />
+                        <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
                     </div>
                 </div>
             )
