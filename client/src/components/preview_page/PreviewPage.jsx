@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 
 import dummyData from './dummyData.js';
-import PreviewImages from './PreviewImages.jsx';
+import PreviewListing from './PreviewListing.jsx';
 
 const PreviewPage = () => {
   const [show, setShow] = useState(false);
@@ -28,7 +28,7 @@ const PreviewPage = () => {
         </Modal.Header>
 
         <Modal.Body>
-          <PreviewImages />
+          <PreviewListing />
         </Modal.Body>
 
         <Modal.Footer>
