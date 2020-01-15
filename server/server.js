@@ -77,6 +77,10 @@ app.post("/postlisting", (req, res) => {
     });
 });
 
+app.get('/getcoords', (req, res) => {
+    let zip = req.query.zip
+})
+
 app.listen(process.env.PORT || 5500, function () {
   console.log("listening on port 5500!");
 });
