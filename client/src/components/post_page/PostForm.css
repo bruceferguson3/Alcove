@@ -26,3 +26,29 @@
 .step2Input {
     justify-content: flex-start;
 }
+
+#postItemOrPropertyImagesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+}
+
+#postPropertyImageContainer {
+    height: 7em;
+    width: 10em;
+}
+
+#postItemImageContainer {
+    height: 7em;
+    width: 10em;
+}
+
+#postPropertyImage {
+    height: 100%;
+    width: 100%;
+}
+
+#postItemImage {
+    height: 100%;
+    width: 100%;
+}
