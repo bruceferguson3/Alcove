@@ -33,9 +33,13 @@ const Header = props => {
         </Nav>
         {props.path !== '/' ? (
           <Form inline>
-            <FormControl type="text" placeholder="Enter zip code" className="mr-sm-2" />
-            <Button variant="outline-primary">Find Items/Units</Button>
-            <Button variant="outline-secondary">Post Items/Units</Button>
+            <FormControl type="text" placeholder="Enter zip code" className="mr-sm-2 it-search" />
+            <Button variant="primary" className="it-btn it-btn-primary">
+              Find Items/Units
+            </Button>
+            <Button variant="secondary" className="it-btn it-btn-secondary">
+              Post Items/Units
+            </Button>
           </Form>
         ) : null}
       </Navbar>
