@@ -9,6 +9,7 @@ const ListingImages = props => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   let images = dummyData.test.data.thumbs;
 
   if (images.length === 1) {
