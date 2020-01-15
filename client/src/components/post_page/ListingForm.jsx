@@ -123,7 +123,7 @@ export default class ListingForm extends React.Component {
             stateObject.filters.easeOfAccess = value;
         }
 
-        this.setState(stateObject);
+        this.setState({data: stateObject});
     }
 
     recordStateInfo(e, dataset, property, id) {
