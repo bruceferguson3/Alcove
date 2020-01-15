@@ -13,6 +13,10 @@ class LandingPage extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.changePath('/');
+  }
+
   handleInput(evt) {
     const query = evt.target.value;
     if (query.match(/\d+/) || query === '') {
@@ -57,6 +61,7 @@ class LandingPage extends Component {
                   variant="outline-primary"
                   onClick={evt => {
                     this.handleKeypress(evt);
+                    this.props.changePath('/results');
                   }}
                   className="btn btn-outline-primary it-btn"
                 >
@@ -64,7 +69,13 @@ class LandingPage extends Component {
                 </button>
               </LinkContainer>
               <LinkContainer to="/post">
-                <button variant="outline-secondary" className="btn btn-outline-secondary it-btn">
+                <button
+                  variant="outline-secondary"
+                  className="btn btn-outline-secondary it-btn"
+                  onClick={evt => {
+                    this.props.changePath('/post');
+                  }}
+                >
                   Post Items or Units
                 </button>
               </LinkContainer>
@@ -74,8 +85,6 @@ class LandingPage extends Component {
             <img className="it-cta-image" src="http://zooki.react.themesbrand.com/images/home-2-img.png" alt="image" />
           </div>
         </section>
-        <section className="it-section-2"></section>
-        <section className="it-section-3"></section>
       </>
     );
   }
