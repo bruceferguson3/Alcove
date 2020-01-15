@@ -43,7 +43,13 @@
     width: 100%;
 }
 
-#postItemOrPropertyImagesContainer {
+#postItemOrPropertyImagesContainer1 {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+}
+
+#postItemOrPropertyImagesContainer2 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 5%;
@@ -98,4 +104,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#step1ContainerCard {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#step1UL {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    vertical-align: middle;
+}
+
+#extraSpaceContainer {
+    margin: auto;
+}
+
+#extraItemContainer {
+    margin: auto;
 }
