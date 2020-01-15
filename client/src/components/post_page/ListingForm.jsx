@@ -5,7 +5,7 @@ import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
 import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
-import Step3 from "./testFilters.jsx";
+import Step3 from "./Step3.jsx";
 import Step4 from './Step4.jsx';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
