@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import PreviewPage from '../preview_page/PreviewPage.jsx';
-import useState from 'react';
+import PreviewListing from '../preview_page/PreviewListing.jsx';
 
 const Step4 = (props) => {
     const [show, setShow] = useState(false);
@@ -29,12 +30,30 @@ const Step4 = (props) => {
                 <div>
                     Upload images
                 </div>
-                <input id="postImageLoader"multiple onChange={props.loadImageFile} type='file'></input>
+                <input id="postImageLoader" multiple accept='.jpg, .jpeg, .png' onChange={props.loadImageFile} type='file'></input>
             </div>
             <div>
                 <Button onClick={props.backButton} >Cancel</Button>
                 <Button onClick={handleShow} >Preview Your Post</Button>
-                <PreviewPage />
+                <Modal
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                    show={show}
+                    onHide={handleClose}
+                >
+                    <Modal.Header closeButton={handleClose}>
+                        <Modal.Title>Preview of Your Post</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <PreviewListing />
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={() => {handleClose();handleSubmit()}}>Save Changes and Submit</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </div>
     )

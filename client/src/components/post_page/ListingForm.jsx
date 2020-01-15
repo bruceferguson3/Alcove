@@ -87,8 +87,10 @@ export default class ListingForm extends React.Component {
     };
 
     loadImageFile() {
+        var data = this.state.data;
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
         this.setState({
-            thumbs: document.getElementById('postImageLoader').files
+            data: data
         })
     };
     
@@ -106,7 +108,7 @@ export default class ListingForm extends React.Component {
 
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
 
-        this.setState({ data: { ...this.state.data, dateSubmitted: date, thumbs: saveableFileList } }, () => {
+        this.setState({ data: { ...this.state.data, dateSubmitted: date } }, () => {
             // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
             //     .then(() => console.log('Sent to server'))
             //     .catch((err) => console.log(err))
@@ -233,7 +235,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-5">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step4 loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
+                        <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
                     </div>
                 </div>
             )
