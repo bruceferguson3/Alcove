@@ -74,6 +74,7 @@ export default class ListingForm extends React.Component {
         this.recordStateInfo = this.recordStateInfo.bind(this);
         this.GetLocation = this.GetLocation.bind(this);
         this.nextButton = this.nextButton.bind(this);
+        this.backButton = this.backButton.bind(this);
 
     }
 
@@ -135,9 +136,18 @@ export default class ListingForm extends React.Component {
     }
 
     nextButton() {
-        var counter = cardCounter;
+        var counter = this.state.cardCounter;
+        counter++;
         this.setState({
-            cardCounter: counter++
+            cardCounter: counter
+        })
+    }
+
+    backButton() {
+        var counter = this.state.cardCounter;
+        counter--;
+        this.setState({
+            cardCounter: counter
         })
     }
 
@@ -151,27 +161,23 @@ export default class ListingForm extends React.Component {
                     </div>
                 </div>
             )
-        }
-
-        if (this.state.cardCounter === 1) {
+        } else if (this.state.cardCounter === 1) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step2 nextButton={this.nextButton} recordStateInfo={this.recordStateInfo}
+                        <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                                 zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
                                             email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
                     </div>
                 </div>
             )
-        }
-
-        if (this.state.cardCounter === 2) {
+        } else if (this.state.cardCounter === 2) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 nextButton={this.nextButton}/>
+                        {/*<Step3 nextButton={this.nextButton}/>*/}
                     </div>
                 </div>
             )

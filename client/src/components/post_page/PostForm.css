@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     border: solid aqua 5px;
-    margin-top: 1em;
+    padding: 1em;
 }
 
 .step2Container {
@@ -24,5 +24,11 @@
 }
 
 .step2Input {
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.step2Button {
+    margin-left: 1em;
+    margin-right: 1em;
 }
