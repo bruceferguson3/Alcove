@@ -5,6 +5,7 @@ import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
 import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
+import Step3 from "./testFilters.jsx";
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
 const axios = require('axios');
@@ -75,6 +76,7 @@ export default class ListingForm extends React.Component {
         this.GetLocation = this.GetLocation.bind(this);
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
+        this.recordFilterInfo = this.recordFilterInfo.bind(this);
 
     }
 
@@ -94,7 +96,7 @@ export default class ListingForm extends React.Component {
 
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
 
-        this.setState({data: {...this.state.data, dateSubmitted: date, thumbs: saveableFileList}}, () => {
+        this.setState({ data: { ...this.state.data, dateSubmitted: date, thumbs: saveableFileList } }, () => {
             // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
             //     .then(() => console.log('Sent to server'))
             //     .catch((err) => console.log(err))
@@ -109,8 +111,23 @@ export default class ListingForm extends React.Component {
         List.hidden = List.hidden !== true;
     }
 
+    recordFilterInfo(e, key, value) {
+        var stateObject = { ...this.state.data };
+        value = Number(value);
+        if (key === 'Duration') {
+            stateObject.filters.duration = value;
+        } else if (key === 'Size') {
+            stateObject.filters.size = value;
+        } else if (key === 'Frequency') {
+            //clarify this
+            stateObject.filters.easeOfAccess = value;
+        }
+
+        this.setState(stateObject);
+    }
+
     recordStateInfo(e, dataset, property, id) {
-        var stateObject = {...this.state.data};
+        var stateObject = { ...this.state.data };
         if (e.target.dataset.value) {
 
         }
@@ -141,7 +158,7 @@ export default class ListingForm extends React.Component {
         } else {
             stateObject[property] = e.target.value
         }
-        this.setState({data: stateObject})
+        this.setState({ data: stateObject })
     }
 
     nextButton() {
@@ -162,11 +179,11 @@ export default class ListingForm extends React.Component {
 
     render() {
         if (this.state.cardCounter === 0) {
-            return(
+            return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton}/>
+                        <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
                 </div>
             )
@@ -176,8 +193,10 @@ export default class ListingForm extends React.Component {
                     <h1 className="display-4 mt-5">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
-                                zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
-                                            email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
+                            zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
+                                name: this.state.data.userInfo.name,
+                                email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed
+                            }} />
                     </div>
                 </div>
             )
@@ -186,7 +205,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        {/*<Step3 nextButton={this.nextButton}/>*/}
+                        <Step3 duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
                 </div>
             )
