@@ -126,8 +126,14 @@ export default class ListingForm extends React.Component {
                 stateObject[dataset][property] = Boolean(e.target.value)
             }
 
-            if (dataset === 'userInfo' || property === 'type') {
+            if (dataset === 'userInfo') {
                 stateObject[dataset][property] = e.target.value;
+            }
+            if (id === 'postPropertyImage') {
+                stateObject[dataset][property] = 'storage';
+            }
+            if (id === 'postItemImage') {
+                stateObject[dataset][property] = 'item';
             }
             if (id === 'defaultCheck6' || id === 'defaultCheck7') {
                 stateObject[dataset][property] = !!document.getElementById(id).checked;
@@ -160,7 +166,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step1 nextButton={this.nextButton}/>
+                        <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton}/>
                     </div>
                 </div>
             )
