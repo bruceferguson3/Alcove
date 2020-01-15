@@ -1,10 +1,10 @@
 import React from 'react';
-import '../Results.css'
+import '../Results.css';
 
 const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, maxMatch, minMatch }) => {
     return (
       <div id="price-filter-container">
-        Min Price: ${priceMin}
+        Min Price: <span className="pricefilter-prices">${priceMin}</span> /day
         <input
           type="range"
           min="10"
@@ -15,7 +15,7 @@ const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, maxMatch, minMa
           onChange={() => minChange(Number(event.target.value))}
           // onMouseUp={() => maxMatch()}
         />
-        Max Price: ${priceMax}
+        Max Price: <span className="pricefilter-prices">${priceMax}</span> /day
         <input
           type="range"
           min="10"
