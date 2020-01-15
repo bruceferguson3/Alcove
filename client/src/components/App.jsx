@@ -18,7 +18,8 @@ export default class App extends React.Component {
     this.state = {
       currentListing: null,
       queriedZipCode: null,
-      searchResults: null
+      searchResults: null,
+      path: '/'
     };
     this.returnToTop = this.returnToTop.bind(this);
   }
@@ -38,6 +39,10 @@ export default class App extends React.Component {
     });
   }
 
+  changePath(path) {
+    this.setState({ path });
+  }
+
   returnToTop() {
     window.scrollTo({
       top: 0,
@@ -51,7 +56,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Router>
-          <Header search={this.landingSearch.bind(this)} />
+          <Header search={this.landingSearch.bind(this)} changePath={this.changePath.bind(this)} path={this.state.path} />
           <Switch>
             <Route exact path="/">
               <LandingPage search={this.landingSearch.bind(this)} />
