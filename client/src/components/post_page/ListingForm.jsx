@@ -111,6 +111,9 @@ export default class ListingForm extends React.Component {
 
     recordStateInfo(e, dataset, property, id) {
         var stateObject = {...this.state.data};
+        if (e.target.dataset.value) {
+
+        }
 
         if (dataset) {
             if (property === 'price' || property === 'duration' || property === 'size' || property === 'easeOfAccess') {
@@ -123,8 +126,14 @@ export default class ListingForm extends React.Component {
                 stateObject[dataset][property] = Boolean(e.target.value)
             }
 
-            if (dataset === 'userInfo' || property === 'type') {
+            if (dataset === 'userInfo') {
                 stateObject[dataset][property] = e.target.value;
+            }
+            if (id === 'postPropertyImage') {
+                stateObject[dataset][property] = 'storage';
+            }
+            if (id === 'postItemImage') {
+                stateObject[dataset][property] = 'item';
             }
             if (id === 'defaultCheck6' || id === 'defaultCheck7') {
                 stateObject[dataset][property] = !!document.getElementById(id).checked;
@@ -157,14 +166,14 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step1 nextButton={this.nextButton}/>
+                        <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton}/>
                     </div>
                 </div>
             )
         } else if (this.state.cardCounter === 1) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mt-2">Please submit this form</h1>
+                    <h1 className="display-4 mt-5">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                                 zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
