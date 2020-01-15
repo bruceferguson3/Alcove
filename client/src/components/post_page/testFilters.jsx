@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Dropdown, DropdownButton, Form } from "react-bootstrap";
+import { Card, Dropdown, DropdownButton, Button } from "react-bootstrap";
 import "./PostForm.css";
 
 //size
@@ -20,7 +20,9 @@ const Step3 = ({
   easeOfAccess,
   recordFilterInfo,
   recordStateInfo,
-  indoors
+  indoors,
+  nextButton,
+  backButton
 }) => {
   let climateControlDisplay;
   let sizeText;
@@ -59,8 +61,8 @@ const Step3 = ({
       </ul>
     </div>
   ) : (
-    ""
-  );
+      ""
+    );
 
   if (size === 0) {
     sizeText = "";
@@ -101,7 +103,6 @@ const Step3 = ({
   }
 
   return (
-    // <Form.Row className="container">
     <Card style={{ width: "25rem", height: "30rem" }}>
       <Card.Header>Options</Card.Header>
       <div className="tsDropdownContainer">
@@ -236,43 +237,42 @@ const Step3 = ({
         </DropdownButton>
         <div className="tsDropdownText">{durationText}</div>
       </div>
-      <ul>
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="defaultCheck6"
-            onClick={e =>
-              recordStateInfo(e, "filters", "locked", "defaultCheck6")
-            }
-          />
-          <label className="form-check-label">Locked</label>
-        </div>
-      </ul>
-      <ul>
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="defaultCheck7"
-            onChange={e =>
-              recordStateInfo(e, "filters", "standAlone", "defaultCheck7")
-            }
-          />
-          <label className="form-check-label">Stand Alone Storage</label>
-        </div>
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            value={true}
-            id="indoors"
-            onClick={() => showList("indoorsList")}
-            onChange={e => recordStateInfo(e, "filters", "indoors")}
-          />
-          <label className="form-check-label">Indoors</label>
-          {climateControlDisplay}
-          {/* <ul id="indoorsList" className="p-1">
+      <div className="tsFilterCheckboxContainer">
+        <ul>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="defaultCheck6"
+              onClick={e =>
+                recordStateInfo(e, "filters", "locked", "defaultCheck6")
+              }
+            />
+            <label className="form-check-label">Locked</label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="defaultCheck7"
+              onChange={e =>
+                recordStateInfo(e, "filters", "standAlone", "defaultCheck7")
+              }
+            />
+            <label className="form-check-label">Stand Alone Storage</label>
+          </div>
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value={true}
+              id="indoors"
+              onClick={() => showList("indoorsList")}
+              onChange={e => recordStateInfo(e, "filters", "indoors")}
+            />
+            <label className="form-check-label">Indoors</label>
+            {climateControlDisplay}
+            {/* <ul id="indoorsList" className="p-1">
             <div className="custom-control custom-radio">
               <input
                 type="radio"
@@ -300,8 +300,17 @@ const Step3 = ({
               </label>
             </div>
           </ul> */}
+          </div>
+        </ul>
+        <div>
+          <span className="step2Button">
+            <Button onClick={backButton}>Back</Button>
+          </span>
+          <span className="step2Button">
+            <Button onClick={nextButton}>Next</Button>
+          </span>
         </div>
-      </ul>
+      </div>
     </Card>
   );
 };
