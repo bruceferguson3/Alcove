@@ -16,18 +16,14 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  min-height: 13rem;
+  padding-top: 4rem;
 }
 
 .flex-column {
   display: flex;
   flex-flow: column;
   align-items: center;
-}
-
-.price-slider {
-  display: block;
-  width: 100%;
-  background: transparent;
 }
 
 .filter-section-title {
@@ -45,7 +41,7 @@
   z-index: 2;
   font-size: .9rem;
   font-weight: normal;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .results-full-listing {
@@ -56,8 +52,9 @@
 }
 
 .results-thumbnail-description {
-  text-overflow: clip;
-  overflow: hidden;
+  position: absolute;
+  left: 1rem;
+  top: 18rem;
 }
 
 .results-thumbnail-description::before {
@@ -67,7 +64,7 @@
   position:absolute;
   left:0;
   top:0;
-  background:linear-gradient(0.5turn, transparent 50%, white);
+  background:linear-gradient(transparent 60%, white);
   pointer-events: none;
   z-index: 0;
 }
@@ -80,6 +77,51 @@
   margin-top: 1rem;
 }
 
+.filter-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pricefilter-header {
+  margin: 0;
+}
+
+.pricefilter-prices {
+  font-weight: bold;
+}
+
+.price-slider {
+  display: block;
+  width: 10rem;
+  background: transparent;
+}
+
 #price-filter-container {
   margin: 1rem auto;
+  margin-top: .5rem;
+}
+
+.thumbnail-button {
+  position: absolute;
+  left: 1rem;
+  top: 23.3rem;
+}
+
+.thumbnail-no-image {
+  height: 12rem;
+  color: gray;
+  border: 1px solid gray;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-listings {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #be97c6;
+  font-weight: bold;
+}
+
+#current-zip-container {
+  margin-bottom: 1rem;
 }
