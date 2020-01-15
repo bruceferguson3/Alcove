@@ -16,6 +16,8 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  min-height: 13rem;
+  padding-top: 4rem;
 }
 
 .flex-column {

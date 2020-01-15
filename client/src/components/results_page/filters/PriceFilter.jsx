@@ -7,7 +7,7 @@ const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, maxMatch, minMa
         Min Price: <span className="pricefilter-prices">${priceMin}</span> /day
         <input
           type="range"
-          min="10"
+          min="0"
           max="140"
           value={priceMin}
           id="min-price-slider"
