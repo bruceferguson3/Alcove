@@ -23,7 +23,7 @@ export default class App extends React.Component {
   }
 
   getSelectedListing(id) {
-    //  Axios.get('/FILL_ENDPOINT', { params: id })
+    //  Axios.get(`${baseURL}/getone`, { params: { id } })
     //   .then((data) => {
     //     console.log('Data From Get Request', data);
     //   })
@@ -49,7 +49,6 @@ export default class App extends React.Component {
 
   render() {
     const { currentListing, searchResults, queriedZipCode } = this.state;
-
     return (
       <div>
         <Router>
@@ -59,7 +58,7 @@ export default class App extends React.Component {
               <LandingPage search={this.landingSearch.bind(this)} />
             </Route>
             <Route path="/results">
-              <Results listings={searchResults} zip={queriedZipCode} />
+              <Results listings={searchResults} zip={queriedZipCode} api={baseURL} />
             </Route>
             <Route path="/post">
               <ListingForm />

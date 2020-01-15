@@ -6,7 +6,7 @@ import './Results.css';
 const ResultsList = ({ listings }) => (
   <div id="results-list-container">
     <CardColumns>
-      {listings.map((item, index) => <ResultThumbnail listing={item} key={`${item.dateSubmitted}-${index}`} />)}
+      {listings.map((listing, index) => <ResultThumbnail listing={listing} key={`${listing.dateSubmitted}-${index}`} />)}
     </CardColumns>
   </div>
 );
