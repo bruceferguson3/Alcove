@@ -76,7 +76,7 @@ let makeFakeData = () => {
     );
     dummyObject.data.filters.locked = faker.random.boolean();
     dummyObject.data.filters.standAlone = faker.random.boolean();
-    dummyObject.data.filters.price = faker.commerce.price();
+    dummyObject.data.filters.price = parseFloat(faker.commerce.price());
     dummyObject.data.filters.indoors = faker.random.boolean();
     dummyObject.data.filters.duration = Math.floor(
       Math.random() * Math.floor(6) + 1
