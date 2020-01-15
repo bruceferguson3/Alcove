@@ -1,6 +1,7 @@
 .it-header {
   position: fixed;
   width: 100vw;
+  z-index: 1000;
 }
 
 #headerBrand {
