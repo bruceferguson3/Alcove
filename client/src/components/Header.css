@@ -7,22 +7,6 @@
   z-index: 1000;
 }
 
-#headerBrand {
-  font-family: Georgia, serif;
-}
-
-.fa-box-open {
-  z-index: -10;
-}
-
-.alcove {
-  position: absolute;
-  color: tomato;
-  top: 15px;
-  left: -50px;
-  z-index: 100;
-}
-
 .it-logo {
   width: 56px;
   margin-right: 10px;
@@ -32,6 +16,17 @@
   font-family: 'Josefin Sans', sans-serif;
   font-size: 30px;
   color: #be97c6;
-  /* text-shadow: 3px 3px 3px #be97c6; */
   margin-right: 50px;
+}
+
+.it-search {
+  margin-right: 10px;
+}
+
+.it-btn-header {
+  margin-bottom: 0;
+}
+
+.it-btn-secondary {
+  margin: 0 10px;
 }
