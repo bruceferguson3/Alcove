@@ -19,13 +19,12 @@ export default class Results extends React.Component {
     super(props);
     this.state = {
       applyFilters: false,
-      listings: dummyData,
       filteredResults: null,
       priceMin: 10,
       priceMax: 20,
       newZip: '',
       filters: {
-          listingType: null,
+          type: null,
           climateControl: null,
           size: null,
           easeOfAccess: null,
@@ -77,9 +76,9 @@ export default class Results extends React.Component {
       .catch(console.log);
   };
 
-  typeChange(listingType) {
+  typeChange(type) {
     const { filters } = this.state;
-    filters.listingType = listingType;
+    filters.type = type;
     this.setState({
       filters,
     },
@@ -216,9 +215,10 @@ export default class Results extends React.Component {
   };
 
   applyFilters() {
-    const { filters, listings } = this.state;
+    const { filters } = this.state;
+    const { searchResults } = this.props;
 
-    const filteredResults = filterResults(filters, listings);
+    const filteredResults = filterResults(filters, searchResults);
 
     this.setState({
       filteredResults,
@@ -239,12 +239,18 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, listings, newZip } = this.state;
+    const { filters, priceMin, priceMax, filteredResults, newZip } = this.state;
     const { zip } = filters;
-    const { getSelectedListing, queriedZip } = this.props;
+    const { getSelectedListing, queriedZip, searchResults } = this.props;
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });
+
+    let listings = [];
+
+    if (searchResults) {
+      listings = searchResults;
+    }
 
     return (
       <Container className="mb-5 pb-5">

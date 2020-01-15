@@ -4,13 +4,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 import './Results.css';
 
 const ResultThumbnail = ({ listing, getSelectedListing }) => {
-  const isSpace = listing.filters.listingType === 'space';
+  const isSpace = listing.filters.type === 'space';
   const border = isSpace ? '3px solid skyblue' : '3px solid purple';
 
   return (
     <Card
       className="p-3"
-      style={{ width: '18rem', height: '26rem', border: border }}
+      style={{ width: '18rem', height: '27rem', border: border }}
     >
       <Card.Img
         variant="top"
@@ -24,7 +24,7 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         ${listing.filters.price} per day
       </div>
       <Card.Text className="results-thumbnail-description">
-        {listing.description.slice(0, 90) + '...'}
+        {listing.description.slice(0, 85) + '...'}
       </Card.Text>
       <LinkContainer
         className="thumbnail-button"

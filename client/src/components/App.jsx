@@ -35,10 +35,12 @@ export default class App extends React.Component {
   landingSearch() {
     const { newZip } = this.state;
     if (newZip.match(/\d\d\d\d\d/)) {
-      Axios.get(`${baseURL}/getall`, { params: { newZip } })
+      Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
         .then(data => {
-          console.log(data);
-          this.setState({ 
+          const listings = data.data.map(listing => listing.data);
+          console.log(listings);
+          this.setState({
+            searchResults: listings,
             queriedZipCode: newZip,
             newZip: '',
           });
@@ -79,7 +81,7 @@ export default class App extends React.Component {
               <Features />
             </Route>
             <Route path="/results">
-              <Results listings={searchResults} queriedZip={queriedZipCode} api={baseURL} getSelectedListing={this.getSelectedListing.bind(this)} />
+              <Results searchResults={searchResults} queriedZip={queriedZipCode} api={baseURL} getSelectedListing={this.getSelectedListing.bind(this)} />
             </Route>
             <Route path="/post">
               <ListingForm />
