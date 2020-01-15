@@ -15,7 +15,9 @@ class LandingPage extends Component {
 
   handleInput(evt) {
     const query = evt.target.value;
-    this.setState({ query });
+    if (query.match(/\d+/) || query === '') {
+      this.setState({ query });
+    }
   }
 
   handleKeypress(evt) {

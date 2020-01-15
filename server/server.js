@@ -97,8 +97,22 @@ app.get("/getall", (req, res) => {
     });
 });
 
+app.get("/getbyprice", (req, res) => {
+
+  let zip = req.query.zip;
+  let min = req.query.priceMin
+  let max = req.query.priceMax;
+  db.getByPrice(zip, min, max)
+    .then(response => {
+      res.send(response);
+    })
+    .catch(error => {
+      res.end(error);
+    });
+});
+
 app.post("/postlisting", (req, res) => {
-  let newDocument = req.body.data;
+  let newDocument = req.body.data.data;
   db.postListing(newDocument)
     .then(response => {
       res.end("Posted");
@@ -108,6 +122,6 @@ app.post("/postlisting", (req, res) => {
     });
 });
 
-app.listen(process.env.PORT || 5500, function() {
+app.listen(process.env.PORT || 5500, function () {
   console.log("listening on port 5500!");
 });
