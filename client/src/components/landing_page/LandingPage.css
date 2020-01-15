@@ -1,4 +1,4 @@
-.it-section-1 {
+.it-section {
   background: linear-gradient(#f882bd, #be97c6);
   height: 100vh;
   width: 100%;
@@ -45,16 +45,4 @@
 
 .it-cta-image {
   width: 600px;
-}
-
-.it-section-2 {
-  width: 100%;
-  height: 100vh;
-  background: #caff99;
-}
-
-.it-section-3 {
-  width: 100%;
-  height: 100vh;
-  background: tomato;
 }
