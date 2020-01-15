@@ -16,18 +16,14 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  min-height: 13rem;
+  padding-top: 4rem;
 }
 
 .flex-column {
   display: flex;
   flex-flow: column;
   align-items: center;
-}
-
-.price-slider {
-  display: block;
-  width: 100%;
-  background: transparent;
 }
 
 .filter-section-title {
@@ -78,6 +74,16 @@
   justify-content: center;
   width: 100%;
   margin-top: 1rem;
+}
+
+.pricefilter-prices {
+  font-weight: bold;
+}
+
+.price-slider {
+  display: block;
+  width: 10rem;
+  background: transparent;
 }
 
 #price-filter-container {
