@@ -32,6 +32,17 @@
   font-family: 'Josefin Sans', sans-serif;
   font-size: 30px;
   color: #be97c6;
-  /* text-shadow: 3px 3px 3px #be97c6; */
   margin-right: 50px;
+}
+
+.it-search {
+  margin-right: 10px;
+}
+
+.it-btn {
+  margin-bottom: 0;
+}
+
+.it-btn-secondary {
+  margin: 0 10px;
 }
