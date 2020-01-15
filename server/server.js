@@ -47,13 +47,23 @@ app.get("/getbyprice", (req, res) => {
   let zip = req.query.zip;
   let min = req.query.priceMin;
   let max = req.query.priceMax;
-  db.getByPrice(zip, min, max)
-    .then(response => {
-      res.send(response);
-    })
-    .catch(error => {
-      res.end(error);
-    });
+  let allZips = [];
+    zipRoutes.getZipsWithinRadius(zip, 10)
+        .then( response => {
+            response.forEach( e => {
+                allZips.push(e[0])
+            });
+        })
+        .then( () => {
+            db.getByPrice(allZips, min, max)
+                .then(response => {
+                    res.send(response);
+                })
+                .catch(error => {
+                    console.log("Error on get all: ", error);
+                    res.end(error);
+                })
+        })
 });
 
 app.post("/postlisting", (req, res) => {

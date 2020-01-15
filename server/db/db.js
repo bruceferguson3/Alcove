@@ -49,7 +49,7 @@ let getAll = params => {
 let getByPrice = (zip, min, max) => {
   return new Promise((resolve, reject) => {
     mongooseConfig
-      .find({ "data.zip": zip, "data.filters.price": { $gte: 50, $lte: 400 } })
+      .find({ "data.zip": zip, "data.filters.price": { $gte: min, $lte: max } })
       .then(docs => {
         resolve(docs);
       })
