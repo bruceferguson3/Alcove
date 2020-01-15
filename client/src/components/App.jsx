@@ -1,16 +1,16 @@
-import React from "react";
-import Axios from "axios";
+import React from 'react';
+import Axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import LandingPage from "./landing_page/LandingPage.jsx";
-import Listing from "./listing_page/Listing.jsx";
-import ListingForm from "./post_page/ListingForm.jsx";
-import Results from "./results_page/Results.jsx";
-import Features from "./features_page/featuresPage.jsx";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import "react-bootstrap/dist/react-bootstrap.min.js";
+import LandingPage from './landing_page/LandingPage.jsx';
+import Listing from './listing_page/Listing.jsx';
+import ListingForm from './post_page/ListingForm.jsx';
+import Results from './results_page/Results.jsx';
+import Features from './features_page/featuresPage.jsx';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import 'react-bootstrap/dist/react-bootstrap.min.js';
 
-const baseURL = "http://alcove.us-east-2.elasticbeanstalk.com";
+const baseURL = 'http://alcove.us-east-2.elasticbeanstalk.com';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -24,8 +24,8 @@ export default class App extends React.Component {
   }
 
   getSelectedListing(id = 1) {
-     Axios.get(`${baseURL}/getone`, { params: { id } })
-      .then((data) => {
+    Axios.get(`${baseURL}/getone`, { params: { id } })
+      .then(data => {
         console.log('Data From Get Request', data);
       })
       .catch(console.log);
@@ -42,7 +42,7 @@ export default class App extends React.Component {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: 'smooth'
     });
   }
 
@@ -51,7 +51,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Router>
-          <Header />
+          <Header search={this.landingSearch.bind(this)} />
           <Switch>
             <Route exact path="/">
               <LandingPage search={this.landingSearch.bind(this)} />
