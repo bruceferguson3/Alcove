@@ -72,6 +72,7 @@ export default class ListingForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.recordStateInfo = this.recordStateInfo.bind(this);
         this.GetLocation = this.GetLocation.bind(this);
+        this.nextButton =this.nextButton.bind(this);
 
     }
 
@@ -96,6 +97,10 @@ export default class ListingForm extends React.Component {
             //     .then(() => console.log('Sent to server'))
             //     .catch((err) => console.log(err))
         })
+
+    }
+
+    nextButton() {
 
     }
 
@@ -136,10 +141,10 @@ export default class ListingForm extends React.Component {
 
         return (
             <div className='mycustom-jumbotron jumbotron container col mb-0'>
-            <h1 className="display-4 mt-2">Please submit this form</h1>
-            <div className='postFormContainer col shadow-lg p-3'>
-                <Step2 recordStateInfo={this.recordStateInfo}
-                          zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
+            <h1 className="display-4 mt-5">Please submit this form</h1>
+            <div className='postFormContainer col shadow-lg'>
+                <Step2 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton}
+                          zip={this.state.data.zip} price={this.state.data.filters.price} cardCounter={this.state.cardCounter} userInfo={{name: this.state.data.userInfo.name,
                                      email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
             </div>
             </div>
