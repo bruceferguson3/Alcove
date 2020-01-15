@@ -38,7 +38,7 @@ class LandingPage extends Component {
   render() {
     return (
       <>
-        <section className="it-section-1">
+        <section className="it-section">
           <div className="it-container">
             <div className="it-cta-text">
               <h1>Alcove is here for all your storage needs!</h1>
