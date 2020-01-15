@@ -123,7 +123,7 @@ export default class ListingForm extends React.Component {
             stateObject.filters.easeOfAccess = value;
         }
 
-        this.setState({data: stateObject});
+        this.setState({ data: stateObject });
     }
 
     recordStateInfo(e, dataset, property, id) {
@@ -205,7 +205,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mt-2">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
+                        <Step3 indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} nextButton={this.nextButton} />
                     </div>
                 </div>
             )
