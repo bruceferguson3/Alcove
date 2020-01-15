@@ -77,6 +77,15 @@
   margin-top: 1rem;
 }
 
+.filter-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.pricefilter-header {
+  margin: 0;
+}
+
 .pricefilter-prices {
   font-weight: bold;
 }
@@ -89,17 +98,30 @@
 
 #price-filter-container {
   margin: 1rem auto;
+  margin-top: .5rem;
 }
 
 .thumbnail-button {
   position: absolute;
   left: 1rem;
   top: 23.3rem;
-} 
+}
+
+.thumbnail-no-image {
+  height: 12rem;
+  color: gray;
+  border: 1px solid gray;
+  justify-content: center;
+  align-items: center;
+}
 
 .no-listings {
   display: flex;
   justify-content: flex-start;
   background-color: #be97c6;
   font-weight: bold;
+}
+
+#current-zip-container {
+  margin-bottom: 1rem;
 }

@@ -25,12 +25,15 @@ export default class App extends React.Component {
     this.returnToTop = this.returnToTop.bind(this);
   }
 
-  getSelectedListing(id = 1) {
-    Axios.get(`${baseURL}/getone`, { params: { id } })
-      .then(data => {
-        console.log('Data From Get Request', data);
-      })
-      .catch(console.log);
+  getSelectedListing(currentListing) { // REPLACE WITH ID DURING REFACTOR
+    // Axios.get(`${baseURL}/getone`, { params: { id } })
+    //   .then(data => {
+    //     console.log('Data From Get Request', data);
+    //   })
+    //   .catch(console.log);
+    this.setState({
+      currentListing,
+    });
   };
 
   landingSearch() {

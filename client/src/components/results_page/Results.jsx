@@ -22,7 +22,6 @@ export default class Results extends React.Component {
       filteredResults: null,
       priceMin: 10,
       priceMax: 20,
-      newZip: '',
       filters: {
           type: null,
           climateControl: null,
@@ -32,17 +31,15 @@ export default class Results extends React.Component {
           standAlone: null,
           indoors: null,
           duration: null,
-          zip: '01106',
       }
     };
   };
 
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
-    const { api } = this.props;
-    const { zip } = filters;
+    const { api, queriedZip } = this.props;
     const queryParams = {
-      zip,
+      zip:  queriedZip,
       priceMin,
       priceMax,
     };
@@ -52,7 +49,7 @@ export default class Results extends React.Component {
         console.log('Price Filters', data);
 
         this.setState({
-          listings: data.data,
+          filterResults: data.data,
         },
         () => this.applyFilters()
         );
@@ -223,7 +220,7 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, newZip } = this.state;
+    const { filters, priceMin, priceMax, filteredResults } = this.state;
     const { zip } = filters;
     const { getSelectedListing, queriedZip, searchResults } = this.props;
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
@@ -235,6 +232,8 @@ export default class Results extends React.Component {
     if (searchResults) {
       listings = searchResults;
     }
+
+    console.log('listings', listings);
 
     return (
       <Container className="mb-5 pb-5">
@@ -255,9 +254,13 @@ export default class Results extends React.Component {
         <Row>
           <Col>
             <div className="results-filter-bar flex-column">
-              <label className="filter-section-title">Current Zip-Code:</label>
-              {queriedZip}
-              <label className="filter-section-title" htmlFor="location">
+              <div id="current-zip-container" className="flex-column">
+                <label className="filter-section-title">
+                  Current Zip-Code:
+                </label>
+                <div>{queriedZip || 'None'}</div>
+              </div>
+              {/* <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
               </label>
               <input
@@ -273,7 +276,10 @@ export default class Results extends React.Component {
                 className="mb-1 mt-1"
               >
                 Search Zip Code
-              </Button>
+              </Button> */}
+              <h4 className="pricefilter-header filter-title">
+                Search By Price:
+              </h4>
               <PriceFilter
                 minChange={this.minChange.bind(this)}
                 maxChange={this.maxChange.bind(this)}
@@ -289,7 +295,7 @@ export default class Results extends React.Component {
               >
                 Search Price Range
               </Button>
-              <h4 className="results">Apply Filters:</h4>
+              <h4 className="results filter-title">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
                 <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
                 <DropdownButton
