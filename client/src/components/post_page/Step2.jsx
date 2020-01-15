@@ -76,17 +76,16 @@ const Step2 = (props) => {
                             <span className="input-group-text">.00</span>
                         </div>
                     </div>
-                </Form.Group>
-                <Form.Group className='step2Input'>
-                <span className='step2Button'>
-                    <Button onClick={props.backButton}>Back</Button>
-                </span>
-                <span className='step2Button'>
-                    <Button type='submit' onClick={props.nextButton}>Next</Button>
-                </span>
-
-                </Form.Group>
-            </Form>
+                </div>
+            </Form.Group>
+            <Form.Group className='step2Input'>
+            <span className='step2Button'>
+                <Button onClick={props.backButton}>Back</Button>
+            </span>
+            <span className='step2Button'>
+                <Button onClick={props.nextButton}>Next</Button>
+            </span>
+            </Form.Group>
 
         </Card>
 
