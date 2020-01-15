@@ -12,10 +12,6 @@ const PreviewPage = () => {
 
   return (
     < >
-      <Button variant="primary" onClick={handleShow}>
-        Launch the preview modal.
-      </Button>
-
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -40,5 +36,9 @@ const PreviewPage = () => {
 };
 
 export default PreviewPage;
+
+// <Button variant="primary" onClick={handleShow}>
+//   Launch the preview modal.
+// </Button>
 
 // <Button variant="secondary" onClick={handleClose}>Close</Button>
