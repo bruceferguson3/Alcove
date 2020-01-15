@@ -5,7 +5,7 @@ import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
 import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
-import Step3 from "./testFilters.jsx";
+import Step3 from "./Step3.jsx";
 import Step4 from './Step4.jsx';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
@@ -114,14 +114,23 @@ export default class ListingForm extends React.Component {
 
     recordFilterInfo(e, key, value) {
         var stateObject = { ...this.state.data };
-        value = Number(value);
         if (key === 'Duration') {
+            value = Number(value);
             stateObject.filters.duration = value;
         } else if (key === 'Size') {
+            value = Number(value);
             stateObject.filters.size = value;
         } else if (key === 'Frequency') {
             //clarify this
+            value = Number(value);
             stateObject.filters.easeOfAccess = value;
+        } else if (key === 'Indoors') {
+            if (value === 'false') {
+                stateObject.filters.indoors = true;
+            } else {
+                stateObject.filters.climateControl = false;
+                stateObject.filters.indoors = false;
+            }
         }
 
         this.setState({ data: stateObject });
