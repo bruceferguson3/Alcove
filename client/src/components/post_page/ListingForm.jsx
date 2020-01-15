@@ -3,7 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FilterList from "./FilterList.jsx";
 import UserInfo from "./UserInfo.jsx";
-import Step2 from "./Step2.jsx"
+import Step1 from './Step1.jsx';
+import Step2 from "./Step2.jsx";
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
 const axios = require('axios');
@@ -72,6 +73,7 @@ export default class ListingForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.recordStateInfo = this.recordStateInfo.bind(this);
         this.GetLocation = this.GetLocation.bind(this);
+        this.nextButton = this.nextButton.bind(this);
 
     }
 
@@ -132,17 +134,47 @@ export default class ListingForm extends React.Component {
         this.setState({data: stateObject})
     }
 
-    render() {
+    nextButton() {
+        var counter = cardCounter;
+        this.setState({
+            cardCounter: counter++
+        })
+    }
 
-        return (
-            <div className='mycustom-jumbotron jumbotron container col mb-0'>
-            <h1 className="display-4 mt-2">Please submit this form</h1>
-            <div className='postFormContainer col shadow-lg p-3'>
-                <Step2 recordStateInfo={this.recordStateInfo}
-                          zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
-                                     email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
-            </div>
-            </div>
-        )
+    render() {
+        if (this.state.cardCounter === 0) {
+            return(
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mt-2">Please submit this form</h1>
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step1 nextButton={this.nextButton}/>
+                    </div>
+                </div>
+            )
+        }
+
+        if (this.state.cardCounter === 1) {
+            return (
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mt-2">Please submit this form</h1>
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step2 nextButton={this.nextButton} recordStateInfo={this.recordStateInfo}
+                                zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{name: this.state.data.userInfo.name,
+                                            email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed}}/>
+                    </div>
+                </div>
+            )
+        }
+
+        if (this.state.cardCounter === 2) {
+            return (
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mt-2">Please submit this form</h1>
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step3 nextButton={this.nextButton}/>
+                    </div>
+                </div>
+            )
+        }
     }
 }
