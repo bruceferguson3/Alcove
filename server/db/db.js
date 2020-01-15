@@ -33,10 +33,22 @@ let getOne = params => {
 };
 
 let getAll = params => {
-  // const queryZip = params.zip;
   return new Promise((resolve, reject) => {
     mongooseConfig
-      .find({ "data.zip": "78701" })
+      .find({ "data.zip": params })
+      .then(docs => {
+        resolve(docs);
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
+
+let getByPrice = (zip, min, max) => {
+  return new Promise((resolve, reject) => {
+    mongooseConfig
+      .find({ "data.zip": zip, "data.filters.price": { $gte: 50, $lte: 400 } })
       .then(docs => {
         resolve(docs);
       })
@@ -59,4 +71,4 @@ let postListing = params => {
   });
 };
 
-module.exports = { getOne, getAll, postListing };
+module.exports = { getOne, getAll, postListing, getByPrice };

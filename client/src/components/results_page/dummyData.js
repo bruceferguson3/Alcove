@@ -44,9 +44,10 @@ module.exports = [
       standAlone: false,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 2
     },
-    description: 'The spot to be',
+    description:
+      "The spot to be hot diggity dawg lookit this shit I'm going hog wild wooooooo doggy slamalamajamma! The spot to be hot diggity dawg lookit this shit I'm going hog wild wooooooo doggy slamalamajamma!",
     thumbs: [
       'https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12193133/German-Shepherd-Puppy-Fetch.jpg',
       'lekfweklme.com',
@@ -73,7 +74,7 @@ module.exports = [
       standAlone: false,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 4
     },
     description: 'The spot to be',
     thumbs: [
@@ -97,7 +98,7 @@ module.exports = [
       listingType: 'item',
       climateControl: true,
       size: 3,
-      easeOfAccess: 1,
+      easeOfAccess: 3,
       locked: false,
       standAlone: false,
       price: 56.99,
@@ -126,9 +127,9 @@ module.exports = [
       listingType: 'space',
       climateControl: true,
       size: 3,
-      easeOfAccess: 1,
+      easeOfAccess: 2,
       locked: false,
-      standAlone: false,
+      standAlone: true,
       price: 56.99,
       indoors: true,
       duration: 5
@@ -154,13 +155,13 @@ module.exports = [
     filters: {
       listingType: 'space',
       climateControl: true,
-      size: 3,
+      size: 1,
       easeOfAccess: 1,
       locked: false,
       standAlone: false,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 4
     },
     description: 'The spot to be',
     thumbs: [
@@ -183,7 +184,7 @@ module.exports = [
     filters: {
       listingType: 'space',
       climateControl: true,
-      size: 3,
+      size: 5,
       easeOfAccess: 1,
       locked: false,
       standAlone: false,
@@ -215,10 +216,10 @@ module.exports = [
       size: 3,
       easeOfAccess: 1,
       locked: false,
-      standAlone: false,
+      standAlone: true,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 3
     },
     description: 'The spot to be',
     thumbs: [
@@ -241,8 +242,8 @@ module.exports = [
     filters: {
       listingType: 'item',
       climateControl: true,
-      size: 3,
-      easeOfAccess: 1,
+      size: 2,
+      easeOfAccess: 2,
       locked: false,
       standAlone: false,
       price: 56.99,
@@ -269,14 +270,14 @@ module.exports = [
     dateSubmitted: '03/17/2019',
     filters: {
       listingType: 'space',
-      climateControl: true,
-      size: 3,
-      easeOfAccess: 1,
+      climateControl: false,
+      size: 4,
+      easeOfAccess: 3,
       locked: false,
-      standAlone: false,
+      standAlone: true,
       price: 56.99,
       indoors: true,
-      duration: 5
+      duration: 1
     },
     description: 'The spot to be',
     thumbs: [
