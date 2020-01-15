@@ -18,7 +18,7 @@ const ListingImages = props => {
         <Row>
           <Col md={3}></Col>
           <Col md={6}>
-            <img src={images[0]} />
+            <img src={images[0]} style={{ height: '12rem'}}/>
           </Col>
           <Col md={3}></Col>
         </Row>
@@ -31,10 +31,10 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col>
-            <img src={images[0]} />
+            <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
           <Col>
-            <img src={images[1]} />
+            <img src={images[1]} style={{ height: '12rem' }}/>
           </Col>
         </Row>
       </Container>
@@ -46,13 +46,13 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col>
-            <img src={images[0]} />
+            <img src={images[0]} style={{ height: '12rem' }}/>
           </Col>
           <Col>
-            <img src={images[1]} />
+            <img src={images[1]} style={{ height: '12rem' }}/>
           </Col>
           <Col>
-            <img src={images[2]} />
+            <img src={images[2]} style={{ height: '12rem' }}/>
           </Col>
         </Row>
       </Container>
@@ -63,16 +63,24 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col md={6}>{images[0]}</Col>
+          <Col md={6}>
+            <img src={images[0]} style={{ height: '12rem' }} />
+          </Col>
           <Col md={6}>
             <Row>
-              <Col md={6}>{images[1]}</Col>
-              <Col md={6}>{images[2]}</Col>
+              <Col md={6}>
+                <img src={images[1]} style={{ height: '6rem' }}/>
+              </Col>
+              <Col md={6}>
+                <img src={images[2]} style={{ height: '6rem' }}/>
+              </Col>
             </Row>
             <Row>
-              <Col md={6}>{images[3]}</Col>
               <Col md={6}>
-                {images[4]}
+                <img src={images[3]} style={{ height: '6rem' }}/>
+              </Col>
+              <Col md={6}>
+                <img src={images[4]} style={{ height: '6rem' }}/>
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
                 </Button>
