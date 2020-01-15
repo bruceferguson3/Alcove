@@ -19,11 +19,49 @@ const Step3 = ({
   duration,
   easeOfAccess,
   recordFilterInfo,
-  recordStateInfo
+  recordStateInfo,
+  indoors
 }) => {
+  let climateControlDisplay;
   let sizeText;
   let durationText;
   let frequencyText;
+
+  climateControlDisplay = indoors ? (
+    <div>
+      <ul id="indoorsList" className="p-1">
+        <div className="custom-control custom-radio">
+          <input
+            type="radio"
+            name="climateCustomRadio"
+            className="custom-control-input"
+            value={true}
+            id="climateControl"
+            onChange={e => recordStateInfo(e, "filters", "climateControl")}
+          />
+          <label className="custom-control-label" htmlFor="climateControl">
+            Climate Control
+          </label>
+        </div>
+        <div className="custom-control custom-radio">
+          <input
+            type="radio"
+            name="climateCustomRadio"
+            className="custom-control-input"
+            value={false}
+            id="climateControl2"
+            onChange={e => recordStateInfo(e, "filters", "climateControl")}
+          />
+          <label className="custom-control-label" htmlFor="climateControl2">
+            No Preference
+          </label>
+        </div>
+      </ul>
+    </div>
+  ) : (
+    ""
+  );
+
   if (size === 0) {
     sizeText = "";
   } else if (size === 1) {
@@ -233,7 +271,8 @@ const Step3 = ({
             onChange={e => recordStateInfo(e, "filters", "indoors")}
           />
           <label className="form-check-label">Indoors</label>
-          <ul hidden id="indoorsList" className="p-1">
+          {climateControlDisplay}
+          {/* <ul id="indoorsList" className="p-1">
             <div className="custom-control custom-radio">
               <input
                 type="radio"
@@ -260,7 +299,7 @@ const Step3 = ({
                 No Preference
               </label>
             </div>
-          </ul>
+          </ul> */}
         </div>
       </ul>
     </Card>
