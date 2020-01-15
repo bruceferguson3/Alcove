@@ -69,7 +69,7 @@ export default class ListingForm extends React.Component {
                 geoLocation: [],
                 zip: ''
             },
-            cardCounter: 3
+            cardCounter: 0
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
