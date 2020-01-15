@@ -1,14 +1,16 @@
 import React from 'react';
 import Axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import LandingPage from './landing_page/LandingPage.jsx';
-import Listing from './listing_page/Listing.jsx';
-import ListingForm from './post_page/ListingForm.jsx';
-import Results from './results_page/Results.jsx';
-import Features from './features_page/featuresPage.jsx';
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
-import 'react-bootstrap/dist/react-bootstrap.min.js';
+
+import LandingPage from "./landing_page/LandingPage.jsx";
+import Listing from "./listing_page/Listing.jsx";
+import ListingForm from "./post_page/ListingForm.jsx";
+import Results from "./results_page/Results.jsx";
+import Features from "./features_page/featuresPage.jsx";
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
+import PreviewPage from './preview_page/PreviewPage.jsx';
+import "react-bootstrap/dist/react-bootstrap.min.js";
 
 const baseURL = 'http://alcove.us-east-2.elasticbeanstalk.com';
 
@@ -68,10 +70,13 @@ export default class App extends React.Component {
               <Results listings={searchResults} zip={queriedZipCode} api={baseURL} getSelectedListing={this.getSelectedListing.bind(this)} />
             </Route>
             <Route path="/post">
-              <ListingForm />
+              <ListingForm />  
             </Route>
             <Route path="/listing">
               <Listing listing={currentListing} />
+            </Route>
+            <Route path="/preview">
+              <PreviewPage />
             </Route>
           </Switch>
           <Footer returnToTop={this.returnToTop} />
