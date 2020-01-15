@@ -37,21 +37,6 @@ export default class Results extends React.Component {
     };
   };
 
-  searchZip() {
-    const { newZip, filters } = this.state;
-    const { api } = this.props;
-
-    Axios.get(`${api}/getall`, { params: { newZip } })
-      .then((data) => {
-        console.log('Results New Zip Results:', data);
-        filters.zip = newZip;
-        this.setState({
-          filters,
-        });
-      })
-      .catch(console.log)
-  };
-
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
     const { api } = this.props;
