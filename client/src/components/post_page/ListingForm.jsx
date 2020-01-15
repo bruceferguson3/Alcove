@@ -6,10 +6,9 @@ import UserInfo from "./UserInfo.jsx";
 import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
 import Step3 from "./testFilters.jsx";
+import Step4 from './Step4.jsx';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
-import Modal from 'react-bootstrap/Modal';
-import PreviewModal from '../preview_page/PreviewModal.jsx';
 const axios = require('axios');
 
 
@@ -70,7 +69,7 @@ export default class ListingForm extends React.Component {
                 geoLocation: [],
                 zip: ''
             },
-            cardCounter: 0
+            cardCounter: 3
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -213,7 +212,12 @@ export default class ListingForm extends React.Component {
             )
         } else if (this.state.cardCounter === 3) {
             return (
-                <PreviewModal />
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mt-5">Please submit this form</h1>
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step4 />
+                    </div>
+                </div>
             )
         }
     }
