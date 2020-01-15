@@ -1,11 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LandingPage from "./landing_page/LandingPage.jsx";
 import Listing from "./listing_page/Listing.jsx";
 import ListingForm from "./post_page/ListingForm.jsx";
@@ -15,7 +10,7 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import "react-bootstrap/dist/react-bootstrap.min.js";
 
-const baseURL = "http://alcove.us-east-2.elasticbeanstalk.com/";
+const baseURL = "http://alcove.us-east-2.elasticbeanstalk.com";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,20 +23,18 @@ export default class App extends React.Component {
     this.returnToTop = this.returnToTop.bind(this);
   }
 
-  getSelectedListing(id) {
-    //  Axios.get(`${baseURL}/getone`, { params: { id } })
-    //   .then((data) => {
-    //     console.log('Data From Get Request', data);
-    //   })
-    //   .catch(console.log);
+  getSelectedListing(id = 1) {
+     Axios.get(`${baseURL}/getone`, { params: { id } })
+      .then((data) => {
+        console.log('Data From Get Request', data);
+      })
+      .catch(console.log);
   }
 
   landingSearch(zip) {
-    // let history = useHistory();
     Axios.get(`${baseURL}/getall`, { params: { zip } }).then(data => {
+      console.log(data);
       this.setState({ queriedZipCode: zip });
-      // console.log(data);
-      // history.push('/results');
     });
   }
 

@@ -56,6 +56,7 @@ export default class Results extends React.Component {
 
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
+    const { api } = this.props;
     const { zip } = filters;
     const queryParams = {
       zip,
@@ -63,7 +64,7 @@ export default class Results extends React.Component {
       priceMax,
     };
 
-    Axios.get(`${api}/getall`, { params: queryParams })
+    Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then((data) => {
         console.log(data);
 
