@@ -58,7 +58,7 @@ export default class App extends React.Component {
               <LandingPage search={this.landingSearch.bind(this)} />
             </Route>
             <Route path="/results">
-              <Results listings={searchResults} zip={queriedZipCode} api={baseURL} />
+              <Results listings={searchResults} zip={queriedZipCode} api={baseURL} getSelectedListing={this.getSelectedListing.bind(this)} />
             </Route>
             <Route path="/post">
               <ListingForm />
