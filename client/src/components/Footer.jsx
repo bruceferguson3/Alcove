@@ -10,14 +10,14 @@ const Footer = props => {
                     <Navbar.Brand id='footerBrand'>Alcove</Navbar.Brand>
                 </div>
                 <div id='footerDescription'>
-                    <h6 className='footerDescriptionParagraphs'>
+                    <h6 id='footerDescriptionParagraph1'>
                         Going to catch the red dot today going to catch the red dot today fight own tail
                         for the fat cat sat on the mat bat away with paws. Chirp at birds steal the warm
                         chair right after you get up, pee on walls it smells like breakfast for fight own
                         tail lay on arms while you're using the keyboard, check cat door for ambush 10
                         times before coming in.
                     </h6>
-                    <h6 className='footerDescriptionParagraphs'>
+                    <h6 id='footerDescriptionParagraph2'>
                         Sitting in a box human is washing you why halp oh the
                         horror flee scratch hiss bite stare at guinea pigs, and eat from dog's food, but
                         get my claw stuck in the dog's ear destroy couch, yet make meme, make cute face.
