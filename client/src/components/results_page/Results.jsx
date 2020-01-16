@@ -82,6 +82,9 @@ export default class Results extends React.Component {
       priceMin,
       priceMax
     };
+    this.setState({
+      waitingForResults: true
+    });
     console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then(data => {
@@ -90,7 +93,8 @@ export default class Results extends React.Component {
 
         this.setState(
           {
-            updatedListings: filteredResults
+            updatedListings: filteredResults,
+            waitingForResults: false,
           },
           () => this.applyFilters()
         );
@@ -197,7 +201,7 @@ export default class Results extends React.Component {
   }
 
   minChange(priceMin) {
-    if (priceMin % 10 === 0) {
+    if(priceMin % 5 === 0) {
       this.setState(
         {
           priceMin
@@ -208,7 +212,7 @@ export default class Results extends React.Component {
   }
 
   maxChange(priceMax) {
-    if (priceMax % 10 === 0) {
+    if(priceMax % 5 === 0) {
       this.setState(
         {
           priceMax
@@ -220,8 +224,7 @@ export default class Results extends React.Component {
 
   maxMatch() {
     const { priceMax, priceMin } = this.state;
-
-    if (priceMax < priceMin) {
+    if(priceMax - 10 < priceMin) {
       this.setState({
         priceMax: priceMin + 10
       });
@@ -230,8 +233,7 @@ export default class Results extends React.Component {
 
   minMatch() {
     const { priceMax, priceMin } = this.state;
-
-    if (priceMax < priceMin) {
+    if(priceMax - 10 < priceMin) {
       this.setState({
         priceMin: priceMax - 10
       });
@@ -268,7 +270,7 @@ export default class Results extends React.Component {
   render() {
     const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
     const { zip } = filters;
-    const { getSelectedListing, queriedZip, searchResults } = this.props;
+    const { getSelectedListing, queriedZip, searchResults, searching } = this.props;
 
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
@@ -286,14 +288,18 @@ export default class Results extends React.Component {
 
     return (
       <Container className="mb-5 pb-5">
-        {waitingForResults ? (
+        {searching || waitingForResults ? (
           <div className="flex-centered active-filters no-filters-active">
-            <Spinner animation="border" variant="info" />
+            <Spinner animation="border" variant="info" className="results-spinner" />
           </div>
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
             <FiltersDisplay filters={filters} clearFilter={this.clearFilter.bind(this)} />
             <span className="results-span">(Click to remove)</span>
+          </div>
+        ) : listings.length === 0 ? (
+          <div className="flex-centered active-filters no-filters-active">
+            <h2>No Results Found</h2>
           </div>
         ) : (
           <div className="flex-centered active-filters no-filters-active">
@@ -305,8 +311,16 @@ export default class Results extends React.Component {
           <Col id="filter-col">
             <div className="results-filter-bar flex-column">
               <div id="current-zip-container" className="flex-column">
-                <label className="filter-section-title">Current Zip Code:</label>
-                <div id="results-current-zip">{updatedZipcode || queriedZip || '-'}</div>
+                <label className="filter-section-title">
+                  Current Zip Code:
+                </label>
+                <div id="results-current-zip">
+                  {searching || waitingForResults ? (
+                    <Spinner animation="border" variant="info" className="results-spinner" />
+                  ) : (
+                    updatedZipcode || queriedZip || '-'
+                  )}
+                </div> 
               </div>
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
@@ -335,8 +349,13 @@ export default class Results extends React.Component {
                 maxMatch={this.maxMatch.bind(this)}
                 minMatch={this.minMatch.bind(this)}
               />
-              <Button variant="info" onClick={() => this.searchPrice()} className="mb-1">
-                Search Price Range
+              <Button
+                variant="info"
+                onClick={() => this.searchPrice()}
+                id="results-price-change"
+                className="mb-1"
+              >
+                Apply Price Range
               </Button>
               <h4 className="results filter-title">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
@@ -422,8 +441,13 @@ export default class Results extends React.Component {
               {listings.length === 0 ? (
                 <Jumbotron className="no-listings flex-column">
                   <h4>Sorry!</h4>
-                  <p>It appears the area you searched has no current listings.</p>
-                  <p>Please enter a new zip code.</p>
+                  <p>
+                    It appears the area you searched has no listings meeting
+                    your criteria.
+                  </p>
+                  <p>
+                    Please enter a new zip code, or adjust your filter settings.
+                  </p>
                 </Jumbotron>
               ) : (
                 <ResultsList listings={filteredResults ? filteredResults : listings} getSelectedListing={getSelectedListing} />

@@ -85,12 +85,11 @@ export default class ListingForm extends React.Component {
 
     }
 
-
     loadImageFile() {
         let date = JSON.stringify(Date.now());
         var data = this.state.data;
         data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files);
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
         this.setState({
             data: data
         })
@@ -101,35 +100,25 @@ export default class ListingForm extends React.Component {
     // let saveableFileList = [];
     // newFileList.map((file) => saveableFileList.push(file));
 
-    handleSubmit(e) {
-        //send current state to database and render new product page
-        e.preventDefault();
-
-
-        // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
-
-        this.setState({ data: { ...this.state.data, dateSubmitted: date } }, () => {
-            // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
-            //     .then(() => console.log('Sent to server'))
-            //     .catch((err) => console.log(err))
-        })
-
+    handleSubmit() {
+        console.log(this.state);
+        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { data: this.state.data })
+            .then(() => console.log('Sent to server'))
+            .catch((err) => console.log(err))
     }
 
     getCoords() {
         console.log(this.state.data.zip);
 
-        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip }})
+        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip } })
             .then((coords) => {
                 var data = this.state.data;
                 data.geoLocation = coords.data;
                 console.log(coords.data);
-                this.setState({data: data})
+                this.setState({ data: data })
             })
             .catch((err) => console.log(err))
     }
-
-
 
     showList(id) {
         let List = document.getElementById(id);
