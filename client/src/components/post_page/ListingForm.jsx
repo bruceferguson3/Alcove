@@ -85,12 +85,11 @@ export default class ListingForm extends React.Component {
 
     }
 
-
     loadImageFile() {
         let date = JSON.stringify(Date.now());
         var data = this.state.data;
         data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files);
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
         this.setState({
             data: data
         })
@@ -120,8 +119,6 @@ export default class ListingForm extends React.Component {
             })
             .catch((err) => console.log(err))
     }
-
-
 
     showList(id) {
         let List = document.getElementById(id);
