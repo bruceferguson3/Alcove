@@ -32,7 +32,10 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
               onKeyPress={event => {
                 if (event.key === 'Enter') {
                   const shouldRoute = search();
-                  if (shouldRoute) history.push('/results');
+                  if (shouldRoute) {
+                    history.push('/results');
+                    changePath('/results');
+                  } 
                 }
               }}
               value={newZip}
