@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 const Step2 = (props) => {
 
     return(
-        <Form id="step2Form" action="#" onSubmit={() => {props.nextButton(); props.getCoords()}}>
+        <Form id="step2Form" action="#" onSubmit={() => {props.nextButton(); props.getCoords(); props.redirect()}}>
             <Card className='step2Container'>
                 <Card.Header className='step2Header'>Contact Info</Card.Header>
                     <Form.Group controlId="validationCustom01" className='step2Input'>
