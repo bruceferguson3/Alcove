@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Dropdown, DropdownButton, Button } from "react-bootstrap";
+import { Dropdown, DropdownButton, Button } from "react-bootstrap";
 import "./PostForm.css";
 
 const Step3 = ({
@@ -18,70 +18,6 @@ const Step3 = ({
   let frequencyText;
 
   let climateControlBoolean = indoors ? {} : { visibility: "hidden" };
-
-  // climateControlDisplay = indoors ? (
-  //   <div style={{}}>
-  //     <ul id="indoorsList" className="p-1">
-  //       <div className="custom-control custom-radio">
-  //         <input
-  //           type="radio"
-  //           name="climateCustomRadio"
-  //           className="custom-control-input"
-  //           value={true}
-  //           id="climateControl"
-  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
-  //         />
-  //         <label className="custom-control-label" htmlFor="climateControl">
-  //           Climate Control
-  //         </label>
-  //       </div>
-  //       <div className="custom-control custom-radio">
-  //         <input
-  //           type="radio"
-  //           name="climateCustomRadio"
-  //           className="custom-control-input"
-  //           value={false}
-  //           id="climateControl2"
-  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
-  //         />
-  //         <label className="custom-control-label" htmlFor="climateControl2">
-  //           No Preference
-  //         </label>
-  //       </div>
-  //     </ul>
-  //   </div>
-  // ) : (
-  //   <div style={{ visibility: "hidden" }}>
-  //     <ul id="indoorsList" className="p-1">
-  //       <div className="custom-control custom-radio">
-  //         <input
-  //           type="radio"
-  //           name="climateCustomRadio"
-  //           className="custom-control-input"
-  //           value={true}
-  //           id="climateControl"
-  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
-  //         />
-  //         <label className="custom-control-label" htmlFor="climateControl">
-  //           Climate Control
-  //         </label>
-  //       </div>
-  //       <div className="custom-control custom-radio">
-  //         <input
-  //           type="radio"
-  //           name="climateCustomRadio"
-  //           className="custom-control-input"
-  //           value={false}
-  //           id="climateControl2"
-  //           onChange={e => recordStateInfo(e, "filters", "climateControl")}
-  //         />
-  //         <label className="custom-control-label" htmlFor="climateControl2">
-  //           No Preference
-  //         </label>
-  //       </div>
-  //     </ul>
-  //   </div>
-  // );
 
   if (size === 1) {
     sizeText = <a>Extra Small</a>;
