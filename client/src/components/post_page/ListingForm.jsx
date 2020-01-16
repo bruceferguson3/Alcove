@@ -106,8 +106,21 @@ export default class ListingForm extends React.Component {
 
     handleSubmit() {
         console.log(this.state);
-        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { body: {data: this.state.data}})
+        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { data: this.state.data })
             .then(() => console.log('Sent to server'))
+            .catch((err) => console.log(err))
+    }
+
+    getCoords() {
+        console.log(this.state.data.zip);
+
+        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip } })
+            .then((coords) => {
+                var data = this.state.data;
+                data.geoLocation = coords.data;
+                console.log(coords.data);
+                this.setState({ data: data })
+            })
             .catch((err) => console.log(err))
     }
 
@@ -216,7 +229,7 @@ export default class ListingForm extends React.Component {
                     <h1 className="display-4 mb-3">Please submit this form</h1>
                     <ProgressBar animated now={25} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
+                        <Step2 getCoords={this.getCoords} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                             zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
                                 name: this.state.data.userInfo.name,
                                 email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed

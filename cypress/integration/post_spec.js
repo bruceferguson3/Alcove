@@ -1,56 +1,75 @@
-describe('Post form verification', function() {
-
-    it('should not navigate to preview page on submission of a incomplete form', function() {
-        cy.visit('http://localhost:3030/post')
-
-        cy.contains('submit').click()
-
-        cy.url().should('include', 'post')
+describe('Step 1', function() {
+    beforeEach(() => {
+        cy.visit('http://localhost:3030/post');
+    });
+    it('should navigate to step 2 on extra space click', function() {
+        cy.get('img[id="postPropertyImage"]').click()
+        cy.contains('Contact Info')
     })
-
-    it('should navigate to the preview page on submission of a complete form', function() {
-        cy.visit('http://localhost:3030/post')
-
-        cy.get('textarea').type('hello')
-        cy.get('input[placeholder="Name"]').type('hello')
-        cy.get('input[placeholder="Email"]').type('hello')
-        cy.get('input[placeholder="Phone"]').type('hello')
-        cy.get('input[placeholder="Zipcode"]').type('hello')
-        cy.get('input[type="radio"][value=true]').check({force: true})
-
-        cy.contains('submit').click()
-
-        cy.url().should('include', 'preview')
+    it('should navigate to step 2 on extra items click', function() {
+        cy.get('img[id="postItemImage"]').click()
+        cy.contains('Contact Info')
     })
-
 })
 
-describe('Test header navigation link', function() {
-
-    it('should change to landing page from results page', function() {
-        cy.visit('http://localhost:3030/results')
-
-        cy.contains('Alcove').click()
-
-        cy.url().should('eq', 'http://localhost:3030')
-    })
-
-    it('should change to landing page from post page', function() {
+describe('Step 2', function() {
+    beforeEach(() => {
         cy.visit('http://localhost:3030/post')
-
-        cy.contains('Alcove').click()
-
-        cy.url().should('eq', 'http://localhost:3030')
+        cy.get('img[id="postPropertyImage"]').click()
     })
-
-    it('should change to landing page from listing page', function() {
-        cy.visit('http://localhost:3030/listing')
-
-        cy.contains('Alcove').click()
-
-        cy.url().should('eq', 'http://localhost:3030')
+    it('should navigate to step 3 on valid form submission', function() {
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.get('Form').submit()
+        cy.contains('Features')
     })
-
+    it('should navigate to step 1 on back button click', function() {
+        cy.contains('Back').click()
+        cy.get('img[id="postItemImage"]')
+    })
+    it('should not navigate to step 3 without name entered', function() {
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.contains('Next').click()
+        cy.contains('Contact Info')
+    })
+    it('should not navigate to step 3 with invalid Email entered', function() {
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.contains('Next').click()
+        cy.contains('Contact Info')
+    })
+    it('should not navigate to step 3 with invalid phone number entered', function() {
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.contains('Next').click()
+        cy.contains('Contact Info')
+    })
+    it('should not navigate to step 3 with invalid zipcode entered', function() {
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.contains('Next').click()
+        cy.contains('Contact Info')
+    })
+    it('should not navigate to step 3 without price entered', function() {
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.contains('Next').click()
+        cy.contains('Contact Info')
+    })
 })
 
 describe('should search by zip code from landing page', function() {
@@ -62,7 +81,7 @@ describe('should search by zip code from landing page', function() {
 
         cy.contains('Find Storage Units').click()
 
-        cy.url().should('eq', 'http://localhost:3030')
+        cy.url().should('eq', 'http://localhost:3030/')
     })
 
     it('should navigate to results page if valid zip code entered', function() {
