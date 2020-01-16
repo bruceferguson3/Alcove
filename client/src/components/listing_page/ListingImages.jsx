@@ -42,7 +42,7 @@ const ListingImages = props => {
         <Row>
           <Col></Col>
           <Col md={6}>
-            <img className="listingPicture" src={image1} />
+            <img className="listingPicture" src={image1} onClick={handleShow}/>
           </Col>
           <Col></Col>
         </Row>
@@ -86,7 +86,7 @@ const ListingImages = props => {
               borderLeft: "1px solid #353b40"
             }}
           >
-            <img className="listingPicture" src={image3} />
+            <img className="listingPicture" src={image3} onClick={handleShow}/>
             <Button onClick={handleShow} id="listingModalButton" className="img-overlay">
               Launch the super cool modal!
             </Button>
