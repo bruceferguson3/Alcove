@@ -1,5 +1,31 @@
-.jd-about {
-  position: relative;
-  top: 100px;
+
+.jd-feature-container { 
+  padding-top: 40px;
+  height: 100vh;
+  background: linear-gradient(#8661C1, #BE97C6);
+  color: white;
 }
+
+.jd-sub-one {
+  max-width: 60%;
+  margin: 0 auto;
+  
+}
+
+.jd-sub-two {
+  padding-top: 40px;
+  max-width: 60%;
+  margin: 0 auto;
+
+}
+
+.jd-sub-three {
+  padding-top: 40px;
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: right;
+ 
+}
+
+
 
