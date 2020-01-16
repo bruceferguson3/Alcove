@@ -11,7 +11,7 @@ const db = require("./db/db");
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/getone", (req, res) => {
+/*app.get("/getone", (req, res) => {
   db.getOne()
     .then(response => {
       res.send(response);
@@ -20,7 +20,7 @@ app.get("/getone", (req, res) => {
     .catch(error => {
       res.end(error);
     });
-});
+});*/
 
 app.get("/getall", (req, res) => {
   let zip = req.query.zip;
@@ -76,6 +76,10 @@ app.post("/postlisting", (req, res) => {
       res.end("Post listing error: ", error);
     });
 });
+
+app.get('/getcoords', (req, res) => {
+    let zip = req.query.zip;
+})
 
 app.listen(process.env.PORT || 5500, function () {
   console.log("listening on port 5500!");
