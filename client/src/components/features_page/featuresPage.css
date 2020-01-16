@@ -7,23 +7,23 @@
 }
 
 .jd-sub-one {
-  max-width: 60%;
+  max-width: 75%;
   margin: 0 auto;
-  
+  text-align: left;
 }
 
 .jd-sub-two {
   padding-top: 40px;
   max-width: 60%;
   margin: 0 auto;
-
+  text-align: right;
 }
 
 .jd-sub-three {
   padding-top: 40px;
-  max-width: 60%;
+  max-width: 75%;
   margin: 0 auto;
-  text-align: right;
+  text-align: left;
  
 }
 
