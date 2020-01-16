@@ -7,19 +7,27 @@ const ListingProductInfo = props => {
   return (
     <Container>
       <Row>
+        <Col md={2}>
+        </Col>
         <Col>
           <h4>{props.listing.title}</h4>
           <h6>{props.listing.zip}</h6>
         </Col>
+        <Col md={1}><div className="listingDivider"></div></Col>
         <Col>
-          <h4>{props.listing.filters.price}</h4>
+          <h4 id="listingPriceHeader">${props.listing.filters.price}/day</h4>
         </Col>
       </Row>
       <Row>
+        <Col md={2}>
+        </Col>
         <Col>
           <ListingProductBullets bullets={props.listing.filters} />
         </Col>
-        <Col>
+        <Col md={1}>
+          <div className="listingDivider"></div>
+        </Col>
+        <Col id="listingDescriptionText">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -32,7 +40,7 @@ const ListingProductInfo = props => {
         </Col>
       </Row>
       <Row>
-        <ListingMap />
+        <ListingMap lat={props.listing.geoLocation[0]} lng={props.listing.geoLocation[1]} />
       </Row>
     </Container>
   );

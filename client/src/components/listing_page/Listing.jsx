@@ -15,12 +15,12 @@ class Listing extends React.Component {
 
   render() {
     return (
-      <Container className='listingContainer'>
-        <Row md={4}>
-          <ListingImages />
+      <Container className='listingContainer' fluid>
+        <Row md={4} id="listingImageContainer">
+          <ListingImages fluid/>
         </Row>
         <Row md={8}>
-          <Col md={8}>
+          <Col md={8} id="descriptionAndMapContainer">
             <ListingProductInformation listing={this.state.listing} />
           </Col>
           <Col md={4}>
