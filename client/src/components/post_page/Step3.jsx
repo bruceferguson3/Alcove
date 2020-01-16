@@ -135,6 +135,7 @@ const Step3 = ({
           <DropdownButton
             className="tsFiltersDropdowns"
             id="tsFiltersSizeDropdown"
+            variant="info"
             title="Size"
           >
             <Dropdown.Item
@@ -188,109 +189,114 @@ const Step3 = ({
           <a>{sizeText}</a>
         </div>
         <div className="tsDropdownContainer">
-          <div className="tsTooltipContainer">
-            <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">
-              Choose the relative size of your item here. Small is an area about
-              the size of a pantry, medium a garage, large a yard...
-            </span>
+          <div className="tsDropdownWrapper">
+            <div className="tsTooltipContainer">
+              <div className="tsTooltipIcon"></div>
+              <span className="tsTooltip">
+                Denotes how often an item can/needs to be picked up while its
+                being stored
+              </span>
+            </div>
+            <DropdownButton
+              className="tsFiltersDropdowns"
+              id="tsFiltersFrequencyDropdown"
+              title="Access Frequency"
+              variant="info"
+            >
+              <Dropdown.Item
+                data-value={1}
+                onClick={e => {
+                  recordFilterInfo(e, "Frequency", e.target.dataset.value);
+                }}
+                href="#/action-1"
+              >
+                Never
+              </Dropdown.Item>
+              <Dropdown.Item
+                data-value={2}
+                onClick={e => {
+                  recordFilterInfo(e, "Frequency", e.target.dataset.value);
+                }}
+                href="#/action-2"
+              >
+                Infrequent
+              </Dropdown.Item>
+              <Dropdown.Item
+                data-value={3}
+                onClick={e => {
+                  recordFilterInfo(e, "Frequency", e.target.dataset.value);
+                }}
+                href="#/action-3"
+              >
+                Frequent
+              </Dropdown.Item>
+            </DropdownButton>
           </div>
-          <DropdownButton
-            className="tsFiltersDropdowns"
-            id="tsFiltersFrequencyDropdown"
-            title="Access Frequency"
-          >
-            <Dropdown.Item
-              data-value={1}
-              onClick={e => {
-                recordFilterInfo(e, "Frequency", e.target.dataset.value);
-              }}
-              href="#/action-1"
-            >
-              Never
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={2}
-              onClick={e => {
-                recordFilterInfo(e, "Frequency", e.target.dataset.value);
-              }}
-              href="#/action-2"
-            >
-              Infrequent
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={3}
-              onClick={e => {
-                recordFilterInfo(e, "Frequency", e.target.dataset.value);
-              }}
-              href="#/action-3"
-            >
-              Frequent
-            </Dropdown.Item>
-          </DropdownButton>
         </div>
         <div className="tsDropdownText">
           <a>{frequencyText}</a>
         </div>
         <div className="tsDropdownContainer">
-          <div className="tsTooltipContainer">
-            <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">
-              Choose the relative size of your item here. Small is an area about
-              the size of a pantry, medium a garage, large a yard...
-            </span>
+          <div className="tsDropdownWrapper">
+            <div className="tsTooltipContainer">
+              <div className="tsTooltipIcon"></div>
+              <span className="tsTooltip">
+                Choose how long the item/space can be used for
+              </span>
+            </div>
+            <DropdownButton
+              className="tsFiltersDropdowns"
+              id="tsFiltersDurationDropdown"
+              variant="info"
+              title="Duration"
+            >
+              <Dropdown.Item
+                data-value={1}
+                onClick={e => {
+                  recordFilterInfo(e, "Duration", e.target.dataset.value);
+                }}
+                href="#/action-1"
+              >
+                Less than a week
+              </Dropdown.Item>
+              <Dropdown.Item
+                data-value={2}
+                onClick={e => {
+                  recordFilterInfo(e, "Duration", e.target.dataset.value);
+                }}
+                href="#/action-2"
+              >
+                1 to 4 weeks
+              </Dropdown.Item>
+              <Dropdown.Item
+                data-value={3}
+                onClick={e => {
+                  recordFilterInfo(e, "Duration", e.target.dataset.value);
+                }}
+                href="#/action-3"
+              >
+                1 to 3 months
+              </Dropdown.Item>
+              <Dropdown.Item
+                data-value={4}
+                onClick={e => {
+                  recordFilterInfo(e, "Duration", e.target.dataset.value);
+                }}
+                href="#/action-4"
+              >
+                3 to 6 months
+              </Dropdown.Item>
+              <Dropdown.Item
+                data-value={5}
+                onClick={e => {
+                  recordFilterInfo(e, "Duration", e.target.dataset.value);
+                }}
+                href="#/action-5"
+              >
+                More than 6 months
+              </Dropdown.Item>
+            </DropdownButton>
           </div>
-          <DropdownButton
-            className="tsFiltersDropdowns"
-            id="tsFiltersDurationDropdown"
-            title="Duration"
-          >
-            <Dropdown.Item
-              data-value={1}
-              onClick={e => {
-                recordFilterInfo(e, "Duration", e.target.dataset.value);
-              }}
-              href="#/action-1"
-            >
-              Less than a week
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={2}
-              onClick={e => {
-                recordFilterInfo(e, "Duration", e.target.dataset.value);
-              }}
-              href="#/action-2"
-            >
-              1 to 4 weeks
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={3}
-              onClick={e => {
-                recordFilterInfo(e, "Duration", e.target.dataset.value);
-              }}
-              href="#/action-3"
-            >
-              1 to 3 months
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={4}
-              onClick={e => {
-                recordFilterInfo(e, "Duration", e.target.dataset.value);
-              }}
-              href="#/action-4"
-            >
-              3 to 6 months
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={5}
-              onClick={e => {
-                recordFilterInfo(e, "Duration", e.target.dataset.value);
-              }}
-              href="#/action-5"
-            >
-              More than 6 months
-            </Dropdown.Item>
-          </DropdownButton>
         </div>
         <div className="tsDropdownText">
           <a>{durationText}</a>
@@ -307,7 +313,7 @@ const Step3 = ({
                 recordStateInfo(e, "filters", "locked", "defaultCheck6")
               }
             />
-            <label className="form-check-label">Locked</label>
+            <label className="form-check-label">Is this space locked?</label>
           </div>
           <div className="form-check">
             <input
@@ -318,7 +324,9 @@ const Step3 = ({
                 recordStateInfo(e, "filters", "standAlone", "defaultCheck7")
               }
             />
-            <label className="form-check-label">Stand Alone Storage</label>
+            <label className="form-check-label">
+              Can multiple items be stored here?
+            </label>
           </div>
           <div className="form-check">
             <input
@@ -328,7 +336,7 @@ const Step3 = ({
               value={indoors}
               onChange={e => recordFilterInfo(e, "Indoors", e.target.value)}
             />
-            <label className="form-check-label">Indoors</label>
+            <label className="form-check-label">Is this area indoors?</label>
             <div style={climateControlBoolean}>
               <ul id="indoorsList" className="p-1">
                 <div className="custom-control custom-radio">
@@ -346,7 +354,7 @@ const Step3 = ({
                     className="custom-control-label"
                     htmlFor="climateControl"
                   >
-                    Climate Control
+                    Space is climate controlled
                   </label>
                 </div>
                 <div className="custom-control custom-radio">
@@ -364,7 +372,7 @@ const Step3 = ({
                     className="custom-control-label"
                     htmlFor="climateControl2"
                   >
-                    No Preference
+                    Space is not climate controlled
                   </label>
                 </div>
               </ul>
@@ -373,10 +381,14 @@ const Step3 = ({
         </ul>
         <div>
           <span className="step2Button">
-            <Button onClick={backButton}>Back</Button>
+            <Button onClick={backButton} variant="info">
+              Back
+            </Button>
           </span>
           <span className="step2Button">
-            <Button onClick={nextButton}>Next</Button>
+            <Button onClick={nextButton} variant="info">
+              Next
+            </Button>
           </span>
         </div>
       </div>
