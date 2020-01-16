@@ -87,6 +87,7 @@
 
 .tsDropdownText a {
   text-align: center;
+  margin-left: 1rem;
 }
 
 .tsDropdownText {
@@ -100,6 +101,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
+  margin-left: 1rem;
 }
 
 #step1ContainerCard {
@@ -141,14 +144,22 @@
 .tsTooltipContainer .tsTooltip {
   visibility: hidden;
   position: absolute;
+  width: 300px;
   background-color: black;
   color: #fff;
   border-radius: 6px;
   z-index: 1;
+  padding: 1rem;
 }
 
 .tsTooltipContainer:hover .tsTooltip {
   visibility: visible;
+}
+
+.tsTooltipContainer {
+  position: relative;
+  right: 2rem;
+  top: .25rem;
 }
 
 .tsDropdownWrapper {
@@ -164,4 +175,9 @@
   height: 5vh;
   width: 50vw;
   margin-bottom: 1%;
+}
+
+#tsStepThreeHeader {
+  margin-left: 1rem;
+  margin-bottom: 2rem;
 }
