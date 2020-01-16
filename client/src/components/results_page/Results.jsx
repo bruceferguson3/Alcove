@@ -8,7 +8,7 @@ import StandaloneFilter from './filters/StandaloneFilter.jsx';
 import FiltersDisplay from './filters/FiltersDisplay.jsx';
 import ResultsList from './ResultsList.jsx';
 import './Results.css';
-import filterResults from './filters/filterResults.js'
+import filterResults from './filters/filterResults.js';
 
 // REMOVE LATER //
 import dummyData from './dummyData.js';
@@ -26,24 +26,25 @@ export default class Results extends React.Component {
       priceMax: 20,
       newZip: '',
       filters: {
-          type: null,
-          climateControl: null,
-          size: null,
-          easeOfAccess: null,
-          locked: null,
-          standAlone: null,
-          indoors: null,
-          duration: null,
+        type: null,
+        climateControl: null,
+        size: null,
+        easeOfAccess: null,
+        locked: null,
+        standAlone: null,
+        indoors: null,
+        duration: null
       }
     };
-  };
+  }
 
   componentDidMount() {
     const { searchResults } = this.props;
     this.setState({
-      listings: searchResults,
+      listings: searchResults
     });
-  };
+    this.props.changePath('\results');
+  }
 
   searchZip() {
     const { newZip, waitingForResults } = this.state;
@@ -51,11 +52,11 @@ export default class Results extends React.Component {
     if (newZip.match(/\d\d\d\d\d/)) {
       console.log('Sending Axios request.');
       this.setState({
-        waitingForResults: true,
+        waitingForResults: true
       });
       Axios.get(`${api}/getall`, { params: { zip: newZip } })
-        .then((data) => {
-          const listings = data.data.map((listing) => listing.data);
+        .then(data => {
+          const listings = data.data.map(listing => listing.data);
           console.log('Axios request success:', data);
           this.setState(
             {
@@ -64,30 +65,30 @@ export default class Results extends React.Component {
               newZip: '',
               priceMin: 10,
               priceMax: 20,
-              waitingForResults: false,
+              waitingForResults: false
             },
             () => this.applyFilters()
           );
         })
         .catch(console.log);
     }
-  };
+  }
 
   searchPrice() {
     const { priceMin, priceMax, updatedZipcode } = this.state;
     const { api, queriedZip } = this.props;
     const queryParams = {
-      zip:  updatedZipcode || queriedZip,
+      zip: updatedZipcode || queriedZip,
       priceMin,
-      priceMax,
+      priceMax
     };
     this.setState({
       waitingForResults: true
     });
     console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
-      .then((data) => {
-        const filteredResults = data.data.map((item) => item.data);
+      .then(data => {
+        const filteredResults = data.data.map(item => item.data);
         console.log('Price Filters', filteredResults);
 
         this.setState(
@@ -99,29 +100,31 @@ export default class Results extends React.Component {
         );
       })
       .catch(console.log);
-  };
+  }
 
   typeChange(type) {
     const { filters } = this.state;
     filters.type = type;
-    this.setState({
-      filters,
-    },
+    this.setState(
+      {
+        filters
+      },
       () => {
         this.applyFilters();
       }
     );
-  };
+  }
 
   sizeChange(size) {
     const { filters } = this.state;
     filters.size = Number(size);
-    this.setState({
-      filters
-    },
-    () => this.applyFilters()
+    this.setState(
+      {
+        filters
+      },
+      () => this.applyFilters()
     );
-  };
+  }
 
   durationChange(val) {
     const { filters } = this.state;
@@ -132,15 +135,15 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  };
+  }
 
   locationChange(newZip) {
-    if(newZip.match(/\d+/) || newZip === '') {
+    if (newZip.match(/\d+/) || newZip === '') {
       this.setState({
-        newZip,
+        newZip
       });
     }
-  };
+  }
 
   accessChange(easeOfAccess) {
     const { filters } = this.state;
@@ -151,7 +154,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  };
+  }
 
   indoorsChange(indoors) {
     const { filters } = this.state;
@@ -159,10 +162,10 @@ export default class Results extends React.Component {
     this.setState(
       {
         filters
-      }, 
+      },
       () => this.applyFilters()
     );
-  };
+  }
 
   climateChange(climate) {
     const { filters } = this.state;
@@ -173,7 +176,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  };
+  }
 
   lockedChange(locked) {
     const { filters } = this.state;
@@ -184,7 +187,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  };
+  }
 
   standaloneChange(standAlone) {
     const { filters } = this.state;
@@ -195,7 +198,7 @@ export default class Results extends React.Component {
       },
       () => this.applyFilters()
     );
-  };
+  }
 
   minChange(priceMin) {
     if(priceMin % 5 === 0) {
@@ -206,38 +209,36 @@ export default class Results extends React.Component {
         () => this.maxMatch()
       );
     }
-  };
+  }
 
   maxChange(priceMax) {
     if(priceMax % 5 === 0) {
       this.setState(
         {
-          priceMax,
+          priceMax
         },
         () => this.minMatch()
       );
     }
-  };
+  }
 
   maxMatch() {
     const { priceMax, priceMin } = this.state;
-
     if(priceMax - 10 < priceMin) {
       this.setState({
-        priceMax: priceMin + 10,
+        priceMax: priceMin + 10
       });
     }
-  };
+  }
 
   minMatch() {
     const { priceMax, priceMin } = this.state;
-
     if(priceMax - 10 < priceMin) {
       this.setState({
-        priceMin: priceMax - 10,
+        priceMin: priceMax - 10
       });
     }
-  };
+  }
 
   applyFilters() {
     const { filters, updatedListings } = this.state;
@@ -248,10 +249,10 @@ export default class Results extends React.Component {
       const filteredResults = filterResults(filters, listings);
 
       this.setState({
-        filteredResults,
+        filteredResults
       });
     }
-  };
+  }
 
   clearFilter(filterType) {
     const { filters } = this.state;
@@ -264,7 +265,7 @@ export default class Results extends React.Component {
         () => this.applyFilters()
       );
     }
-  };
+  }
 
   render() {
     const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
@@ -281,7 +282,7 @@ export default class Results extends React.Component {
       listings = filteredResults;
     } else if (updatedListings) {
       listings = updatedListings;
-    } else if(searchResults) {
+    } else if (searchResults) {
       listings = searchResults;
     }
 
@@ -293,10 +294,7 @@ export default class Results extends React.Component {
           </div>
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
-            <FiltersDisplay
-              filters={filters}
-              clearFilter={this.clearFilter.bind(this)}
-            />
+            <FiltersDisplay filters={filters} clearFilter={this.clearFilter.bind(this)} />
             <span className="results-span">(Click to remove)</span>
           </div>
         ) : listings.length === 0 ? (
@@ -333,23 +331,16 @@ export default class Results extends React.Component {
                 value={newZip}
                 maxLength="5"
                 onChange={() => this.locationChange(event.target.value)}
-                onKeyPress={(event) => {
+                onKeyPress={event => {
                   if (event.key === 'Enter') {
                     this.searchZip();
                   }
                 }}
               />
-              <Button
-                variant="info"
-                id="results-zip-change"
-                className="mb-1 mt-1"
-                onClick={() => this.searchZip()}
-              >
+              <Button variant="info" id="results-zip-change" className="mb-1 mt-1" onClick={() => this.searchZip()}>
                 Update Zip Code
               </Button>
-              <h4 className="pricefilter-header filter-title">
-                Search By Price:
-              </h4>
+              <h4 className="pricefilter-header filter-title">Search By Price:</h4>
               <PriceFilter
                 minChange={this.minChange.bind(this)}
                 maxChange={this.maxChange.bind(this)}
@@ -369,119 +360,52 @@ export default class Results extends React.Component {
               <h4 className="results filter-title">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
                 <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
-                <DropdownButton
-                  as={ButtonGroup}
-                  title="Duration"
-                  variant="info"
-                >
-                  <Dropdown.Item
-                    data-value={1}
-                    onClick={() =>
-                      this.durationChange(event.target.dataset.value)
-                    }
-                  >
+                <DropdownButton as={ButtonGroup} title="Duration" variant="info">
+                  <Dropdown.Item data-value={1} onClick={() => this.durationChange(event.target.dataset.value)}>
                     Less than a week
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={2}
-                    onClick={() =>
-                      this.durationChange(event.target.dataset.value)
-                    }
-                  >
+                  <Dropdown.Item data-value={2} onClick={() => this.durationChange(event.target.dataset.value)}>
                     1 to 4 weeks
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={3}
-                    onClick={() =>
-                      this.durationChange(event.target.dataset.value)
-                    }
-                  >
+                  <Dropdown.Item data-value={3} onClick={() => this.durationChange(event.target.dataset.value)}>
                     1 to 3 Months
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={4}
-                    onClick={() =>
-                      this.durationChange(event.target.dataset.value)
-                    }
-                  >
+                  <Dropdown.Item data-value={4} onClick={() => this.durationChange(event.target.dataset.value)}>
                     3 to 6 Months
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={5}
-                    onClick={() =>
-                      this.durationChange(event.target.dataset.value)
-                    }
-                  >
+                  <Dropdown.Item data-value={5} onClick={() => this.durationChange(event.target.dataset.value)}>
                     More than 6 months
                   </Dropdown.Item>
                 </DropdownButton>
                 <DropdownButton as={ButtonGroup} title="Size" variant="info">
-                  <Dropdown.Item
-                    data-value={1}
-                    onClick={() => this.sizeChange(event.target.dataset.value)}
-                  >
+                  <Dropdown.Item data-value={1} onClick={() => this.sizeChange(event.target.dataset.value)}>
                     Extra Small (Cupboard)
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={2}
-                    onClick={() => this.sizeChange(event.target.dataset.value)}
-                  >
+                  <Dropdown.Item data-value={2} onClick={() => this.sizeChange(event.target.dataset.value)}>
                     Small (Closet)
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={3}
-                    onClick={() => this.sizeChange(event.target.dataset.value)}
-                  >
+                  <Dropdown.Item data-value={3} onClick={() => this.sizeChange(event.target.dataset.value)}>
                     Medium (Spare Room/Garage)
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={4}
-                    onClick={() => this.sizeChange(event.target.dataset.value)}
-                  >
+                  <Dropdown.Item data-value={4} onClick={() => this.sizeChange(event.target.dataset.value)}>
                     Large (Entire Shed/Barn)
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={5}
-                    onClick={() => this.sizeChange(event.target.dataset.value)}
-                  >
+                  <Dropdown.Item data-value={5} onClick={() => this.sizeChange(event.target.dataset.value)}>
                     Extra Large (Open Area)
                   </Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton
-                  as={ButtonGroup}
-                  title="Access Frequency"
-                  variant="info"
-                >
-                  <Dropdown.Item
-                    data-value={1}
-                    onClick={() =>
-                      this.accessChange(event.target.dataset.value)
-                    }
-                  >
+                <DropdownButton as={ButtonGroup} title="Access Frequency" variant="info">
+                  <Dropdown.Item data-value={1} onClick={() => this.accessChange(event.target.dataset.value)}>
                     Never
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={2}
-                    onClick={() =>
-                      this.accessChange(event.target.dataset.value)
-                    }
-                  >
+                  <Dropdown.Item data-value={2} onClick={() => this.accessChange(event.target.dataset.value)}>
                     Infrequent
                   </Dropdown.Item>
-                  <Dropdown.Item
-                    data-value={3}
-                    onClick={() =>
-                      this.accessChange(event.target.dataset.value)
-                    }
-                  >
+                  <Dropdown.Item data-value={3} onClick={() => this.accessChange(event.target.dataset.value)}>
                     Frequent
                   </Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton
-                  as={ButtonGroup}
-                  title="Indoors/Outdoors"
-                  variant="info"
-                >
+                <DropdownButton as={ButtonGroup} title="Indoors/Outdoors" variant="info">
                   <Dropdown.Item
                     onClick={() => {
                       this.indoorsChange(true);
@@ -508,9 +432,7 @@ export default class Results extends React.Component {
                   </Dropdown.Item>
                 </DropdownButton>
                 <LockedFilter lockedChange={this.lockedChange.bind(this)} />
-                <StandaloneFilter
-                  standaloneChange={this.standaloneChange.bind(this)}
-                />
+                <StandaloneFilter standaloneChange={this.standaloneChange.bind(this)} />
               </ButtonGroup>
             </div>
           </Col>
@@ -528,15 +450,12 @@ export default class Results extends React.Component {
                   </p>
                 </Jumbotron>
               ) : (
-                <ResultsList
-                  listings={filteredResults ? filteredResults : listings}
-                  getSelectedListing={getSelectedListing}
-                />
+                <ResultsList listings={filteredResults ? filteredResults : listings} getSelectedListing={getSelectedListing} />
               )}
             </div>
           </Col>
         </Row>
       </Container>
     );
-  };
-};
+  }
+}

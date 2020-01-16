@@ -10,6 +10,7 @@ import Step4 from './Step4.jsx';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
+import Step5 from "./Step5.jsx";
 const axios = require('axios');
 
 
@@ -82,15 +83,15 @@ export default class ListingForm extends React.Component {
         this.loadImageFile = this.loadImageFile.bind(this);
         this.validateStepThree = this.validateStepThree.bind(this);
         this.getCoords = this.getCoords.bind(this);
+        this.backToStep1 = this.backToStep1.bind(this);
 
     }
-
 
     loadImageFile() {
         let date = JSON.stringify(Date.now());
         var data = this.state.data;
         data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files);
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
         this.setState({
             data: data
         })
@@ -121,8 +122,6 @@ export default class ListingForm extends React.Component {
             .catch((err) => console.log(err))
     }
 
-
-
     showList(id) {
         let List = document.getElementById(id);
         List.hidden = List.hidden !== true;
@@ -147,6 +146,8 @@ export default class ListingForm extends React.Component {
                 stateObject.filters.climateControl = false;
                 stateObject.filters.indoors = false;
             }
+        } else if (key === 'climateControl') {
+            stateObject.filters.climateControl = !stateObject.filters.climateControl;
         }
 
         this.setState({ data: stateObject });
@@ -211,6 +212,40 @@ export default class ListingForm extends React.Component {
         })
     }
 
+    backToStep1() {
+        this.setState({
+            data: {
+                userInfo: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    textAllowed: false
+                },
+                dateSubmitted: '',
+                filters: {
+                    climateControl: false,
+                    size: 0,
+                    easeOfAccess: 0,
+                    locked: false,
+                    standAlone: false,
+                    price: 0.00,
+                    indoors: false,
+                    duration: 0,
+                    type: ''
+                },
+                description: '',
+                thumbs: [],
+                title: '',
+                reviews: '',
+                geoLocation: [],
+                zip: ''
+            },
+            cardCounter: 0,
+            invalidStepThree: false
+        })
+    }
+
+
     render() {
         if (this.state.cardCounter === 0) {
             return (
@@ -242,7 +277,7 @@ export default class ListingForm extends React.Component {
                     <h1 className="display-4 mb-3">Please submit this form</h1>
                     <ProgressBar animated now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
+                        <Step3 climateControl={this.state.data.filters.climateControl} standAlone={this.state.data.filters.standAlone} locked={this.state.data.filters.locked} storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
                     </div>
                 </div>
             )
@@ -253,6 +288,16 @@ export default class ListingForm extends React.Component {
                     <ProgressBar animated now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
+                    </div>
+                </div>
+            )
+        } else if (this.state.cardCounter === 4) {
+            return (
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mb-3">Thank You!</h1>
+                    <ProgressBar animated now={100} />
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step5 backToStep1={this.backToStep1} />
                     </div>
                 </div>
             )
