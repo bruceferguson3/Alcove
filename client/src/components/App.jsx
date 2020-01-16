@@ -22,10 +22,10 @@ export default class App extends React.Component {
       currentListing: null,
       queriedZipCode: null,
       searchResults: null,
+      currentlySearching: false,
       path: '/'
     };
-    this.returnToTop = this.returnToTop.bind(this);
-  }
+  };
 
   getSelectedListing(currentListing) {
     // REPLACE WITH ID DURING REFACTOR
@@ -38,12 +38,15 @@ export default class App extends React.Component {
     this.setState({
       currentListing
     });
-  }
+  };
 
   landingSearch() {
     const { newZip } = this.state;
     if (newZip.match(/\d\d\d\d\d/)) {
       console.log('Sending Axios request.');
+      this.setState({
+        currentlySearching: true,
+      })
       Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
@@ -51,7 +54,8 @@ export default class App extends React.Component {
           this.setState({
             searchResults: listings,
             queriedZipCode: newZip,
-            newZip: ''
+            newZip: '',
+            currentlySearching: false,
           });
         })
         .catch(console.log);
@@ -60,17 +64,17 @@ export default class App extends React.Component {
       console.log('Axios request failure.');
       return false;
     }
-  }
+  };
 
   landingZipChange(newZip) {
     if (newZip.match(/\d+/) || newZip === '') {
       this.setState({ newZip });
     }
-  }
+  };
 
   changePath(path) {
     this.setState({ path });
-  }
+  };
 
   returnToTop() {
     window.scrollTo({
@@ -78,17 +82,19 @@ export default class App extends React.Component {
       left: 0,
       behavior: 'smooth'
     });
-  }
+  };
 
   render() {
-    const { currentListing, searchResults, queriedZipCode, newZip } = this.state;
+    const { currentListing, searchResults, queriedZipCode, newZip, currentlySearching } = this.state;
 
     return (
       <div>
         <Router>
           <Header
             search={this.landingSearch.bind(this)}
+            change={this.landingZipChange.bind(this)}
             changePath={this.changePath.bind(this)}
+            newZip={newZip}
             path={this.state.path}
           />
           <Switch>
@@ -107,6 +113,7 @@ export default class App extends React.Component {
               <Results
                 searchResults={searchResults}
                 queriedZip={queriedZipCode}
+                searching={currentlySearching}
                 api={baseURL}
                 getSelectedListing={this.getSelectedListing.bind(this)}
               />
@@ -121,7 +128,7 @@ export default class App extends React.Component {
               <PreviewPage />
             </Route>
           </Switch>
-          <Footer returnToTop={this.returnToTop} />
+          <Footer returnToTop={this.returnToTop.bind(this)} />
         </Router>
       </div>
     );
