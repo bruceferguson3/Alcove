@@ -103,7 +103,7 @@ export default class ListingForm extends React.Component {
 
     handleSubmit() {
         console.log(this.state);
-        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { body: {data: this.state.data}})
+        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { data: this.state.data })
             .then(() => console.log('Sent to server'))
             .catch((err) => console.log(err))
     }
@@ -111,12 +111,12 @@ export default class ListingForm extends React.Component {
     getCoords() {
         console.log(this.state.data.zip);
 
-        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip }})
+        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip } })
             .then((coords) => {
                 var data = this.state.data;
                 data.geoLocation = coords.data;
                 console.log(coords.data);
-                this.setState({data: data})
+                this.setState({ data: data })
             })
             .catch((err) => console.log(err))
     }
