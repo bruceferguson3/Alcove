@@ -87,32 +87,33 @@ export default class ListingForm extends React.Component {
     };
 
     loadImageFile() {
-        var data = this.state.data;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
-        this.setState({
-            data: data
-        })
-    };
-    
-    // let fileList = document.getElementById('photo').files;
-    // let newFileList = Array.from(fileList);
-    // let saveableFileList = [];
-    // newFileList.map((file) => saveableFileList.push(file));
-
-    handleSubmit(e) {
-        //send current state to database and render new product page
-        e.preventDefault();
 
         let date = JSON.stringify(Date.now());
+
+        var data = this.state.data;
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files);
+        this.setState({
+            data: data, dateSubmitted: date
+        })
+
+
+        // let fileList = document.getElementById('postImageLoader').files;
+        // let newFileList = Array.from(fileList);
+        // let saveableFileList = [];
+        // newFileList.map((file) => saveableFileList.push(file));
+
+        // this.setState({ data: { ...this.state.data, dateSubmitted: date } })
+    };
+    
+
+
+    handleSubmit() {
+        //send current state to database and render new product page
         this.GetLocation();
 
-        // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
-
-        this.setState({ data: { ...this.state.data, dateSubmitted: date } }, () => {
-            // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
-            //     .then(() => console.log('Sent to server'))
-            //     .catch((err) => console.log(err))
-        })
+        // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
+        //     .then(() => console.log('Sent to server'))
+        //     .catch((err) => console.log(err))
 
     }
 
