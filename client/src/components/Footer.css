@@ -1,49 +1,41 @@
 .footer {
-    height: 36vh;
+  background: #363b40;
+  padding: 25px 0;
 }
 
-#footerNavBar {
-    height: 36vh;
+.it-footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#footerBrandContainer {
-    width: 20%;
-    height: 100%;
-    align-items: center;
+.it-footer-logo {
+  padding-top: 25px;
+  width: 90%;
+  cursor: pointer;
 }
 
-#footerBrand {
-    font-family: Georgia, serif;
-    font-size: 45px;
-    padding-left: 3%;
+.it-footer-title {
+  font-size: 20px;
+  padding-bottom: 10px;
+  font-weight: 400;
 }
 
-#footerDescription {
-    width: 60%;
-    height: 100%;
-    color: white;
+.it-footer-p {
+  font-size: 14px;
 }
 
-#footerNamesContainer {
-    width: 20%;
-    height: 100%;
+.it-footer-p:not(:last-child) {
+  margin-bottom: 5px;
 }
 
-#footerNamesContainer div {
-    color: white;
-    padding-left: 50px;
+.it-footer-links {
+  color: #fff;
 }
 
-#footerDescriptionParagraph1 {
-    font-family: Georgia, serif;
-    padding-top: 5%;
-}
-
-#footerDescriptionParagraph2 {
-    font-family: Georgia, serif;
-
-}
-
-.headerLinks {
-    color: white;
+.it-footer-links:hover {
+  color: #aaa;
 }

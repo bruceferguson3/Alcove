@@ -78,7 +78,7 @@ app.post("/postlisting", (req, res) => {
 });
 
 app.get('/getcoords', (req, res) => {
-    let zip = req.query.zip
+    let zip = req.query.zip;
 })
 
 app.listen(process.env.PORT || 5500, function () {
