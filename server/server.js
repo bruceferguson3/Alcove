@@ -83,7 +83,7 @@ app.get("/getbyprice", (req, res) => {
 });
 
 app.post("/postlisting", (req, res) => {
-    console.log(req.body.data);
+    console.log(req.data);
     let newDocument = req.body.data;
 
   db.postListing(newDocument)
