@@ -28,24 +28,30 @@ const Step3 = ({
 
   let climateControlBoolean = indoors ? {} : { visibility: "hidden" };
 
-  if (storage === 'storage') {
-    sizeTooltipText = "Choose the relative size of your space here. Small denotes an area about the size of a pantry, medium a room, large a garage";
-    frequencyTooltipText = "Choose how often you are willing to let items be picked up from your area";
-    durationTooltipText = "Choose how long you are willing to rent the space out for";
-    lockedPrompt = "Is this space locked?"
-    exclusivePrompt = "Can multiple items be stored here?"
-    indoorsPrompt = "Is this area indoors?"
-    climateControlPromptPositive = "Space is climate controlled"
-    climateControlPromptNegative = "Space is not climate controlled"
+  if (storage === "storage") {
+    sizeTooltipText =
+      "Choose the relative size of your space here. Small denotes an area about the size of a pantry, medium a room, large a garage";
+    frequencyTooltipText =
+      "Choose how often you are willing to let items be picked up from your area";
+    durationTooltipText =
+      "Choose how long you are willing to rent the space out for";
+    lockedPrompt = "Is this space locked?";
+    exclusivePrompt = "Can multiple items be stored here?";
+    indoorsPrompt = "Is this area indoors?";
+    climateControlPromptPositive = "Space is climate controlled";
+    climateControlPromptNegative = "Space is not climate controlled";
   } else {
-    sizeTooltipText = "Choose the relative size of your item here. A small item might be a snowboard, medium a twin bed, large a motorcycle";
-    frequencyTooltipText = "Choose how often you need to pick up your item from the storage space";
+    sizeTooltipText =
+      "Choose the relative size of your item here. A small item might be a snowboard, medium a twin bed, large a motorcycle";
+    frequencyTooltipText =
+      "Choose how often you need to pick up your item from the storage space";
     durationTooltipText = "Choose how long you need to store the item for";
-    lockedPrompt = "Do you need the area to be locked?"
-    exclusivePrompt = "Are you ok with sharing the space with other items?"
-    indoorsPrompt = "Do you need the area to be indoors?"
-    climateControlPromptPositive = "I need the area to be climate controlled"
-    climateControlPromptNegative = "I do not need the area to be climate controlled"
+    lockedPrompt = "Do you need the area to be locked?";
+    exclusivePrompt = "Are you ok with sharing the space with other items?";
+    indoorsPrompt = "Do you need the area to be indoors?";
+    climateControlPromptPositive = "I need the area to be climate controlled";
+    climateControlPromptNegative =
+      "I do not need the area to be climate controlled";
   }
 
   if (size === 1) {
@@ -99,14 +105,12 @@ const Step3 = ({
         <div className="tsDropdownWrapper">
           <div className="tsTooltipContainer">
             <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">
-              {sizeTooltipText}
-            </span>
+            <span className="tsTooltip">{sizeTooltipText}</span>
           </div>
           <DropdownButton
             className="tsFiltersDropdowns"
             id="tsFiltersSizeDropdown"
-            variant="outline-info"
+            variant="info"
             title="Size"
           >
             <Dropdown.Item
@@ -161,15 +165,13 @@ const Step3 = ({
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
               <div className="tsTooltipIcon"></div>
-              <span className="tsTooltip">
-                {frequencyTooltipText}
-              </span>
+              <span className="tsTooltip">{frequencyTooltipText}</span>
             </div>
             <DropdownButton
               className="tsFiltersDropdowns"
               id="tsFiltersFrequencyDropdown"
               title="Access Frequency"
-              variant="outline-info"
+              variant="info"
             >
               <Dropdown.Item
                 data-value={1}
@@ -206,14 +208,12 @@ const Step3 = ({
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
               <div className="tsTooltipIcon"></div>
-              <span className="tsTooltip">
-                {durationTooltipText}
-              </span>
+              <span className="tsTooltip">{durationTooltipText}</span>
             </div>
             <DropdownButton
               className="tsFiltersDropdowns"
               id="tsFiltersDurationDropdown"
-              variant="outline-info"
+              variant="info"
               title="Duration"
             >
               <Dropdown.Item
@@ -288,9 +288,7 @@ const Step3 = ({
                 recordStateInfo(e, "filters", "standAlone", "defaultCheck7")
               }
             />
-            <label className="form-check-label">
-              {exclusivePrompt}
-            </label>
+            <label className="form-check-label">{exclusivePrompt}</label>
           </div>
           <div className="form-check">
             <input

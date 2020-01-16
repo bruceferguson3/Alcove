@@ -11,13 +11,13 @@
 }
 
 .postFormContainer {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: solid #8661C1 5px;
-    background-color: white;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid #8661c1 5px;
+  background-color: white;
 }
 
 .step2Container {
@@ -106,14 +106,14 @@
 }
 
 #step1ContainerCard {
-    min-width: 100%;
-    min-height: 100%;
-    border: none !important;
+  min-width: 100%;
+  min-height: 100%;
+  border: none !important;
 }
 
 #step3ContainerCard {
-    min-width: 100%;
-    min-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 #step1UL {
@@ -159,7 +159,7 @@
 .tsTooltipContainer {
   position: relative;
   right: 2rem;
-  top: .25rem;
+  top: 0.25rem;
 }
 
 .tsDropdownWrapper {
@@ -180,4 +180,13 @@
 #tsStepThreeHeader {
   margin-left: 1rem;
   margin-bottom: 2rem;
+}
+
+.btn-info:hover {
+  background-color: #419abd;
+  border-color: #419abd;
+}
+
+.btn-info: {
+  background-color: #419abd;
 }

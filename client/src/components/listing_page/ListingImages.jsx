@@ -70,7 +70,7 @@ const ListingImages = props => {
           <Col
             className="listingPictureContainer"
             style={{
-              "border-right": "1px solid #353b40"
+              borderRight: "1px solid #353b40"
             }}
           >
             <img className="listingPicture" src={image1} />
@@ -81,7 +81,7 @@ const ListingImages = props => {
           <Col
             className="listingPictureContainer"
             style={{
-              "border-left": "1px solid #353b40"
+              borderLeft: "1px solid #353b40"
             }}
           >
             <img className="listingPicture" src={image3} />
