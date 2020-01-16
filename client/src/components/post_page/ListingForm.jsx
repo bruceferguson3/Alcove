@@ -7,6 +7,7 @@ import Step1 from './Step1.jsx';
 import Step2 from "./Step2.jsx";
 import Step3 from "./Step3.jsx";
 import Step4 from './Step4.jsx';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
 const axios = require('axios');
@@ -89,7 +90,9 @@ export default class ListingForm extends React.Component {
     };
 
     loadImageFile() {
+        let date = JSON.stringify(Date.now());
         var data = this.state.data;
+        data.dateSubmitted = date;
         data.thumbs = Array.from(document.getElementById('postImageLoader').files)
         this.setState({
             data: data
@@ -105,7 +108,6 @@ export default class ListingForm extends React.Component {
         //send current state to database and render new product page
         e.preventDefault();
 
-        let date = JSON.stringify(Date.now());
         this.GetLocation();
 
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
@@ -213,6 +215,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <ProgressBar now={0} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
@@ -222,6 +225,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <ProgressBar now={25} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                             zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
@@ -235,6 +239,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <ProgressBar now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step3 invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
                     </div>
@@ -244,6 +249,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <ProgressBar now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
                     </div>
