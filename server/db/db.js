@@ -58,20 +58,23 @@ let getByPrice = (zip, min, max) => {
       });
   });
 };
-
 let postListing = params => {
-    console.log(params);
-  let newDocument = new mongooseConfig(params);
-  return new Promise((resolve, reject) => {
-    newDocument.save(err => {
-      if (err) {
-        reject(err);
-      }
+    let newObj = { data: params }
+    let newDocument = new mongooseConfig(newObj);
+    return new Promise((resolve, reject) => {
+        newDocument.save(err => {
+            if (err) {
+                reject(err);
+            }
 
-      resolve("Success for post");
+            resolve("Success for post");
+        })
+            .catch( e => {
+                console.log(e);
+            });
     });
-  });
 };
+
 
 
 module.exports = { getOne, getAll, postListing, getByPrice };
