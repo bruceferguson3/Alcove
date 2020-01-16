@@ -19,9 +19,11 @@ export default class Results extends React.Component {
     super(props);
     this.state = {
       applyFilters: false,
+      updatedListings: null,
       filteredResults: null,
       priceMin: 10,
       priceMax: 20,
+      newZip: '',
       filters: {
           type: null,
           climateControl: null,
@@ -35,6 +37,26 @@ export default class Results extends React.Component {
     };
   };
 
+  componentDidMount() {
+    const { searchResults } = this.props;
+    this.setState({
+      listings: searchResults,
+    });
+  };
+
+  searchZip() {
+    const { newZip } = this.state;
+    const { updateLocation } = this.props;
+    updateLocation(newZip);
+    // if(newZip.match(/\d\d\d\d\d/)) {
+    //   Axios.get(`${api}/getall`, { params: { zip: newZip } })
+    //     .then((data) => {
+    //       console.log(data);
+    //     })
+    //     .catch(console.log);
+    // }
+  };
+
   searchPrice() {
     const { priceMin, priceMax, filters } = this.state;
     const { api, queriedZip } = this.props;
@@ -46,12 +68,14 @@ export default class Results extends React.Component {
 
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then((data) => {
-        console.log('Price Filters', data);
+        const filteredResults = data.data.map((item) => item.data);
+        console.log('Price Filters', filteredResults);
 
-        this.setState({
-          filterResults: data.data,
-        },
-        () => this.applyFilters()
+        this.setState(
+          {
+            updatedListings: null, // FIX ME 
+          },
+          () => this.applyFilters()
         );
       })
       .catch(console.log);
@@ -220,9 +244,10 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults } = this.state;
+    const { filters, priceMin, priceMax, filteredResults, newZip } = this.state;
     const { zip } = filters;
     const { getSelectedListing, queriedZip, searchResults } = this.props;
+
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
     });
@@ -232,8 +257,6 @@ export default class Results extends React.Component {
     if (searchResults) {
       listings = searchResults;
     }
-
-    console.log('listings', listings);
 
     return (
       <Container className="mb-5 pb-5">
@@ -256,11 +279,11 @@ export default class Results extends React.Component {
             <div className="results-filter-bar flex-column">
               <div id="current-zip-container" className="flex-column">
                 <label className="filter-section-title">
-                  Current Zip-Code:
+                  Current Zip Code:
                 </label>
-                <div>{queriedZip || 'None'}</div>
+                <div id="results-current-zip">{queriedZip || 'None'}</div>
               </div>
-              {/* <label className="filter-section-title" htmlFor="location">
+              <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
               </label>
               <input
@@ -273,10 +296,11 @@ export default class Results extends React.Component {
               <Button
                 variant="info"
                 onClick={() => this.searchZip()}
+                id="results-zip-change"
                 className="mb-1 mt-1"
               >
-                Search Zip Code
-              </Button> */}
+                Update Zip Code
+              </Button>
               <h4 className="pricefilter-header filter-title">
                 Search By Price:
               </h4>
