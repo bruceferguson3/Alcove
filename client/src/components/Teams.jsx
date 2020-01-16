@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Cards from './Cards.jsx';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -6,6 +6,10 @@ import Col from 'react-bootstrap/Col';
 import './Teams.css';
 
 const Teams = props => {
+  useEffect(() => {
+    changePath('/teams');
+  }, []);
+
   return (
     <Container>
       <Row>
