@@ -15,10 +15,13 @@ function getZipsWithinRadius(zip, radius) {
         .then( response => {
             response.data.zip_codes.forEach( e => {
                 allZips.push([e.zip_code, e.distance])
-            });
+            })
         allZips.sort(([,a],[,b]) => a - b);
             return allZips;
     })
+        .catch( error => {
+            console.log('Zip Code Routes Error = Send Better Requests')
+        });
 }
 
 function getDistanceBetweenZips(zipOne, zipTwo){
