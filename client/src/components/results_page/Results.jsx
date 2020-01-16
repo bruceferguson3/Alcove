@@ -269,7 +269,7 @@ export default class Results extends React.Component {
   render() {
     const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
     const { zip } = filters;
-    const { getSelectedListing, queriedZip, searchResults } = this.props;
+    const { getSelectedListing, queriedZip, searchResults, searching } = this.props;
 
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
       return accum || (item === zip ? null : item);
@@ -287,9 +287,9 @@ export default class Results extends React.Component {
 
     return (
       <Container className="mb-5 pb-5">
-        {waitingForResults ? (
+        {searching || waitingForResults ? (
           <div className="flex-centered active-filters no-filters-active">
-            <Spinner animation="border" variant="info" />
+            <Spinner animation="border" variant="info" className="results-spinner" />
           </div>
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
@@ -317,8 +317,12 @@ export default class Results extends React.Component {
                   Current Zip Code:
                 </label>
                 <div id="results-current-zip">
-                  {updatedZipcode || queriedZip || '-'}
-                </div>
+                  {searching || waitingForResults ? (
+                    <Spinner animation="border" variant="info" className="results-spinner" />
+                  ) : (
+                    updatedZipcode || queriedZip || '-'
+                  )}
+                </div> 
               </div>
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:

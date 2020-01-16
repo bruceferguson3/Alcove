@@ -171,3 +171,10 @@
   background-color: aliceblue;
   margin: .5rem 0;
 }
+
+.results-spinner {
+  border-top: 4px solid #be97c6;
+  border-right: 4px solid #be97c6;
+  border-bottom: 4px solid #be97c6;
+  border-left-color: transparent;
+}
