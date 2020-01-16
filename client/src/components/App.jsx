@@ -101,7 +101,7 @@ export default class App extends React.Component {
               <Features />
             </Route>
             <Route path="/teams">
-              <Teams />
+              <Teams changePath={this.changePath.bind(this)} />
             </Route>
             <Route path="/results">
               <Results
@@ -109,6 +109,7 @@ export default class App extends React.Component {
                 queriedZip={queriedZipCode}
                 api={baseURL}
                 getSelectedListing={this.getSelectedListing.bind(this)}
+                changePath={this.changePath.bind(this)}
               />
             </Route>
             <Route path="/post">
