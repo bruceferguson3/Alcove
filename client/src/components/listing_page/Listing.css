@@ -69,7 +69,7 @@
 }
 
 #tsSharedIcon {
-  background-image: url("../../../dist/assets/question.png");
+  background-image: url("../../../dist/assets/shared.png");
   height: 2.5vh;
   width: 2.5vw;
   margin-right: 1rem;
@@ -99,6 +99,33 @@
   height: 100%;
   border-left: 1px solid #353b40;
 }
+
+.listingPictureContainer:hover .listingPicture {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+.listingPictureContainer {
+  overflow: hidden;
+  border-bottom: 1px solid #353b40;
+  padding: 0;
+  height: 275px;
+}
+
+.listingPictureContainer .listingPicture {
+  transition: transform 0.25s ease;
+}
+
+.listingPicture {
+  width: 100%;
+  height: 100%;
+}
+
+/* #emptyImage {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../dist/assets/alcove.jpg");
+} */
 
 /* #descriptionAndMapContainer {
   margin-right: 1rem;
