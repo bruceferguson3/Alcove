@@ -73,8 +73,74 @@ describe('Post Page Step 2', function() {
 })
 
 describe('Post Page Step 3', function() {
-    it('should navigate to step 4 on click', function() {
-
+    beforeEach(() => {
+        cy.visit('http://localhost:3030/post')
+        cy.get('img[id="postPropertyImage"]').click()
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.get('Form').submit()
     })
-    
+    it('should navigate to step 4 on successful click', function() {
+        cy.contains('Size').click()
+        cy.contains('Extra Small').click()
+        cy.contains('Access Frequency').click()
+        cy.contains('Never').click()
+        cy.contains('Duration').click()
+        cy.contains('Less than a week').click()
+        cy.contains('Next').click()
+        cy.get('#postImageLoader')
+        })
+    it('should navigate to step 2 if back button clicked', function() {
+        cy.contains('Back').click()
+        cy.contains('Contact Info')
+    })
+    it('should not navigate to step 4 if no size selected', function() {
+        cy.contains('Access Frequency').click()
+        cy.contains('Never').click()
+        cy.contains('Duration').click()
+        cy.contains('Less than a week').click()
+        cy.contains('Next').click()
+        cy.contains('Features')
+    })
+    it('should not navigate to step 4 if no frequency selected', function() {
+        cy.contains('Size').click()
+        cy.contains('Extra Small').click()
+        cy.contains('Duration').click()
+        cy.contains('Less than a week').click()
+        cy.contains('Next').click()
+        cy.contains('Features')
+    })
+    it('should not navigate to step 4 if no duration selected', function() {
+        cy.contains('Size').click()
+        cy.contains('Extra Small').click()
+        cy.contains('Access Frequency').click()
+        cy.contains('Never').click()
+        cy.contains('Next').click()
+        cy.contains('Features')
+    })
+    it('should display sizes when size dropdown clicked', function() {
+        cy.contains('Size').click()
+        cy.contains('Extra Small')
+        cy.contains('Small')
+        cy.contains('Medium')
+        cy.contains('Large')
+        cy.contains('Extra Large')
+    })
+    it('should display frequencies when frequency dropdown clicked', function() {
+        cy.contains('Access Frequency').click()
+        cy.contains('Never')
+        cy.contains('Infrequent')
+        cy.contains('Frequent')
+    })
+    it('should display durations when duration dropdown clicked', function() {
+        cy.contains('Duration').click()
+        cy.contains('Less than a week')
+        cy.contains('1 to 4 weeks')
+        cy.contains('1 to 3 months')
+        cy.contains('3 to 6 months')
+        cy.contains('More than 6 months')
+    })
 })
