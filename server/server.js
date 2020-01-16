@@ -23,97 +23,92 @@ app.use(bodyParser.json());
 });*/
 
 app.get("/getall", (req, res) => {
-  let zip = req.query.zip;
-  let allZips = [];
-  zipRoutes.getZipsWithinRadius(zip, 10)
-    .then(response => {
-      if (!response || response.length === 0) {
-        return;
-      } else {
-        response.forEach(e => {
-          allZips.push(e[0])
-        });
-      }
-    })
-    .then(() => {
-      db.getAll(allZips)
+    let zip = req.query.zip;
+    let allZips = [];
+    zipRoutes.getZipsWithinRadius(zip, 10)
         .then(response => {
-          res.send(response);
+            if (response && response.length) {
+                response.forEach(e => {
+                        allZips.push(e[0])
+                    })
+            }
+        })
+        .then(() => {
+            db.getAll(allZips)
+                .then(response => {
+                    res.send(response);
+                })
+                .catch(error => {
+                    console.log("Error on get all: ", error);
+                    res.end(error);
+                })
         })
         .catch(error => {
-          console.log("Error on get all: ", error);
-          res.end(error);
+            console.log(error);
+            res.sendStatus(404);
         })
-    })
-    .catch(error => {
-      console.log(error);
-      res.sendStatus(404);
-    })
 });
 
 app.get("/getbyprice", (req, res) => {
-  let zip = req.query.zip;
-  let min = req.query.priceMin;
-  let max = req.query.priceMax;
-  let allZips = [];
-  zipRoutes.getZipsWithinRadius(zip, 10)
-    .then(response => {
-      if (!response || response.length === 0) {
-        return
-      } else {
-        response.forEach(e => {
-          allZips.push(e[0])
-        });
-      }
-    })
-    .then(() => {
-      db.getByPrice(allZips, min, max)
+    let zip = req.query.zip;
+    let min = req.query.priceMin;
+    let max = req.query.priceMax;
+    let allZips = [];
+    zipRoutes.getZipsWithinRadius(zip, 10)
         .then(response => {
-          res.send(response);
+          if (response && response.length) {
+            response.forEach(e => {
+              allZips.push(e[0])
+            })
+          }
         })
-        .catch(error => {
-          console.log("Error on get all: ", error);
-          res.end(error);
-        })
-        .catch(error => {
-          console.log(error);
-          res.sendStatus(404);
-        })
-    });
+        .then(() => {
+            db.getByPrice(allZips, min, max)
+                .then(response => {
+                    res.send(response);
+                })
+                .catch(error => {
+                    console.log("Error on get all: ", error);
+                    res.end(error);
+                })
+                .catch(error => {
+                    console.log(error);
+                    res.sendStatus(404);
+                })
+        });
+});
 
-  app.post("/postlisting", (req, res) => {
+app.post("/postlisting", (req, res) => {
     console.log(req.body.data);
     let newDocument = req.body.data;
 
     db.postListing(newDocument)
-      .then(response => {
-        res.end("Posted");
-      })
-      .catch(error => {
-        res.end("Post listing error: ", error);
-      });
-  });
+        .then(response => {
+            res.end("Posted");
+        })
+        .catch(error => {
+            res.end("Post listing error: ", error);
+        });
+});
 
-  app.get('/getcoords', (req, res) => {
+app.get('/getcoords', (req, res) => {
     let zip = req.query.zip;
     let coordsArr = [];
-    zipRoutes.getLocationFromZip(zip.toString())
-      .then(coords => {
-        if (!coords || coords.length === 0) {
-          return
-        } else {
-          coordsArr = [coords.lat.toString(), coords.lng.toString()];
-        }
-      })
-      .then(() => {
-        res.send(coordsArr);
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  });
+    zipRoutes.getLocationFromZip(zip)
+        .then(coords => {
+            if (coords && coords.lat) {
+              coordsArr = [coords.lat.toString(), coords.lng.toString()];
+            }
+        })
+        .then(() => {
+            res.send(coordsArr);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+});
 
 
-  app.listen(process.env.PORT || 5500, function () {
+app.listen(process.env.PORT || 5500, function () {
     console.log("listening on port 5500!");
-  });
+});
