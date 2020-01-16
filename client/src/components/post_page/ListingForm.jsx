@@ -69,7 +69,8 @@ export default class ListingForm extends React.Component {
                 geoLocation: [],
                 zip: ''
             },
-            cardCounter: 0
+            cardCounter: 0,
+            invalidStepThree: false
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,6 +80,7 @@ export default class ListingForm extends React.Component {
         this.backButton = this.backButton.bind(this);
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
         this.loadImageFile = this.loadImageFile.bind(this);
+        this.validateStepThree = this.validateStepThree.bind(this);
 
     }
 
@@ -93,7 +95,7 @@ export default class ListingForm extends React.Component {
             data: data
         })
     };
-    
+
     // let fileList = document.getElementById('photo').files;
     // let newFileList = Array.from(fileList);
     // let saveableFileList = [];
@@ -190,6 +192,14 @@ export default class ListingForm extends React.Component {
         })
     }
 
+    validateStepThree() {
+        if (this.state.data.filters.size !== 0 && this.state.data.filters.easeOfAccess !== 0 && this.state.data.filters.duration !== 0) {
+            this.nextButton();
+        } else {
+            this.setState({ invalidStepThree: true })
+        }
+    }
+
     backButton() {
         var counter = this.state.cardCounter;
         counter--;
@@ -202,7 +212,7 @@ export default class ListingForm extends React.Component {
         if (this.state.cardCounter === 0) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mt-2">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
@@ -211,7 +221,7 @@ export default class ListingForm extends React.Component {
         } else if (this.state.cardCounter === 1) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mt-5">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                             zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
@@ -224,16 +234,16 @@ export default class ListingForm extends React.Component {
         } else if (this.state.cardCounter === 2) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mt-2">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} nextButton={this.nextButton} />
+                        <Step3 invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
                     </div>
                 </div>
             )
         } else if (this.state.cardCounter === 3) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mt-5">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Please submit this form</h1>
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
                     </div>

@@ -1,4 +1,5 @@
-.feature-container {
-  /* z-index: 5000; */
-  margin-top: 56px;
+.jd-about {
+  position: relative;
+  top: 100px;
 }
+
