@@ -5,6 +5,8 @@ import ListingModal from "./ListingModal.jsx";
 import dummyData from "./dummyData.js";
 
 const ListingImages = props => {
+  // Some elements require both inline styling and the stylesheet due to border positioning.
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,15 +20,29 @@ const ListingImages = props => {
   let image4 = images[3];
   let image5 = images[4];
 
+  if (images.length === 0) {
+    return (
+      <Container>
+        <Row>
+          <Col></Col>
+          <Col md={6}>
+            <div id="emptyImage"></div>
+          </Col>
+          <Col></Col>
+        </Row>
+      </Container>
+    );
+  }
+
   if (images.length === 1) {
     return (
       <Container>
-        <Row style={{ border: "1px solid purple" }}>
-          <Col md={3}></Col>
-          <Col md={6} style={{ border: "1px solid purple" }}>
-            <img src={images[0]} style={{ height: "12rem" }} />
+        <Row>
+          <Col></Col>
+          <Col md={6}>
+            <img className="listingPicture" src={image1} />
           </Col>
-          <Col md={3} style={{ border: "1px solid purple" }}></Col>
+          <Col></Col>
         </Row>
       </Container>
     );
@@ -52,61 +68,23 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col
-            className="listingTopPicture"
+            className="listingPictureContainer"
             style={{
-              "border-right": "1px solid #353b40",
-              "border-bottom": "1px solid #353b40",
-              "border-top": "1px solid #353b40",
-              "border-right": "1px solid #353b40",
-              "border-left": "1px solid #353b40",
-              "background-repeat": "no-repeat",
-              "background-size": "cover",
-              padding: "0"
+              "border-right": "1px solid #353b40"
             }}
           >
-            <img
-              className="listingPicture"
-              src={image1}
-              style={{ width: "100%", height: "100%" }}
-            />
+            <img className="listingPicture" src={image1} />
+          </Col>
+          <Col className="listingPictureContainer">
+            <img className="listingPicture" src={image2} />
           </Col>
           <Col
-            className="listingTopPicture"
+            className="listingPictureContainer"
             style={{
-              "border-right": "1px solid #353b40",
-              "border-bottom": "1px solid #353b40",
-              "border-top": "1px solid #353b40",
-              "border-right": "1px solid #353b40",
-              "border-left": "1px solid #353b40",
-              "background-repeat": "no-repeat",
-              "background-size": "cover",
-              padding: "0"
+              "border-left": "1px solid #353b40"
             }}
           >
-            <img
-              className="listingPicture"
-              src={image2}
-              style={{ width: "100%", height: "100%" }}
-            />
-          </Col>
-          <Col
-            className="listingTopPicture"
-            style={{
-              "border-bottom": "1px solid #353b40",
-              "border-top": "1px solid #353b40",
-              "border-right": "1px solid #353b40",
-              "border-left": "1px solid #353b40",
-              "background-repeat": "no-repeat",
-              "background-size": "cover",
-              height: "275px",
-              padding: "0"
-            }}
-          >
-            <img
-              className="listingPicture"
-              src={image3}
-              style={{ width: "100%", height: "100%" }}
-            />
+            <img className="listingPicture" src={image3} />
           </Col>
         </Row>
       </Container>

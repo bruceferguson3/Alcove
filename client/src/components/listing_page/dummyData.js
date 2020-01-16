@@ -19,9 +19,7 @@ let test = {
     },
     description: "The spot to be",
     thumbs: [
-      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_outside.jpg",
-      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg",
-      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg"
+      //"https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_outside.jpg"
     ],
     title: "Ish Sucks",
     reviews: ["", "", ""],
@@ -31,3 +29,6 @@ let test = {
 };
 
 export default { test };
+
+// "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg",
+//       "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg"
