@@ -27,9 +27,13 @@ app.get("/getall", (req, res) => {
   let allZips = [];
   zipRoutes.getZipsWithinRadius(zip, 10)
       .then( response => {
-          response.forEach( e => {
-              allZips.push(e[0])
-          });
+          if(!response || response.length === 0){
+              return;
+          } else {
+              response.forEach(e => {
+                  allZips.push(e[0])
+              });
+          }
       })
       .then( () => {
           db.getAll(allZips)
@@ -41,6 +45,10 @@ app.get("/getall", (req, res) => {
                   res.end(error);
               })
       })
+      .catch( error => {
+          console.log(error);
+          res.sendStatus(404);
+      })
 });
 
 app.get("/getbyprice", (req, res) => {
@@ -50,9 +58,13 @@ app.get("/getbyprice", (req, res) => {
   let allZips = [];
     zipRoutes.getZipsWithinRadius(zip, 10)
         .then( response => {
-            response.forEach( e => {
-                allZips.push(e[0])
-            });
+            if(!response|| response.length === 0){
+                return
+            } else {
+                response.forEach(e => {
+                    allZips.push(e[0])
+                });
+            }
         })
         .then( () => {
             db.getByPrice(allZips, min, max)
@@ -63,6 +75,10 @@ app.get("/getbyprice", (req, res) => {
                     console.log("Error on get all: ", error);
                     res.end(error);
                 })
+        })
+        .catch( error => {
+            console.log(error);
+            res.sendStatus(404);
         })
 });
 
@@ -81,7 +97,23 @@ app.post("/postlisting", (req, res) => {
 
 app.get('/getcoords', (req, res) => {
     let zip = req.query.zip;
-})
+    let coordsArr = [];
+    zipRoutes.getLocationFromZip(zip.toString())
+        .then( coords => {
+            if(!coords || coords.length === 0){
+                return
+            } else {
+                coordsArr = [coords.lat.toString(), coords.lng.toString()];
+            }
+        })
+        .then( () => {
+            res.send(coordsArr);
+        })
+        .catch( error => {
+            console.log(error);
+        })
+});
+
 
 app.listen(process.env.PORT || 5500, function () {
   console.log("listening on port 5500!");
