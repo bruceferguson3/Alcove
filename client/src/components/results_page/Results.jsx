@@ -21,16 +21,6 @@ export default class Results extends React.Component {
       priceMin: 10,
       priceMax: 20,
       newZip: '',
-      filters: {
-          type: null,
-          climateControl: null,
-          size: null,
-          easeOfAccess: null,
-          locked: null,
-          standAlone: null,
-          indoors: null,
-          duration: null,
-      }
     };
   };
 
@@ -99,36 +89,18 @@ export default class Results extends React.Component {
   };
 
   typeChange(type) {
-    const { filters } = this.state;
-    filters.type = type;
-    this.setState({
-      filters,
-    },
-      () => {
-        this.applyFilters();
-      }
-    );
-  };
-
-  sizeChange(size) {
-    const { filters } = this.state;
-    filters.size = Number(size);
-    this.setState({
-      filters
-    },
-    () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('type', type, () => this.applyFilters());
   };
 
   durationChange(val) {
-    const { filters } = this.state;
-    filters.duration = Number(val);
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('duration', Number(val), () => this.applyFilters());
+  };
+
+  sizeChange(size) {
+    const { changeFilter } = this.props;
+    changeFilter('size', Number(size), () => this.applyFilters());
   };
 
   locationChange(newZip) {
@@ -140,58 +112,28 @@ export default class Results extends React.Component {
   };
 
   accessChange(easeOfAccess) {
-    const { filters } = this.state;
-    filters.easeOfAccess = Number(easeOfAccess);
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('easeOfAccess', Number(easeOfAccess), () => this.applyFilters());
   };
 
   indoorsChange(indoors) {
-    const { filters } = this.state;
-    filters.indoors = indoors;
-    this.setState(
-      {
-        filters
-      }, 
-      () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('indoors', indoors, () => this.applyFilters());
   };
 
   climateChange(climate) {
-    const { filters } = this.state;
-    filters.climateControl = climate;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('climateControl', climate, () => this.applyFilters());
   };
 
   lockedChange(locked) {
-    const { filters } = this.state;
-    filters.locked = locked;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('locked', locked, () => this.applyFilters());
   };
 
   standaloneChange(standAlone) {
-    const { filters } = this.state;
-    filters.standAlone = standAlone;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
+    const { changeFilter } = this.props;
+    changeFilter('standAlone', standAlone, () => this.applyFilters());
   };
 
   minChange(priceMin) {
@@ -237,12 +179,12 @@ export default class Results extends React.Component {
   };
 
   applyFilters() {
-    const { filters, updatedListings } = this.state;
-    const { searchResults } = this.props;
+    const { updatedListings } = this.state;
+    const { searchResults, activeFilters } = this.props;
 
     const listings = updatedListings ? updatedListings : searchResults;
     if (listings !== null) {
-      const filteredResults = filterResults(filters, listings);
+      const filteredResults = filterResults(activeFilters, listings);
 
       this.setState({
         filteredResults,
@@ -251,25 +193,18 @@ export default class Results extends React.Component {
   };
 
   clearFilter(filterType) {
-    const { filters } = this.state;
-    if (filterType !== 'zip') {
-      filters[filterType] = null;
-      this.setState(
-        {
-          filters
-        },
-        () => this.applyFilters()
-      );
-    }
+    const { clearActive } = this.props;
+    clearActive(filterType, () => this.applyFilters()); 
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
-    const { zip } = filters;
-    const { getSelectedListing, queriedZip, searchResults, searching } = this.props;
+    const { priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
+    const { getSelectedListing, queriedZip, searchResults, searching, activeFilters } = this.props;
+
+    const filters = activeFilters;
 
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
-      return accum || (item === zip ? null : item);
+      return accum || (item === 'zip' ? null : item);
     });
 
     let listings = [];

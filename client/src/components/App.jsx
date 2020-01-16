@@ -23,7 +23,17 @@ export default class App extends React.Component {
       queriedZipCode: null,
       searchResults: null,
       currentlySearching: false,
-      path: '/'
+      path: '/',
+      activeFilters: {
+        type: null,
+        climateControl: null,
+        size: null,
+        easeOfAccess: null,
+        locked: null,
+        standAlone: null,
+        indoors: null,
+        duration: null
+      },
     };
   };
 
@@ -79,11 +89,27 @@ export default class App extends React.Component {
     }
   };
 
-  storeSearch(listings, zip) {
+  storeSearch(zip, listings) {
     this.setState({
       searchResults: listings,
       queriedZipCode: zip,
     })
+  };
+
+  changeFilter(category, value, callback) {
+    const { activeFilters } = this.state;
+    activeFilters[category] = value;
+    this.setState({
+      activeFilters,
+    }, callback);
+  };
+
+  clearActive(filterType, callback) {
+    const { activeFilters } = this.state;
+    activeFilters[filterType] = null;
+    this.setState({
+      activeFilters,
+    }, callback);
   };
 
   changePath(path) {
@@ -99,7 +125,7 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { currentListing, searchResults, queriedZipCode, newZip, currentlySearching } = this.state;
+    const { currentListing, searchResults, queriedZipCode, newZip, currentlySearching, activeFilters } = this.state;
 
     return (
       <div>
@@ -129,7 +155,10 @@ export default class App extends React.Component {
                 queriedZip={queriedZipCode}
                 searchResults={searchResults}
                 searching={currentlySearching}
+                activeFilters={activeFilters}
+                clearActive={this.clearActive.bind(this)}
                 storeSearch={this.storeSearch.bind(this)}
+                changeFilter={this.changeFilter.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
               />
             </Route>
