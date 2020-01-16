@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Button, Modal } from "react-bootstrap";
-import ListingModal from "./ListingModal.jsx";
+import React, { useState } from 'react';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import ListingModal from './ListingModal.jsx';
+import './listingImages.css';
 
 import dummyData from "./dummyData.js";
+import logo from '../../../dist/assets/alcove.jpg';
 
 const ListingImages = props => {
   const [show, setShow] = useState(false);
@@ -18,6 +20,19 @@ const ListingImages = props => {
   let image4 = images[3];
   let image5 = images[4];
 
+if (images.length === 0) {
+  return (
+    <Container>
+      <Row>
+      <Col md={3}></Col>
+      <Col md={6}>
+        { logo }
+      </Col>
+      <Col md={3}></Col>
+      </Row>
+    </Container>
+  )
+}
 
 
   if (images.length === 1) {
