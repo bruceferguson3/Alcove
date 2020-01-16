@@ -42,24 +42,24 @@ const ListingProductBullets = ({ bullets }) => {
   //TODO - Need to clarify what this is
   let easeOfAccessText;
   if (bullets.easeOfAccess === 1) {
-    easeOfAccessText = "Not locked at all";
+    easeOfAccessText = "Never";
   } else if (bullets.easeOfAccess === 2) {
-    easeOfAccessText = "Padlocked";
+    easeOfAccessText = "Infrequently";
   } else {
-    easeOfAccessText = "Chain link fence";
+    easeOfAccessText = "Frequently";
   }
 
   let durationText;
   if (bullets.duration === 1) {
-    durationText = "One day";
+    durationText = "Less than a week";
   } else if (bullets.duration === 2) {
-    durationText = "One Week";
+    durationText = "1 to 4 weeks";
   } else if (bullets.duration === 3) {
-    durationText = "One Month";
+    durationText = "1 to 3 months";
   } else if (bullets.duration === 4) {
-    durationText = "Three Months";
+    durationText = "3 to 6 months";
   } else if (bullets.duration === 5) {
-    durationText = "Six Months";
+    durationText = "More than 6 months";
   } else {
     durationText = "One Year";
   }
