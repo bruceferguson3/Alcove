@@ -23,7 +23,7 @@ const Header = props => {
               <Nav.Link onClick={() => props.changePath('/')}>Home</Nav.Link>
             </IndexLinkContainer>
             <LinkContainer to="/about">
-              <Nav.Link onClick={() => props.changePath('/about')}>About</Nav.Link>
+              <Nav.Link onClick={() => props.changePath('/team')}>Our Team</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/features">
               <Nav.Link onClick={() => props.changePath('/features')}>Features</Nav.Link>
