@@ -7,7 +7,7 @@ import './Teams.css';
 
 const Teams = props => {
   useEffect(() => {
-    changePath('/teams');
+    props.changePath('/teams');
   }, []);
 
   return (
