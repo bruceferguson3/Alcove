@@ -100,6 +100,19 @@
   border-left: 1px solid #353b40;
 }
 
+.listingTopPicture:hover .listingPicture {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+
+.listingTopPicture {
+  overflow: hidden;
+}
+
+.listingTopPicture .listingPicture {
+  transition: transform 0.25s ease;
+}
+
 /* #descriptionAndMapContainer {
   margin-right: 1rem;
 } */
