@@ -38,12 +38,12 @@ if (images.length === 0) {
   if (images.length === 1) {
     return (
       <Container>
-        <Row style={{ border: '1px solid purple'}}>
+        <Row style={{ border: '1px solid purple' }}>
           <Col md={3}></Col>
-          <Col md={6} style={{ border: '1px solid purple'}}>
-            <img src={images[0]} style={{ height: '12rem'}}/>
+          <Col md={6} style={{ border: '1px solid purple' }}>
+            <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
-          <Col md={3} style={{ border: '1px solid purple'}}></Col>
+          <Col md={3} style={{ border: '1px solid purple' }}></Col>
         </Row>
       </Container>
     );
@@ -52,12 +52,12 @@ if (images.length === 0) {
   if (images.length === 2) {
     return (
       <Container>
-        <Row style={{ border: '1px solid #353b40'}}>
-          <Col style={{ border: '1px solid #353b40'}}>
+        <Row style={{ border: '1px solid #353b40' }}>
+          <Col style={{ border: '1px solid #353b40' }}>
             <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
-          <Col style={{ border: '1px solid #353b40'}}>
-            <img src={images[1]} style={{ height: '12rem' }}/>
+          <Col style={{ border: '1px solid #353b40' }}>
+            <img src={images[1]} style={{ height: '12rem' }} />
           </Col>
         </Row>
       </Container>
@@ -75,7 +75,7 @@ if (images.length === 0) {
             'background-image': `url(${image1})`,
             'background-repeat': 'no-repeat',
             'background-size': 'cover'
-           }}>
+          }}>
           </Col>
           <Col style={{
             'border-right': '1px solid #353b40',
@@ -103,26 +103,26 @@ if (images.length === 0) {
 
   if (images.length >= 5) {
     return (
-      <Container style={{ border: '1px solid purple'}}>
-        <Row style={{ border: '1px solid purple'}}>
-          <Col md={6} style={{ border: '1px solid purple'}}>
+      <Container style={{ border: '1px solid purple' }}>
+        <Row style={{ border: '1px solid purple' }}>
+          <Col md={6} style={{ border: '1px solid purple' }}>
             <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
-          <Col md={6} style={{ border: '1px solid purple'}}>
-            <Row style={{ border: '1px solid purple'}}>
-              <Col md={6} style={{ border: '1px solid purple'}}>
-                <img src={images[1]} style={{ height: '6rem' }}/>
+          <Col md={6} style={{ border: '1px solid purple' }}>
+            <Row style={{ border: '1px solid purple' }}>
+              <Col md={6} style={{ border: '1px solid purple' }}>
+                <img src={images[1]} style={{ height: '6rem' }} />
               </Col>
-              <Col md={6} style={{ border: '1px solid purple'}}>
-                <img src={images[2]} style={{ height: '6rem' }}/>
+              <Col md={6} style={{ border: '1px solid purple' }}>
+                <img src={images[2]} style={{ height: '6rem' }} />
               </Col>
             </Row>
-            <Row style={{ border: '1px solid purple'}}>
-              <Col md={6} style={{ border: '1px solid purple'}}>
-                <img src={images[3]} style={{ height: '6rem' }}/>
+            <Row style={{ border: '1px solid purple' }}>
+              <Col md={6} style={{ border: '1px solid purple' }}>
+                <img src={images[3]} style={{ height: '6rem' }} />
               </Col>
-              <Col md={6} style={{ border: '1px solid purple'}}>
-                <img src={images[4]} style={{ height: '6rem' }}/>
+              <Col md={6} style={{ border: '1px solid purple' }}>
+                <img src={images[4]} style={{ height: '6rem' }} />
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
                 </Button>
