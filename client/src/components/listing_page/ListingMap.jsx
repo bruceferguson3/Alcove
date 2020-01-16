@@ -7,7 +7,7 @@ const ListingMap = ({lat, lng}) => {
   // console.log(API_KEY);
 
   return (
-    <div style={{ width: "60vw", height: "60vh" }}>
+    <div style={{ width: "48vw", height: "50vh", "margin-bottom": "2rem" }}>
       <WrappedMap
         lat={lat}
         lng={lng}

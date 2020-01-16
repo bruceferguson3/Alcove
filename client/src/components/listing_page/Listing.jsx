@@ -17,7 +17,7 @@ class Listing extends React.Component {
     return (
       <Container className='listingContainer' fluid>
         <Row md={4} id="listingImageContainer">
-          <ListingImages fluid/>
+          <ListingImages fluid />
         </Row>
         <Row md={8}>
           <Col md={8} id="descriptionAndMapContainer">
@@ -25,7 +25,9 @@ class Listing extends React.Component {
           </Col>
           <Col md={4}>
             <Row>
-              <ListingContactInfo />
+              <div style={{ width: '70%' }}>
+                <ListingContactInfo />
+              </div>
             </Row>
           </Col>
         </Row>

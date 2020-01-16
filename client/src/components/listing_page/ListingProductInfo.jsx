@@ -40,7 +40,10 @@ const ListingProductInfo = props => {
         </Col>
       </Row>
       <Row>
-        <ListingMap lat={props.listing.geoLocation[0]} lng={props.listing.geoLocation[1]} />
+        <Col md={2}></Col>
+        <Col>
+          <ListingMap lat={props.listing.geoLocation[0]} lng={props.listing.geoLocation[1]} />
+        </Col>
       </Row>
     </Container>
   );
