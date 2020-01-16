@@ -42,15 +42,27 @@
 }
 
 .results-thumbnail-title {
-  margin-top: .2rem;
   margin-bottom: 0;
+  font-weight: bold;
 }
 
 .results-thumbnail-price {
   z-index: 2;
+  text-align: center;
+  font-size: .7rem;
+  max-width: 7.5rem;
+  margin-top: .5rem;
+  margin-bottom: .1rem;
+  background-color: aliceblue;
+  border-radius: .4rem;
+  padding: 0 .3rem;
+  font-weight: bold;
+  color: #635858;
+}
+
+.results-thumbnail-number {
   font-size: .9rem;
-  font-weight: normal;
-  margin-bottom: .5rem;
+  color: #37a321fb;
 }
 
 .results-full-listing {

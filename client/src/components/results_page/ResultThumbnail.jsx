@@ -28,12 +28,12 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
           No Images Available
         </div>
       )}
+      <div className="results-thumbnail-price">
+        <span className="results-thumbnail-number">${listing.filters.price.toFixed(2)}</span> per day
+      </div>
       <Card.Title className="results-thumbnail-title">
         {listing.title}
       </Card.Title>
-      <div className="results-thumbnail-price">
-        ${listing.filters.price} per day
-      </div>
       <Card.Text className="results-thumbnail-description">
         {listing.description.slice(0, 85) + '...'}
       </Card.Text>

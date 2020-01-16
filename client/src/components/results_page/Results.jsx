@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button, Jumbotron } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup, DropdownButton, Dropdown, Button, Jumbotron, Spinner } from 'react-bootstrap';
 import PriceFilter from './filters/PriceFilter.jsx';
 import ListingTypeFilter from './filters/ListingTypeFilter.jsx';
 import LockedFilter from './filters/LockedFilter.jsx';
@@ -18,7 +18,7 @@ export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      applyFilters: false,
+      waitingForResults: false,
       updatedListings: null,
       updatedZipcode: null,
       filteredResults: null,
@@ -46,33 +46,42 @@ export default class Results extends React.Component {
   };
 
   searchZip() {
-    const { newZip } = this.state;
+    const { newZip, waitingForResults } = this.state;
     const { api } = this.props;
     if (newZip.match(/\d\d\d\d\d/)) {
       console.log('Sending Axios request.');
+      this.setState({
+        waitingForResults: true,
+      });
       Axios.get(`${api}/getall`, { params: { zip: newZip } })
         .then((data) => {
           const listings = data.data.map((listing) => listing.data);
           console.log('Axios request success:', data);
-          this.setState({
-            updatedListings: listings,
-            updatedZipcode: newZip,
-            newZip: ''
-          });
+          this.setState(
+            {
+              updatedListings: listings,
+              updatedZipcode: newZip,
+              newZip: '',
+              priceMin: 10,
+              priceMax: 20,
+              waitingForResults: false,
+            },
+            () => this.applyFilters()
+          );
         })
         .catch(console.log);
     }
   };
 
   searchPrice() {
-    const { priceMin, priceMax, filters } = this.state;
+    const { priceMin, priceMax, updatedZipcode } = this.state;
     const { api, queriedZip } = this.props;
     const queryParams = {
-      zip:  queriedZip,
+      zip:  updatedZipcode || queriedZip,
       priceMin,
       priceMax,
     };
-
+    console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then((data) => {
         const filteredResults = data.data.map((item) => item.data);
@@ -254,7 +263,7 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode } = this.state;
+    const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
     const { zip } = filters;
     const { getSelectedListing, queriedZip, searchResults } = this.props;
 
@@ -264,7 +273,9 @@ export default class Results extends React.Component {
 
     let listings = [];
 
-    if (updatedListings) {
+    if (filteredResults) {
+      listings = filteredResults;
+    } else if (updatedListings) {
       listings = updatedListings;
     } else if(searchResults) {
       listings = searchResults;
@@ -272,13 +283,17 @@ export default class Results extends React.Component {
 
     return (
       <Container className="mb-5 pb-5">
-        {filtersSelected ? (
+        {waitingForResults ? (
+          <div className="flex-centered active-filters no-filters-active">
+            <Spinner animation="border" variant="info" />
+          </div>
+        ) : filtersSelected ? (
           <div className="flex-centered active-filters">
-            <span className="results-span">(Click to remove)</span>
             <FiltersDisplay
               filters={filters}
               clearFilter={this.clearFilter.bind(this)}
             />
+            <span className="results-span">(Click to remove)</span>
           </div>
         ) : (
           <div className="flex-centered active-filters no-filters-active">
@@ -293,7 +308,9 @@ export default class Results extends React.Component {
                 <label className="filter-section-title">
                   Current Zip Code:
                 </label>
-                <div id="results-current-zip">{updatedZipcode || queriedZip || '-'}</div>
+                <div id="results-current-zip">
+                  {updatedZipcode || queriedZip || '-'}
+                </div>
               </div>
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
