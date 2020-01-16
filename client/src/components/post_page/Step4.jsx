@@ -51,7 +51,7 @@ const Step4 = (props) => {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="primary" onClick={() => {handleClose();handleSubmit()}}>Save Changes and Submit</Button>
+                        <Button variant="primary" onClick={() => {handleClose(); props.handleSubmit()}}>Save Changes and Submit</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

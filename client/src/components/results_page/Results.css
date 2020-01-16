@@ -104,18 +104,17 @@
   color: #be97c6;
 }
 
-#results-zip-change {
+#results-zip-change, #results-price-change {
   background-color: #be97c6;
   border-color: #be97c6;
 }
 
-#results-zip-change:hover {
+#results-zip-change:hover, #results-price-change:hover {
   background-color: #97849b;
 }
 
-#results-zip-change:active {
+#results-zip-change:active, #results-price-change:active {
   background-color: #97849b;
-  outline: violet;
 }
 
 .filter-title {
@@ -171,4 +170,11 @@
   border-radius: .5rem;
   background-color: aliceblue;
   margin: .5rem 0;
+}
+
+.results-spinner {
+  border-top: 4px solid #be97c6;
+  border-right: 4px solid #be97c6;
+  border-bottom: 4px solid #be97c6;
+  border-left-color: transparent;
 }
