@@ -12,7 +12,7 @@ const Step5 = (props) => {
             </h1>
             <div>
                 <span className='step2Button'>
-                    <Button>Post another item?</Button>
+                    <Button onClick={props.backToStep1}>Post another item?</Button>
                 </span>
                 <span className='step2Button'>
                     <Button>Home Page</Button>

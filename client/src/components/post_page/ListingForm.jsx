@@ -10,6 +10,7 @@ import Step4 from './Step4.jsx';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Descriptions from "./Descriptions.jsx";
 import './PostForm.css'
+import Step5 from "./Step5.jsx";
 const axios = require('axios');
 
 
@@ -82,6 +83,7 @@ export default class ListingForm extends React.Component {
         this.loadImageFile = this.loadImageFile.bind(this);
         this.validateStepThree = this.validateStepThree.bind(this);
         this.getCoords = this.getCoords.bind(this);
+        this.backToStep1 = this.backToStep1.bind(this);
 
     }
 
@@ -211,6 +213,13 @@ export default class ListingForm extends React.Component {
         })
     }
 
+    backToStep1() {
+        this.setState({
+            cardCounter: 0
+        })
+    }
+
+
     render() {
         if (this.state.cardCounter === 0) {
             return (
@@ -253,6 +262,16 @@ export default class ListingForm extends React.Component {
                     <ProgressBar animated now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
+                    </div>
+                </div>
+            )
+        } else if (this.state.cardCounter === 4) {
+            return (
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 className="display-4 mb-3">Thank You!</h1>
+                    <ProgressBar animated now={100} />
+                    <div className='postFormContainer col shadow-lg p-3'>
+                        <Step5 backToStep1={this.backToStep1} />
                     </div>
                 </div>
             )
