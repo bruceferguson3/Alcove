@@ -103,7 +103,7 @@ export default class ListingForm extends React.Component {
 
     handleSubmit() {
         console.log(this.state);
-        axios.post('http://localhost:5500/postlisting', { data: this.state.data })
+        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { data: this.state.data })
             .then(() => console.log('Sent to server'))
             .catch((err) => console.log(err))
     }
