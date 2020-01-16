@@ -147,6 +147,8 @@ export default class ListingForm extends React.Component {
                 stateObject.filters.climateControl = false;
                 stateObject.filters.indoors = false;
             }
+        } else if (key === 'climateControl') {
+            stateObject.filters.climateControl = !stateObject.filters.climateControl;
         }
 
         this.setState({ data: stateObject });
@@ -242,7 +244,7 @@ export default class ListingForm extends React.Component {
                     <h1 className="display-4 mb-3">Please submit this form</h1>
                     <ProgressBar animated now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
+                        <Step3 climateControl={this.state.data.filters.climateControl} standAlone={this.state.data.filters.standAlone} locked={this.state.data.filters.locked} storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
                     </div>
                 </div>
             )
