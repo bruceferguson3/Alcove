@@ -7,6 +7,7 @@ import Listing from './listing_page/Listing.jsx';
 import ListingForm from './post_page/ListingForm.jsx';
 import Results from './results_page/Results.jsx';
 import Features from './features_page/featuresPage.jsx';
+import Teams from './Teams.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import PreviewPage from './preview_page/PreviewPage.jsx';
@@ -86,11 +87,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Router>
-          <Header
-            search={this.landingSearch.bind(this)}
-            changePath={this.changePath.bind(this)}
-            path={this.state.path}
-          />
+          <Header search={this.landingSearch.bind(this)} changePath={this.changePath.bind(this)} path={this.state.path} />
           <Switch>
             <Route exact path="/">
               <LandingPage
@@ -102,6 +99,9 @@ export default class App extends React.Component {
             </Route>
             <Route path="/features">
               <Features />
+            </Route>
+            <Route path="/teams">
+              <Teams />
             </Route>
             <Route path="/results">
               <Results
