@@ -29,6 +29,7 @@ export default class App extends React.Component {
 
   getSelectedListing(currentListing) {
     // REPLACE WITH ID DURING REFACTOR
+    // ===============================
     // Axios.get(`${baseURL}/getone`, { params: { id } })
     //   .then(data => {
     //     console.log('Data From Get Request', data);
@@ -46,7 +47,7 @@ export default class App extends React.Component {
       Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
-          console.log('Axios request success.');
+          console.log('Axios request success:', data);
           this.setState({
             searchResults: listings,
             queriedZipCode: newZip,
@@ -85,7 +86,11 @@ export default class App extends React.Component {
     return (
       <div>
         <Router>
-          <Header search={this.landingSearch.bind(this)} changePath={this.changePath.bind(this)} path={this.state.path} />
+          <Header
+            search={this.landingSearch.bind(this)}
+            changePath={this.changePath.bind(this)}
+            path={this.state.path}
+          />
           <Switch>
             <Route exact path="/">
               <LandingPage

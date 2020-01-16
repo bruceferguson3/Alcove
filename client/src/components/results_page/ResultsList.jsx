@@ -6,7 +6,7 @@ import './Results.css';
 const ResultsList = ({ listings, getSelectedListing }) => (
   <div id="results-list-container">
     <CardColumns>
-      {listings.map((listing, index) => (
+      {listings.slice(0, 100).map((listing, index) => (
         <ResultThumbnail
           listing={listing}
           key={`${listing.dateSubmitted}-${index}`}
