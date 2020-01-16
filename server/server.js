@@ -11,7 +11,7 @@ const db = require("./db/db");
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/getone", (req, res) => {
+/*app.get("/getone", (req, res) => {
   db.getOne()
     .then(response => {
       res.send(response);
@@ -20,7 +20,7 @@ app.get("/getone", (req, res) => {
     .catch(error => {
       res.end(error);
     });
-});
+});*/
 
 app.get("/getall", (req, res) => {
   let zip = req.query.zip;
