@@ -76,18 +76,15 @@ export default class ListingForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.recordStateInfo = this.recordStateInfo.bind(this);
-        this.GetLocation = this.GetLocation.bind(this);
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
         this.loadImageFile = this.loadImageFile.bind(this);
         this.validateStepThree = this.validateStepThree.bind(this);
+        this.getCoords = this.getCoords.bind(this);
 
     }
 
-    GetLocation() {
-
-    };
 
     loadImageFile() {
         let date = JSON.stringify(Date.now());
@@ -108,7 +105,6 @@ export default class ListingForm extends React.Component {
         //send current state to database and render new product page
         e.preventDefault();
 
-        this.GetLocation();
 
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
 
@@ -118,6 +114,16 @@ export default class ListingForm extends React.Component {
             //     .catch((err) => console.log(err))
         })
 
+    }
+
+    getCoords() {
+        console.log(this.state.data.zip);
+        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip }})
+            .then((coords) => {
+                console.log(coords.data);
+                this.setState({ geoLocation:  coords.data})
+            })
+            .catch((err) => console.log(err))
     }
 
 
@@ -227,7 +233,7 @@ export default class ListingForm extends React.Component {
                     <h1 className="display-4 mb-3">Please submit this form</h1>
                     <ProgressBar now={25} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
+                        <Step2 getCoords={this.getCoords} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                             zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
                                 name: this.state.data.userInfo.name,
                                 email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed
