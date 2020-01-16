@@ -40,12 +40,21 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col></Col>
-          <Col md={6}>
-            <img className="listingPicture" src={image1} onClick={handleShow}/>
+          <Col>
+            <div className="imageSpacer"></div>
           </Col>
-          <Col></Col>
+          <Col md={6} className="listingPictureContainer">
+            <img src={image1} className="listingPicture" onClick={handleShow}/>
+          </Col>
+          <Col>
+            <div className="imageSpacer"></div>
+          </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }
@@ -53,14 +62,22 @@ const ListingImages = props => {
   if (images.length === 2) {
     return (
       <Container>
-        <Row style={{ border: "1px solid #353b40" }}>
-          <Col style={{ border: "1px solid #353b40" }}>
-            <img src={images[0]} style={{ height: "12rem" }} />
+        <Row>
+          <Col className="listingPictureContainer"
+          style={{
+            borderRight: "1px solid #353b40"
+          }}>
+            <img src={images[0]} className="listingPicture" onClick={handleShow} />
           </Col>
-          <Col style={{ border: "1px solid #353b40" }}>
-            <img src={images[1]} style={{ height: "12rem" }} />
+          <Col className="listingPictureContainer">
+            <img src={images[1]} className="listingPicture" onClick={handleShow} />
           </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }

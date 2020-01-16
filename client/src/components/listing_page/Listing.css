@@ -121,6 +121,13 @@
   height: 100%;
 }
 
+.imageSpacer {
+  background-image: linear-gradient(#be97c6, #8661c1);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
 /* #emptyImage {
   width: 100%;
   height: 100%;
