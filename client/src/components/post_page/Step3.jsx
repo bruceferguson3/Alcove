@@ -66,7 +66,7 @@ const Step3 = ({
   return (
     <div>
       <div className="tsDropdownContainer">
-        <h4>Options</h4>
+        <h4 id="tsStepThreeHeader">Features</h4>
         <div className="tsDropdownWrapper">
           <div className="tsTooltipContainer">
             <div className="tsTooltipIcon"></div>
@@ -78,7 +78,7 @@ const Step3 = ({
           <DropdownButton
             className="tsFiltersDropdowns"
             id="tsFiltersSizeDropdown"
-            variant="info"
+            variant="outline-info"
             title="Size"
           >
             <Dropdown.Item
@@ -142,7 +142,7 @@ const Step3 = ({
               className="tsFiltersDropdowns"
               id="tsFiltersFrequencyDropdown"
               title="Access Frequency"
-              variant="info"
+              variant="outline-info"
             >
               <Dropdown.Item
                 data-value={1}
@@ -186,7 +186,7 @@ const Step3 = ({
             <DropdownButton
               className="tsFiltersDropdowns"
               id="tsFiltersDurationDropdown"
-              variant="info"
+              variant="outline-info"
               title="Duration"
             >
               <Dropdown.Item
