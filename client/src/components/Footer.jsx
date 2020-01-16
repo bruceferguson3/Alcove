@@ -1,45 +1,92 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import './Footer.css';
 
 const Footer = props => {
-    return (
-        <footer className="footer">
-            <Navbar id='footerNavBar' collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <div id='footerBrandContainer' onClick={props.returnToTop}>
-                    <Navbar.Brand id='footerBrand'>Alcove</Navbar.Brand>
-                </div>
-                <div id='footerDescription'>
-                    <h6 id='footerDescriptionParagraph1'>
-                        Going to catch the red dot today going to catch the red dot today fight own tail
-                        for the fat cat sat on the mat bat away with paws. Chirp at birds steal the warm
-                        chair right after you get up, pee on walls it smells like breakfast for fight own
-                        tail lay on arms while you're using the keyboard, check cat door for ambush 10
-                        times before coming in.
-                    </h6>
-                    <h6 id='footerDescriptionParagraph2'>
-                        Sitting in a box human is washing you why halp oh the
-                        horror flee scratch hiss bite stare at guinea pigs, and eat from dog's food, but
-                        get my claw stuck in the dog's ear destroy couch, yet make meme, make cute face.
-                        Walk on keyboard hide from vacuum cleaner. Kitty ipsum dolor sit amet, shed
-                        everywhere shed everywhere stretching attack your ankles chase the red dot,
-                        hairball run catnip eat the grass sniff rub face on owner yet chase mice.
-                    </h6>
-                </div>
-                <div id="footerNamesContainer">
-                    <div>The Alcove Team: </div>
-                    <div><a className='headerLinks' href="https://github.com/mfuechec">Mark Fuechec</a></div>
-                    <div><a className='headerLinks' href="https://github.com/bruceferguson3">Bruce Ferguson III</a></div>
-                    <div><a className='headerLinks' href="https://github.com/ishtahir">Ish Tahir</a></div>
-                    <div><a className='headerLinks' href="https://github.com/nmalesa">Natalia Malesa</a></div>
-                    <div><a className='headerLinks' href="https://github.com/JCDiaz1201">Jonathan Diaz</a></div>
-                    <div><a className='headerLinks' href="https://github.com/timsand">Tim Sanderson</a></div>
-                    <div><a className='headerLinks' href="https://github.com/KytraScript">Kytra Murphree</a></div>
-                    <div><a className='headerLinks' href="https://github.com/tmchandler">Tom Chandler</a></div>
-                </div>
-            </Navbar>
-        </footer>
-    )
-}
+  return (
+    <footer className="footer">
+      <Container className="it-footer-container" fluid="md">
+        <Row>
+          <Col>
+            <Navbar.Brand>
+              <img src="../../assets/alcove-footer.jpg" alt="Alcove Logo" className="it-footer-logo" onClick={props.returnToTop} />
+            </Navbar.Brand>
+          </Col>
+          <Col xs={4}>
+            <h3 className="it-footer-title">About Us</h3>
+            <p className="it-footer-p">
+              Chirp at birds steal the warm chair right after you get up, pee on walls it smells like breakfast for fight own tail lay on arms while
+              you're using the keyboard. Sitting in a box human is washing you why halp oh the horror flee scratch but get my claw stuck in the dog's
+              ear destroy couch, yet make meme, make cute face.
+            </p>
+          </Col>
+          <Col>
+            <h3 className="it-footer-title">Services</h3>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                Company History
+              </a>
+            </p>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                About Us
+              </a>
+            </p>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                Jobs
+              </a>
+            </p>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                Report Spam
+              </a>
+            </p>
+          </Col>
+          <Col>
+            <h3 className="it-footer-title">Legal</h3>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                Terms &amp; Conditions
+              </a>
+            </p>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                Privacy Policy
+              </a>
+            </p>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="#">
+                Pricing
+              </a>
+            </p>
+          </Col>
+          <Col>
+            <h3 className="it-footer-title">Contact</h3>
+            <p className="it-footer-p">
+              119 Nueces Street
+              <br />
+              Austin, TX 78701
+            </p>
+            <p className="it-footer-p">
+              <a className="it-footer-links" href="mailto:teamalcove@gmail.com">
+                teamalcove@gmail.com
+              </a>
+            </p>
+            <p className="it-footer-p">512-717-5244</p>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col>
+            <p className="it-footer-p">Copyright &copy; 2020 Alcove Inc. All rights reserved.</p>
+          </Col>
+        </Row>
+      </Container>
+    </footer>
+  );
+};
 
 export default Footer;

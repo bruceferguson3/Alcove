@@ -23,39 +23,39 @@ app.use(bodyParser.json());
 });*/
 
 app.get("/getall", (req, res) => {
-  let zip = req.query.zip;
-  let allZips = [];
-  zipRoutes.getZipsWithinRadius(zip, 10)
-      .then( response => {
-          if(!response || response.length === 0){
-              return;
-          } else {
-              response.forEach(e => {
-                  allZips.push(e[0])
-              });
-          }
-      })
-      .then( () => {
-          db.getAll(allZips)
-              .then(response => {
-                  res.send(response);
-              })
-              .catch(error => {
-                  console.log("Error on get all: ", error);
-                  res.end(error);
-              })
-      })
-      .catch( error => {
-          console.log(error);
-          res.sendStatus(404);
-      })
+    let zip = req.query.zip;
+    let allZips = [];
+    zipRoutes.getZipsWithinRadius(zip, 10)
+        .then( response => {
+            if(!response || response.length === 0){
+                return;
+            } else {
+                response.forEach(e => {
+                    allZips.push(e[0])
+                });
+            }
+        })
+        .then( () => {
+            db.getAll(allZips)
+                .then(response => {
+                    res.send(response);
+                })
+                .catch(error => {
+                    console.log("Error on get all: ", error);
+                    res.end(error);
+                })
+        })
+        .catch( error => {
+            console.log(error);
+            res.sendStatus(404);
+        })
 });
 
 app.get("/getbyprice", (req, res) => {
-  let zip = req.query.zip;
-  let min = req.query.priceMin;
-  let max = req.query.priceMax;
-  let allZips = [];
+    let zip = req.query.zip;
+    let min = req.query.priceMin;
+    let max = req.query.priceMax;
+    let allZips = [];
     zipRoutes.getZipsWithinRadius(zip, 10)
         .then( response => {
             if(!response|| response.length === 0){
@@ -83,14 +83,16 @@ app.get("/getbyprice", (req, res) => {
 });
 
 app.post("/postlisting", (req, res) => {
-  let newDocument = req.body.data;
-  db.postListing(newDocument)
-    .then(response => {
-      res.end("Posted");
-    })
-    .catch(error => {
-      res.end("Post listing error: ", error);
-    });
+    console.log(req.body.data);
+    let newDocument = req.body.data;
+
+    db.postListing(newDocument)
+        .then(response => {
+            res.end("Posted");
+        })
+        .catch(error => {
+            res.end("Post listing error: ", error);
+        });
 });
 
 app.get('/getcoords', (req, res) => {
@@ -112,6 +114,7 @@ app.get('/getcoords', (req, res) => {
         })
 });
 
+
 app.listen(process.env.PORT || 5500, function () {
-  console.log("listening on port 5500!");
+    console.log("listening on port 5500!");
 });

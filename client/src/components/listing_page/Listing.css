@@ -78,8 +78,28 @@
   background-repeat: no-repeat;
 }
 
-/* .tsTestPic {
-  width: 50vw;
-  height: 50vh;
-  background-size: cover;
+#listingImageContainer {
+  margin-bottom: 4rem;
+}
+
+#listingPriceHeader {
+  float: right;
+  margin-right: 6rem;
+}
+
+#listingDescriptionText {
+  margin-right: 5rem;
+  overflow: scroll;
+  height: 40vh;
+  width: 25vw;
+}
+
+.listingDivider {
+  width: 2px;
+  height: 100%;
+  border-left: 1px solid #353b40;
+}
+
+/* #descriptionAndMapContainer {
+  margin-right: 1rem;
 } */
