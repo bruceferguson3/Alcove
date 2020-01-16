@@ -101,19 +101,11 @@ export default class ListingForm extends React.Component {
     // let saveableFileList = [];
     // newFileList.map((file) => saveableFileList.push(file));
 
-    handleSubmit(e) {
-        //send current state to database and render new product page
-        e.preventDefault();
-
-
-        // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
-
-        this.setState({ data: { ...this.state.data, dateSubmitted: date } }, () => {
-            // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
-            //     .then(() => console.log('Sent to server'))
-            //     .catch((err) => console.log(err))
-        })
-
+    handleSubmit() {
+        console.log(this.state);
+        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { body: {data: this.state.data}})
+            .then(() => console.log('Sent to server'))
+            .catch((err) => console.log(err))
     }
 
     getCoords() {
