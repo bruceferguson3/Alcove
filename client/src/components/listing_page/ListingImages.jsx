@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import ListingModal from './ListingModal.jsx';
-import './listingImages.css';
+import './Listing.css';
 
 import dummyData from "./dummyData.js";
 // import logo from '../../../dist/assets/alcove.jpg';
@@ -75,10 +75,10 @@ const ListingImages = props => {
               borderRight: "1px solid #353b40"
             }}
           >
-            <img className="listingPicture" src={image1} />
+            <img className="listingPicture" src={image1} onClick={handleShow}/>
           </Col>
           <Col className="listingPictureContainer">
-            <img className="listingPicture" src={image2} />
+            <img className="listingPicture" src={image2} onClick={handleShow}/>
           </Col>
           <Col
             className="listingPictureContainer"
@@ -87,8 +87,16 @@ const ListingImages = props => {
             }}
           >
             <img className="listingPicture" src={image3} />
+            <Button onClick={handleShow} id="listingModalButton" className="img-overlay">
+              Launch the super cool modal!
+            </Button>
           </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }
