@@ -1,4 +1,4 @@
-describe('Step 1', function() {
+describe('Post Page Step 1', function() {
     beforeEach(() => {
         cy.visit('http://localhost:3030/post');
     });
@@ -12,7 +12,7 @@ describe('Step 1', function() {
     })
 })
 
-describe('Step 2', function() {
+describe('Post Page Step 2', function() {
     beforeEach(() => {
         cy.visit('http://localhost:3030/post')
         cy.get('img[id="postPropertyImage"]').click()
@@ -70,4 +70,11 @@ describe('Step 2', function() {
         cy.contains('Next').click()
         cy.contains('Contact Info')
     })
+})
+
+describe('Post Page Step 3', function() {
+    it('should navigate to step 4 on click', function() {
+
+    })
+    
 })

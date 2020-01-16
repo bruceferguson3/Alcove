@@ -76,7 +76,6 @@ export default class ListingForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.recordStateInfo = this.recordStateInfo.bind(this);
-        this.GetLocation = this.GetLocation.bind(this);
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
@@ -85,10 +84,6 @@ export default class ListingForm extends React.Component {
         this.getCoords = this.getCoords.bind(this);
 
     }
-
-    GetLocation() {
-
-    };
 
     loadImageFile() {
         let date = JSON.stringify(Date.now());
