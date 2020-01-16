@@ -15,11 +15,10 @@ export default class Results extends React.Component {
     super(props);
     this.state = {
       waitingForResults: false,
-      updatedListings: null,
-      updatedZipcode: null,
       filteredResults: null,
-      priceMin: 10,
-      priceMax: 20,
+      priceFilterActive: false,
+      priceMin: 5,
+      priceMax: 150,
       newZip: '',
     };
   };
@@ -42,27 +41,23 @@ export default class Results extends React.Component {
           console.log('Axios request success:', data);
           this.setState(
             {
-              updatedListings: listings,
-              updatedZipcode: newZip,
               newZip: '',
-              priceMin: 10,
-              priceMax: 20,
+              priceMin: 5,
+              priceMax: 150,
               waitingForResults: false,
-            },
-            () => this.applyFilters()
-          );
+            });
 
-          storeSearch(newZip, listings);
+          storeSearch(newZip, listings, () => this.applyFilters());
         })
         .catch(console.log);
     }
   };
 
   searchPrice() {
-    const { priceMin, priceMax, updatedZipcode } = this.state;
+    const { priceMin, priceMax } = this.state;
     const { api, queriedZip, storeSearch } = this.props;
     const queryParams = {
-      zip:  updatedZipcode || queriedZip,
+      zip: queriedZip,
       priceMin,
       priceMax,
     };
@@ -75,15 +70,12 @@ export default class Results extends React.Component {
         const filteredResults = data.data.map((item) => item.data);
         console.log('Price Filters', filteredResults);
 
-        this.setState(
-          {
-            updatedListings: filteredResults,
-            waitingForResults: false,
-          },
-          () => this.applyFilters()
-        );
-
-        storeSearch(queriedZip, filteredResults);
+        storeSearch(queriedZip, filteredResults, () => {
+          this.applyFilters();
+          this.setState({
+            waitingForResults: false
+          });
+        });
       })
       .catch(console.log);
   };
@@ -179,12 +171,10 @@ export default class Results extends React.Component {
   };
 
   applyFilters() {
-    const { updatedListings } = this.state;
     const { searchResults, activeFilters } = this.props;
 
-    const listings = updatedListings ? updatedListings : searchResults;
-    if (listings !== null) {
-      const filteredResults = filterResults(activeFilters, listings);
+    if (searchResults !== null) {
+      const filteredResults = filterResults(activeFilters, searchResults);
 
       this.setState({
         filteredResults,
@@ -198,7 +188,7 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
+    const { priceMin, priceMax, filteredResults, newZip, waitingForResults } = this.state;
     const { getSelectedListing, queriedZip, searchResults, searching, activeFilters } = this.props;
 
     const filters = activeFilters;
@@ -211,8 +201,6 @@ export default class Results extends React.Component {
 
     if (filteredResults) {
       listings = filteredResults;
-    } else if (updatedListings) {
-      listings = updatedListings;
     } else if(searchResults) {
       listings = searchResults;
     }
@@ -260,7 +248,7 @@ export default class Results extends React.Component {
                       className="results-spinner"
                     />
                   ) : (
-                    updatedZipcode || queriedZip || '-'
+                    queriedZip || '-'
                   )}
                 </div>
               </div>
@@ -295,8 +283,8 @@ export default class Results extends React.Component {
                 maxChange={this.maxChange.bind(this)}
                 priceMin={priceMin}
                 priceMax={priceMax}
-                maxMatch={this.maxMatch.bind(this)}
                 minMatch={this.minMatch.bind(this)}
+                maxMatch={this.maxMatch.bind(this)}
               />
               <Button
                 variant="info"

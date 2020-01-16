@@ -89,11 +89,11 @@ export default class App extends React.Component {
     }
   };
 
-  storeSearch(zip, listings) {
+  storeSearch(zip, listings, callback) {
     this.setState({
       searchResults: listings,
       queriedZipCode: zip,
-    })
+    }, callback);
   };
 
   changeFilter(category, value, callback) {
