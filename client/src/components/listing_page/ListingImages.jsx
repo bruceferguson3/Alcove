@@ -12,6 +12,14 @@ const ListingImages = props => {
 
   let images = dummyData.test.data.thumbs;
 
+  let image1 = images[0];
+  let image2 = images[1];
+  let image3 = images[2];
+  let image4 = images[3];
+  let image5 = images[4];
+
+
+
   if (images.length === 1) {
     return (
       <Container>
@@ -48,31 +56,30 @@ const ListingImages = props => {
           <Col style={{
             'border-right': '1px solid #353b40',
             'border-bottom': '1px solid #353b40',
-            'border-top': '1px solid #353b40'
+            'border-top': '1px solid #353b40',
+            'background-image': `url(${image1})`,
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover'
            }}>
-            <img src={images[0]} style={{
-              'max-height': '100%',
-              'max-width': '100%'
-            }}/>
           </Col>
           <Col style={{
             'border-right': '1px solid #353b40',
             'border-bottom': '1px solid #353b40',
-            'border-top': '1px solid #353b40'
+            'border-top': '1px solid #353b40',
+            'background-image': `url(${image2})`,
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover'
           }}>
-            <img src={images[1]} style={{
-              'max-height': '100%',
-              'max-width': '100%'
-            }}/>
           </Col>
           <Col style={{
             'border-bottom': '1px solid #353b40',
-            'border-top': '1px solid #353b40'
+            'border-top': '1px solid #353b40',
+            'background-image': `url(${image3})`,
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover',
+            'height': '275px'
           }}>
-            <img src={images[2]} style={{
-              'max-height': '100%',
-              'max-width': '100%'
-            }}/>
+
           </Col>
         </Row>
       </Container>
