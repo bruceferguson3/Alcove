@@ -104,18 +104,17 @@
   color: #be97c6;
 }
 
-#results-zip-change {
+#results-zip-change, #results-price-change {
   background-color: #be97c6;
   border-color: #be97c6;
 }
 
-#results-zip-change:hover {
+#results-zip-change:hover, #results-price-change:hover {
   background-color: #97849b;
 }
 
-#results-zip-change:active {
+#results-zip-change:active, #results-price-change:active {
   background-color: #97849b;
-  outline: violet;
 }
 
 .filter-title {
