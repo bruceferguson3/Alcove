@@ -82,6 +82,7 @@ export default class ListingForm extends React.Component {
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
         this.loadImageFile = this.loadImageFile.bind(this);
         this.validateStepThree = this.validateStepThree.bind(this);
+        this.getCoords = this.getCoords.bind(this);
 
     }
 

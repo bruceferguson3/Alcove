@@ -71,27 +71,3 @@ describe('Step 2', function() {
         cy.contains('Contact Info')
     })
 })
-
-describe('should search by zip code from landing page', function() {
-
-    it('should not navigate away if zip code is invalid', function() {
-        cy.visit('http://localhost:3030')
-
-        cy.get('input[placeholder="Enter zip code"]').type('hello')
-
-        cy.contains('Find Storage Units').click()
-
-        cy.url().should('eq', 'http://localhost:3030/')
-    })
-
-    it('should navigate to results page if valid zip code entered', function() {
-        cy.visit('http://localhost:3030')
-
-        cy.get('input[placeholder="Enter zip code"]').type('77437')
-
-        cy.contains('Find Storage Units').click()
-
-        cy.url().should('eq', 'http://localhost:3030/results')
-    })
-
-})
