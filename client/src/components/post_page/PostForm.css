@@ -149,6 +149,7 @@
   color: #fff;
   border-radius: 6px;
   z-index: 1;
+  padding: 1rem;
 }
 
 .tsTooltipContainer:hover .tsTooltip {
@@ -158,6 +159,7 @@
 .tsTooltipContainer {
   position: relative;
   right: 2rem;
+  top: .25rem;
 }
 
 .tsDropdownWrapper {
