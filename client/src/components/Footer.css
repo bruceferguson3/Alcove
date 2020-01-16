@@ -1,6 +1,5 @@
 .footer {
     height: 36vh;
-    margin-top: 56px;
 }
 
 #footerNavBar {
@@ -16,7 +15,7 @@
 #footerBrand {
     font-family: Georgia, serif;
     font-size: 45px;
-    padding-left: 35px;
+    padding-left: 3%;
 }
 
 #footerDescription {
@@ -35,8 +34,14 @@
     padding-left: 50px;
 }
 
-.footerDescriptionParagraphs {
+#footerDescriptionParagraph1 {
     font-family: Georgia, serif;
+    padding-top: 5%;
+}
+
+#footerDescriptionParagraph2 {
+    font-family: Georgia, serif;
+
 }
 
 .headerLinks {

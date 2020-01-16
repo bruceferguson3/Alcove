@@ -2,11 +2,13 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import './PostForm.css'
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 const Step2 = (props) => {
 
     return(
-        <Form.Row className='step2Container container'>
+        <Card className='step2Container'>
+            <Card.Header className='step2Header'>Contact Info</Card.Header>
             <Form.Group  controlId="validationCustom01" className='step2Input'>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
@@ -79,10 +81,9 @@ const Step2 = (props) => {
             <span className='step2Button'>
                 <Button onClick={props.nextButton}>Next</Button>
             </span>
-
             </Form.Group>
 
-        </Form.Row>
+        </Card>
 
     )
 };

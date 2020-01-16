@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-app.get('/zip', (req, res) => {
+/*app.get('/zip', (req, res) => {
   let q = req.query.zip;
   axios.get(`http://alcoveapi.us-east-2.elasticbeanstalk.com/getall?zip=${q}`)
       .then( response => {
@@ -20,9 +20,7 @@ app.get('/zip', (req, res) => {
       .catch( error => {
         console.log(error);
       })
-});
-
-
+});*/
 
 // PUT ALL OTHER ROUTES ABOVE THIS ENDPOINT (It's for allowing page refreshes to certain endpoints with react-router)
 app.get('/*', (req, res) => {

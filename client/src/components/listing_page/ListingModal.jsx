@@ -1,16 +1,17 @@
 import React from "react";
 import { Modal, Carousel, Container, Row, Col } from "react-bootstrap";
 import "./Listing.css";
-import ListingCarouselItem from "./ListingCarouselItem.jsx";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faChevronLeft,
-//   faChevronRight
-// } from "@fortawesome/free-solid-svg-icons";
 
 const ListingModal = ({ images, show, handleClose }) => {
   const carouselItems = images.map((src, idx) => {
-    return <ListingCarouselItem src={src} key={idx + "carouselItem"} />;
+    return (
+      <Carousel.Item>
+        <img className="tsTestPic" src={src} />
+        <Carousel.Caption>
+          <p>HI</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    )
   });
 
   return (

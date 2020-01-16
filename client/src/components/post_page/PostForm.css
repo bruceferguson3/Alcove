@@ -3,17 +3,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50em;
+    height: 100%;
+    min-height: 60em;
+    max-height: 100em;
     width: 100%;
+    background: linear-gradient(#f882bd, #be97c6);
 }
 
 .postFormContainer {
     width: 60%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid aqua 5px;
+    border: solid #8661C1 5px;
     padding: 1em;
+    margin-top: 1em;
+    background-color: white;
 }
 
 .step2Container {
@@ -21,13 +27,37 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border: white;
 }
 
 .step2Input {
     justify-content: flex-start;
 }
 
-#postItemOrPropertyImagesContainer {
+.step2Button {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.step2Header {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 1em;
+}
+
+#postItemOrPropertyImagesContainer1 {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+}
+
+#postItemOrPropertyImagesContainer2 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 5%;
@@ -55,9 +85,10 @@
     justify-content: space-evenly;
 }
 
-.step2Button {
-    margin-left: 1em;
-    margin-right: 1em;
+
+
+.tsFiltersDropdowns button{
+    width: 11rem;
 }
 
 .tsDropdownContainer {
@@ -66,7 +97,39 @@
     flex-direction: column;
 }
 
-.tsDropdownText {
-    height: 1.5rem;
+.tsDropdownText a {
+    text-align: center;
+}
 
+.tsDropdownText {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.tsFilterCheckboxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#step1ContainerCard {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#step1UL {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    vertical-align: middle;
+}
+
+#extraSpaceContainer {
+    margin: auto;
+}
+
+#extraItemContainer {
+    margin: auto;
 }
