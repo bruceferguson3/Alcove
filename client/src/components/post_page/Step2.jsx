@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 const Step2 = (props) => {
 
     return(
-        <Form>
+        <Form id="step2Form" action="#" onSubmit={props.nextButton}>
             <Card className='step2Container'>
                 <Card.Header className='step2Header'>Contact Info</Card.Header>
                     <Form.Group controlId="validationCustom01" className='step2Input'>
@@ -23,7 +23,7 @@ const Step2 = (props) => {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             required
-                            type="text"
+                            type="email"
                             placeholder="Email"
                             onChange={(e) => props.recordStateInfo(e, 'userInfo', 'email')}
                         />
@@ -32,7 +32,9 @@ const Step2 = (props) => {
                         <Form.Label>Phone</Form.Label>
                         <Form.Control
                             required
-                            type="text"
+                            type="number"
+                            minLength='10'
+                            maxLength='10'
                             placeholder="Phone"
                             onChange={(e) => props.recordStateInfo(e, 'userInfo', 'phone')}
                         />
@@ -56,7 +58,9 @@ const Step2 = (props) => {
                         <Form.Label>Zipcode</Form.Label>
                         <Form.Control
                             required
-                            type="text"
+                            type="number"
+                            minLength='5'
+                            maxLength='5'
                             placeholder="Zipcode"
                             onChange={(e) => props.recordStateInfo(e, '', 'zip')}
                         />
@@ -68,7 +72,7 @@ const Step2 = (props) => {
                                 <span className="input-group-text">$</span>
                             </div>
                             <input onChange={(e) => props.recordStateInfo(e, 'filters', 'price')}
-                                type="text" className="form-control" aria-label="Amount (to the nearest dollar)" required/>
+                                type="number" className="form-control" aria-label="Amount (to the nearest dollar)" required/>
                             <div className="input-group-append">
                                 <span className="input-group-text">.00</span>
                             </div>
@@ -79,7 +83,7 @@ const Step2 = (props) => {
                             <Button onClick={props.backButton}>Back</Button>
                         </span>
                         <span className='step2Button'>
-                            <Button type='submit' onSubmit={props.nextButton}>Next</Button>
+                            <Button type='submit'>Next</Button>
                         </span>
                     </Form.Group>
 

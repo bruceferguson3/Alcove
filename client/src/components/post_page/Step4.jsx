@@ -33,7 +33,7 @@ const Step4 = (props) => {
                 <input id="postImageLoader" multiple accept='.jpg, .jpeg, .png' onChange={props.loadImageFile} type='file'></input>
             </div>
             <div>
-                <Button onClick={props.backButton} >Cancel</Button>
+                <Button onClick={props.backButton} >Back</Button>
                 <Button onClick={handleShow} >Preview Your Post</Button>
                 <Modal
                     size="lg"
