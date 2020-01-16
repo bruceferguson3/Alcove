@@ -66,10 +66,24 @@ export default class App extends React.Component {
     }
   };
 
+  resultsChange(queriedZipCode, searchResults) {
+    this.setState({
+      queriedZipCode,
+      searchResults,
+    });
+  }
+
   landingZipChange(newZip) {
     if (newZip.match(/\d+/) || newZip === '') {
       this.setState({ newZip });
     }
+  };
+
+  storeSearch(listings, zip) {
+    this.setState({
+      searchResults: listings,
+      queriedZipCode: zip,
+    })
   };
 
   changePath(path) {
@@ -91,19 +105,19 @@ export default class App extends React.Component {
       <div>
         <Router>
           <Header
-            search={this.landingSearch.bind(this)}
-            change={this.landingZipChange.bind(this)}
-            changePath={this.changePath.bind(this)}
             newZip={newZip}
             path={this.state.path}
+            search={this.landingSearch.bind(this)}
+            changePath={this.changePath.bind(this)}
+            change={this.landingZipChange.bind(this)}
           />
           <Switch>
             <Route exact path="/">
               <LandingPage
+                newZip={newZip}
                 search={this.landingSearch.bind(this)}
                 changePath={this.changePath.bind(this)}
                 change={this.landingZipChange.bind(this)}
-                newZip={newZip}
               />
             </Route>
             <Route path="/features">
@@ -111,10 +125,11 @@ export default class App extends React.Component {
             </Route>
             <Route path="/results">
               <Results
-                searchResults={searchResults}
-                queriedZip={queriedZipCode}
-                searching={currentlySearching}
                 api={baseURL}
+                queriedZip={queriedZipCode}
+                searchResults={searchResults}
+                searching={currentlySearching}
+                storeSearch={this.storeSearch.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
               />
             </Route>

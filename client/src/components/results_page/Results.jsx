@@ -10,10 +10,6 @@ import ResultsList from './ResultsList.jsx';
 import './Results.css';
 import filterResults from './filters/filterResults.js'
 
-// REMOVE LATER //
-import dummyData from './dummyData.js';
-// ============ //
-
 export default class Results extends React.Component {
   constructor(props) {
     super(props);
@@ -39,15 +35,12 @@ export default class Results extends React.Component {
   };
 
   componentDidMount() {
-    const { searchResults } = this.props;
-    this.setState({
-      listings: searchResults,
-    });
+    this.applyFilters();
   };
 
   searchZip() {
-    const { newZip, waitingForResults } = this.state;
-    const { api } = this.props;
+    const { newZip } = this.state;
+    const { api, storeSearch } = this.props;
     if (newZip.match(/\d\d\d\d\d/)) {
       console.log('Sending Axios request.');
       this.setState({
@@ -68,6 +61,8 @@ export default class Results extends React.Component {
             },
             () => this.applyFilters()
           );
+
+          storeSearch(newZip, listings);
         })
         .catch(console.log);
     }
@@ -75,7 +70,7 @@ export default class Results extends React.Component {
 
   searchPrice() {
     const { priceMin, priceMax, updatedZipcode } = this.state;
-    const { api, queriedZip } = this.props;
+    const { api, queriedZip, storeSearch } = this.props;
     const queryParams = {
       zip:  updatedZipcode || queriedZip,
       priceMin,
@@ -97,6 +92,8 @@ export default class Results extends React.Component {
           },
           () => this.applyFilters()
         );
+
+        storeSearch(queriedZip, filteredResults);
       })
       .catch(console.log);
   };
@@ -289,7 +286,11 @@ export default class Results extends React.Component {
       <Container className="mb-5 pb-5">
         {searching || waitingForResults ? (
           <div className="flex-centered active-filters no-filters-active">
-            <Spinner animation="border" variant="info" className="results-spinner" />
+            <Spinner
+              animation="border"
+              variant="info"
+              className="results-spinner"
+            />
           </div>
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
@@ -301,11 +302,11 @@ export default class Results extends React.Component {
           </div>
         ) : listings.length === 0 ? (
           <div className="flex-centered active-filters no-filters-active">
-            <h2>No Results Found</h2>
+            <h2 className="results-banner-title">No Results Found</h2>
           </div>
         ) : (
           <div className="flex-centered active-filters no-filters-active">
-            <h2>Listings in Your Area</h2>
+            <h2 className="results-banner-title">Listings in Your Area</h2>
             <p>Add Filters to Refine Your Search!</p>
           </div>
         )}
@@ -318,11 +319,15 @@ export default class Results extends React.Component {
                 </label>
                 <div id="results-current-zip">
                   {searching || waitingForResults ? (
-                    <Spinner animation="border" variant="info" className="results-spinner" />
+                    <Spinner
+                      animation="border"
+                      variant="info"
+                      className="results-spinner"
+                    />
                   ) : (
                     updatedZipcode || queriedZip || '-'
                   )}
-                </div> 
+                </div>
               </div>
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
