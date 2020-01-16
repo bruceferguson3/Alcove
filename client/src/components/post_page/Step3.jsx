@@ -9,7 +9,8 @@ const Step3 = ({
   recordFilterInfo,
   recordStateInfo,
   indoors,
-  nextButton,
+  validateStepThree,
+  invalidStepThree,
   backButton
 }) => {
   let sizeText;
@@ -82,48 +83,54 @@ const Step3 = ({
   //   </div>
   // );
 
-  if (size === 0) {
-    sizeText = "";
-  } else if (size === 1) {
-    sizeText = "Extra Small";
+  if (size === 1) {
+    sizeText = <a>Extra Small</a>;
   } else if (size === 2) {
-    sizeText = "Small";
+    sizeText = <a>Small</a>;
   } else if (size === 3) {
-    sizeText = "Medium";
+    sizeText = <a>Medium</a>;
   } else if (size === 4) {
-    sizeText = "Large";
+    sizeText = <a>Large</a>;
   } else if (size === 5) {
-    sizeText = "Extra Large";
+    sizeText = <a>Extra Large</a>;
+  } else if (size === 0 && invalidStepThree) {
+    sizeText = <a className="tsAlert">Fill me in</a>;
+  } else if (size === 0) {
+    sizeText = "";
   }
 
-  if (easeOfAccess === 0) {
-    frequencyText = "";
-  } else if (easeOfAccess === 1) {
-    frequencyText = "Never";
+  if (easeOfAccess === 1) {
+    frequencyText = <a>Never</a>;
   } else if (easeOfAccess === 2) {
-    frequencyText = "Infrequent";
+    frequencyText = <a>Infrequent</a>;
   } else if (easeOfAccess === 3) {
-    frequencyText = "Frequent";
+    frequencyText = <a>Frequent</a>;
+  } else if (easeOfAccess === 0 && invalidStepThree) {
+    frequencyText = <a className="tsAlert">Fill me in</a>;
+  } else if (easeOfAccess === 0) {
+    frequencyText = "";
   }
 
-  if (duration === 0) {
-    durationText = "";
-  } else if (duration === 1) {
-    durationText = "Less than a week";
+  if (duration === 1) {
+    durationText = <a>Less than a week</a>;
   } else if (duration === 2) {
-    durationText = "1 to 4 weeks";
+    durationText = <a>1 to 4 weeks</a>;
   } else if (duration === 3) {
-    durationText = "1 to 3 months";
+    durationText = <a>1 to 3 months</a>;
   } else if (duration === 4) {
-    durationText = "3 to 6 months";
+    durationText = <a>3 to 6 months</a>;
   } else if (duration === 5) {
-    durationText = "More than 6 months";
+    durationText = <a>More than 6 months</a>;
+  } else if (duration === 0 && invalidStepThree) {
+    durationText = <a className="tsAlert">Fill me in</a>;
+  } else if (duration === 0) {
+    durationText = "";
   }
 
   return (
-    <Card style={{ width: "100%", height: "100%" }}>
-      <Card.Header>Options</Card.Header>
+    <div>
       <div className="tsDropdownContainer">
+        <h4>Options</h4>
         <div className="tsDropdownWrapper">
           <div className="tsTooltipContainer">
             <div className="tsTooltipIcon"></div>
@@ -185,9 +192,7 @@ const Step3 = ({
             </Dropdown.Item>
           </DropdownButton>
         </div>
-        <div className="tsDropdownText">
-          <a>{sizeText}</a>
-        </div>
+        <div className="tsDropdownText">{sizeText}</div>
         <div className="tsDropdownContainer">
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
@@ -233,9 +238,7 @@ const Step3 = ({
             </DropdownButton>
           </div>
         </div>
-        <div className="tsDropdownText">
-          <a>{frequencyText}</a>
-        </div>
+        <div className="tsDropdownText">{frequencyText}</div>
         <div className="tsDropdownContainer">
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
@@ -298,9 +301,7 @@ const Step3 = ({
             </DropdownButton>
           </div>
         </div>
-        <div className="tsDropdownText">
-          <a>{durationText}</a>
-        </div>
+        <div className="tsDropdownText">{durationText}</div>
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul>
@@ -386,13 +387,13 @@ const Step3 = ({
             </Button>
           </span>
           <span className="step2Button">
-            <Button onClick={nextButton} variant="info">
+            <Button onClick={validateStepThree} variant="info">
               Next
             </Button>
           </span>
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 
