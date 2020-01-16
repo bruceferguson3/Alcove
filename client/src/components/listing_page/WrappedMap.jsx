@@ -11,7 +11,6 @@ const WrappedMap = withScriptjs(withGoogleMap((props) =>
       radius={300}
       options={{ strokeColor: "#194553" }}
     />
-    <Marker defaultCenter={{ lat: props.lat, lng: props.lng }} />
   </GoogleMap>
 ))
 
