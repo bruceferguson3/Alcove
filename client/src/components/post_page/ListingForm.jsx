@@ -87,7 +87,9 @@ export default class ListingForm extends React.Component {
     };
 
     loadImageFile() {
+        let date = JSON.stringify(Date.now());
         var data = this.state.data;
+        data.dateSubmitted = date;
         data.thumbs = Array.from(document.getElementById('postImageLoader').files)
         this.setState({
             data: data
@@ -103,7 +105,6 @@ export default class ListingForm extends React.Component {
         //send current state to database and render new product page
         e.preventDefault();
 
-        let date = JSON.stringify(Date.now());
         this.GetLocation();
 
         // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
