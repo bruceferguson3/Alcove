@@ -20,6 +20,7 @@ export default class Results extends React.Component {
     this.state = {
       applyFilters: false,
       updatedListings: null,
+      updatedZipcode: null,
       filteredResults: null,
       priceMin: 10,
       priceMax: 20,
@@ -46,15 +47,21 @@ export default class Results extends React.Component {
 
   searchZip() {
     const { newZip } = this.state;
-    const { updateLocation } = this.props;
-    updateLocation(newZip);
-    // if(newZip.match(/\d\d\d\d\d/)) {
-    //   Axios.get(`${api}/getall`, { params: { zip: newZip } })
-    //     .then((data) => {
-    //       console.log(data);
-    //     })
-    //     .catch(console.log);
-    // }
+    const { api } = this.props;
+    if (newZip.match(/\d\d\d\d\d/)) {
+      console.log('Sending Axios request.');
+      Axios.get(`${api}/getall`, { params: { zip: newZip } })
+        .then((data) => {
+          const listings = data.data.map((listing) => listing.data);
+          console.log('Axios request success:', data);
+          this.setState({
+            updatedListings: listings,
+            updatedZipcode: newZip,
+            newZip: ''
+          });
+        })
+        .catch(console.log);
+    }
   };
 
   searchPrice() {
@@ -73,7 +80,7 @@ export default class Results extends React.Component {
 
         this.setState(
           {
-            updatedListings: null, // FIX ME 
+            updatedListings: filteredResults,
           },
           () => this.applyFilters()
         );
@@ -220,14 +227,17 @@ export default class Results extends React.Component {
   };
 
   applyFilters() {
-    const { filters } = this.state;
+    const { filters, updatedListings } = this.state;
     const { searchResults } = this.props;
 
-    const filteredResults = filterResults(filters, searchResults);
+    const listings = updatedListings ? updatedListings : searchResults;
+    if (listings !== null) {
+      const filteredResults = filterResults(filters, listings);
 
-    this.setState({
-      filteredResults,
-    });
+      this.setState({
+        filteredResults,
+      });
+    }
   };
 
   clearFilter(filterType) {
@@ -244,7 +254,7 @@ export default class Results extends React.Component {
   };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, newZip } = this.state;
+    const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode } = this.state;
     const { zip } = filters;
     const { getSelectedListing, queriedZip, searchResults } = this.props;
 
@@ -254,7 +264,9 @@ export default class Results extends React.Component {
 
     let listings = [];
 
-    if (searchResults) {
+    if (updatedListings) {
+      listings = updatedListings;
+    } else if(searchResults) {
       listings = searchResults;
     }
 
@@ -262,7 +274,6 @@ export default class Results extends React.Component {
       <Container className="mb-5 pb-5">
         {filtersSelected ? (
           <div className="flex-centered active-filters">
-            <h4 className="results">Selected Filters</h4>
             <span className="results-span">(Click to remove)</span>
             <FiltersDisplay
               filters={filters}
@@ -270,18 +281,19 @@ export default class Results extends React.Component {
             />
           </div>
         ) : (
-          <div className="flex-centered active-filters">
-            <h4>Select Filters to Refine Your Search</h4>
+          <div className="flex-centered active-filters no-filters-active">
+            <h2>Listings in Your Area</h2>
+            <p>Add Filters to Refine Your Search!</p>
           </div>
         )}
         <Row>
-          <Col>
+          <Col id="filter-col">
             <div className="results-filter-bar flex-column">
               <div id="current-zip-container" className="flex-column">
                 <label className="filter-section-title">
                   Current Zip Code:
                 </label>
-                <div id="results-current-zip">{queriedZip || 'None'}</div>
+                <div id="results-current-zip">{updatedZipcode || queriedZip || '-'}</div>
               </div>
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
@@ -292,12 +304,17 @@ export default class Results extends React.Component {
                 value={newZip}
                 maxLength="5"
                 onChange={() => this.locationChange(event.target.value)}
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter') {
+                    this.searchZip();
+                  }
+                }}
               />
               <Button
                 variant="info"
-                onClick={() => this.searchZip()}
                 id="results-zip-change"
                 className="mb-1 mt-1"
+                onClick={() => this.searchZip()}
               >
                 Update Zip Code
               </Button>
@@ -475,7 +492,7 @@ export default class Results extends React.Component {
                   <p>
                     It appears the area you searched has no current listings.
                   </p>
-                  <p>Please enter a new zip code or location.</p>
+                  <p>Please enter a new zip code.</p>
                 </Jumbotron>
               ) : (
                 <ResultsList

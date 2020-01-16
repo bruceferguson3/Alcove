@@ -29,6 +29,7 @@ export default class App extends React.Component {
 
   getSelectedListing(currentListing) {
     // REPLACE WITH ID DURING REFACTOR
+    // ===============================
     // Axios.get(`${baseURL}/getone`, { params: { id } })
     //   .then(data => {
     //     console.log('Data From Get Request', data);
@@ -39,8 +40,8 @@ export default class App extends React.Component {
     });
   }
 
-  landingSearch(newZip) {
-    newZip = newZip || this.state.newZip;
+  landingSearch() {
+    const { newZip } = this.state;
     if (newZip.match(/\d\d\d\d\d/)) {
       console.log('Sending Axios request.');
       Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
@@ -108,7 +109,6 @@ export default class App extends React.Component {
                 queriedZip={queriedZipCode}
                 api={baseURL}
                 getSelectedListing={this.getSelectedListing.bind(this)}
-                updateLocation={this.landingSearch.bind(this)}
               />
             </Route>
             <Route path="/post">
