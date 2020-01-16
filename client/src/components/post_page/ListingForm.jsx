@@ -214,7 +214,34 @@ export default class ListingForm extends React.Component {
 
     backToStep1() {
         this.setState({
-            cardCounter: 0
+            data: {
+                userInfo: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    textAllowed: false
+                },
+                dateSubmitted: '',
+                filters: {
+                    climateControl: false,
+                    size: 0,
+                    easeOfAccess: 0,
+                    locked: false,
+                    standAlone: false,
+                    price: 0.00,
+                    indoors: false,
+                    duration: 0,
+                    type: ''
+                },
+                description: '',
+                thumbs: [],
+                title: '',
+                reviews: '',
+                geoLocation: [],
+                zip: ''
+            },
+            cardCounter: 0,
+            invalidStepThree: false
         })
     }
 

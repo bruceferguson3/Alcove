@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import Card from "react-bootstrap/Card";
 
@@ -15,7 +16,9 @@ const Step5 = (props) => {
                     <Button onClick={props.backToStep1}>Post another item?</Button>
                 </span>
                 <span className='step2Button'>
-                    <Button>Home Page</Button>
+                    <LinkContainer to='/'>
+                        <Button>Home Page</Button>
+                    </LinkContainer>
                 </span>
             </div>
 
