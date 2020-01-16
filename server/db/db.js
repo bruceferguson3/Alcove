@@ -60,8 +60,9 @@ let getByPrice = (zip, min, max) => {
 };
 
 let postListing = params => {
-    console.log(params);
-  let newDocument = new mongooseConfig(params);
+  // console.log("DB: ", params);
+  let newObject = { data: params }
+  let newDocument = new mongooseConfig(newObject);
   return new Promise((resolve, reject) => {
     newDocument.save(err => {
       if (err) {
@@ -69,7 +70,10 @@ let postListing = params => {
       }
 
       resolve("Success for post");
-    });
+    })
+      .catch(err => {
+        console.log(err);
+      });
   });
 };
 

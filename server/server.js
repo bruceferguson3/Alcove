@@ -26,21 +26,21 @@ app.get("/getall", (req, res) => {
   let zip = req.query.zip;
   let allZips = [];
   zipRoutes.getZipsWithinRadius(zip, 10)
-      .then( response => {
-          response.forEach( e => {
-              allZips.push(e[0])
-          });
-      })
-      .then( () => {
-          db.getAll(allZips)
-              .then(response => {
-                  res.send(response);
-              })
-              .catch(error => {
-                  console.log("Error on get all: ", error);
-                  res.end(error);
-              })
-      })
+    .then(response => {
+      response.forEach(e => {
+        allZips.push(e[0])
+      });
+    })
+    .then(() => {
+      db.getAll(allZips)
+        .then(response => {
+          res.send(response);
+        })
+        .catch(error => {
+          console.log("Error on get all: ", error);
+          res.end(error);
+        })
+    })
 });
 
 app.get("/getbyprice", (req, res) => {
@@ -48,27 +48,26 @@ app.get("/getbyprice", (req, res) => {
   let min = req.query.priceMin;
   let max = req.query.priceMax;
   let allZips = [];
-    zipRoutes.getZipsWithinRadius(zip, 10)
-        .then( response => {
-            response.forEach( e => {
-                allZips.push(e[0])
-            });
+  zipRoutes.getZipsWithinRadius(zip, 10)
+    .then(response => {
+      response.forEach(e => {
+        allZips.push(e[0])
+      });
+    })
+    .then(() => {
+      db.getByPrice(allZips, min, max)
+        .then(response => {
+          res.send(response);
         })
-        .then( () => {
-            db.getByPrice(allZips, min, max)
-                .then(response => {
-                    res.send(response);
-                })
-                .catch(error => {
-                    console.log("Error on get all: ", error);
-                    res.end(error);
-                })
+        .catch(error => {
+          console.log("Error on get all: ", error);
+          res.end(error);
         })
+    })
 });
 
 app.post("/postlisting", (req, res) => {
-    console.log(req.body.data);
-    let newDocument = req.body.data;
+  let newDocument = req.body.data;
 
   db.postListing(newDocument)
     .then(response => {
@@ -80,7 +79,7 @@ app.post("/postlisting", (req, res) => {
 });
 
 app.get('/getcoords', (req, res) => {
-    let zip = req.query.zip;
+  let zip = req.query.zip;
 })
 
 app.listen(process.env.PORT || 5500, function () {
