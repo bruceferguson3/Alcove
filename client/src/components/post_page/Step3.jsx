@@ -12,7 +12,10 @@ const Step3 = ({
   validateStepThree,
   invalidStepThree,
   backButton,
-  storage
+  storage,
+  locked,
+  standAlone,
+  climateControl
 }) => {
   let sizeText;
   let durationText;
@@ -273,7 +276,8 @@ const Step3 = ({
               className="form-check-input"
               type="checkbox"
               id="defaultCheck6"
-              onClick={e =>
+              checked={!!locked}
+              onChange={e =>
                 recordStateInfo(e, "filters", "locked", "defaultCheck6")
               }
             />
@@ -284,6 +288,7 @@ const Step3 = ({
               className="form-check-input"
               type="checkbox"
               id="defaultCheck7"
+              checked={!!standAlone}
               onChange={e =>
                 recordStateInfo(e, "filters", "standAlone", "defaultCheck7")
               }
@@ -296,6 +301,7 @@ const Step3 = ({
               type="checkbox"
               id="indoors"
               value={indoors}
+              checked={!!indoors}
               onChange={e => recordFilterInfo(e, "Indoors", e.target.value)}
             />
             <label className="form-check-label">{indoorsPrompt}</label>
@@ -308,8 +314,9 @@ const Step3 = ({
                     className="custom-control-input"
                     value={true}
                     id="climateControl"
+                    checked={!!climateControl}
                     onChange={e =>
-                      recordStateInfo(e, "filters", "climateControl")
+                      recordFilterInfo(e, "climateControl")
                     }
                   />
                   <label
@@ -326,8 +333,9 @@ const Step3 = ({
                     className="custom-control-input"
                     value={false}
                     id="climateControl2"
+                    checked={!!!climateControl}
                     onChange={e =>
-                      recordStateInfo(e, "filters", "climateControl")
+                      recordFilterInfo(e, "climateControl")
                     }
                   />
                   <label

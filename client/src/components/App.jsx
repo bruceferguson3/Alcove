@@ -7,6 +7,7 @@ import Listing from './listing_page/Listing.jsx';
 import ListingForm from './post_page/ListingForm.jsx';
 import Results from './results_page/Results.jsx';
 import Features from './features_page/featuresPage.jsx';
+import Teams from './Teams.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import PreviewPage from './preview_page/PreviewPage.jsx';
@@ -149,6 +150,9 @@ export default class App extends React.Component {
             <Route path="/features">
               <Features />
             </Route>
+            <Route path="/teams">
+              <Teams changePath={this.changePath.bind(this)} />
+            </Route>
             <Route path="/results">
               <Results
                 api={baseURL}
@@ -160,6 +164,7 @@ export default class App extends React.Component {
                 storeSearch={this.storeSearch.bind(this)}
                 changeFilter={this.changeFilter.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
+                changePath={this.changePath.bind(this)}
               />
             </Route>
             <Route path="/post">
