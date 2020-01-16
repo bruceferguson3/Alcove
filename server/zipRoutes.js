@@ -52,6 +52,9 @@ function getLocationFromZip(zipCode){
         .then( response => {
         return response.data;
     })
+       .catch( error => {
+           console.log(error);
+       })
 }
 
 function getZipFromCityState(city, state){

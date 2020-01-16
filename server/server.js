@@ -94,8 +94,23 @@ app.post("/postlisting", (req, res) => {
 });
 
 app.get('/getcoords', (req, res) => {
-    let zip = req.query.zip
-})
+    let zip = req.query.zip;
+    let coordsArr = [];
+    zipRoutes.getLocationFromZip(zip.toString())
+        .then( coords => {
+            if(!coords || coords.length === 0){
+                return
+            } else {
+                coordsArr = [coords.lat.toString(), coords.lng.toString()];
+            }
+        })
+        .then( () => {
+            res.send(coordsArr);
+        })
+        .catch( error => {
+            console.log(error);
+        })
+});
 
 app.listen(process.env.PORT || 5500, function () {
   console.log("listening on port 5500!");
