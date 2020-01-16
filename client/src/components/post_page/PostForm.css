@@ -159,3 +159,9 @@
   color: red !important;
   font-weight: 600;
 }
+
+.progress {
+  height: 5vh;
+  width: 50vw;
+  margin-bottom: 1%;
+}
