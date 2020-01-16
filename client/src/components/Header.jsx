@@ -31,8 +31,8 @@ const Header = ({ change, search, changePath, path, newZip }) => {
             <IndexLinkContainer to="/">
               <Nav.Link onClick={() => changePath('/')}>Home</Nav.Link>
             </IndexLinkContainer>
-            <LinkContainer to="/about">
-              <Nav.Link onClick={() => changePath('/about')}>About</Nav.Link>
+            <LinkContainer to="/teams">
+              <Nav.Link onClick={() => props.changePath('/teams')}>Our Team</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/features">
               <Nav.Link onClick={() => changePath('/features')}>Features</Nav.Link>
@@ -43,36 +43,37 @@ const Header = ({ change, search, changePath, path, newZip }) => {
           </Nav>
           {path !== '/' ? (
             <Form inline>
-              <FormControl 
-                type="text" 
-                placeholder="Enter zip code" 
+              <FormControl
+                type="text"
+                placeholder="Enter zip code"
                 className="mr-sm-2 it-search"
                 value={newZip}
                 maxLength="5"
-                onChange={(event) => {
+                onChange={event => {
                   change(event.target.value);
                 }}
-                onKeyPress={(event) => {
-                  if(event.key === 'Enter') {
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
                     event.preventDefault();
                     const shouldRoute = search();
-                    if(shouldRoute) {
+                    if (shouldRoute) {
                       history.push('/results');
                       changePath('/results');
                     }
                   }
                 }}
               />
-              <Button 
-                variant="primary" 
+              <Button
+                variant="primary"
                 className="it-btn-header it-btn-primary"
                 onClick={() => {
                   const shouldRoute = search();
-                  if(shouldRoute) {
+                  if (shouldRoute) {
                     history.push('/results');
                     changePath('/results');
                   }
-                }}>
+                }}
+              >
                 Find Items/Units
               </Button>
               <LinkContainer to="/post">
