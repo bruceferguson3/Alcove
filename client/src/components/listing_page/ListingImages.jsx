@@ -4,7 +4,7 @@ import ListingModal from './ListingModal.jsx';
 import './listingImages.css';
 
 import dummyData from "./dummyData.js";
-import logo from '../../../dist/assets/alcove.jpg';
+// import logo from '../../../dist/assets/alcove.jpg';
 
 const ListingImages = props => {
   const [show, setShow] = useState(false);
