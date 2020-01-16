@@ -90,7 +90,7 @@ export default class ListingForm extends React.Component {
         let date = JSON.stringify(Date.now());
         var data = this.state.data;
         data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files);
         this.setState({
             data: data
         })
@@ -118,10 +118,13 @@ export default class ListingForm extends React.Component {
 
     getCoords() {
         console.log(this.state.data.zip);
+
         axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip }})
             .then((coords) => {
+                var data = this.state.data;
+                data.geoLocation = coords.data;
                 console.log(coords.data);
-                this.setState({ geoLocation:  coords.data})
+                this.setState({data: data})
             })
             .catch((err) => console.log(err))
     }
