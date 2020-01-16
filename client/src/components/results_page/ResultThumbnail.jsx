@@ -5,7 +5,7 @@ import './Results.css';
 
 const ResultThumbnail = ({ listing, getSelectedListing }) => {
   const isSpace = listing.filters.type === 'space';
-  const border = isSpace ? '3px solid skyblue' : '3px solid purple';
+  const border = isSpace ? '3px solid skyblue' : '3px solid #be97c6';
 
   return (
     <Card
