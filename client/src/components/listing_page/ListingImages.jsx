@@ -15,12 +15,12 @@ const ListingImages = props => {
   if (images.length === 1) {
     return (
       <Container>
-        <Row>
+        <Row style={{ border: '1px solid purple'}}>
           <Col md={3}></Col>
-          <Col md={6}>
+          <Col md={6} style={{ border: '1px solid purple'}}>
             <img src={images[0]} style={{ height: '12rem'}}/>
           </Col>
-          <Col md={3}></Col>
+          <Col md={3} style={{ border: '1px solid purple'}}></Col>
         </Row>
       </Container>
     );
@@ -29,11 +29,11 @@ const ListingImages = props => {
   if (images.length === 2) {
     return (
       <Container>
-        <Row>
-          <Col>
+        <Row style={{ border: '1px solid #353b40'}}>
+          <Col style={{ border: '1px solid #353b40'}}>
             <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
-          <Col>
+          <Col style={{ border: '1px solid #353b40'}}>
             <img src={images[1]} style={{ height: '12rem' }}/>
           </Col>
         </Row>
@@ -45,14 +45,34 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col>
-            <img src={images[0]} style={{ height: '12rem' }}/>
+          <Col style={{
+            'border-right': '1px solid #353b40',
+            'border-bottom': '1px solid #353b40',
+            'border-top': '1px solid #353b40'
+           }}>
+            <img src={images[0]} style={{
+              'max-height': '100%',
+              'max-width': '100%'
+            }}/>
           </Col>
-          <Col>
-            <img src={images[1]} style={{ height: '12rem' }}/>
+          <Col style={{
+            'border-right': '1px solid #353b40',
+            'border-bottom': '1px solid #353b40',
+            'border-top': '1px solid #353b40'
+          }}>
+            <img src={images[1]} style={{
+              'max-height': '100%',
+              'max-width': '100%'
+            }}/>
           </Col>
-          <Col>
-            <img src={images[2]} style={{ height: '12rem' }}/>
+          <Col style={{
+            'border-bottom': '1px solid #353b40',
+            'border-top': '1px solid #353b40'
+          }}>
+            <img src={images[2]} style={{
+              'max-height': '100%',
+              'max-width': '100%'
+            }}/>
           </Col>
         </Row>
       </Container>
@@ -61,25 +81,25 @@ const ListingImages = props => {
 
   if (images.length >= 5) {
     return (
-      <Container>
-        <Row>
-          <Col md={6}>
+      <Container style={{ border: '1px solid purple'}}>
+        <Row style={{ border: '1px solid purple'}}>
+          <Col md={6} style={{ border: '1px solid purple'}}>
             <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
-          <Col md={6}>
-            <Row>
-              <Col md={6}>
+          <Col md={6} style={{ border: '1px solid purple'}}>
+            <Row style={{ border: '1px solid purple'}}>
+              <Col md={6} style={{ border: '1px solid purple'}}>
                 <img src={images[1]} style={{ height: '6rem' }}/>
               </Col>
-              <Col md={6}>
+              <Col md={6} style={{ border: '1px solid purple'}}>
                 <img src={images[2]} style={{ height: '6rem' }}/>
               </Col>
             </Row>
-            <Row>
-              <Col md={6}>
+            <Row style={{ border: '1px solid purple'}}>
+              <Col md={6} style={{ border: '1px solid purple'}}>
                 <img src={images[3]} style={{ height: '6rem' }}/>
               </Col>
-              <Col md={6}>
+              <Col md={6} style={{ border: '1px solid purple'}}>
                 <img src={images[4]} style={{ height: '6rem' }}/>
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
