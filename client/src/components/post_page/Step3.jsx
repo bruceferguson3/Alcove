@@ -121,139 +121,180 @@ const Step3 = ({
   }
 
   return (
-    <Card style={{ width: "25rem", height: "30rem" }}>
+    <Card style={{ width: "100%", height: "100%" }}>
       <Card.Header>Options</Card.Header>
       <div className="tsDropdownContainer">
-        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersSizeDropdown" title="Size">
-          <Dropdown.Item
-            data-value={1}
-            onClick={e => {
-              recordFilterInfo(e, "Size", e.target.dataset.value);
-            }}
-            href="#/action-1"
+        <div className="tsDropdownWrapper">
+          <div className="tsTooltipContainer">
+            <div className="tsTooltipIcon"></div>
+            <span className="tsTooltip">
+              Choose the relative size of your item here. Small is an area about
+              the size of a pantry, medium a garage, large a yard...
+            </span>
+          </div>
+          <DropdownButton
+            className="tsFiltersDropdowns"
+            id="tsFiltersSizeDropdown"
+            title="Size"
           >
-            Extra Small
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={2}
-            onClick={e => {
-              recordFilterInfo(e, "Size", e.target.dataset.value);
-            }}
-            href="#/action-2"
+            <Dropdown.Item
+              data-value={1}
+              onClick={e => {
+                recordFilterInfo(e, "Size", e.target.dataset.value);
+              }}
+              href="#/action-1"
+            >
+              Extra Small
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={2}
+              onClick={e => {
+                recordFilterInfo(e, "Size", e.target.dataset.value);
+              }}
+              href="#/action-2"
+            >
+              Small
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={3}
+              onClick={e => {
+                recordFilterInfo(e, "Size", e.target.dataset.value);
+              }}
+              href="#/action-3"
+            >
+              Medium
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={4}
+              onClick={e => {
+                recordFilterInfo(e, "Size", e.target.dataset.value);
+              }}
+              href="#/action-4"
+            >
+              Large
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={5}
+              onClick={e => {
+                recordFilterInfo(e, "Size", e.target.dataset.value);
+              }}
+              href="#/action-5"
+            >
+              Extra Large
+            </Dropdown.Item>
+          </DropdownButton>
+        </div>
+        <div className="tsDropdownText">
+          <a>{sizeText}</a>
+        </div>
+        <div className="tsDropdownContainer">
+          <div className="tsTooltipContainer">
+            <div className="tsTooltipIcon"></div>
+            <span className="tsTooltip">
+              Choose the relative size of your item here. Small is an area about
+              the size of a pantry, medium a garage, large a yard...
+            </span>
+          </div>
+          <DropdownButton
+            className="tsFiltersDropdowns"
+            id="tsFiltersFrequencyDropdown"
+            title="Access Frequency"
           >
-            Small
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={3}
-            onClick={e => {
-              recordFilterInfo(e, "Size", e.target.dataset.value);
-            }}
-            href="#/action-3"
+            <Dropdown.Item
+              data-value={1}
+              onClick={e => {
+                recordFilterInfo(e, "Frequency", e.target.dataset.value);
+              }}
+              href="#/action-1"
+            >
+              Never
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={2}
+              onClick={e => {
+                recordFilterInfo(e, "Frequency", e.target.dataset.value);
+              }}
+              href="#/action-2"
+            >
+              Infrequent
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={3}
+              onClick={e => {
+                recordFilterInfo(e, "Frequency", e.target.dataset.value);
+              }}
+              href="#/action-3"
+            >
+              Frequent
+            </Dropdown.Item>
+          </DropdownButton>
+        </div>
+        <div className="tsDropdownText">
+          <a>{frequencyText}</a>
+        </div>
+        <div className="tsDropdownContainer">
+          <div className="tsTooltipContainer">
+            <div className="tsTooltipIcon"></div>
+            <span className="tsTooltip">
+              Choose the relative size of your item here. Small is an area about
+              the size of a pantry, medium a garage, large a yard...
+            </span>
+          </div>
+          <DropdownButton
+            className="tsFiltersDropdowns"
+            id="tsFiltersDurationDropdown"
+            title="Duration"
           >
-            Medium
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={4}
-            onClick={e => {
-              recordFilterInfo(e, "Size", e.target.dataset.value);
-            }}
-            href="#/action-4"
-          >
-            Large
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={5}
-            onClick={e => {
-              recordFilterInfo(e, "Size", e.target.dataset.value);
-            }}
-            href="#/action-5"
-          >
-            Extra Large
-          </Dropdown.Item>
-        </DropdownButton>
-        <div className="tsDropdownText"><a>{sizeText}</a></div>
-      </div>
-      <div className="tsDropdownContainer">
-        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersFrequencyDropdown" title="Access Frequency">
-          <Dropdown.Item
-            data-value={1}
-            onClick={e => {
-              recordFilterInfo(e, "Frequency", e.target.dataset.value);
-            }}
-            href="#/action-1"
-          >
-            Never
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={2}
-            onClick={e => {
-              recordFilterInfo(e, "Frequency", e.target.dataset.value);
-            }}
-            href="#/action-2"
-          >
-            Infrequent
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={3}
-            onClick={e => {
-              recordFilterInfo(e, "Frequency", e.target.dataset.value);
-            }}
-            href="#/action-3"
-          >
-            Frequent
-          </Dropdown.Item>
-        </DropdownButton>
-        <div className="tsDropdownText"><a>{frequencyText}</a></div>
-      </div>
-      <div className="tsDropdownContainer">
-        <DropdownButton className="tsFiltersDropdowns" id="tsFiltersDurationDropdown" title="Duration">
-          <Dropdown.Item
-            data-value={1}
-            onClick={e => {
-              recordFilterInfo(e, "Duration", e.target.dataset.value);
-            }}
-            href="#/action-1"
-          >
-            Less than a week
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={2}
-            onClick={e => {
-              recordFilterInfo(e, "Duration", e.target.dataset.value);
-            }}
-            href="#/action-2"
-          >
-            1 to 4 weeks
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={3}
-            onClick={e => {
-              recordFilterInfo(e, "Duration", e.target.dataset.value);
-            }}
-            href="#/action-3"
-          >
-            1 to 3 months
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={4}
-            onClick={e => {
-              recordFilterInfo(e, "Duration", e.target.dataset.value);
-            }}
-            href="#/action-4"
-          >
-            3 to 6 months
-          </Dropdown.Item>
-          <Dropdown.Item
-            data-value={5}
-            onClick={e => {
-              recordFilterInfo(e, "Duration", e.target.dataset.value);
-            }}
-            href="#/action-5"
-          >
-            More than 6 months
-          </Dropdown.Item>
-        </DropdownButton>
-        <div className="tsDropdownText"><a>{durationText}</a></div>
+            <Dropdown.Item
+              data-value={1}
+              onClick={e => {
+                recordFilterInfo(e, "Duration", e.target.dataset.value);
+              }}
+              href="#/action-1"
+            >
+              Less than a week
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={2}
+              onClick={e => {
+                recordFilterInfo(e, "Duration", e.target.dataset.value);
+              }}
+              href="#/action-2"
+            >
+              1 to 4 weeks
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={3}
+              onClick={e => {
+                recordFilterInfo(e, "Duration", e.target.dataset.value);
+              }}
+              href="#/action-3"
+            >
+              1 to 3 months
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={4}
+              onClick={e => {
+                recordFilterInfo(e, "Duration", e.target.dataset.value);
+              }}
+              href="#/action-4"
+            >
+              3 to 6 months
+            </Dropdown.Item>
+            <Dropdown.Item
+              data-value={5}
+              onClick={e => {
+                recordFilterInfo(e, "Duration", e.target.dataset.value);
+              }}
+              href="#/action-5"
+            >
+              More than 6 months
+            </Dropdown.Item>
+          </DropdownButton>
+        </div>
+        <div className="tsDropdownText">
+          <a>{durationText}</a>
+        </div>
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul>

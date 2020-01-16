@@ -99,3 +99,28 @@
     align-items: center;
     justify-content: center;
 }
+
+.tsTooltipIcon {
+    background-image: url("../../../dist/assets/question.png");
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.tsTooltipContainer .tsTooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: #fff;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+.tsTooltipContainer:hover .tsTooltip {
+    visibility: visible;
+}
+
+.tsDropdownWrapper {
+    display: flex;
+}
