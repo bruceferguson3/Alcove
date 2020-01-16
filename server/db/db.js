@@ -60,6 +60,7 @@ let getByPrice = (zip, min, max) => {
 };
 
 let postListing = params => {
+    console.log(params);
   let newDocument = new mongooseConfig(params);
   return new Promise((resolve, reject) => {
     newDocument.save(err => {
