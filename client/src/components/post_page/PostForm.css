@@ -134,6 +134,8 @@
   width: 1.5rem;
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .tsTooltipContainer .tsTooltip {
@@ -151,4 +153,9 @@
 
 .tsDropdownWrapper {
   display: flex;
+}
+
+.tsAlert {
+  color: red !important;
+  font-weight: 600;
 }
