@@ -83,7 +83,9 @@ app.get("/getbyprice", (req, res) => {
 });
 
 app.post("/postlisting", (req, res) => {
-  let newDocument = req.body.data.data;
+    console.log(req.body.data);
+    let newDocument = req.body.data;
+
   db.postListing(newDocument)
     .then(response => {
       res.end("Posted");
@@ -111,6 +113,7 @@ app.get('/getcoords', (req, res) => {
             console.log(error);
         })
 });
+
 
 app.listen(process.env.PORT || 5500, function () {
   console.log("listening on port 5500!");

@@ -76,24 +76,21 @@ export default class ListingForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.recordStateInfo = this.recordStateInfo.bind(this);
-        this.GetLocation = this.GetLocation.bind(this);
         this.nextButton = this.nextButton.bind(this);
         this.backButton = this.backButton.bind(this);
         this.recordFilterInfo = this.recordFilterInfo.bind(this);
         this.loadImageFile = this.loadImageFile.bind(this);
         this.validateStepThree = this.validateStepThree.bind(this);
+        this.getCoords = this.getCoords.bind(this);
 
     }
 
-    GetLocation() {
-
-    };
 
     loadImageFile() {
         let date = JSON.stringify(Date.now());
         var data = this.state.data;
         data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
+        data.thumbs = Array.from(document.getElementById('postImageLoader').files);
         this.setState({
             data: data
         })
@@ -104,20 +101,24 @@ export default class ListingForm extends React.Component {
     // let saveableFileList = [];
     // newFileList.map((file) => saveableFileList.push(file));
 
-    handleSubmit(e) {
-        //send current state to database and render new product page
-        e.preventDefault();
+    handleSubmit() {
+        console.log(this.state);
+        axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', { body: {data: this.state.data}})
+            .then(() => console.log('Sent to server'))
+            .catch((err) => console.log(err))
+    }
 
-        this.GetLocation();
+    getCoords() {
+        console.log(this.state.data.zip);
 
-        // this.setState({ someProperty: { ...this.state.someProperty, flag: false} });
-
-        this.setState({ data: { ...this.state.data, dateSubmitted: date } }, () => {
-            // axios.post('http://alcoveapi.us-east-2.elasticbeanstalk.com/postlisting', {data: this.state})
-            //     .then(() => console.log('Sent to server'))
-            //     .catch((err) => console.log(err))
-        })
-
+        axios.get('http://alcoveapi.us-east-2.elasticbeanstalk.com/getcoords', { params: { zip: this.state.data.zip }})
+            .then((coords) => {
+                var data = this.state.data;
+                data.geoLocation = coords.data;
+                console.log(coords.data);
+                this.setState({data: data})
+            })
+            .catch((err) => console.log(err))
     }
 
 
@@ -215,7 +216,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
-                    <ProgressBar now={0} />
+                    <ProgressBar animated now={0} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
@@ -225,9 +226,9 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
-                    <ProgressBar now={25} />
+                    <ProgressBar animated now={25} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step2 nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
+                        <Step2 getCoords={this.getCoords} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                             zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
                                 name: this.state.data.userInfo.name,
                                 email: this.state.data.userInfo.email, phone: this.state.data.userInfo.phone, textAllowed: this.state.data.userInfo.textAllowed
@@ -239,9 +240,9 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
-                    <ProgressBar now={50} />
+                    <ProgressBar animated now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step3 invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
+                        <Step3 storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
                     </div>
                 </div>
             )
@@ -249,7 +250,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Please submit this form</h1>
-                    <ProgressBar now={75} />
+                    <ProgressBar animated now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
                     </div>

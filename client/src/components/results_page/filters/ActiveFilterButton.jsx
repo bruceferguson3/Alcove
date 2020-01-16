@@ -19,7 +19,7 @@ export default ActiveFilter;
 
 const filterDisplays = (filterType, filterValue) => {
   switch(filterType) {
-    case 'listingType':
+    case 'type':
       return filterValue === 'space' ? 'Showing Only Spaces' : 'Showing Only Items';
     case 'size':
       return `Size: ${filterSize(filterValue)}`;
@@ -28,7 +28,7 @@ const filterDisplays = (filterType, filterValue) => {
     case 'priceMax':
       return `Maximum Price $${filterValue}`;
     case 'easeOfAccess':
-      return `Access: ${filterFrequency(filterValue)}`;
+      return `Needed Access: ${filterFrequency(filterValue)}`;
     case 'locked':
       return 'Locked';
     case 'indoors':
