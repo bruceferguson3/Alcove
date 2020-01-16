@@ -12,15 +12,23 @@ const ListingImages = props => {
 
   let images = dummyData.test.data.thumbs;
 
+  let image1 = images[0];
+  let image2 = images[1];
+  let image3 = images[2];
+  let image4 = images[3];
+  let image5 = images[4];
+
+
+
   if (images.length === 1) {
     return (
       <Container>
-        <Row>
+        <Row style={{ border: '1px solid purple'}}>
           <Col md={3}></Col>
-          <Col md={6}>
-            <img src={images[0]} />
+          <Col md={6} style={{ border: '1px solid purple'}}>
+            <img src={images[0]} style={{ height: '12rem'}}/>
           </Col>
-          <Col md={3}></Col>
+          <Col md={3} style={{ border: '1px solid purple'}}></Col>
         </Row>
       </Container>
     );
@@ -29,12 +37,12 @@ const ListingImages = props => {
   if (images.length === 2) {
     return (
       <Container>
-        <Row>
-          <Col>
-            <img src={images[0]} />
+        <Row style={{ border: '1px solid #353b40'}}>
+          <Col style={{ border: '1px solid #353b40'}}>
+            <img src={images[0]} style={{ height: '12rem' }} />
           </Col>
-          <Col>
-            <img src={images[1]} />
+          <Col style={{ border: '1px solid #353b40'}}>
+            <img src={images[1]} style={{ height: '12rem' }}/>
           </Col>
         </Row>
       </Container>
@@ -45,14 +53,33 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col>
-            <img src={images[0]} />
+          <Col style={{
+            'border-right': '1px solid #353b40',
+            'border-bottom': '1px solid #353b40',
+            'border-top': '1px solid #353b40',
+            'background-image': `url(${image1})`,
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover'
+           }}>
           </Col>
-          <Col>
-            <img src={images[1]} />
+          <Col style={{
+            'border-right': '1px solid #353b40',
+            'border-bottom': '1px solid #353b40',
+            'border-top': '1px solid #353b40',
+            'background-image': `url(${image2})`,
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover'
+          }}>
           </Col>
-          <Col>
-            <img src={images[2]} />
+          <Col style={{
+            'border-bottom': '1px solid #353b40',
+            'border-top': '1px solid #353b40',
+            'background-image': `url(${image3})`,
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover',
+            'height': '275px'
+          }}>
+
           </Col>
         </Row>
       </Container>
@@ -61,18 +88,26 @@ const ListingImages = props => {
 
   if (images.length >= 5) {
     return (
-      <Container>
-        <Row>
-          <Col md={6}>{images[0]}</Col>
-          <Col md={6}>
-            <Row>
-              <Col md={6}>{images[1]}</Col>
-              <Col md={6}>{images[2]}</Col>
+      <Container style={{ border: '1px solid purple'}}>
+        <Row style={{ border: '1px solid purple'}}>
+          <Col md={6} style={{ border: '1px solid purple'}}>
+            <img src={images[0]} style={{ height: '12rem' }} />
+          </Col>
+          <Col md={6} style={{ border: '1px solid purple'}}>
+            <Row style={{ border: '1px solid purple'}}>
+              <Col md={6} style={{ border: '1px solid purple'}}>
+                <img src={images[1]} style={{ height: '6rem' }}/>
+              </Col>
+              <Col md={6} style={{ border: '1px solid purple'}}>
+                <img src={images[2]} style={{ height: '6rem' }}/>
+              </Col>
             </Row>
-            <Row>
-              <Col md={6}>{images[3]}</Col>
-              <Col md={6}>
-                {images[4]}
+            <Row style={{ border: '1px solid purple'}}>
+              <Col md={6} style={{ border: '1px solid purple'}}>
+                <img src={images[3]} style={{ height: '6rem' }}/>
+              </Col>
+              <Col md={6} style={{ border: '1px solid purple'}}>
+                <img src={images[4]} style={{ height: '6rem' }}/>
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
                 </Button>
