@@ -3,6 +3,8 @@ import { Button, Modal } from 'react-bootstrap';
 
 import dummyData from './dummyData.js';
 import PreviewListing from './PreviewListing.jsx';
+import Listing from '../listing_page/Listing.jsx';
+import './preview.css';
 
 const PreviewPage = () => {
   const [show, setShow] = useState(false);
@@ -12,12 +14,15 @@ const PreviewPage = () => {
 
   return (
     < >
+    <Button variant="primary" onClick={handleShow}>
+      Launch the preview modal.
+    </Button>
+
       <Modal
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
         show={show}
-        onHide={handleClose}
+        onHide={() => setShow(false)}
+        dialogClassName="test-modal"
+        aria-labelledby="example-custom-modal-styling-title"
       >
         <Modal.Header closeButton={handleClose}>
           <Modal.Title>Preview of Your Post</Modal.Title>
@@ -28,6 +33,7 @@ const PreviewPage = () => {
         </Modal.Body>
 
         <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Return to Form to Make Changes</Button>
           <Button variant="primary" onClick={handleClose}>Save Changes and Submit</Button>
         </Modal.Footer>
       </Modal>
@@ -36,9 +42,3 @@ const PreviewPage = () => {
 };
 
 export default PreviewPage;
-
-// <Button variant="primary" onClick={handleShow}>
-//   Launch the preview modal.
-// </Button>
-
-// <Button variant="secondary" onClick={handleClose}>Close</Button>
