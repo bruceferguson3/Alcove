@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './preview.css';
 
-import dummyData from "./dummyData.js";
-// import logo from '../../../dist/assets/alcove.jpg';
-
 const ListingImages = props => {
   // Some elements require both inline styling and the stylesheet due to border positioning.
 
-  let images = dummyData.test.data.thumbs;
+  let images = previewListing.data.thumbs;
 
   let image1 = images[0];
   let image2 = images[1];
@@ -22,7 +19,7 @@ const ListingImages = props => {
         <Row>
           <Col></Col>
           <Col md={6}>
-            <div id="emptyImage"></div>
+            <div id="emptyImage"><img src="../../../dist/assets/alcove.jpg" /></div>
           </Col>
           <Col></Col>
         </Row>
