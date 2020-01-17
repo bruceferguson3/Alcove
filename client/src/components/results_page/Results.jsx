@@ -21,7 +21,7 @@ export default class Results extends React.Component {
       waitingForResults: false,
       filteredResults: null,
       priceFilterActive: false,
-      priceMin: 5,
+      priceMin: 0,
       priceMax: 150,
       newZip: '',
     };
@@ -37,18 +37,18 @@ export default class Results extends React.Component {
     const { newZip } = this.state;
     const { api, storeSearch } = this.props;
     if (newZip.match(/\d\d\d\d\d/)) {
-      console.log('Sending Axios request.');
+      // console.log('Sending Axios request.');
       this.setState({
         waitingForResults: true
       });
       Axios.get(`${api}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
-          console.log('Axios request success:', data);
+          // console.log('Axios request success:', data);
           this.setState(
             {
               newZip: '',
-              priceMin: 5,
+              priceMin: 0,
               priceMax: 150,
               waitingForResults: false,
             });
@@ -70,11 +70,11 @@ export default class Results extends React.Component {
     this.setState({
       waitingForResults: true
     });
-    console.log('Sending price filter request');
+    // console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then(data => {
         const filteredResults = data.data.map(item => item.data);
-        console.log('Price Filters', filteredResults);
+        // console.log('Price Filters', filteredResults);
 
         storeSearch(queriedZip, filteredResults, () => {
           this.applyFilters();
@@ -222,7 +222,6 @@ export default class Results extends React.Component {
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
             <FiltersDisplay filters={filters} clearFilter={this.clearFilter.bind(this)} />
-            <span className="results-span">(Click to remove)</span>
           </div>
         ) : listings.length === 0 ? (
           <div className="flex-centered active-filters no-filters-active">
@@ -234,7 +233,7 @@ export default class Results extends React.Component {
             <p>Add Filters to Refine Your Search!</p>
           </div>
         )}
-        <Row>
+        <Row id="results-row">
           <Col id="filter-col">
             <div className="results-filter-bar flex-column">
               <div id="current-zip-container" className="flex-column">
@@ -268,7 +267,7 @@ export default class Results extends React.Component {
                   }
                 }}
               />
-              <Button variant="info" id="results-zip-change" className="mb-1 mt-1" onClick={() => this.searchZip()}>
+              <Button variant="info" id="results-zip-change" className="mb-1 mt-1 results-btn" onClick={() => this.searchZip()}>
                 Update Zip Code
               </Button>
               <h4 className="pricefilter-header filter-title">Search By Price:</h4>
@@ -284,7 +283,7 @@ export default class Results extends React.Component {
                 variant="info"
                 onClick={() => this.searchPrice()}
                 id="results-price-change"
-                className="mb-1"
+                className="mb-1 results-btn"
               >
                 Apply Price Range
               </Button>
@@ -301,10 +300,9 @@ export default class Results extends React.Component {
             </div>
           </Col>
           <Col>
-            <div id="results-list-wrapper">
               {listings.length === 0 ? (
                 <Jumbotron className="no-listings flex-column">
-                  <h4>Sorry!</h4>
+                  <h4 className="results-banner-title">Sorry!</h4>
                   <p>
                     It appears the area you searched has no listings meeting
                     your criteria.
@@ -316,7 +314,6 @@ export default class Results extends React.Component {
               ) : (
                 <ResultsList listings={filteredResults ? filteredResults : listings} getSelectedListing={getSelectedListing} />
               )}
-            </div>
           </Col>
         </Row>
       </Container>

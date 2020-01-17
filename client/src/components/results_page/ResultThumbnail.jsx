@@ -5,16 +5,19 @@ import './Results.css';
 
 const ResultThumbnail = ({ listing, getSelectedListing }) => {
   const isSpace = listing.filters.type === 'space';
-  const border = isSpace ? '3px solid #2fb5e9' : '3px solid #be97c6';
+  const border = isSpace ? '4px solid #2fb5e9' : '4px solid #be97c6';
 
   return (
     <Card
       className="p-3"
       style={{
         width: '18rem',
-        height: '27rem',
+        height: '24.6rem',
         border: border,
-        cursor: 'default'
+        cursor: 'default',
+        margin: '0',
+        marginLeft: '.5rem',
+        marginBottom: '.5rem'
       }}
     >
       {listing.thumbs ? (
@@ -38,14 +41,14 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         {listing.title}
       </Card.Title>
       <Card.Text className="results-thumbnail-description">
-        {listing.description.slice(0, 85) + '...'}
+        {listing.description.slice(0, 95) + '...'}
       </Card.Text>
       <LinkContainer
         className="thumbnail-button"
         to="/listing"
         onClick={() => getSelectedListing(listing)} // CHANGE TO ID ON REFACTOR
       >
-        <Button variant="info">See Full Listing</Button>
+        <Button variant="info" className="results-btn">View Listing</Button>
       </LinkContainer>
     </Card>
   );

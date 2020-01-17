@@ -27,13 +27,13 @@ export default class App extends React.Component {
       path: '/',
       activeFilters: {
         type: null,
-        climateControl: null,
+        duration: null,
         size: null,
         easeOfAccess: null,
+        indoors: null,
+        climateControl: null,
         locked: null,
         standAlone: null,
-        indoors: null,
-        duration: null
       },
     };
   };
@@ -54,14 +54,14 @@ export default class App extends React.Component {
   landingSearch() {
     const { newZip } = this.state;
     if (newZip.match(/\d\d\d\d\d/)) {
-      console.log('Sending Axios request.');
+      // console.log('Sending Axios request.');
       this.setState({
         currentlySearching: true,
       })
       Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
-          console.log('Axios request success:', data);
+          // console.log('Axios request success:', data);
           this.setState({
             searchResults: listings,
             queriedZipCode: newZip,
@@ -72,7 +72,7 @@ export default class App extends React.Component {
         .catch(console.log);
       return true;
     } else {
-      console.log('Axios request failure.');
+      // console.log('Axios request failure.');
       return false;
     }
   };
@@ -160,11 +160,11 @@ export default class App extends React.Component {
                 searchResults={searchResults}
                 searching={currentlySearching}
                 activeFilters={activeFilters}
+                changePath={this.changePath.bind(this)}
                 clearActive={this.clearActive.bind(this)}
                 storeSearch={this.storeSearch.bind(this)}
                 changeFilter={this.changeFilter.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
-                changePath={this.changePath.bind(this)}
               />
             </Route>
             <Route path="/post">

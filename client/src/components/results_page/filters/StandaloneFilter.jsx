@@ -2,7 +2,12 @@ import React from 'react';
 import { DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
 
 const StandaloneFilter = ({ standaloneChange }) => (
-  <DropdownButton as={ButtonGroup} title="Shared Storage?" variant="info">
+  <DropdownButton
+    as={ButtonGroup}
+    title="Shared Storage?"
+    variant="info"
+    className="results-btn"
+  >
     <Dropdown.Item onClick={() => standaloneChange(true)}>
       I Want Exclusive Storage
     </Dropdown.Item>

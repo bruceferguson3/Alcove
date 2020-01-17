@@ -10,7 +10,12 @@ const sizeOptions = [
 ];
 
 const SizeFilter = ({ sizeChange }) => (
-  <DropdownButton as={ButtonGroup} title="Size" variant="info">
+  <DropdownButton
+    as={ButtonGroup}
+    title="Size"
+    variant="info"
+    className="results-btn"
+  >
     {sizeOptions.map((item, index) => (
       <Dropdown.Item
         key={`size${index}`}

@@ -97,7 +97,7 @@ app.get('/getcoords', (req, res) => {
     zipRoutes.getLocationFromZip(zip)
         .then(coords => {
             if (coords && coords.lat) {
-              coordsArr = [coords.lat.toString(), coords.lng.toString()];
+              coordsArr = [coords.lat, coords.lng];
             }
         })
         .then(() => {

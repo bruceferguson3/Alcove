@@ -88,12 +88,31 @@ export default class ListingForm extends React.Component {
     }
 
     loadImageFile() {
-        let date = JSON.stringify(Date.now());
-        var data = this.state.data;
-        data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
+        let data = this.state.data;
+        data.dateSubmitted = Date.now().toString();
+        let imgStr;
+        let files = document.getElementById('postImageLoader').files;
+        let thumbsArr = [];
+
+        for (var file of files) {
+            let imageReader = new FileReader();
+            let type = file.type;
+
+            imageReader.readAsBinaryString(file);
+
+            imageReader.onload = () => {
+                let base64str = btoa(imageReader.result);
+                imgStr = `data:${type};base64, ` + base64str;
+                thumbsArr.push(imgStr);
+            }
+        }
+
+        data.thumbs = thumbsArr;
+
         this.setState({
             data: data
+        }, () => {
+            console.log(this.state);
         })
     };
 
@@ -250,7 +269,7 @@ export default class ListingForm extends React.Component {
         if (this.state.cardCounter === 0) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">What are your storage needs?</h1>
                     <ProgressBar animated now={0} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
@@ -260,7 +279,7 @@ export default class ListingForm extends React.Component {
         } else if (this.state.cardCounter === 1) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Contact Information</h1>
                     <ProgressBar animated now={25} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step2 getCoords={this.getCoords} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
@@ -274,7 +293,7 @@ export default class ListingForm extends React.Component {
         } else if (this.state.cardCounter === 2) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Features</h1>
                     <ProgressBar animated now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step3 climateControl={this.state.data.filters.climateControl} standAlone={this.state.data.filters.standAlone} locked={this.state.data.filters.locked} storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
@@ -284,7 +303,7 @@ export default class ListingForm extends React.Component {
         } else if (this.state.cardCounter === 3) {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Please submit this form</h1>
+                    <h1 className="display-4 mb-3">Posting Description</h1>
                     <ProgressBar animated now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}

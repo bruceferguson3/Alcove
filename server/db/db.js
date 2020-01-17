@@ -19,6 +19,7 @@ mongoose
     console.log("Error: ", error);
   });
 
+
 let getOne = params => {
   return new Promise((resolve, reject) => {
     mongooseConfig
@@ -31,6 +32,7 @@ let getOne = params => {
       });
   });
 };
+
 
 let getAll = params => {
   return new Promise((resolve, reject) => {
@@ -58,6 +60,8 @@ let getByPrice = (zip, min, max) => {
       });
   });
 };
+
+
 let postListing = params => {
     let newObj = { data: params }
     let newDocument = new mongooseConfig(newObj);

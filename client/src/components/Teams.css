@@ -1,3 +1,7 @@
+body {
+  font-family: 'Oxygen', sans-serif;
+}
+
 .row {
   margin-top: 50px;
 }
@@ -6,6 +10,27 @@
   margin-bottom: 50px;
 }
 
-body {
-  font-family: 'Oxygen', sans-serif;
+.it-pagetitle-jt {
+  padding: 1rem 2rem;
+  background: #be97c6;
+  color: #333;
+}
+
+.quack {
+  visibility: hidden !important;
+}
+
+.it-team-container {
+  background: #2e294e;
+}
+
+.it-btn-cards {
+  color: #be97c6;
+  border-color: #be97c6;
+  margin-right: 10px;
+}
+
+.it-btn-cards:hover {
+  background: #be97c6;
+  border-color: #be97c6;
 }

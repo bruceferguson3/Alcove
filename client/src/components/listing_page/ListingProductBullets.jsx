@@ -1,44 +1,75 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Popover, OverlayTrigger } from "react-bootstrap";
 import "./Listing.css";
 
 const ListingProductBullets = ({ bullets }) => {
+<<<<<<< HEAD
+=======
+  const popover = (
+    <Popover>
+      <Popover.Title as="h4">Icon Guide</Popover.Title>
+      <Popover.Content>
+        <Row>
+          <div id="tsClimateIcon"></div>
+          <div className="tsBulletText">Climate Controlled</div>
+        </Row>
+        <Row>
+          <div id="tsIndoorsIcon"></div>
+          <div className="tsBulletText">Indoors</div>
+        </Row>
+        <Row>
+          <div id="tsLockedIcon"></div>
+          <div className="tsBulletText">Locked</div>
+        </Row>
+        <Row>
+          <div id="tsOutdoorsIcon"></div>
+          <div className="tsBulletText">Outdoors</div>
+        </Row>
+        <Row>
+          <div id="tsSharedIcon"></div>
+          <div className="tsBulletText">Shared Space</div>
+        </Row>
+      </Popover.Content>
+    </Popover>
+  )
+
+>>>>>>> 00bc2f48f09191d61d4316312601bd1b923255cc
 
   const climateControl = bullets.climateControl ? (
-    <Row>
-      <div id="tsClimateIcon"></div>
+    <Row className="tsListingBulletOverride">
+      <div title="Space is climate controlled" id="tsClimateIcon"></div>
       <div className="tsBulletText">Climate Controlled</div>
     </Row>
   ) : (
-    ""
-  );
+      ""
+    );
   const indoorsOrOutdoors = bullets.indoors ? (
-    <Row>
-      <div id="tsIndoorsIcon"></div>
+    <Row className="tsListingBulletOverride">
+      <div title="Space is indoors" id="tsIndoorsIcon"></div>
       <div className="tsBulletText">Indoors</div>
     </Row>
   ) : (
-    <Row>
-      <div id="tsOutdoorsIcon"></div>
-      <div className="tsBulletText">Outdoors</div>
-    </Row>
-  );
+      <Row className="tsListingBulletOverride">
+        <div title="Space is outdoors" id="tsOutdoorsIcon"></div>
+        <div className="tsBulletText">Outdoors</div>
+      </Row>
+    );
   const locked = bullets.locked ? (
-    <Row>
-      <div id="tsLockedIcon"></div>
+    <Row className="tsListingBulletOverride">
+      <div title="Space is locked" id="tsLockedIcon"></div>
       <div className="tsBulletText">Locked</div>
     </Row>
   ) : (
-    ""
-  );
+      ""
+    );
   const shared = bullets.standAlone ? (
-    <Row>
-      <div id="tsSharedIcon"></div>
+    <Row className="tsListingBulletOverride">
+      <div title="Space is shared" id="tsSharedIcon"></div>
       <div className="tsBulletText">Shared Space</div>
     </Row>
   ) : (
-    ""
-  );
+      ""
+    );
 
   //TODO - Need to clarify what this is
   let easeOfAccessText;
@@ -82,19 +113,27 @@ const ListingProductBullets = ({ bullets }) => {
 
   return (
     <Container>
+      <Row className="tsListingBulletOverride">
+        <div id="tsListingTooltipContainer">
+          <h5>Features</h5>
+          <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+            <div title="Click me to learn more about the icons" className="tsTooltipIcon"></div>
+          </OverlayTrigger>
+        </div>
+      </Row>
       {climateControl}
       {indoorsOrOutdoors}
       {locked}
-      <Row>
-        <div id="tsSizeIcon"></div>
+      <Row className="tsListingBulletOverride">
+        <div title="Denotes relative space size" id="tsSizeIcon"></div>
         <div className="tsBulletText">{size}</div>
       </Row>
-      <Row>
-        <div id="tsDurationIcon"></div>
+      <Row className="tsListingBulletOverride">
+        <div title="Denotes how long space can be used for" id="tsDurationIcon"></div>
         <div>{durationText}</div>
       </Row>
-      <Row>
-        <div id="tsAccessIcon"></div>
+      <Row className="tsListingBulletOverride">
+        <div title="Denotes how many times user can access space" id="tsAccessIcon"></div>
         <div>{easeOfAccessText}</div>
       </Row>
       {shared}
