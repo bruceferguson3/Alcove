@@ -17,7 +17,7 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         cursor: 'default',
         margin: '0',
         marginLeft: '.5rem',
-        marginBottom: '.5rem'
+        marginBottom: '1rem'
       }}
     >
       {listing.thumbs ? (
@@ -35,7 +35,7 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         <span className="results-thumbnail-number">
           ${listing.filters.price.toFixed(2)}
         </span>{' '}
-        per day
+        / day
       </div>
       <Card.Title className="results-thumbnail-title">
         {listing.title}

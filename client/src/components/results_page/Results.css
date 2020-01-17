@@ -202,13 +202,23 @@
 }
 
 .btn-info:hover {
-  background-color: #419abd;
-  border-color: #419abd;
+  background-color: #3ca7d1;
+  border-color: #3ca7d1;
 }
 
 #results-list-container {
   display: flex;
   flex-flow: row wrap;
+}
+
+.filter-btn {
+  background-color: #fdd356;
+  border-color: #fdd356;
+}
+
+.filter-btn:hover {
+  background-color: #d8b856;
+  border-color: #d8b856;
 }
 
 .filter-x-image {
