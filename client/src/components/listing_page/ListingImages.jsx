@@ -14,7 +14,7 @@ const ListingImages = props => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  let images = dummyData.test.data.thumbs;
+  let images = props.images || dummyData.test.data.thumbs;
 
   let image1 = images[0];
   let image2 = images[1];
@@ -44,7 +44,7 @@ const ListingImages = props => {
             <div className="imageSpacerLeft"></div>
           </Col>
           <Col md={6} className="listingPictureContainer">
-            <img src={image1} className="listingPicture" onClick={handleShow}/>
+            <img src={image1} className="listingPicture" onClick={handleShow} />
           </Col>
           <Col>
             <div className="imageSpacerRight"></div>
@@ -64,9 +64,9 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col className="listingPictureContainer"
-          style={{
-            borderRight: "1px solid #353b40"
-          }}>
+            style={{
+              borderRight: "1px solid #353b40"
+            }}>
             <img src={images[0]} className="listingPicture" onClick={handleShow} />
           </Col>
           <Col className="listingPictureContainer">
@@ -92,10 +92,10 @@ const ListingImages = props => {
               borderRight: "1px solid #353b40"
             }}
           >
-            <img src={image1} className="listingPicture" onClick={handleShow}/>
+            <img src={image1} className="listingPicture" onClick={handleShow} />
           </Col>
           <Col className="listingPictureContainer">
-            <img src={image2} className="listingPicture" onClick={handleShow}/>
+            <img src={image2} className="listingPicture" onClick={handleShow} />
           </Col>
           <Col
             className="listingPictureContainer"
@@ -103,7 +103,8 @@ const ListingImages = props => {
               borderLeft: "1px solid #353b40"
             }}
           >
-            <img src={image3} className="listingPicture" onClick={handleShow}/>
+            <img src={image3} className="listingPicture" onClick={handleShow} />
+
             <Button onClick={handleShow} id="listingModalButton" className="img-overlay">
               Launch the super cool modal!
             </Button>
@@ -122,15 +123,16 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-        <Col
-          md={6}
-          className="listingPictureContainer"
-          style={{
-            borderRight: "1px solid #353b40",
-            height: "300px"
-          }}
-        >
-            <img src={image1} className="listingPicture" onClick={handleShow}/>
+          <Col
+            md={6}
+            className="listingPictureContainer"
+            style={{
+              borderRight: "1px solid #353b40",
+              height: "300px"
+            }}
+          >
+            <img src={image1} className="listingPicture" onClick={handleShow} />
+
           </Col>
           <Col md={6}>
             <Row>
@@ -142,7 +144,8 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image2} className="listingPicture" onClick={handleShow}/>
+                <img src={image2} className="listingPicture" onClick={handleShow} />
+
               </Col>
               <Col md={6}
                 md={6}
@@ -151,7 +154,8 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image3} className="listingPicture" onClick={handleShow}/>
+                <img src={image3} className="listingPicture" onClick={handleShow} />
+
               </Col>
             </Row>
             <Row>
@@ -163,7 +167,8 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image4} className="listingPicture" onClick={handleShow}/>
+                <img src={image4} className="listingPicture" onClick={handleShow} />
+
               </Col>
               <Col
                 md={6}
@@ -172,7 +177,7 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image5} className="listingPicture" onClick={handleShow}/>
+                <img src={image5} className="listingPicture" onClick={handleShow} />
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
                 </Button>

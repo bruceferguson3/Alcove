@@ -12,6 +12,9 @@ const Step5 = (props) => {
                 Your form has been submitted!
             </h1>
             <div>
+                <img src='https://www.kentstorage.com.au/wp/wp-content/themes/kentstorage/assets/images/icons/icon-feature-easier.png' id="postPropertyImage" />
+            </div>
+            <div id='submitPic'>
                 <span className='step2Button'>
                     <Button onClick={props.backToStep1}>Post another item?</Button>
                 </span>

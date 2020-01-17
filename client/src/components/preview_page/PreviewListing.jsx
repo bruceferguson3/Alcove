@@ -8,11 +8,12 @@ import ListingContactInfo from '../listing_page/ListingContactInfo.jsx';
 import Listing from '../listing_page/Listing.jsx';
 import ListingMap from '../listing_page/ListingMap.jsx';
 import ListingImages from '../listing_page/ListingImages.jsx';
+import './preview.css'
 
 class PreviewListing extends React.Component {
   constructor(props) {
     super(props);
-    let listing = dummyData.test.data;
+    let listing = props.stateData;
     this.state = { listing: listing };
   }
 
