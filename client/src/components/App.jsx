@@ -160,11 +160,11 @@ export default class App extends React.Component {
                 searchResults={searchResults}
                 searching={currentlySearching}
                 activeFilters={activeFilters}
+                changePath={this.changePath.bind(this)}
                 clearActive={this.clearActive.bind(this)}
                 storeSearch={this.storeSearch.bind(this)}
                 changeFilter={this.changeFilter.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
-                changePath={this.changePath.bind(this)}
               />
             </Route>
             <Route path="/post">
