@@ -6,6 +6,7 @@ import PreviewPage from '../preview_page/PreviewPage.jsx';
 import PreviewListing from '../preview_page/PreviewListing.jsx';
 
 const Step4 = (props) => {
+    console.log(props);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -51,7 +52,7 @@ const Step4 = (props) => {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => {handleClose();}}>Return to form to make changes</Button>
+                        <Button variant="secondary" onClick={() => {handleClose();}}>Return to Form to Make Changes</Button>
                         <Button variant="primary" onClick={() => {handleClose(); props.handleSubmit(); props.nextButton()}}>Save Changes and Submit</Button>
                     </Modal.Footer>
                 </Modal>

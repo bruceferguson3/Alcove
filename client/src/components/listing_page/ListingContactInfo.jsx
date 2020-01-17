@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from 'react-bootstrap';
 import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
 
-class ListingContactInfo extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  };
+const ListingContactInfo = ({ userInfo }) => {
+  console.log(dummyData);
+  userInfo = userInfo ? userInfo : dummyData.test.data.userInfo;
+  // const = [validated, setValidate] = useState(false);
+  //
+  // const handleSubmit = event => {
+  //   const form = event.currentTarget;
+  //
+  //   if (form.checkValidity() === false) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }
+  //
+  //   setValidated(true);
+  // };
 
-  render() {
-    let listing = dummyData.test.data;
-    let userName = listing.userInfo.name;
-    let userEmail = listing.userInfo.email;
-    let userPhone = listing.userInfo.phone;
-    let posterTextPermission = listing.userInfo.text;
+    let userName = userInfo.name;
+    let userEmail = userInfo.email;
+    let userPhone = userInfo.phone;
+    let posterTextPermission = userInfo.text;
     let userTextPermission = `I am giving ${userName} permission to contact me via text message.`
     let helpfulDetails = "Please include a description of your item(s) if you are looking for storage space or a description of your space if you have storage availability.  Feel free to attach a picture of your item(s) or storage space."
     let contactText;
@@ -42,7 +50,8 @@ class ListingContactInfo extends React.Component {
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
             <Form.Label>Enter your name:</Form.Label>
-            <Form.Control type="text" placeholder="Example:  Jane Doe" />
+            <Form.Control required type="text" placeholder="Example:  Jane Doe" />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your e-mail address:</Form.Label>
@@ -76,13 +85,12 @@ class ListingContactInfo extends React.Component {
             <Form.Label>Enter your message:</Form.Label>
             <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
           </Form.Group>
-          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" ref="fileUpload" />
+          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           <p>{contactText}</p>
           <Button variant="primary" block>Submit</Button>
         </Form>
       </ >
     );
-  };
 };
 
 export default ListingContactInfo;

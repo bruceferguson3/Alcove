@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./Listing.css";
 
 const ListingProductBullets = ({ bullets }) => {
+
   const climateControl = bullets.climateControl ? (
     <Row>
       <div id="tsClimateIcon"></div>

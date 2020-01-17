@@ -29,7 +29,7 @@ const ListingImages = props => {
             <div className="imageSpacerLeft"></div>
           </Col>
           <Col md={6} className="listingPictureContainer">
-            <img src="../../../dist/assets/alcove.jpg" className="listingPicture" onClick={handleShow}/>
+            <img src="../../assets/alcove-footer.jpg" className="listingPicture" onClick={handleShow}/>
           </Col>
           <Col>
             <div className="imageSpacerRight"></div>
