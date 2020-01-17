@@ -15,8 +15,13 @@
   margin-top: .5rem;
 }
 
+#results-row {
+  flex-wrap: nowrap;
+  margin-top: .8rem;
+}
+
 .results-banner-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -49,6 +54,7 @@
 .results-thumbnail-title {
   margin-bottom: 0;
   font-weight: bold;
+  font-size: .9rem;
 }
 
 .results-thumbnail-price {
@@ -66,7 +72,7 @@
 }
 
 .results-thumbnail-number {
-  font-size: .9rem;
+  font-size: 1.1rem;
   color: #37a321fb;
 }
 
@@ -80,7 +86,15 @@
 .results-thumbnail-description {
   position: absolute;
   left: 1rem;
-  top: 18rem;
+  right: 1rem;
+  top: 16.5rem;
+  font-size: .9rem;
+}
+
+.thumbnail-button {
+  position: absolute;
+  left: 1rem;
+  top: 21rem;
 }
 
 .results-thumbnail-description::before {
@@ -103,8 +117,17 @@
   margin-top: 1rem;
 }
 
+#current-zip-container {
+  padding: .5rem 1rem;
+  padding-bottom: .2rem;
+  border: 1px solid #be97c6;
+  border-radius: .5rem;
+  background-color: aliceblue;
+  margin: .5rem 0;
+}
+
 #results-current-zip {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #be97c6;
 }
@@ -147,12 +170,6 @@
   margin-top: .5rem;
 }
 
-.thumbnail-button {
-  position: absolute;
-  left: 1rem;
-  top: 23.3rem;
-}
-
 .thumbnail-no-image {
   height: 12rem;
   color: gray;
@@ -169,19 +186,15 @@
   margin-top: 2rem;
 }
 
-#current-zip-container {
-  padding: .5rem 1rem;
-  border: 1px solid #be97c6;
-  border-radius: .5rem;
-  background-color: aliceblue;
-  margin: .5rem 0;
-}
-
 .results-spinner {
   border-top: 4px solid #be97c6;
   border-right: 4px solid #be97c6;
   border-bottom: 4px solid #be97c6;
   border-left-color: transparent;
+}
+
+.results-btn, .results-btn button {
+  font-size: .9rem;
 }
 
 .btn-info {
@@ -192,4 +205,9 @@
 .btn-info:hover {
   background-color: #419abd;
   border-color: #419abd;
+}
+
+#results-list-container {
+  display: flex;
+  flex-flow: row wrap;
 }

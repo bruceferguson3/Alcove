@@ -21,7 +21,7 @@ export default class Results extends React.Component {
       waitingForResults: false,
       filteredResults: null,
       priceFilterActive: false,
-      priceMin: 5,
+      priceMin: 0,
       priceMax: 150,
       newZip: '',
     };
@@ -234,7 +234,7 @@ export default class Results extends React.Component {
             <p>Add Filters to Refine Your Search!</p>
           </div>
         )}
-        <Row>
+        <Row id="results-row">
           <Col id="filter-col">
             <div className="results-filter-bar flex-column">
               <div id="current-zip-container" className="flex-column">
@@ -268,7 +268,7 @@ export default class Results extends React.Component {
                   }
                 }}
               />
-              <Button variant="info" id="results-zip-change" className="mb-1 mt-1" onClick={() => this.searchZip()}>
+              <Button variant="info" id="results-zip-change" className="mb-1 mt-1 results-btn" onClick={() => this.searchZip()}>
                 Update Zip Code
               </Button>
               <h4 className="pricefilter-header filter-title">Search By Price:</h4>
@@ -284,7 +284,7 @@ export default class Results extends React.Component {
                 variant="info"
                 onClick={() => this.searchPrice()}
                 id="results-price-change"
-                className="mb-1"
+                className="mb-1 results-btn"
               >
                 Apply Price Range
               </Button>
@@ -301,7 +301,6 @@ export default class Results extends React.Component {
             </div>
           </Col>
           <Col>
-            <div id="results-list-wrapper">
               {listings.length === 0 ? (
                 <Jumbotron className="no-listings flex-column">
                   <h4 className="results-banner-title">Sorry!</h4>
@@ -316,7 +315,6 @@ export default class Results extends React.Component {
               ) : (
                 <ResultsList listings={filteredResults ? filteredResults : listings} getSelectedListing={getSelectedListing} />
               )}
-            </div>
           </Col>
         </Row>
       </Container>

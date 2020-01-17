@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 const ActiveFilter = ({ filterType, filterValue, clearFilter }) => (
   <Button
-    className="ml-2 mr-2 mb-3"
+    className="ml-2 mr-2 mb-3 results-btn filter-btn"
     variant="warning"
     data-filter={filterType}
     onClick={() => clearFilter(filterType)}
