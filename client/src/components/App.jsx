@@ -24,7 +24,17 @@ export default class App extends React.Component {
       queriedZipCode: null,
       searchResults: null,
       currentlySearching: false,
-      path: '/'
+      path: '/',
+      activeFilters: {
+        type: null,
+        climateControl: null,
+        size: null,
+        easeOfAccess: null,
+        locked: null,
+        standAlone: null,
+        indoors: null,
+        duration: null
+      },
     };
   };
 
@@ -67,10 +77,40 @@ export default class App extends React.Component {
     }
   };
 
+  resultsChange(queriedZipCode, searchResults) {
+    this.setState({
+      queriedZipCode,
+      searchResults,
+    });
+  }
+
   landingZipChange(newZip) {
     if (newZip.match(/\d+/) || newZip === '') {
       this.setState({ newZip });
     }
+  };
+
+  storeSearch(zip, listings, callback) {
+    this.setState({
+      searchResults: listings,
+      queriedZipCode: zip,
+    }, callback);
+  };
+
+  changeFilter(category, value, callback) {
+    const { activeFilters } = this.state;
+    activeFilters[category] = value;
+    this.setState({
+      activeFilters,
+    }, callback);
+  };
+
+  clearActive(filterType, callback) {
+    const { activeFilters } = this.state;
+    activeFilters[filterType] = null;
+    this.setState({
+      activeFilters,
+    }, callback);
   };
 
   changePath(path) {
@@ -86,25 +126,25 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { currentListing, searchResults, queriedZipCode, newZip, currentlySearching } = this.state;
+    const { currentListing, searchResults, queriedZipCode, newZip, currentlySearching, activeFilters } = this.state;
 
     return (
       <div>
         <Router>
           <Header
-            search={this.landingSearch.bind(this)}
-            change={this.landingZipChange.bind(this)}
-            changePath={this.changePath.bind(this)}
             newZip={newZip}
             path={this.state.path}
+            search={this.landingSearch.bind(this)}
+            changePath={this.changePath.bind(this)}
+            change={this.landingZipChange.bind(this)}
           />
           <Switch>
             <Route exact path="/">
               <LandingPage
+                newZip={newZip}
                 search={this.landingSearch.bind(this)}
                 changePath={this.changePath.bind(this)}
                 change={this.landingZipChange.bind(this)}
-                newZip={newZip}
               />
             </Route>
             <Route path="/features">
@@ -115,10 +155,14 @@ export default class App extends React.Component {
             </Route>
             <Route path="/results">
               <Results
-                searchResults={searchResults}
-                queriedZip={queriedZipCode}
-                searching={currentlySearching}
                 api={baseURL}
+                queriedZip={queriedZipCode}
+                searchResults={searchResults}
+                searching={currentlySearching}
+                activeFilters={activeFilters}
+                clearActive={this.clearActive.bind(this)}
+                storeSearch={this.storeSearch.bind(this)}
+                changeFilter={this.changeFilter.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
                 changePath={this.changePath.bind(this)}
               />
@@ -138,4 +182,4 @@ export default class App extends React.Component {
       </div>
     );
   }
-}
+};
