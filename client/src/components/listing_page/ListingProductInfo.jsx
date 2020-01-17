@@ -2,6 +2,7 @@ import React from "react";
 import ListingProductBullets from "./ListingProductBullets.jsx";
 import ListingMap from "./ListingMap.jsx";
 import { Container, Row, Col, Button, Popover, OverlayTrigger } from "react-bootstrap";
+
 import ListingProductDescription from "./ListingProductDescription.jsx";
 
 const ListingProductInfo = props => {

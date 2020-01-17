@@ -32,7 +32,7 @@ const Header = ({ change, search, changePath, path, newZip }) => {
               <Nav.Link onClick={() => changePath('/')}>Home</Nav.Link>
             </IndexLinkContainer>
             <LinkContainer to="/teams">
-              <Nav.Link onClick={() => props.changePath('/teams')}>Our Team</Nav.Link>
+              <Nav.Link onClick={() => changePath('/teams')}>Our Team</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/features">
               <Nav.Link onClick={() => changePath('/features')}>Features</Nav.Link>
