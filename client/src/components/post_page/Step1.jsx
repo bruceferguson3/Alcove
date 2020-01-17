@@ -7,7 +7,7 @@ const Step1 = (props) => {
             <ul id="step1UL" className='col'>
                 <div id='extraSpaceContainer'>
                     <h1 style={{textAlign: 'center'}}>
-                        Do you have extra space?
+                        Have extra space?
                     </h1>
                     <div id="postItemOrPropertyImagesContainer1">
                         <div onClick={(e) => {props.recordStateInfo(e, 'filters', 'type', 'postPropertyImage'); props.nextButton()}} id="postPropertyImageContainer">
@@ -17,7 +17,7 @@ const Step1 = (props) => {
                 </div>
                 <div id='extraItemContainer'>
                     <h1 style={{textAlign: 'center'}}>
-                        Do you need extra space?
+                        Need extra space?
                     </h1>
                     <div id="postItemOrPropertyImagesContainer2">
                         <div value='item' onClick={(e) => {props.recordStateInfo(e, 'filters', 'type', 'postItemImage'); props.nextButton()}} id="postItemImageContainer">
