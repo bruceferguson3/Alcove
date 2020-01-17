@@ -190,3 +190,21 @@
 .btn-info {
   background-color: #419abd;
 }
+
+#postPropertyImageContainer:hover img {
+  cursor: pointer;
+  transform: scale(1.25);
+}
+
+#postPropertyImageContainer img {
+  transition: transform .1s ease;
+}
+
+#postItemImageContainer img {
+  transition: transform .1s ease;
+}
+
+#postItemImageContainer:hover img {
+  cursor: pointer;
+  transform: scale(1.25);
+}

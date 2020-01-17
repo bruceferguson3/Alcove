@@ -15,7 +15,7 @@ const Step4 = (props) => {
                     Give your posting a short title
                 </div>
                 <div>
-                    <input onChange={(e) => {props.recordStateInfo(e, '', 'title')}} ></input>
+                    <input id="postTitle" onChange={(e) => {props.recordStateInfo(e, '', 'title')}} ></input>
                 </div>
             </div>
             <div>
@@ -23,7 +23,7 @@ const Step4 = (props) => {
                     Describe your item for renters
                 </div>
                 <div>
-                    <textarea style={{width: '30em', height: '10em'}} onChange={(e) => {props.recordStateInfo(e, '', 'description')}}></textarea>
+                    <textarea id="postDescription" style={{width: '30em', height: '10em'}} onChange={(e) => {props.recordStateInfo(e, '', 'description')}}></textarea>
                 </div>
             </div>
             <div>
@@ -34,7 +34,7 @@ const Step4 = (props) => {
             </div>
             <div>
                 <Button onClick={props.backButton} >Back</Button>
-                <Button onClick={handleShow} >Preview Your Post</Button>
+                <Button id="openPreviewButton" onClick={handleShow} >Preview Your Post</Button>
                 <Modal
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
