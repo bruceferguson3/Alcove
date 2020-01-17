@@ -45,9 +45,13 @@ const ListingProductInfo = props => {
           </OverlayTrigger> */}
           <h6>{props.listing.zip}</h6>
         </Col>
-        <Col md={1}><div className="listingDivider"></div></Col>
+        <Col md={1}>
+          {/* <div className="listingDivider"></div> */}
+        </Col>
         <Col>
-          <h4 id="listingPriceHeader">${props.listing.filters.price}/day</h4>
+          <div id="listingPriceContainer">
+            <span id="listingPriceHeader">${props.listing.filters.price}/day</span>
+          </div>
         </Col>
       </Row>
       <Row>

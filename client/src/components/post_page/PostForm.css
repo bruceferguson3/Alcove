@@ -17,6 +17,7 @@
   align-items: center;
   justify-content: center;
   border: solid #8661c1 5px;
+  border-radius: .7rem;
   background-color: white;
 }
 
