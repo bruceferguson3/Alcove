@@ -69,38 +69,13 @@ const Step4 = (props) => {
               <PreviewListing stateData={props.data} />
             </Modal.Body>
 
-<<<<<<< HEAD
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => {handleClose();}}>Return to Form to Make Changes</Button>
                         <Button variant="primary" onClick={() => {handleClose(); props.handleSubmit(); props.nextButton()}}>Save Changes and Submit</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
-=======
-            <Modal.Footer>
-              <Button
-                variant="info"
-                onClick={() => {
-                  handleClose();
-                }}
-              >
-                Return to form to make changes
-              </Button>
-              <Button
-                variant="info"
-                onClick={() => {
-                  handleClose();
-                  props.handleSubmit();
-                  props.nextButton();
-                }}
-              >
-                Save Changes and Submit
-              </Button>
-            </Modal.Footer>
-          </Modal>
->>>>>>> 00bc2f48f09191d61d4316312601bd1b923255cc
         </div>
-      </div>
     );
 }
 

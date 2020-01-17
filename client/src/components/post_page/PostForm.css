@@ -1,4 +1,4 @@
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 1300px) {
 
   #postFormCheckContainer {
     padding-bottom: 0px;
@@ -273,7 +273,7 @@
     color: white;
   }
 }
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1301px) {
   .mycustom-jumbotron {
     display: flex;
     flex-direction: column;
