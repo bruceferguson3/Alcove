@@ -16,7 +16,7 @@ const Features = props => {
         <img src="../../assets/badStorage.jpg" className="jd-sub-img-one"></img>
       </div>
 
-      <div className="">
+      <div className="jd-sub-wrapper">
         <div className="jd-sub-two">
           <h1>Search listings Nationwide</h1>
           <p>
@@ -29,7 +29,7 @@ const Features = props => {
         <img src="../../assets/nationwide.jpg" className="jd-sub-img-two"></img>
       </div>
 
-      <div className="">
+      <div className="jd-sub-wrapper">
         <div className="jd-sub-three">
           <h1>Reach and connect with others with ease</h1>
           <p>
@@ -40,7 +40,7 @@ const Features = props => {
             Integer suscipit quam sed nunc accumsan iaculis. Duis auctor neque justo, quis semper enim hendrerit vehicula.
         </p>
         </div>
-        <img src="../../assets/connect.jpg" className="#"></img>
+        <img src="../../assets/connect.jpg" className="jd-sub-img-three"></img>
       </div>
     </div>
   );

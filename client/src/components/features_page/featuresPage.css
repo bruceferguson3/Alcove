@@ -20,6 +20,7 @@
   border-radius: 9px;
   margin-bottom: 20px;
   margin-left: 100px;
+  height: 200px;
 }
 
 .jd-sub-two {
@@ -32,6 +33,7 @@
   border-radius: 9px;
   margin-bottom: 20px;
   margin-right: 100px;
+  height: 200px;
 }
 
 .jd-sub-three {
@@ -43,13 +45,26 @@
   padding: 10px 15px;
   border-radius: 9px;
   margin-left: 100px;
+  height: 200px;
 }
 
 .jd-sub-img-one {
-  max-width: 40%;
+  max-width: 35%;
+  margin-right: 50px;
+  height: 200px;
+  margin-right: 220px;
 }
 
 .jd-sub-img-two {
-  max-width: 40%;
+  max-width: 35%;
+  order: -1;
+  height: 200px;
+  margin-left: 265px;
 }
 
+.jd-sub-img-three {
+  max-width: 35%;
+  margin-right: 50px;
+  height: 200px;
+  margin-right: 245px;
+}
