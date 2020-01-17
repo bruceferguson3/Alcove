@@ -6,6 +6,8 @@ const ListingMap = ({ lat, lng }) => {
   // const API_KEY = process.env.REACT_APP_K || 555;
   // console.log(API_KEY);
 
+  // props = props.previewListing || props.realProps
+
   return (
     <div
       style={{

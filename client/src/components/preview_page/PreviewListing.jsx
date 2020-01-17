@@ -10,33 +10,24 @@ import ListingMap from '../listing_page/ListingMap.jsx';
 import ListingImages from '../listing_page/ListingImages.jsx';
 import './preview.css'
 
-class PreviewListing extends React.Component {
-  constructor(props) {
-    super(props);
-    let listing = props.stateData;
-    this.state = { listing: listing };
-  }
-
-  render() {
+const PreviewListing = props => {
     return (
       <Container>
         <Row md={4}>
-          <PreviewImages />
+          <PreviewImages previewListing={props.stateData}/>
         </Row>
         <Row md={8}>
           <Col md={8}>
-            <PreviewProductInfo listing={this.state.listing} />
+            <PreviewProductInfo previewListing={props.stateData} />
           </Col>
           <Col md={4}>
             <Row>
-              <ListingContactInfo />
+              <ListingContactInfo userInfo={props.stateData.userInfo}/>
             </Row>
           </Col>
         </Row>
       </Container>
     );
-  }
-
 };
 
 export default PreviewListing;
