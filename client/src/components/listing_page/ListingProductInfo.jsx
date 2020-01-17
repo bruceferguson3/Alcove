@@ -1,9 +1,37 @@
 import React from "react";
 import ListingProductBullets from "./ListingProductBullets.jsx";
 import ListingMap from "./ListingMap.jsx";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button, Popover, OverlayTrigger } from "react-bootstrap";
 
 const ListingProductInfo = props => {
+  const popover = (
+    <Popover>
+      <Popover.Title as="h4">Icon Guide</Popover.Title>
+        <Popover.Content>
+          <Row>
+            <div id="tsClimateIcon"></div>
+            <div className="tsBulletText">Climate Controlled</div>
+          </Row>
+          <Row>
+            <div id="tsIndoorsIcon"></div>
+            <div className="tsBulletText">Indoors</div>
+          </Row>
+          <Row>
+            <div id="tsLockedIcon"></div>
+            <div className="tsBulletText">Locked</div>
+          </Row>
+          <Row>
+            <div id="tsOutdoorsIcon"></div>
+            <div className="tsBulletText">Outdoors</div>
+          </Row>
+          <Row>
+            <div id="tsSharedIcon"></div>
+            <div className="tsBulletText">Shared Space</div>
+          </Row>
+        </Popover.Content>
+    </Popover>
+  )
+
   return (
     <Container>
       <Row>
@@ -11,6 +39,9 @@ const ListingProductInfo = props => {
         </Col>
         <Col>
           <h4>{props.listing.title}</h4>
+            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+              <Button variant="success">Test popover for icon dictionary.</Button>
+            </OverlayTrigger>
           <h6>{props.listing.zip}</h6>
         </Col>
         <Col md={1}><div className="listingDivider"></div></Col>
