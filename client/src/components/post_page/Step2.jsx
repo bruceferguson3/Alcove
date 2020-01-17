@@ -19,6 +19,7 @@ const Step2 = (props) => {
                             onChange={(e) => props.recordStateInfo(e, 'userInfo', 'name')}
                         />
                     </Form.Group>
+
                     <Form.Group controlId="validationCustom02" className='step2Input'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control
@@ -39,8 +40,8 @@ const Step2 = (props) => {
                             onChange={(e) => props.recordStateInfo(e, 'userInfo', 'phone')}
                         />
                     </Form.Group>
-                    <Form.Group controlId="validationCustom06" className='step2Input'>
-                        <ul className=''>
+                    <Form.Group controlId="validationCustom06" className='step2Input mb-0'>
+                        <ul>
                             <h4>
                                 Allow text messages?
                             </h4>
@@ -78,7 +79,7 @@ const Step2 = (props) => {
                             </div>
                         </div>
                     </Form.Group>
-                    <Form.Group className='step2Input'>
+                    <Form.Group>
                         <span className='step2Button'>
                             <Button onClick={props.backButton}>Back</Button>
                         </span>
