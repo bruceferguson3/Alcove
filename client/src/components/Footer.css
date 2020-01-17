@@ -1,6 +1,5 @@
 .footer {
   background: #363b40;
-  padding: 25px 0;
 }
 
 .it-footer-container {
@@ -12,8 +11,8 @@
 }
 
 .it-footer-logo {
-  padding-top: 25px;
-  width: 90%;
+  padding-top: 15px;
+  width: 80%;
   cursor: pointer;
 }
 
