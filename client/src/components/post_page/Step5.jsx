@@ -16,11 +16,11 @@ const Step5 = (props) => {
             </div>
             <div id='submitPic'>
                 <span className='step2Button'>
-                    <Button onClick={props.backToStep1}>Post another item?</Button>
+                    <Button onClick={props.backToStep1} variant="info">Post another item?</Button>
                 </span>
                 <span className='step2Button'>
                     <LinkContainer to='/'>
-                        <Button>Home Page</Button>
+                        <Button variant="info">Home Page</Button>
                     </LinkContainer>
                 </span>
             </div>

@@ -243,3 +243,20 @@
   background-color: #2fb5e9;
   color: white;
 }
+
+#image-upload {
+  margin-bottom: 1rem;
+}
+
+.step4Header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: .4rem;
+}
+
+#postDescription {
+  resize: none;
+  width: 30em;
+  height: 10em;
+}
