@@ -39,7 +39,6 @@
 }
 
 .step2Button {
-  margin-left: 1em;
   margin-right: 1em;
 }
 
@@ -111,7 +110,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
-  margin-left: 1rem;
 }
 
 #step1ContainerCard {
@@ -173,13 +171,15 @@
 
 .tsDropdownWrapper {
   display: flex;
-  border-bottom: 1px solid #8661c1;
-  padding-bottom: 1rem;
 }
 
 .tsAlert {
-  color: red !important;
+  color: red;
   font-weight: 600;
+}
+
+.tsErrorHidden {
+  visibility: hidden;
 }
 
 .progress {
@@ -188,9 +188,10 @@
   margin-bottom: 1%;
 }
 
-#tsStepThreeHeader {
-  margin-left: 1rem;
-  margin-bottom: 2rem;
+.tsStepThreeHeader {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .btn-info:hover {
@@ -228,10 +229,17 @@
 }
 
 .post-form-option-button:hover {
+  color: black;
+  border-color: #2fb5e9;
   background-color: #9cddf7;
 }
 
 .post-form-option-selected {
+  background-color: #2fb5e9;
+  color: white;
+}
+
+.post-form-option-selected:hover {
   background-color: #2fb5e9;
   color: white;
 }

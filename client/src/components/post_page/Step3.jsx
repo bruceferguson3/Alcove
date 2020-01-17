@@ -17,9 +17,6 @@ const Step3 = ({
   standAlone,
   climateControl
 }) => {
-  let sizeText;
-  let durationText;
-  let frequencyText;
   let sizeTooltipText;
   let frequencyTooltipText;
   let durationTooltipText;
@@ -47,8 +44,8 @@ const Step3 = ({
     sizeTooltipText =
       "Choose the relative size of your item here. A small item might be a snowboard, medium a twin bed, large a motorcycle";
     frequencyTooltipText =
-      "Choose how often you need to pick up your item from the storage space";
-    durationTooltipText = "Choose how long you need to store the item for";
+      "Choose how often you need to pick up your item from the storage space.";
+    durationTooltipText = "Choose how long you need to store the item for.";
     lockedPrompt = "Do you need the area to be locked?";
     exclusivePrompt = "Are you ok with sharing the space with other items?";
     indoorsPrompt = "Do you need the area to be indoors?";
@@ -57,49 +54,7 @@ const Step3 = ({
       "I do not need the area to be climate controlled";
   }
 
-  if (size === 1) {
-    sizeText = <a>Extra Small</a>;
-  } else if (size === 2) {
-    sizeText = <a>Small</a>;
-  } else if (size === 3) {
-    sizeText = <a>Medium</a>;
-  } else if (size === 4) {
-    sizeText = <a>Large</a>;
-  } else if (size === 5) {
-    sizeText = <a>Extra Large</a>;
-  } else if (size === 0 && invalidStepThree) {
-    sizeText = <a className="tsAlert">Fill me in</a>;
-  } else if (size === 0) {
-    sizeText = "";
-  }
-
-  if (easeOfAccess === 1) {
-    frequencyText = <a>Never</a>;
-  } else if (easeOfAccess === 2) {
-    frequencyText = <a>Infrequent</a>;
-  } else if (easeOfAccess === 3) {
-    frequencyText = <a>Frequent</a>;
-  } else if (easeOfAccess === 0 && invalidStepThree) {
-    frequencyText = <a className="tsAlert">Fill me in</a>;
-  } else if (easeOfAccess === 0) {
-    frequencyText = "";
-  }
-
-  if (duration === 1) {
-    durationText = <a>Less than a week</a>;
-  } else if (duration === 2) {
-    durationText = <a>1 to 4 weeks</a>;
-  } else if (duration === 3) {
-    durationText = <a>1 to 3 months</a>;
-  } else if (duration === 4) {
-    durationText = <a>3 to 6 months</a>;
-  } else if (duration === 5) {
-    durationText = <a>More than 6 months</a>;
-  } else if (duration === 0 && invalidStepThree) {
-    durationText = <a className="tsAlert">Fill me in</a>;
-  } else if (duration === 0) {
-    durationText = "";
-  }
+  const formError = (duration === 0 || size === 0 || easeOfAccess === 0) && invalidStepThree ? true : false;
 
   const durationOptions = [
     'Less than a week',
@@ -122,7 +77,7 @@ const Step3 = ({
   return (
     <div>
       <div className="tsDropdownContainer">
-        <h4 id="tsStepThreeHeader">Features</h4>
+        <h4 className="tsStepThreeHeader">Select a Size</h4>
         <div className="tsDropdownWrapper">
           <div className="tsTooltipContainer">
             <div className="tsTooltipIcon"></div>
@@ -130,6 +85,7 @@ const Step3 = ({
           </div>
           {sizeOptions.map((item, index) => (
             <Button
+              key={`size${index}`}
               className={`post-form-option-button ${
                 size === index + 1 ? 'post-form-option-selected' : ''
               }`}
@@ -142,8 +98,11 @@ const Step3 = ({
             </Button>
           ))}
         </div>
-        <div className="tsDropdownText">{sizeText}</div>
+        <div className={`tsAlert ${formError && !size ? '' : 'tsErrorHidden'}`}>
+          Field required.
+        </div>
         <div className="tsDropdownContainer">
+          <h4 className="tsStepThreeHeader">Select Access Availability</h4>
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
               <div className="tsTooltipIcon"></div>
@@ -151,6 +110,7 @@ const Step3 = ({
             </div>
             {accessOptions.map((item, index) => (
               <Button
+                key={`frequency${index}`}
                 className={`post-form-option-button ${
                   easeOfAccess === index + 1 ? 'post-form-option-selected' : ''
                 }`}
@@ -163,9 +123,16 @@ const Step3 = ({
               </Button>
             ))}
           </div>
+          <div
+            className={`tsAlert ${
+              formError && !easeOfAccess ? '' : 'tsErrorHidden'
+            }`}
+          >
+            Field required.
+          </div>
         </div>
-        <div className="tsDropdownText">{frequencyText}</div>
         <div className="tsDropdownContainer">
+          <h4 className="tsStepThreeHeader">Select a Duration</h4>
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
               <div className="tsTooltipIcon"></div>
@@ -173,6 +140,7 @@ const Step3 = ({
             </div>
             {durationOptions.map((item, index) => (
               <Button
+                key={`duration${index}`}
                 className={`post-form-option-button ${
                   duration === index + 1 ? 'post-form-option-selected' : ''
                 }`}
@@ -185,8 +153,14 @@ const Step3 = ({
               </Button>
             ))}
           </div>
+          <div
+            className={`tsAlert ${
+              formError && !duration ? '' : 'tsErrorHidden'
+            }`}
+          >
+            Field required.
+          </div>
         </div>
-        <div className="tsDropdownText">{durationText}</div>
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul>
