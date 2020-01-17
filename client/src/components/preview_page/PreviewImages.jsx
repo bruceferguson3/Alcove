@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import './preview.css';
 
-const ListingImages = props => {
+const PreviewImages = props => {
   // Some elements require both inline styling and the stylesheet due to border positioning.
 
-  let images = previewListing.data.thumbs;
+  let images = props.previewListing.thumbs;
 
   let image1 = images[0];
   let image2 = images[1];
@@ -17,11 +17,15 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col></Col>
-          <Col md={6}>
-            <div id="emptyImage"><img src="../../../dist/assets/alcove.jpg" /></div>
+          <Col>
+            <div className="imageSpacerLeft"></div>
           </Col>
-          <Col></Col>
+          <Col md={6} className="listingPictureContainer">
+            <img src="../../../dist/assets/alcove.jpg" className="listingPicture" />
+          </Col>
+          <Col>
+            <div className="imageSpacerRight"></div>
+          </Col>
         </Row>
       </Container>
     );
@@ -154,4 +158,4 @@ const ListingImages = props => {
   }
 };
 
-export default ListingImages;
+export default PreviewImages;
