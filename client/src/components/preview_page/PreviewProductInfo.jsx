@@ -19,14 +19,16 @@ const PreviewProductInfo = props => {
       </Row>
       <Row>
         <Col>
-          <ListingProductBullets previewBullets={props.previewListing.filters} />
+          <ListingProductBullets bullets={props.previewListing.filters} />
         </Col>
         <Col>
           {props.previewListing.description}
         </Col>
       </Row>
       <Row>
-        <ListingMap previewMap={props.previewListing.geoLocation}/>
+        <ListingMap
+          lat={props.previewListing.geoLocation[0]}
+          lng={props.previewListing.geoLocation[1]}/>
       </Row>
     </Container>
   );

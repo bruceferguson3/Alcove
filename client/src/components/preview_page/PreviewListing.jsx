@@ -22,7 +22,7 @@ const PreviewListing = props => {
           </Col>
           <Col md={4}>
             <Row>
-              <ListingContactInfo previewListing={props.stateData}/>
+              <ListingContactInfo userInfo={props.stateData.userInfo}/>
             </Row>
           </Col>
         </Row>
