@@ -70,8 +70,8 @@ const Step4 = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => {handleClose();}}>Return to Form to Make Changes</Button>
-              <Button variant="primary" onClick={() => {handleClose(); props.handleSubmit(); props.nextButton()}}>Save Changes and Submit</Button>
+              <Button variant="info" onClick={() => {handleClose();}}>Return to Form to Make Changes</Button>
+              <Button variant="info" onClick={() => {handleClose(); props.handleSubmit(); props.nextButton()}}>Save Changes and Submit</Button>
             </Modal.Footer>
           </Modal>
         </div>
