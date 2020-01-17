@@ -75,7 +75,7 @@ const Step4 = (props) => {
                   handleClose();
                 }}
               >
-                Return to form to make changes
+                Return to Form to Make Changes
               </Button>
               <Button
                 variant="info"
