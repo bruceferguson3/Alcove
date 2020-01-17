@@ -88,12 +88,31 @@ export default class ListingForm extends React.Component {
     }
 
     loadImageFile() {
-        let date = JSON.stringify(Date.now());
-        var data = this.state.data;
-        data.dateSubmitted = date;
-        data.thumbs = Array.from(document.getElementById('postImageLoader').files)
+        let data = this.state.data;
+        data.dateSubmitted = Date.now().toString();
+        let imgStr;
+        let files = document.getElementById('postImageLoader').files;
+        let thumbsArr = [];
+
+        for (var file of files) {
+            let imageReader = new FileReader();
+            let type = file.type;
+
+            imageReader.readAsBinaryString(file);
+
+            imageReader.onload = () => {
+                let base64str = btoa(imageReader.result);
+                imgStr = `data:${type};base64, ` + base64str;
+                thumbsArr.push(imgStr);
+            }
+        }
+
+        data.thumbs = thumbsArr;
+
         this.setState({
             data: data
+        }, () => {
+            console.log(this.state);
         })
     };
 

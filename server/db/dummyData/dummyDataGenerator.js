@@ -192,8 +192,8 @@ let makeFakeData = () => {
     let sizeOfListingImages;
     let priceOfListing = 0;
     let currentCoords = possibleCoords[Math.floor(Math.random() * (possibleCoords.length))]
-    let lat = currentCoords[1].toString();
-    let lng = currentCoords[2].toString();
+    let lat = currentCoords[1];
+    let lng = currentCoords[2];
     let zipcode = currentCoords[0];
     let sizeOfListing = (Math.ceil(Math.random() * 5));
 
