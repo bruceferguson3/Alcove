@@ -20,7 +20,7 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
             <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
           </div>
           <div className="it-cta-form">
-            <h2>Search Listings.</h2>
+            <h2>Search Listings</h2>
             <Form.Control
               type="text"
               placeholder="Enter zip code"
@@ -41,7 +41,7 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
               value={newZip}
             />
             <button
-              variant="primary"
+            
               onClick={() => {
                 const shouldRoute = search();
                 if (shouldRoute) {
@@ -49,15 +49,15 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
                   changePath('/results');
                 }
               }}
-              className="btn btn-primary it-btn"
+              className="btn btn-info it-btn"
             >
-              Find Storage Units
+              Find Spaces or Items
             </button>
             <hr />
-            <h2>Post a Listing.</h2>
+            <h2>Post a Listing</h2>
             <LinkContainer to="/post">
-              <button variant="primary" className="btn btn-primary it-btn" onClick={() => changePath('/posts')}>
-                Post Items or Units
+              <button className="btn btn-info it-btn" onClick={() => changePath('/posts')}>
+                Post a Space or Item
               </button>
             </LinkContainer>
           </div>
