@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Button, Modal } from "react-bootstrap";
-import ListingModal from "./ListingModal.jsx";
+import React, { useState } from 'react';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import ListingModal from './ListingModal.jsx';
+import './Listing.css';
 
 import dummyData from "./dummyData.js";
+// import logo from '../../../dist/assets/alcove.jpg';
 
 const ListingImages = props => {
   // Some elements require both inline styling and the stylesheet due to border positioning.
@@ -38,12 +40,21 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col></Col>
-          <Col md={6}>
-            <img className="listingPicture" src={image1} />
+          <Col>
+            <div className="imageSpacerLeft"></div>
           </Col>
-          <Col></Col>
+          <Col md={6} className="listingPictureContainer">
+            <img src={image1} className="listingPicture" onClick={handleShow}/>
+          </Col>
+          <Col>
+            <div className="imageSpacerRight"></div>
+          </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }
@@ -51,14 +62,22 @@ const ListingImages = props => {
   if (images.length === 2) {
     return (
       <Container>
-        <Row style={{ border: "1px solid #353b40" }}>
-          <Col style={{ border: "1px solid #353b40" }}>
-            <img src={images[0]} style={{ height: "12rem" }} />
+        <Row>
+          <Col className="listingPictureContainer"
+          style={{
+            borderRight: "1px solid #353b40"
+          }}>
+            <img src={images[0]} className="listingPicture" onClick={handleShow} />
           </Col>
-          <Col style={{ border: "1px solid #353b40" }}>
-            <img src={images[1]} style={{ height: "12rem" }} />
+          <Col className="listingPictureContainer">
+            <img src={images[1]} className="listingPicture" onClick={handleShow} />
           </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }
@@ -73,10 +92,10 @@ const ListingImages = props => {
               borderRight: "1px solid #353b40"
             }}
           >
-            <img className="listingPicture" src={image1} />
+            <img src={image1} className="listingPicture" onClick={handleShow}/>
           </Col>
           <Col className="listingPictureContainer">
-            <img className="listingPicture" src={image2} />
+            <img src={image2} className="listingPicture" onClick={handleShow}/>
           </Col>
           <Col
             className="listingPictureContainer"
@@ -84,35 +103,76 @@ const ListingImages = props => {
               borderLeft: "1px solid #353b40"
             }}
           >
-            <img className="listingPicture" src={image3} />
+            <img src={image3} className="listingPicture" onClick={handleShow}/>
+            <Button onClick={handleShow} id="listingModalButton" className="img-overlay">
+              Launch the super cool modal!
+            </Button>
           </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }
 
   if (images.length >= 5) {
     return (
-      <Container style={{ border: "1px solid purple" }}>
-        <Row style={{ border: "1px solid purple" }}>
-          <Col md={6} style={{ border: "1px solid purple" }}>
-            <img src={images[0]} style={{ height: "12rem" }} />
+      <Container>
+        <Row>
+        <Col
+          md={6}
+          className="listingPictureContainer"
+          style={{
+            borderRight: "1px solid #353b40",
+            height: "300px"
+          }}
+        >
+            <img src={image1} className="listingPicture" onClick={handleShow}/>
           </Col>
-          <Col md={6} style={{ border: "1px solid purple" }}>
-            <Row style={{ border: "1px solid purple" }}>
-              <Col md={6} style={{ border: "1px solid purple" }}>
-                <img src={images[1]} style={{ height: "6rem" }} />
+          <Col md={6}>
+            <Row>
+              <Col
+                md={6}
+                className="listingPictureContainer"
+                style={{
+                  borderRight: "1px solid #353b40",
+                  height: "150px"
+                }}
+              >
+                <img src={image2} className="listingPicture" onClick={handleShow}/>
               </Col>
-              <Col md={6} style={{ border: "1px solid purple" }}>
-                <img src={images[2]} style={{ height: "6rem" }} />
+              <Col md={6}
+                md={6}
+                className="listingPictureContainer"
+                style={{
+                  height: "150px"
+                }}
+              >
+                <img src={image3} className="listingPicture" onClick={handleShow}/>
               </Col>
             </Row>
-            <Row style={{ border: "1px solid purple" }}>
-              <Col md={6} style={{ border: "1px solid purple" }}>
-                <img src={images[3]} style={{ height: "6rem" }} />
+            <Row>
+              <Col md={6}
+                md={6}
+                className="listingPictureContainer"
+                style={{
+                  borderRight: "1px solid #353b40",
+                  height: "150px"
+                }}
+              >
+                <img src={image4} className="listingPicture" onClick={handleShow}/>
               </Col>
-              <Col md={6} style={{ border: "1px solid purple" }}>
-                <img src={images[4]} style={{ height: "6rem" }} />
+              <Col
+                md={6}
+                className="listingPictureContainer"
+                style={{
+                  height: "150px"
+                }}
+              >
+                <img src={image5} className="listingPicture" onClick={handleShow}/>
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
                 </Button>
