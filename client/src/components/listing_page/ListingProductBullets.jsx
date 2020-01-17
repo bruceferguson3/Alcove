@@ -1,10 +1,8 @@
-import React from "react";
-import { Container, Row, Popover, OverlayTrigger } from "react-bootstrap";
-import "./Listing.css";
+import React from 'react';
+import { Container, Row, Popover, OverlayTrigger } from 'react-bootstrap';
+import './Listing.css';
 
 const ListingProductBullets = ({ bullets }) => {
-<<<<<<< HEAD
-=======
   const popover = (
     <Popover>
       <Popover.Title as="h4">Icon Guide</Popover.Title>
@@ -31,9 +29,7 @@ const ListingProductBullets = ({ bullets }) => {
         </Row>
       </Popover.Content>
     </Popover>
-  )
-
->>>>>>> 00bc2f48f09191d61d4316312601bd1b923255cc
+  );
 
   const climateControl = bullets.climateControl ? (
     <Row className="tsListingBulletOverride">
@@ -41,74 +37,74 @@ const ListingProductBullets = ({ bullets }) => {
       <div className="tsBulletText">Climate Controlled</div>
     </Row>
   ) : (
-      ""
-    );
+    ''
+  );
   const indoorsOrOutdoors = bullets.indoors ? (
     <Row className="tsListingBulletOverride">
       <div title="Space is indoors" id="tsIndoorsIcon"></div>
       <div className="tsBulletText">Indoors</div>
     </Row>
   ) : (
-      <Row className="tsListingBulletOverride">
-        <div title="Space is outdoors" id="tsOutdoorsIcon"></div>
-        <div className="tsBulletText">Outdoors</div>
-      </Row>
-    );
+    <Row className="tsListingBulletOverride">
+      <div title="Space is outdoors" id="tsOutdoorsIcon"></div>
+      <div className="tsBulletText">Outdoors</div>
+    </Row>
+  );
   const locked = bullets.locked ? (
     <Row className="tsListingBulletOverride">
       <div title="Space is locked" id="tsLockedIcon"></div>
       <div className="tsBulletText">Locked</div>
     </Row>
   ) : (
-      ""
-    );
+    ''
+  );
   const shared = bullets.standAlone ? (
     <Row className="tsListingBulletOverride">
       <div title="Space is shared" id="tsSharedIcon"></div>
       <div className="tsBulletText">Shared Space</div>
     </Row>
   ) : (
-      ""
-    );
+    ''
+  );
 
   //TODO - Need to clarify what this is
   let easeOfAccessText;
   if (bullets.easeOfAccess === 1) {
-    easeOfAccessText = "Never";
+    easeOfAccessText = 'Never';
   } else if (bullets.easeOfAccess === 2) {
-    easeOfAccessText = "Infrequently";
+    easeOfAccessText = 'Infrequently';
   } else {
-    easeOfAccessText = "Frequently";
+    easeOfAccessText = 'Frequently';
   }
 
   let durationText;
   if (bullets.duration === 1) {
-    durationText = "Less than a week";
+    durationText = 'Less than a week';
   } else if (bullets.duration === 2) {
-    durationText = "1 to 4 weeks";
+    durationText = '1 to 4 weeks';
   } else if (bullets.duration === 3) {
-    durationText = "1 to 3 months";
+    durationText = '1 to 3 months';
   } else if (bullets.duration === 4) {
-    durationText = "3 to 6 months";
+    durationText = '3 to 6 months';
   } else if (bullets.duration === 5) {
-    durationText = "More than 6 months";
+    durationText = 'More than 6 months';
   } else {
-    durationText = "One Year";
+    durationText = 'One Year';
   }
   //TODO - Format according to data passed in
   let size;
   if (bullets.size === 1) {
-    size = "Extra Small";
+    size = 'Extra Small';
   } else if (bullets.size === 2) {
-    size = "Small";
+    size = 'Small';
   } else if (bullets.size === 3) {
-    size = "Medium";
+    size = 'Medium';
   } else if (bullets.size === 4) {
-    size = "Large";
+    size = 'Large';
   } else if (bullets.size === 5) {
-    size = "Extra Large";
+    size = 'Extra Large';
   } else {
-    size = "Extra Extra Large";
+    size = 'Extra Extra Large';
   }
 
   return (
