@@ -41,13 +41,13 @@ const ListingImages = props => {
       <Container>
         <Row>
           <Col>
-            <div className="imageSpacer"></div>
+            <div className="imageSpacerLeft"></div>
           </Col>
           <Col md={6} className="listingPictureContainer">
             <img src={image1} className="listingPicture" onClick={handleShow}/>
           </Col>
           <Col>
-            <div className="imageSpacer"></div>
+            <div className="imageSpacerRight"></div>
           </Col>
         </Row>
         <ListingModal
