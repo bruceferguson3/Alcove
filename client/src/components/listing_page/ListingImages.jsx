@@ -4,7 +4,6 @@ import ListingModal from './ListingModal.jsx';
 import './Listing.css';
 
 import dummyData from "./dummyData.js";
-// import logo from '../../../dist/assets/alcove.jpg';
 
 const ListingImages = props => {
   // Some elements require both inline styling and the stylesheet due to border positioning.
@@ -26,12 +25,21 @@ const ListingImages = props => {
     return (
       <Container>
         <Row>
-          <Col></Col>
-          <Col md={6}>
-            <div id="emptyImage"></div>
+          <Col>
+            <div className="imageSpacerLeft"></div>
           </Col>
-          <Col></Col>
+          <Col md={6} className="listingPictureContainer">
+            <img src="../../assets/alcove-footer.jpg" className="listingPicture" onClick={handleShow}/>
+          </Col>
+          <Col>
+            <div className="imageSpacerRight"></div>
+          </Col>
         </Row>
+        <ListingModal
+          images={images}
+          show={show}
+          handleClose={handleClose}
+        />
       </Container>
     );
   }
