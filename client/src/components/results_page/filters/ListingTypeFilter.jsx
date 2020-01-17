@@ -2,7 +2,12 @@ import React from 'react';
 import { DropdownButton, Dropdown, ButtonGroup } from 'react-bootstrap';
 
 const ListingTypeFilter = ({ typeChange }) => (
-  <DropdownButton as={ButtonGroup} title="Filter Listing Type" variant="info">
+  <DropdownButton
+    as={ButtonGroup}
+    title="Filter Listing Type"
+    variant="info"
+    className="results-btn"
+  >
     <Dropdown.Item
       data-value="space"
       onClick={() => typeChange(event.target.dataset.value)}

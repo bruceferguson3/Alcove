@@ -5,7 +5,6 @@ import './Results.css';
 
 const ResultsList = ({ listings, getSelectedListing }) => (
   <div id="results-list-container">
-    <CardColumns>
       {listings.slice(0, 100).map((listing, index) => (
         <ResultThumbnail
           listing={listing}
@@ -13,7 +12,6 @@ const ResultsList = ({ listings, getSelectedListing }) => (
           getSelectedListing={getSelectedListing}
         />
       ))}
-    </CardColumns>
   </div>
 );
 

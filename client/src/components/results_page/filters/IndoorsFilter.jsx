@@ -8,7 +8,12 @@ const indoorsOptions = [
 ];
 
 const AccessFilter = ({ indoorsChange, climateChange }) => (
-  <DropdownButton as={ButtonGroup} title="Indoors/Outdoors" variant="info">
+  <DropdownButton
+    as={ButtonGroup}
+    title="Indoors/Outdoors"
+    variant="info"
+    className="results-btn"
+  >
     {indoorsOptions.map((item, index) => (
       <Dropdown.Item
         key={`indoors${index}`}
