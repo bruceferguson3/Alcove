@@ -104,6 +104,7 @@ const ListingImages = props => {
             }}
           >
             <img src={image3} className="listingPicture" onClick={handleShow} />
+
             <Button onClick={handleShow} id="listingModalButton" className="img-overlay">
               Launch the super cool modal!
             </Button>
@@ -131,6 +132,7 @@ const ListingImages = props => {
             }}
           >
             <img src={image1} className="listingPicture" onClick={handleShow} />
+
           </Col>
           <Col md={6}>
             <Row>
@@ -143,6 +145,7 @@ const ListingImages = props => {
                 }}
               >
                 <img src={image2} className="listingPicture" onClick={handleShow} />
+
               </Col>
               <Col md={6}
                 md={6}
@@ -152,6 +155,7 @@ const ListingImages = props => {
                 }}
               >
                 <img src={image3} className="listingPicture" onClick={handleShow} />
+
               </Col>
             </Row>
             <Row>
@@ -164,6 +168,7 @@ const ListingImages = props => {
                 }}
               >
                 <img src={image4} className="listingPicture" onClick={handleShow} />
+
               </Col>
               <Col
                 md={6}
