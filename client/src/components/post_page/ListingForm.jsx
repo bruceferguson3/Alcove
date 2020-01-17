@@ -271,7 +271,7 @@ export default class ListingForm extends React.Component {
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 id="postTitle1" className="display-4 mb-3">What are your storage needs?</h1>
                     <ProgressBar animated now={0} />
-                    <div className='postFormContainer col shadow-lg p-3'>
+                    <div id="step1PostFormContainer" className='postFormContainer col shadow-lg p-3'>
                         <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
                 </div>
@@ -292,8 +292,8 @@ export default class ListingForm extends React.Component {
             )
         } else if (this.state.cardCounter === 2) {
             return (
-                <div id="postTitle3" className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Features</h1>
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 id="postTitle3" className="display-4 mb-3">Features</h1>
                     <ProgressBar animated now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step3 climateControl={this.state.data.filters.climateControl} standAlone={this.state.data.filters.standAlone} locked={this.state.data.filters.locked} storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
