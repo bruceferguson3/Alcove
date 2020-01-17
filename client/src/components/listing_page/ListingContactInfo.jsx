@@ -7,18 +7,18 @@ import dummyData from './dummyData.js';
 const ListingContactInfo = ({ userInfo }) => {
   console.log(dummyData);
   userInfo = userInfo ? userInfo : dummyData.test.data.userInfo;
-  // const = [validated, setValidate] = useState(false);
-  //
-  // const handleSubmit = event => {
-  //   const form = event.currentTarget;
-  //
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-  //
-  //   setValidated(true);
-  // };
+  const [validated, setValidate] = useState(false);
+
+  const handleSubmit = event => {
+    const form = event.currentTarget;
+
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
 
     let userName = userInfo.name;
     let userEmail = userInfo.email;
@@ -46,7 +46,7 @@ const ListingContactInfo = ({ userInfo }) => {
 
     return (
       < >
-        <Form>
+        <Form noValidate validate={validated} onSubmit={handleSubmit}>
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
             <Form.Label>Enter your name:</Form.Label>
@@ -55,11 +55,11 @@ const ListingContactInfo = ({ userInfo }) => {
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your e-mail address:</Form.Label>
-            <Form.Control type="email" placeholder="Example:  name@example.com" />
+            <Form.Control required type="email" placeholder="Example:  name@example.com" />
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your phone number:</Form.Label>
-            <Form.Control type="text" placeholder="Example: (555) 555-5555" />
+            <Form.Control required type="text" placeholder="Example: (555) 555-5555" />
           </Form.Group>
           <Form.Group>
             <Form.Check type="checkbox" label={userTextPermission} />
@@ -82,10 +82,11 @@ const ListingContactInfo = ({ userInfo }) => {
             </ReactiveBase>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Enter your message:</Form.Label>
-            <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
+            <Form.Label>Describe your item or space:</Form.Label>
+            <Form.Control as="textarea" rows="6" placeholder={helpfulDetails}/>
+            <Form.Label>Upload images of your item or space:</Form.Label>
+            <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           </Form.Group>
-          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           <p>{contactText}</p>
           <Button variant="primary" block>Submit</Button>
         </Form>
