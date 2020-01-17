@@ -5,3 +5,7 @@
 .card {
   margin-bottom: 50px;
 }
+
+body {
+  font-family: 'Oxygen', sans-serif;
+}
