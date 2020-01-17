@@ -4,21 +4,43 @@ import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
 
-const ListingContactInfo = ({ userInfo }) => {
-  console.log(dummyData);
-  userInfo = userInfo ? userInfo : dummyData.test.data.userInfo;
-  const [validated, setValidate] = useState(false);
-
-  const handleSubmit = event => {
-    const form = event.currentTarget;
-
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
+class ListingContactInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        name: '',
+        email: '',
+        phone: '',
+        text: false,
+        startDate: '',
+        endDate: '',
+        message: '',
+        images: []
+      }
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
+
+
+  userInfo = userInfo ? userInfo : dummyData.test.data.userInfo;
+
+  handleSubmit() {
+    axios.post('PLACEHOLDER', { data: this.state.data })
+      .then(() => console.log('Successfully sent to server.'))
+      .catch(() => console.error(err))
+  }
+
+  // const handleSubmit = event => {
+  //   const form = event.currentTarget;
+  //
+  //   if (form.checkValidity() === false) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }
+  //
+  //   setValidated(true);
+  // };
 
     let userName = userInfo.name;
     let userEmail = userInfo.email;
