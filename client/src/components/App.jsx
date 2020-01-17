@@ -54,14 +54,14 @@ export default class App extends React.Component {
   landingSearch() {
     const { newZip } = this.state;
     if (newZip.match(/\d\d\d\d\d/)) {
-      console.log('Sending Axios request.');
+      // console.log('Sending Axios request.');
       this.setState({
         currentlySearching: true,
       })
       Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
-          console.log('Axios request success:', data);
+          // console.log('Axios request success:', data);
           this.setState({
             searchResults: listings,
             queriedZipCode: newZip,
@@ -72,7 +72,7 @@ export default class App extends React.Component {
         .catch(console.log);
       return true;
     } else {
-      console.log('Axios request failure.');
+      // console.log('Axios request failure.');
       return false;
     }
   };

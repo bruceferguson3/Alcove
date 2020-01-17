@@ -37,14 +37,14 @@ export default class Results extends React.Component {
     const { newZip } = this.state;
     const { api, storeSearch } = this.props;
     if (newZip.match(/\d\d\d\d\d/)) {
-      console.log('Sending Axios request.');
+      // console.log('Sending Axios request.');
       this.setState({
         waitingForResults: true
       });
       Axios.get(`${api}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
-          console.log('Axios request success:', data);
+          // console.log('Axios request success:', data);
           this.setState(
             {
               newZip: '',
@@ -70,11 +70,11 @@ export default class Results extends React.Component {
     this.setState({
       waitingForResults: true
     });
-    console.log('Sending price filter request');
+    // console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then(data => {
         const filteredResults = data.data.map(item => item.data);
-        console.log('Price Filters', filteredResults);
+        // console.log('Price Filters', filteredResults);
 
         storeSearch(queriedZip, filteredResults, () => {
           this.applyFilters();
@@ -304,7 +304,7 @@ export default class Results extends React.Component {
             <div id="results-list-wrapper">
               {listings.length === 0 ? (
                 <Jumbotron className="no-listings flex-column">
-                  <h4>Sorry!</h4>
+                  <h4 className="results-banner-title">Sorry!</h4>
                   <p>
                     It appears the area you searched has no listings meeting
                     your criteria.
