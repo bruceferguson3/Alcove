@@ -71,7 +71,7 @@ export default class ListingForm extends React.Component {
                 geoLocation: [],
                 zip: ''
             },
-            cardCounter: 0,
+            cardCounter: 2,
             invalidStepThree: false
         };
 

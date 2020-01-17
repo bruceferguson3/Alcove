@@ -101,6 +101,24 @@ const Step3 = ({
     durationText = "";
   }
 
+  const durationOptions = [
+    'Less than a week',
+    '1 to 4 Weeks',
+    '1 to 3 Months',
+    '3 to 6 Months',
+    'More Than 6 Months'
+  ];
+
+  const sizeOptions = [
+    'Extra Small',
+    'Small',
+    'Medium',
+    'Large',
+    'Extra Large'
+  ];
+
+  const accessOptions = ['Never', 'Infrequent', 'Frequent'];
+
   return (
     <div>
       <div className="tsDropdownContainer">
@@ -110,58 +128,19 @@ const Step3 = ({
             <div className="tsTooltipIcon"></div>
             <span className="tsTooltip">{sizeTooltipText}</span>
           </div>
-          <DropdownButton
-            className="tsFiltersDropdowns"
-            id="tsFiltersSizeDropdown"
-            variant="info"
-            title="Size"
-          >
-            <Dropdown.Item
-              data-value={1}
-              onClick={e => {
-                recordFilterInfo(e, "Size", e.target.dataset.value);
+          {sizeOptions.map((item, index) => (
+            <Button
+              className={`post-form-option-button ${
+                size === index + 1 ? 'post-form-option-selected' : ''
+              }`}
+              data-value={index + 1}
+              onClick={(e) => {
+                recordFilterInfo(e, 'Size', e.target.dataset.value);
               }}
-              href="#/action-1"
             >
-              Extra Small
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={2}
-              onClick={e => {
-                recordFilterInfo(e, "Size", e.target.dataset.value);
-              }}
-              href="#/action-2"
-            >
-              Small
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={3}
-              onClick={e => {
-                recordFilterInfo(e, "Size", e.target.dataset.value);
-              }}
-              href="#/action-3"
-            >
-              Medium
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={4}
-              onClick={e => {
-                recordFilterInfo(e, "Size", e.target.dataset.value);
-              }}
-              href="#/action-4"
-            >
-              Large
-            </Dropdown.Item>
-            <Dropdown.Item
-              data-value={5}
-              onClick={e => {
-                recordFilterInfo(e, "Size", e.target.dataset.value);
-              }}
-              href="#/action-5"
-            >
-              Extra Large
-            </Dropdown.Item>
-          </DropdownButton>
+              {item}
+            </Button>
+          ))}
         </div>
         <div className="tsDropdownText">{sizeText}</div>
         <div className="tsDropdownContainer">
@@ -170,40 +149,19 @@ const Step3 = ({
               <div className="tsTooltipIcon"></div>
               <span className="tsTooltip">{frequencyTooltipText}</span>
             </div>
-            <DropdownButton
-              className="tsFiltersDropdowns"
-              id="tsFiltersFrequencyDropdown"
-              title="Access Frequency"
-              variant="info"
-            >
-              <Dropdown.Item
-                data-value={1}
-                onClick={e => {
-                  recordFilterInfo(e, "Frequency", e.target.dataset.value);
+            {accessOptions.map((item, index) => (
+              <Button
+                className={`post-form-option-button ${
+                  easeOfAccess === index + 1 ? 'post-form-option-selected' : ''
+                }`}
+                data-value={index + 1}
+                onClick={(e) => {
+                  recordFilterInfo(e, 'Frequency', e.target.dataset.value);
                 }}
-                href="#/action-1"
               >
-                Never
-              </Dropdown.Item>
-              <Dropdown.Item
-                data-value={2}
-                onClick={e => {
-                  recordFilterInfo(e, "Frequency", e.target.dataset.value);
-                }}
-                href="#/action-2"
-              >
-                Infrequent
-              </Dropdown.Item>
-              <Dropdown.Item
-                data-value={3}
-                onClick={e => {
-                  recordFilterInfo(e, "Frequency", e.target.dataset.value);
-                }}
-                href="#/action-3"
-              >
-                Frequent
-              </Dropdown.Item>
-            </DropdownButton>
+                {item}
+              </Button>
+            ))}
           </div>
         </div>
         <div className="tsDropdownText">{frequencyText}</div>
@@ -213,58 +171,19 @@ const Step3 = ({
               <div className="tsTooltipIcon"></div>
               <span className="tsTooltip">{durationTooltipText}</span>
             </div>
-            <DropdownButton
-              className="tsFiltersDropdowns"
-              id="tsFiltersDurationDropdown"
-              variant="info"
-              title="Duration"
-            >
-              <Dropdown.Item
-                data-value={1}
-                onClick={e => {
-                  recordFilterInfo(e, "Duration", e.target.dataset.value);
+            {durationOptions.map((item, index) => (
+              <Button
+                className={`post-form-option-button ${
+                  duration === index + 1 ? 'post-form-option-selected' : ''
+                }`}
+                data-value={index + 1}
+                onClick={(e) => {
+                  recordFilterInfo(e, 'Duration', e.target.dataset.value);
                 }}
-                href="#/action-1"
               >
-                Less than a week
-              </Dropdown.Item>
-              <Dropdown.Item
-                data-value={2}
-                onClick={e => {
-                  recordFilterInfo(e, "Duration", e.target.dataset.value);
-                }}
-                href="#/action-2"
-              >
-                1 to 4 weeks
-              </Dropdown.Item>
-              <Dropdown.Item
-                data-value={3}
-                onClick={e => {
-                  recordFilterInfo(e, "Duration", e.target.dataset.value);
-                }}
-                href="#/action-3"
-              >
-                1 to 3 months
-              </Dropdown.Item>
-              <Dropdown.Item
-                data-value={4}
-                onClick={e => {
-                  recordFilterInfo(e, "Duration", e.target.dataset.value);
-                }}
-                href="#/action-4"
-              >
-                3 to 6 months
-              </Dropdown.Item>
-              <Dropdown.Item
-                data-value={5}
-                onClick={e => {
-                  recordFilterInfo(e, "Duration", e.target.dataset.value);
-                }}
-                href="#/action-5"
-              >
-                More than 6 months
-              </Dropdown.Item>
-            </DropdownButton>
+                {item}
+              </Button>
+            ))}
           </div>
         </div>
         <div className="tsDropdownText">{durationText}</div>
@@ -277,8 +196,8 @@ const Step3 = ({
               type="checkbox"
               id="defaultCheck6"
               checked={!!locked}
-              onChange={e =>
-                recordStateInfo(e, "filters", "locked", "defaultCheck6")
+              onChange={(e) =>
+                recordStateInfo(e, 'filters', 'locked', 'defaultCheck6')
               }
             />
             <label className="form-check-label">{lockedPrompt}</label>
@@ -289,8 +208,8 @@ const Step3 = ({
               type="checkbox"
               id="defaultCheck7"
               checked={!!standAlone}
-              onChange={e =>
-                recordStateInfo(e, "filters", "standAlone", "defaultCheck7")
+              onChange={(e) =>
+                recordStateInfo(e, 'filters', 'standAlone', 'defaultCheck7')
               }
             />
             <label className="form-check-label">{exclusivePrompt}</label>
@@ -302,7 +221,7 @@ const Step3 = ({
               id="indoors"
               value={indoors}
               checked={!!indoors}
-              onChange={e => recordFilterInfo(e, "Indoors", e.target.value)}
+              onChange={(e) => recordFilterInfo(e, 'Indoors', e.target.value)}
             />
             <label className="form-check-label">{indoorsPrompt}</label>
             <div style={climateControlBoolean}>
@@ -315,9 +234,7 @@ const Step3 = ({
                     value={true}
                     id="climateControl"
                     checked={!!climateControl}
-                    onChange={e =>
-                      recordFilterInfo(e, "climateControl")
-                    }
+                    onChange={(e) => recordFilterInfo(e, 'climateControl')}
                   />
                   <label
                     className="custom-control-label"
@@ -334,9 +251,7 @@ const Step3 = ({
                     value={false}
                     id="climateControl2"
                     checked={!!!climateControl}
-                    onChange={e =>
-                      recordFilterInfo(e, "climateControl")
-                    }
+                    onChange={(e) => recordFilterInfo(e, 'climateControl')}
                   />
                   <label
                     className="custom-control-label"

@@ -167,12 +167,14 @@
 
 .tsTooltipContainer {
   position: relative;
-  right: 2rem;
+  right: .3rem;
   top: 0.25rem;
 }
 
 .tsDropdownWrapper {
   display: flex;
+  border-bottom: 1px solid #8661c1;
+  padding-bottom: 1rem;
 }
 
 .tsAlert {
@@ -216,4 +218,20 @@
 #postItemImageContainer:hover img {
   cursor: pointer;
   transform: scale(1.25);
+}
+
+.post-form-option-button {
+  margin: 0 .4rem;
+  border-color: #2fb5e9;
+  background-color: white;
+  color: black;
+}
+
+.post-form-option-button:hover {
+  background-color: #9cddf7;
+}
+
+.post-form-option-selected {
+  background-color: #2fb5e9;
+  color: white;
 }
