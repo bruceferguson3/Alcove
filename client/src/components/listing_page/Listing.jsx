@@ -9,7 +9,7 @@ import { Container, Row, Col } from "react-bootstrap";
 class Listing extends React.Component {
   constructor(props) {
     super(props);
-    let listing = dummyData.test.data;
+    let listing = props.listing || dummyData.test.data;
     this.state = { listing: listing };
   }
 
@@ -17,7 +17,7 @@ class Listing extends React.Component {
     return (
       <Container className='listingContainer' fluid>
         <Row md={4} id="listingImageContainer">
-          <ListingImages fluid />
+          <ListingImages images={this.state.listing.thumbs} fluid />
         </Row>
         <Row md={8}>
           <Col md={8} id="descriptionAndMapContainer">
