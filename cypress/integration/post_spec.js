@@ -180,3 +180,38 @@ describe('Post Page Step 4', function() {
         cy.contains('Preview of Your Post').should('not.be.visible')
     })
 })
+
+describe('Post Page Modal', function() {
+    beforeEach(() => {
+        cy.visit('http://localhost:3030/post')
+        cy.get('img[id="postPropertyImage"]').click()
+        cy.get('input[placeholder="Name"]').type('Mark')
+        cy.get('input[placeholder="Email"]').type('fuechec.mark@gmail.com')
+        cy.get('input[placeholder="Phone"]').type('5129719303')
+        cy.get('input[placeholder="Zipcode"]').type('78745')
+        cy.get('input[aria-label="Amount (to the nearest dollar)"]').type('50')
+        cy.get('Form').submit()
+        cy.contains('Size').click()
+        cy.contains('Extra Small').click()
+        cy.contains('Access Frequency').click()
+        cy.contains('Never').click()
+        cy.contains('Duration').click()
+        cy.contains('Less than a week').click()
+        cy.contains('Next').click()
+        cy.get('input[id="postTitle"]').type('Test title')
+        cy.get('textarea[id="postDescription"]').type('Test description')
+        cy.get('button[id="openPreviewButton"]').click()
+    })
+    it('should close on x  click', function() {
+        cy.get('.close > [aria-hidden="true"]').click()
+        cy.contains('Preview of Your Post').should('not.be.visible')
+    })
+    // it('should close on off-modal click', function() {
+    //     cy.get('.modal').click()
+    //     cy.contains('Preview of Your Post').should('not.be.visible')
+    // })
+    it('should navigate to confirmation page on submit', function() {
+        cy.contains('Save Changes and Submit').click()
+        cy.contains('Your form has been submitted!')
+    })
+})
