@@ -8,7 +8,12 @@ const accessOptions = [
 ];
 
 const AccessFilter = ({ accessChange }) => (
-  <DropdownButton as={ButtonGroup} title="Access Frequency" variant="info">
+  <DropdownButton
+    as={ButtonGroup}
+    title="Access Frequency"
+    variant="info"
+    className="results-btn"
+  >
     {accessOptions.map((item, index) => (
       <Dropdown.Item
         key={`access${index}`}
