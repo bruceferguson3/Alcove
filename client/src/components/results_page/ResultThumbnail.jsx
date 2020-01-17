@@ -5,7 +5,7 @@ import './Results.css';
 
 const ResultThumbnail = ({ listing, getSelectedListing }) => {
   const isSpace = listing.filters.type === 'space';
-  const border = isSpace ? '3px solid skyblue' : '3px solid #be97c6';
+  const border = isSpace ? '3px solid #2fb5e9' : '3px solid #be97c6';
 
   return (
     <Card
@@ -29,7 +29,10 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         </div>
       )}
       <div className="results-thumbnail-price">
-        <span className="results-thumbnail-number">${listing.filters.price.toFixed(2)}</span> per day
+        <span className="results-thumbnail-number">
+          ${listing.filters.price.toFixed(2)}
+        </span>{' '}
+        per day
       </div>
       <Card.Title className="results-thumbnail-title">
         {listing.title}

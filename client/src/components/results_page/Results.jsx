@@ -7,48 +7,35 @@ import LockedFilter from './filters/LockedFilter.jsx';
 import StandaloneFilter from './filters/StandaloneFilter.jsx';
 import FiltersDisplay from './filters/FiltersDisplay.jsx';
 import ResultsList from './ResultsList.jsx';
-import './Results.css';
 import filterResults from './filters/filterResults.js';
-
-// REMOVE LATER //
-import dummyData from './dummyData.js';
-// ============ //
+import DurationFilter from './filters/DurationFilter.jsx';
+import SizeFilter from './filters/SizeFilter.jsx';
+import AccessFilter from './filters/AccessFilter.jsx';
+import IndoorsFilter from './filters/IndoorsFilter.jsx';
+import './Results.css';
 
 export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       waitingForResults: false,
-      updatedListings: null,
-      updatedZipcode: null,
       filteredResults: null,
-      priceMin: 10,
-      priceMax: 20,
+      priceFilterActive: false,
+      priceMin: 5,
+      priceMax: 150,
       newZip: '',
-      filters: {
-        type: null,
-        climateControl: null,
-        size: null,
-        easeOfAccess: null,
-        locked: null,
-        standAlone: null,
-        indoors: null,
-        duration: null
-      }
     };
   }
 
   componentDidMount() {
-    const { searchResults } = this.props;
-    this.setState({
-      listings: searchResults
-    });
-    this.props.changePath('\results');
-  }
+    const { changePath } = this.props;
+    this.applyFilters();
+    changePath('\results');
+  };
 
   searchZip() {
-    const { newZip, waitingForResults } = this.state;
-    const { api } = this.props;
+    const { newZip } = this.state;
+    const { api, storeSearch } = this.props;
     if (newZip.match(/\d\d\d\d\d/)) {
       console.log('Sending Axios request.');
       this.setState({
@@ -60,25 +47,23 @@ export default class Results extends React.Component {
           console.log('Axios request success:', data);
           this.setState(
             {
-              updatedListings: listings,
-              updatedZipcode: newZip,
               newZip: '',
-              priceMin: 10,
-              priceMax: 20,
-              waitingForResults: false
-            },
-            () => this.applyFilters()
-          );
+              priceMin: 5,
+              priceMax: 150,
+              waitingForResults: false,
+            });
+
+          storeSearch(newZip, listings, () => this.applyFilters());
         })
         .catch(console.log);
     }
   }
 
   searchPrice() {
-    const { priceMin, priceMax, updatedZipcode } = this.state;
-    const { api, queriedZip } = this.props;
+    const { priceMin, priceMax } = this.state;
+    const { api, queriedZip, storeSearch } = this.props;
     const queryParams = {
-      zip: updatedZipcode || queriedZip,
+      zip: queriedZip,
       priceMin,
       priceMax
     };
@@ -91,51 +76,30 @@ export default class Results extends React.Component {
         const filteredResults = data.data.map(item => item.data);
         console.log('Price Filters', filteredResults);
 
-        this.setState(
-          {
-            updatedListings: filteredResults,
-            waitingForResults: false,
-          },
-          () => this.applyFilters()
-        );
+        storeSearch(queriedZip, filteredResults, () => {
+          this.applyFilters();
+          this.setState({
+            waitingForResults: false
+          });
+        });
       })
       .catch(console.log);
   }
 
   typeChange(type) {
-    const { filters } = this.state;
-    filters.type = type;
-    this.setState(
-      {
-        filters
-      },
-      () => {
-        this.applyFilters();
-      }
-    );
-  }
-
-  sizeChange(size) {
-    const { filters } = this.state;
-    filters.size = Number(size);
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('type', type, () => this.applyFilters());
+  };
 
   durationChange(val) {
-    const { filters } = this.state;
-    filters.duration = Number(val);
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('duration', Number(val), () => this.applyFilters());
+  };
+
+  sizeChange(size) {
+    const { changeFilter } = this.props;
+    changeFilter('size', Number(size), () => this.applyFilters());
+  };
 
   locationChange(newZip) {
     if (newZip.match(/\d+/) || newZip === '') {
@@ -146,59 +110,29 @@ export default class Results extends React.Component {
   }
 
   accessChange(easeOfAccess) {
-    const { filters } = this.state;
-    filters.easeOfAccess = Number(easeOfAccess);
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('easeOfAccess', Number(easeOfAccess), () => this.applyFilters());
+  };
 
   indoorsChange(indoors) {
-    const { filters } = this.state;
-    filters.indoors = indoors;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('indoors', indoors, () => this.applyFilters());
+  };
 
   climateChange(climate) {
-    const { filters } = this.state;
-    filters.climateControl = climate;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('climateControl', climate, () => this.applyFilters());
+  };
 
   lockedChange(locked) {
-    const { filters } = this.state;
-    filters.locked = locked;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('locked', locked, () => this.applyFilters());
+  };
 
   standaloneChange(standAlone) {
-    const { filters } = this.state;
-    filters.standAlone = standAlone;
-    this.setState(
-      {
-        filters
-      },
-      () => this.applyFilters()
-    );
-  }
+    const { changeFilter } = this.props;
+    changeFilter('standAlone', standAlone, () => this.applyFilters());
+  };
 
   minChange(priceMin) {
     if(priceMin % 5 === 0) {
@@ -241,12 +175,10 @@ export default class Results extends React.Component {
   }
 
   applyFilters() {
-    const { filters, updatedListings } = this.state;
-    const { searchResults } = this.props;
+    const { searchResults, activeFilters } = this.props;
 
-    const listings = updatedListings ? updatedListings : searchResults;
-    if (listings !== null) {
-      const filteredResults = filterResults(filters, listings);
+    if (searchResults !== null) {
+      const filteredResults = filterResults(activeFilters, searchResults);
 
       this.setState({
         filteredResults
@@ -255,34 +187,25 @@ export default class Results extends React.Component {
   }
 
   clearFilter(filterType) {
-    const { filters } = this.state;
-    if (filterType !== 'zip') {
-      filters[filterType] = null;
-      this.setState(
-        {
-          filters
-        },
-        () => this.applyFilters()
-      );
-    }
-  }
+    const { clearActive } = this.props;
+    clearActive(filterType, () => this.applyFilters()); 
+  };
 
   render() {
-    const { filters, priceMin, priceMax, filteredResults, newZip, updatedListings, updatedZipcode, waitingForResults } = this.state;
-    const { zip } = filters;
-    const { getSelectedListing, queriedZip, searchResults, searching } = this.props;
+    const { priceMin, priceMax, filteredResults, newZip, waitingForResults } = this.state;
+    const { getSelectedListing, queriedZip, searchResults, searching, activeFilters } = this.props;
+
+    const filters = activeFilters;
 
     const filtersSelected = Object.values(filters).reduce((accum, item) => {
-      return accum || (item === zip ? null : item);
+      return accum || (item === 'zip' ? null : item);
     });
 
     let listings = [];
 
     if (filteredResults) {
       listings = filteredResults;
-    } else if (updatedListings) {
-      listings = updatedListings;
-    } else if (searchResults) {
+    } else if(searchResults) {
       listings = searchResults;
     }
 
@@ -290,7 +213,11 @@ export default class Results extends React.Component {
       <Container className="mb-5 pb-5">
         {searching || waitingForResults ? (
           <div className="flex-centered active-filters no-filters-active">
-            <Spinner animation="border" variant="info" className="results-spinner" />
+            <Spinner
+              animation="border"
+              variant="info"
+              className="results-spinner"
+            />
           </div>
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
@@ -299,11 +226,11 @@ export default class Results extends React.Component {
           </div>
         ) : listings.length === 0 ? (
           <div className="flex-centered active-filters no-filters-active">
-            <h2>No Results Found</h2>
+            <h2 className="results-banner-title">No Results Found</h2>
           </div>
         ) : (
           <div className="flex-centered active-filters no-filters-active">
-            <h2>Listings in Your Area</h2>
+            <h2 className="results-banner-title">Listings in Your Area</h2>
             <p>Add Filters to Refine Your Search!</p>
           </div>
         )}
@@ -316,11 +243,15 @@ export default class Results extends React.Component {
                 </label>
                 <div id="results-current-zip">
                   {searching || waitingForResults ? (
-                    <Spinner animation="border" variant="info" className="results-spinner" />
+                    <Spinner
+                      animation="border"
+                      variant="info"
+                      className="results-spinner"
+                    />
                   ) : (
-                    updatedZipcode || queriedZip || '-'
+                    queriedZip || '-'
                   )}
-                </div> 
+                </div>
               </div>
               <label className="filter-section-title" htmlFor="location">
                 Enter New Zip Code:
@@ -346,8 +277,8 @@ export default class Results extends React.Component {
                 maxChange={this.maxChange.bind(this)}
                 priceMin={priceMin}
                 priceMax={priceMax}
-                maxMatch={this.maxMatch.bind(this)}
                 minMatch={this.minMatch.bind(this)}
+                maxMatch={this.maxMatch.bind(this)}
               />
               <Button
                 variant="info"
@@ -360,77 +291,10 @@ export default class Results extends React.Component {
               <h4 className="results filter-title">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
                 <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
-                <DropdownButton as={ButtonGroup} title="Duration" variant="info">
-                  <Dropdown.Item data-value={1} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    Less than a week
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={2} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    1 to 4 weeks
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={3} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    1 to 3 Months
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={4} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    3 to 6 Months
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={5} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    More than 6 months
-                  </Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Size" variant="info">
-                  <Dropdown.Item data-value={1} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Extra Small (Cupboard)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={2} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Small (Closet)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={3} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Medium (Spare Room/Garage)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={4} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Large (Entire Shed/Barn)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={5} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Extra Large (Open Area)
-                  </Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Access Frequency" variant="info">
-                  <Dropdown.Item data-value={1} onClick={() => this.accessChange(event.target.dataset.value)}>
-                    Never
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={2} onClick={() => this.accessChange(event.target.dataset.value)}>
-                    Infrequent
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={3} onClick={() => this.accessChange(event.target.dataset.value)}>
-                    Frequent
-                  </Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Indoors/Outdoors" variant="info">
-                  <Dropdown.Item
-                    onClick={() => {
-                      this.indoorsChange(true);
-                      this.climateChange(true);
-                    }}
-                  >
-                    Indoors with Climate Control
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => {
-                      this.indoorsChange(true);
-                      this.climateChange(null);
-                    }}
-                  >
-                    Indoors without Climate Control
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => {
-                      this.indoorsChange(null);
-                      this.climateChange(null);
-                    }}
-                  >
-                    No preference
-                  </Dropdown.Item>
-                </DropdownButton>
+                <DurationFilter durationChange={this.durationChange.bind(this)} />
+                <SizeFilter sizeChange={this.sizeChange.bind(this)} />
+                <AccessFilter accessChange={this.accessChange.bind(this)} />
+                <IndoorsFilter indoorsChange={this.indoorsChange.bind(this)} climateChange={this.climateChange.bind(this)} />
                 <LockedFilter lockedChange={this.lockedChange.bind(this)} />
                 <StandaloneFilter standaloneChange={this.standaloneChange.bind(this)} />
               </ButtonGroup>

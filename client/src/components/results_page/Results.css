@@ -15,6 +15,10 @@
   margin-top: .5rem;
 }
 
+.results-banner-title {
+  font-size: 2rem;
+}
+
 #filter-col {
   max-width: 13rem;
 }
@@ -177,4 +181,14 @@
   border-right: 4px solid #be97c6;
   border-bottom: 4px solid #be97c6;
   border-left-color: transparent;
+}
+
+.btn-info {
+  background-color: #2fb5e9;
+  border-color: #2fb5e9;
+}
+
+.btn-info:hover {
+  background-color: #419abd;
+  border-color: #419abd;
 }

@@ -121,6 +121,20 @@
   height: 100%;
 }
 
+.imageSpacerLeft {
+  background-image: linear-gradient(to right, #8661c1, #be97c6);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.imageSpacerRight {
+  background-image: linear-gradient(to left, #8661c1, #be97c6);
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
 /* #emptyImage {
   width: 100%;
   height: 100%;
