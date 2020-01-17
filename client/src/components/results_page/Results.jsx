@@ -7,8 +7,12 @@ import LockedFilter from './filters/LockedFilter.jsx';
 import StandaloneFilter from './filters/StandaloneFilter.jsx';
 import FiltersDisplay from './filters/FiltersDisplay.jsx';
 import ResultsList from './ResultsList.jsx';
-import './Results.css';
 import filterResults from './filters/filterResults.js';
+import DurationFilter from './filters/DurationFilter.jsx';
+import SizeFilter from './filters/SizeFilter.jsx';
+import AccessFilter from './filters/AccessFilter.jsx';
+import IndoorsFilter from './filters/IndoorsFilter.jsx';
+import './Results.css';
 
 export default class Results extends React.Component {
   constructor(props) {
@@ -287,77 +291,10 @@ export default class Results extends React.Component {
               <h4 className="results filter-title">Apply Filters:</h4>
               <ButtonGroup vertical className="mt-2">
                 <ListingTypeFilter typeChange={this.typeChange.bind(this)} />
-                <DropdownButton as={ButtonGroup} title="Duration" variant="info">
-                  <Dropdown.Item data-value={1} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    Less than a week
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={2} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    1 to 4 weeks
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={3} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    1 to 3 Months
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={4} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    3 to 6 Months
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={5} onClick={() => this.durationChange(event.target.dataset.value)}>
-                    More than 6 months
-                  </Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Size" variant="info">
-                  <Dropdown.Item data-value={1} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Extra Small (Cupboard)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={2} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Small (Closet)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={3} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Medium (Spare Room/Garage)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={4} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Large (Entire Shed/Barn)
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={5} onClick={() => this.sizeChange(event.target.dataset.value)}>
-                    Extra Large (Open Area)
-                  </Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Access Frequency" variant="info">
-                  <Dropdown.Item data-value={1} onClick={() => this.accessChange(event.target.dataset.value)}>
-                    Never
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={2} onClick={() => this.accessChange(event.target.dataset.value)}>
-                    Infrequent
-                  </Dropdown.Item>
-                  <Dropdown.Item data-value={3} onClick={() => this.accessChange(event.target.dataset.value)}>
-                    Frequent
-                  </Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Indoors/Outdoors" variant="info">
-                  <Dropdown.Item
-                    onClick={() => {
-                      this.indoorsChange(true);
-                      this.climateChange(true);
-                    }}
-                  >
-                    Indoors with Climate Control
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => {
-                      this.indoorsChange(true);
-                      this.climateChange(null);
-                    }}
-                  >
-                    Indoors without Climate Control
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => {
-                      this.indoorsChange(null);
-                      this.climateChange(null);
-                    }}
-                  >
-                    No preference
-                  </Dropdown.Item>
-                </DropdownButton>
+                <DurationFilter durationChange={this.durationChange.bind(this)} />
+                <SizeFilter sizeChange={this.sizeChange.bind(this)} />
+                <AccessFilter accessChange={this.accessChange.bind(this)} />
+                <IndoorsFilter indoorsChange={this.indoorsChange.bind(this)} climateChange={this.climateChange.bind(this)} />
                 <LockedFilter lockedChange={this.lockedChange.bind(this)} />
                 <StandaloneFilter standaloneChange={this.standaloneChange.bind(this)} />
               </ButtonGroup>
