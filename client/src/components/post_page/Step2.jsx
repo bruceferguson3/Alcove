@@ -9,7 +9,6 @@ const Step2 = (props) => {
     return(
         <Form id="step2Form" action="#" onSubmit={() => {props.nextButton(); props.getCoords()}}>
             <Card className='step2Container'>
-                <Card.Header className='step2Header'>Contact Info</Card.Header>
                     <Form.Group controlId="validationCustom01" className='step2Input'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
@@ -81,10 +80,10 @@ const Step2 = (props) => {
                     </Form.Group>
                     <Form.Group>
                         <span className='step2Button'>
-                            <Button onClick={props.backButton}>Back</Button>
+                            <Button onClick={props.backButton} variant="info">Back</Button>
                         </span>
                         <span className='step2Button'>
-                            <Button type='submit'>Next</Button>
+                            <Button type='submit' variant="info">Next</Button>
                         </span>
                     </Form.Group>
 
