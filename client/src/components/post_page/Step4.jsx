@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import '../preview_page/preview.css'
 import PreviewPage from '../preview_page/PreviewPage.jsx';
 import PreviewListing from '../preview_page/PreviewListing.jsx';
 
@@ -36,9 +37,8 @@ const Step4 = (props) => {
                 <Button onClick={props.backButton} >Back</Button>
                 <Button id="openPreviewButton" onClick={handleShow} >Preview Your Post</Button>
                 <Modal
-                    size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
-                    centered
+                    dialogClassName='test-modal'
                     show={show}
                     onHide={handleClose}
                 >
@@ -47,10 +47,11 @@ const Step4 = (props) => {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <PreviewListing />
+                        <PreviewListing stateData={props.data}/>
                     </Modal.Body>
 
                     <Modal.Footer>
+                        <Button variant="secondary" onClick={() => {handleClose();}}>Return to form to make changes</Button>
                         <Button variant="primary" onClick={() => {handleClose(); props.handleSubmit(); props.nextButton()}}>Save Changes and Submit</Button>
                     </Modal.Footer>
                 </Modal>

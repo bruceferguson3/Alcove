@@ -75,6 +75,13 @@
   justify-content: space-evenly;
 }
 
+#submitPic {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 .tsFiltersDropdowns button {
   width: 11rem;
 }

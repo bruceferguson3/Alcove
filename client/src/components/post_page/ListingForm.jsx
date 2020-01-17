@@ -287,7 +287,8 @@ export default class ListingForm extends React.Component {
                     <h1 className="display-4 mb-3">Please submit this form</h1>
                     <ProgressBar animated now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
-                        <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo} />
+                        <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
+                        data={this.state.data}/>
                     </div>
                 </div>
             )
