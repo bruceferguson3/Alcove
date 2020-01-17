@@ -12,6 +12,22 @@ const ListingProductInfo = props => {
             <div id="tsClimateIcon"></div>
             <div className="tsBulletText">Climate Controlled</div>
           </Row>
+          <Row>
+            <div id="tsIndoorsIcon"></div>
+            <div className="tsBulletText">Indoors</div>
+          </Row>
+          <Row>
+            <div id="tsLockedIcon"></div>
+            <div className="tsBulletText">Locked</div>
+          </Row>
+          <Row>
+            <div id="tsOutdoorsIcon"></div>
+            <div className="tsBulletText">Outdoors</div>
+          </Row>
+          <Row>
+            <div id="tsSharedIcon"></div>
+            <div className="tsBulletText">Shared Space</div>
+          </Row>
         </Popover.Content>
     </Popover>
   )

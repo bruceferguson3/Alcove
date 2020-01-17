@@ -5,8 +5,6 @@ import "./Listing.css";
 import dummyData from './dummyData.js';
 
 const ListingModal = ({ images, show, handleClose }) => {
-  let title = dummyData.test.title;
-  console.log(title);
 
   const carouselItems = images.map((src, idx) => {
     return (
