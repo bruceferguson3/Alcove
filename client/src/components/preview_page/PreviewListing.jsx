@@ -5,7 +5,9 @@ import dummyData from './dummyData.js';
 import PreviewProductInfo from './PreviewProductInfo.jsx';
 import PreviewImages from './PreviewImages.jsx';
 import ListingContactInfo from '../listing_page/ListingContactInfo.jsx';
-// import ListingMap from '../listing_page/ListingMap.jsx';
+import Listing from '../listing_page/Listing.jsx';
+import ListingMap from '../listing_page/ListingMap.jsx';
+import ListingImages from '../listing_page/ListingImages.jsx';
 
 class PreviewListing extends React.Component {
   constructor(props) {
