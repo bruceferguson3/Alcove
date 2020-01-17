@@ -8,6 +8,7 @@ const ActiveFilter = ({ filterType, filterValue, clearFilter }) => (
     data-filter={filterType}
     onClick={() => clearFilter(filterType)}
   >
+    <img src="../../assets/results-x.png" className="filter-x-image"/>
     {filterDisplays(filterType, filterValue)}
   </Button>
 );
@@ -22,13 +23,13 @@ const filterDisplays = (filterType, filterValue) => {
     case 'type':
       return filterValue === 'space' ? 'Showing Only Spaces' : 'Showing Only Items';
     case 'size':
-      return `Size: ${filterSize(filterValue)}`;
+      return `${filterSize(filterValue)}`;
     case 'priceMin':
       return `Minimum Price $${filterValue}`;
     case 'priceMax':
       return `Maximum Price $${filterValue}`;
     case 'easeOfAccess':
-      return `Needed Access: ${filterFrequency(filterValue)}`;
+      return `${filterFrequency(filterValue)}`;
     case 'locked':
       return 'Locked';
     case 'indoors':
@@ -36,7 +37,7 @@ const filterDisplays = (filterType, filterValue) => {
     case 'climateControl':
       return 'Climate Controlled';
     case 'duration':
-      return `Duration: ${filterDuration(filterValue)}`;
+      return `${filterDuration(filterValue)}`;
     case 'standAlone':
       return 'Exclusive Storage';
     default:
@@ -51,11 +52,11 @@ const filterDisplays = (filterType, filterValue) => {
 const filterFrequency = (val) => {
   switch (val) {
     case 1:
-      return 'Never';
+      return 'Access Not Needed';
     case 2:
-      return 'Infrequent';
+      return 'Infrequent Access';
     case 3:
-      return 'Frequent';
+      return 'Frequent Access';
     default:
       return 'Filter Error!'
   }

@@ -27,13 +27,13 @@ export default class App extends React.Component {
       path: '/',
       activeFilters: {
         type: null,
-        climateControl: null,
+        duration: null,
         size: null,
         easeOfAccess: null,
+        indoors: null,
+        climateControl: null,
         locked: null,
         standAlone: null,
-        indoors: null,
-        duration: null
       },
     };
   };

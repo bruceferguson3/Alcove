@@ -48,7 +48,7 @@ export default class Results extends React.Component {
           this.setState(
             {
               newZip: '',
-              priceMin: 5,
+              priceMin: 0,
               priceMax: 150,
               waitingForResults: false,
             });
@@ -222,7 +222,6 @@ export default class Results extends React.Component {
         ) : filtersSelected ? (
           <div className="flex-centered active-filters">
             <FiltersDisplay filters={filters} clearFilter={this.clearFilter.bind(this)} />
-            <span className="results-span">(Click to remove)</span>
           </div>
         ) : listings.length === 0 ? (
           <div className="flex-centered active-filters no-filters-active">
