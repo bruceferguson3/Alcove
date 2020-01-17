@@ -132,7 +132,6 @@ const ListingImages = props => {
             </Row>
             <Row>
               <Col md={6}
-                md={6}
                 className="listingPictureContainer"
                 style={{
                   borderRight: "1px solid #353b40",
