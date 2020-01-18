@@ -18,7 +18,7 @@ Alcove connects users with available storage space and users with items to store
   + Security
   + How frequently I need to access the space
   + Whether or not I require climate control
-  + Whether or not I need exclusive access to the space or am willing to share the space with other users
+  + Whether or not I need exclusive access to the space or am willing to share the space with others
 * As a user, I want to update my search criteria without losing access to my applied filters.
 * As a user, I want to access an individual listing from the results page to retrieve more information about an item or space.
 * As a user, I want to see the location of the item or space dynamically rendered on a map.

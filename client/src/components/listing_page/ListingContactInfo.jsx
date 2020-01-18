@@ -12,7 +12,8 @@ class ListingContactInfo extends React.Component {
       data: {
         startDate: '',
         endDate: '',
-      }
+      },
+      submitted: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
@@ -58,9 +59,19 @@ class ListingContactInfo extends React.Component {
     };
 
     axios.post('http://AlcoveAPI.us-east-2.elasticbeanstalk.com/savecontact', { data: { data: data } })
-      .then((response) => console.log('Successfully sent to server.', response))
-      .catch(err => console.error(err))
-  }
+      .then(response => {
+        console.log('Successfully sent to server.', response)
+        this.setState({
+          submitted: 'submitted'
+        });
+      })
+      .catch(err => {
+        console.error(err)
+        this.setState({
+          submitted: 'err'
+        });
+      });
+  };
 
 
   render() {
@@ -74,6 +85,8 @@ class ListingContactInfo extends React.Component {
     let helpfulDetails = "Please include a description of your item(s) if you are looking for storage space or a description of your space if you have storage availability.  Feel free to attach a picture of your item(s) or storage space."
     let contactText;
 
+    let closer = this.state.submitted === 'submitted' ? (<span>Your message has been successfully received!  Thank you for choosing Alcove!</span>) : this.state.submitted === 'err' ? (<span>Uh-oh!  It looks like something went wrong!</span>) : (<Button variant="primary" onClick={this.handleSubmit}>Submit</Button>);
+
     if (userEmail && !userPhone) {
       contactText = `You may also reach out to ${userName} via e-mail at ${userEmail}.`
     } else if (userPhone && !userEmail && !posterTextPermission) {
@@ -85,6 +98,8 @@ class ListingContactInfo extends React.Component {
     } else if (userPhone && posterTextPermission && userEmail) {
       contactText = `You may also reach out to ${userName} via phone or text message at ${userPhone} or e-mail at ${userEmail}.`
     }
+
+
 
     // To Do:  Conditionally render date range picker so that if the user picks a
     // range that is greater than the number of available days indicated by the poster,
@@ -135,7 +150,7 @@ class ListingContactInfo extends React.Component {
             <input id={'contact-image-upload'} type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           </Form.Group>
           <p>{contactText}</p>
-          <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
+          {closer}
         </Form>
       </div>
     );
