@@ -3,8 +3,6 @@ import { Container, Row, Popover, OverlayTrigger } from "react-bootstrap";
 import "./Listing.css";
 
 const ListingProductBullets = ({ bullets }) => {
-<<<<<<< HEAD
-=======
   const popover = (
     <Popover>
       <Popover.Title as="h4">Icon Guide</Popover.Title>
@@ -32,8 +30,6 @@ const ListingProductBullets = ({ bullets }) => {
       </Popover.Content>
     </Popover>
   )
-
->>>>>>> 00bc2f48f09191d61d4316312601bd1b923255cc
 
   const climateControl = bullets.climateControl ? (
     <Row className="tsListingBulletOverride">
