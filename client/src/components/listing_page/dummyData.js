@@ -29,10 +29,10 @@ let test = {
     Pellentesque sed condimentum velit. Curabitur vulputate placerat mi, ac sagittis urna vehicula ut. Vestibulum fermentum semper magna, a vulputate ante bibendum eget. In hac habitasse platea dictumst. In viverra sapien at blandit rhoncus. In hac habitasse platea dictumst. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;`,
     thumbs: [
       "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_outside.jpg",
+      "https://alcove-image-size-five.s3.us-east-2.amazonaws.com/prettyBarn2.jpeg",
+      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg",
       "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg",
-      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg",
-      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg",
-      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg"
+      "https://alcove-image-size-five.s3.us-east-2.amazonaws.com/prettyBarn.jpeg"
     ],
     title: "Spacious Area",
     reviews: ["", "", ""],
