@@ -23,6 +23,11 @@
 .results-banner-title {
   font-size: 1.5rem;
   font-weight: bold;
+  color: #ba52d0;
+}
+
+.no-results-title {
+  color: black;
 }
 
 #filter-col {
@@ -35,9 +40,26 @@
   justify-content: center;
   align-items: center;
   padding-top: .6rem;
-  background-color: aliceblue;
   border-radius: .5rem;
   margin: .5rem 0;
+}
+
+.results-filter-bar {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 13rem;
+  z-index: 30;
+}
+
+.filters-active-background {
+  background-color: white;
+  position: sticky;
+  top: 4.5rem;
+  z-index: 30;
+  margin-top: -.2rem;
 }
 
 .flex-column {
@@ -134,6 +156,7 @@
 #results-zip-change, #results-price-change {
   background-color: #be97c6;
   border-color: #be97c6;
+  width: 9.7rem;
 }
 
 #results-zip-change:hover, #results-price-change:hover {
@@ -182,7 +205,7 @@
   justify-content: flex-start;
   background-color: #be97c6;
   font-weight: bold;
-  margin-top: 2rem;
+  margin-top: .6rem;
 }
 
 .results-spinner {
@@ -204,6 +227,11 @@
 .btn-info:hover {
   background-color: #3ca7d1;
   border-color: #3ca7d1;
+}
+
+.results-btn:active, .btn-info:active {
+  background-color: #2881bd;
+  border-color: #2881bd;
 }
 
 #results-list-container {
@@ -228,4 +256,8 @@
   margin: -.5rem;
   margin-right: .3rem;
   margin-left: -1.1rem;
+}
+
+#results-zip-input {
+  width: 10rem;
 }

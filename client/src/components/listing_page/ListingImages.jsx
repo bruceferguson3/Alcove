@@ -143,7 +143,7 @@ const ListingImages = props => {
 
           </Col>
           <Col md={6}>
-            <Row>
+            <Row style={{ marginTop: 0 }}>
               <Col
                 md={6}
                 className="listingPictureContainer"
@@ -166,7 +166,7 @@ const ListingImages = props => {
 
               </Col>
             </Row>
-            <Row>
+            <Row style={{ marginTop: 0}}>
               <Col md={6}
                 md={6}
                 className="listingPictureContainer"

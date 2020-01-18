@@ -19,15 +19,15 @@ let test = {
     },
     description: "The spot to be",
     thumbs: [
-      // "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_outside.jpg",
-      // "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg",
+      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_outside.jpg",
+      "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg",
       // "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg",
-      // "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg"
+      // "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_snow.jpg",
       // "https://alcove-image-size-four.s3.us-east-2.amazonaws.com/barn1_inside.jpg"
     ],
-    title: "Ish Sucks",
+    title: "Spacious Area",
     reviews: ["", "", ""],
-    geoLocation: [175.12, 51.12],
+    geoLocation: [30.266, -97.73],
     zip: "78745"
   }
 };

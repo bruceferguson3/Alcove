@@ -68,7 +68,7 @@ export default class Results extends React.Component {
       priceMax
     };
     this.setState({
-      waitingForResults: true
+      waitingForResults: true,
     });
     // console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
@@ -220,7 +220,7 @@ export default class Results extends React.Component {
             />
           </div>
         ) : filtersSelected ? (
-          <div className="flex-centered active-filters">
+          <div className="flex-centered active-filters filters-active-background">
             <FiltersDisplay filters={filters} clearFilter={this.clearFilter.bind(this)} />
           </div>
         ) : listings.length === 0 ? (
@@ -256,6 +256,7 @@ export default class Results extends React.Component {
                 Enter New Zip Code:
               </label>
               <input
+                id="results-zip-input"
                 type="text"
                 name="location"
                 value={newZip}
@@ -302,7 +303,7 @@ export default class Results extends React.Component {
           <Col>
               {listings.length === 0 ? (
                 <Jumbotron className="no-listings flex-column">
-                  <h4 className="results-banner-title">Sorry!</h4>
+                  <h4 className="results-banner-title no-results-title">Sorry!</h4>
                   <p>
                     It appears the area you searched has no listings meeting
                     your criteria.
