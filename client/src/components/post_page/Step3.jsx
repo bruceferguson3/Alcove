@@ -163,8 +163,8 @@ const Step3 = ({
         </div>
       </div>
       <div className="tsFilterCheckboxContainer">
-        <ul>
-          <div className="form-check">
+        <ul style={{marginBottom: '0px'}}>
+          <div id="postFormCheckContainer" className="form-check">
             <input
               className="form-check-input"
               type="checkbox"
@@ -188,7 +188,7 @@ const Step3 = ({
             />
             <label className="form-check-label">{exclusivePrompt}</label>
           </div>
-          <div className="form-check">
+          <div style={{height: '2rem'}} className="form-check">
             <input
               className="form-check-input"
               type="checkbox"
