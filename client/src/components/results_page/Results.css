@@ -17,7 +17,7 @@
 
 #results-row {
   flex-wrap: nowrap;
-  margin-top: .8rem;
+  margin-top: 0;
 }
 
 .results-banner-title {
@@ -40,26 +40,21 @@
   justify-content: center;
   align-items: center;
   padding-top: .6rem;
-  border-radius: .5rem;
-  margin: .5rem 0;
+  margin-bottom: 0;
 }
 
 .results-filter-bar {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
   position: -webkit-sticky;
   position: sticky;
-  top: 13rem;
+  top: 11.6rem;
   z-index: 30;
 }
 
 .filters-active-background {
-  background-color: white;
   position: sticky;
   top: 4.5rem;
+  background-color: white;
   z-index: 30;
-  margin-top: -.2rem;
 }
 
 .flex-column {
@@ -77,6 +72,7 @@
   margin-bottom: 0;
   font-weight: bold;
   font-size: .9rem;
+  width: 16.5rem;
 }
 
 .results-thumbnail-price {
@@ -237,6 +233,7 @@
 #results-list-container {
   display: flex;
   flex-flow: row wrap;
+  margin-top: .5rem;
 }
 
 .filter-btn {
