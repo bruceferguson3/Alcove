@@ -4,11 +4,32 @@ import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
 
-const ListingContactInfo = ({ userInfo }) => {
-  console.log(dummyData);
-  userInfo = userInfo ? userInfo : dummyData.test.data.userInfo;
-  // const = [validated, setValidate] = useState(false);
-  //
+class ListingContactInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        name: '',
+        email: '',
+        phone: '',
+        text: false,
+        startDate: '',
+        endDate: '',
+        message: '',
+        images: []
+      }
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  };
+
+
+
+  handleSubmit() {
+    axios.post('PLACEHOLDER', { data: this.state.data })
+      .then(() => console.log('Successfully sent to server.'))
+      .catch(() => console.error(err))
+  }
+
   // const handleSubmit = event => {
   //   const form = event.currentTarget;
   //
@@ -19,6 +40,9 @@ const ListingContactInfo = ({ userInfo }) => {
   //
   //   setValidated(true);
   // };
+
+  render() {
+    const userInfo = this.props.userInfo ? this.props.userInfo : dummyData.test.data.userInfo;
 
     let userName = userInfo.name;
     let userEmail = userInfo.email;
@@ -45,7 +69,6 @@ const ListingContactInfo = ({ userInfo }) => {
     // an error message appears.
 
     return (
-      < >
         <Form>
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
@@ -55,11 +78,11 @@ const ListingContactInfo = ({ userInfo }) => {
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your e-mail address:</Form.Label>
-            <Form.Control type="email" placeholder="Example:  name@example.com" />
+            <Form.Control required type="email" placeholder="Example:  name@example.com" />
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your phone number:</Form.Label>
-            <Form.Control type="text" placeholder="Example: (555) 555-5555" />
+            <Form.Control required type="text" placeholder="Example: (555) 555-5555" />
           </Form.Group>
           <Form.Group>
             <Form.Check type="checkbox" label={userTextPermission} />
@@ -82,15 +105,16 @@ const ListingContactInfo = ({ userInfo }) => {
             </ReactiveBase>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Enter your message:</Form.Label>
-            <Form.Control as="textarea" rows="3" placeholder={helpfulDetails}/>
+            <Form.Label>Describe your item or space:</Form.Label>
+            <Form.Control as="textarea" rows="6" placeholder={helpfulDetails}/>
+            <Form.Label>Upload images of your item or space:</Form.Label>
+            <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           </Form.Group>
-          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           <p>{contactText}</p>
           <Button variant="primary" block>Submit</Button>
         </Form>
-      </ >
     );
+  };
 };
 
 export default ListingContactInfo;

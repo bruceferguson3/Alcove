@@ -31,6 +31,7 @@ const ListingProductBullets = ({ bullets }) => {
     </Popover>
   )
 
+
   const climateControl = bullets.climateControl ? (
     <Row className="tsListingBulletOverride">
       <div title="Space is climate controlled" id="tsClimateIcon"></div>
