@@ -15,7 +15,7 @@ const Footer = props => {
               <img src="../../assets/alcove-footer.jpg" alt="Alcove Logo" className="it-footer-logo" onClick={props.returnToTop} />
             </Navbar.Brand>
           </Col>
-          <Col xs={4}>
+          <Col>
             <h3 className="it-footer-title">About Us</h3>
             <p className="it-footer-p">
               Chirp at birds steal the warm chair right after you get up, pee on walls it smells like breakfast for fight own tail lay on arms while
@@ -67,16 +67,22 @@ const Footer = props => {
           <Col>
             <h3 className="it-footer-title">Contact</h3>
             <p className="it-footer-p">
-              119 Nueces Street
-              <br />
-              Austin, TX 78701
+              <a href="https://goo.gl/maps/TY6E1Eb7mLWghxA39" className="it-footer-links">
+                119 Nueces Street
+                <br />
+                Austin, TX 78701
+              </a>
             </p>
             <p className="it-footer-p">
               <a className="it-footer-links" href="mailto:teamalcove@gmail.com">
                 teamalcove@gmail.com
               </a>
             </p>
-            <p className="it-footer-p">512-717-5244</p>
+            <p className="it-footer-p">
+              <a href="tel:5127175244" className="it-footer-links">
+                512-717-5244
+              </a>
+            </p>
           </Col>
         </Row>
         <Row className="justify-content-md-center">
