@@ -17,10 +17,10 @@ describe('Results Page', function() {
         cy.contains('00000')
         cy.get('.no-listings')
     })
-    it('filter by price on Apply Price Range click', function() {
-        cy.get('[type="text"]').type('78745')
-        cy.get('#results-zip-change').click()
-    })
+    // it('filter by price on Apply Price Range click', function() {
+    //     cy.get('[type="text"]').type('78745')
+    //     cy.get('#results-zip-change').click()
+    // })
     it('should display Duration options', function() {
         cy.get(':nth-child(1) > .dropdown-toggle').click()
         cy.get('[data-value="space"]')
@@ -29,10 +29,10 @@ describe('Results Page', function() {
     it('should display Size options', function() {
         cy.get(':nth-child(2) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="1"]')
-        cy.get('[data-value="2"]')
-        cy.get('[data-value="3"]')
-        cy.get('[data-value="4"]')
-        cy.get('[data-value="5"]')
+        cy.get('.show.dropdown > .dropdown-menu > [data-value="2"]')
+        cy.get('.show.dropdown > .dropdown-menu > [data-value="3"]')
+        cy.get('.show.dropdown > .dropdown-menu > [data-value="4"]')
+        cy.get('.show.dropdown > .dropdown-menu > [data-value="5"]')
     })
     it('should display Access Frequency options', function() {
         cy.get(':nth-child(4) > .dropdown-toggle').click()

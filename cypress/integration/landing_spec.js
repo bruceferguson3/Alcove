@@ -24,12 +24,8 @@ describe('Navigation from landing page', function() {
         cy.contains('Features').click()
         cy.url().should('include', 'features')
     })
-    it('should route to Contact page on link click', function() {
-        cy.contains('Contact Us').click()
-        cy.url().should('include', 'contact')
-    })
     it('should route to Home page on link click', function() {
-        cy.contains('Contact Us').click()
+        cy.contains('Features').click()
         cy.contains('Home').click()
         cy.url().should('eq', 'http://localhost:3030/')
     })
@@ -38,29 +34,29 @@ describe('Navigation from landing page', function() {
 describe('NavBar Search Feature', function() {
     beforeEach(() => {
         cy.visit('http://localhost:3030')
-        cy.contains('Contact Us').click()
+        cy.contains('Features').click()
     })
     it('should display search bar in navbar', function() {
         cy.get('input[placeholder="Enter zip code"]')
     })
-    it('should display Find Items/Units button in NavBar search feature', function() {
-        cy.contains('Find Items/Units')
+    it('should display Find Spaces/Items button in NavBar search feature', function() {
+        cy.contains('Find Spaces/Items')
     })
-    it('should display Post Items/Units button in NavBar search feature', function() {
-        cy.contains('Post Items/Units')
+    it('should display Post a Space/Item button in NavBar search feature', function() {
+        cy.contains('Post a Space/Item')
     })
     it('should search when valid zipcode input', function() {
         cy.get('input[placeholder="Enter zip code"]').type('78745')
-        cy.contains('Find Items/Units').click()
+        cy.contains('Find Spaces/Items').click()
         cy.url().should('include', 'results')
     })
     it('should not search when invalid zipcode input', function() {
         cy.get('input[placeholder="Enter zip code"]').type('787')
-        cy.contains('Find Items/Units').click()
-        cy.url().should('include', 'contact')
+        cy.contains('Find Spaces/Items').click()
+        cy.url().should('include', 'features')
     })
     it('should route to post page on click', function() {
-        cy.contains('Post Items/Units').click()
+        cy.contains('Post a Space/Item').click()
         cy.url().should('include', 'post')
     })
 })
