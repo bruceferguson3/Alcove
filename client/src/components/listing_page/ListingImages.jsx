@@ -9,9 +9,20 @@ const ListingImages = props => {
   // Some elements require both inline styling and the stylesheet due to border positioning.
 
   const [show, setShow] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  const handleIndex = (e, i) => {
+    if (i === 'show') {
+      handleShow();
+    }
+    setIndex(e);
+  }
   // const [current, setIndex] = useState(0);
 
-  // const handleIndex = () => setShow()
+  // const handleIndex = (e, i) => {
+  //   console.log(e);
+  //   console.log(i);
+  // }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -31,13 +42,15 @@ const ListingImages = props => {
             <div className="imageSpacerLeft"></div>
           </Col>
           <Col md={6} className="listingPictureContainer">
-            <img src="../../assets/alcove-footer.jpg" className="listingPicture" onClick={handleShow} />
+            <img src="../../assets/alcove-footer.jpg" className="listingPicture" onClick={() => { handleIndex(0, 'show') }} />
           </Col>
           <Col>
             <div className="imageSpacerRight"></div>
           </Col>
         </Row>
         <ListingModal
+          handleIndex={handleIndex}
+          index={index}
           images={images}
           show={show}
           handleClose={handleClose}
@@ -54,13 +67,15 @@ const ListingImages = props => {
             <div className="imageSpacerLeft"></div>
           </Col>
           <Col md={6} className="listingPictureContainer">
-            <img src={image1} className="listingPicture" onClick={handleShow} />
+            <img src={image1} className="listingPicture" onClick={() => { handleIndex(0, 'show') }} />
           </Col>
           <Col>
             <div className="imageSpacerRight"></div>
           </Col>
         </Row>
         <ListingModal
+          handleIndex={handleIndex}
+          index={index}
           images={images}
           show={show}
           handleClose={handleClose}
@@ -77,13 +92,15 @@ const ListingImages = props => {
             style={{
               borderRight: "1px solid #353b40"
             }}>
-            <img src={images[0]} className="listingPicture" onClick={handleShow} />
+            <img src={images[0]} className="listingPicture" onClick={() => { handleIndex(0, 'show') }} />
           </Col>
           <Col className="listingPictureContainer">
-            <img src={images[1]} className="listingPicture" onClick={handleShow} />
+            <img src={images[1]} className="listingPicture" onClick={() => { handleIndex(1, 'show') }} />
           </Col>
         </Row>
         <ListingModal
+          handleIndex={handleIndex}
+          index={index}
           images={images}
           show={show}
           handleClose={handleClose}
@@ -102,10 +119,10 @@ const ListingImages = props => {
               borderRight: "1px solid #353b40"
             }}
           >
-            <img src={image1} className="listingPicture" onClick={handleShow} />
+            <img src={image1} className="listingPicture" onClick={() => { handleIndex(0, 'show') }} />
           </Col>
           <Col className="listingPictureContainer">
-            <img src={image2} className="listingPicture" onClick={handleShow} />
+            <img src={image2} className="listingPicture" onClick={() => { handleIndex(1, 'show') }} />
           </Col>
           <Col
             className="listingPictureContainer"
@@ -113,7 +130,7 @@ const ListingImages = props => {
               borderLeft: "1px solid #353b40"
             }}
           >
-            <img src={image3} className="listingPicture" onClick={handleShow} />
+            <img src={image3} className="listingPicture" onClick={() => { handleIndex(2, 'show') }} />
 
             <Button onClick={handleShow} id="listingModalButton" className="img-overlay">
               Launch the super cool modal!
@@ -121,6 +138,8 @@ const ListingImages = props => {
           </Col>
         </Row>
         <ListingModal
+          handleIndex={handleIndex}
+          index={index}
           images={images}
           show={show}
           handleClose={handleClose}
@@ -141,7 +160,7 @@ const ListingImages = props => {
               height: "300px"
             }}
           >
-            <img src={image1} className="listingPicture" onClick={handleShow} />
+            <img src={image1} className="listingPicture" onClick={() => { handleIndex(0, 'show') }} />
 
           </Col>
           <Col md={6}>
@@ -154,7 +173,7 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image2} className="listingPicture" onClick={handleShow} />
+                <img src={image2} className="listingPicture" onClick={() => { handleIndex(1, 'show') }} />
 
               </Col>
               <Col md={6}
@@ -164,7 +183,7 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image3} className="listingPicture" onClick={handleShow} />
+                <img src={image3} className="listingPicture" onClick={() => { handleIndex(2, 'show') }} />
 
               </Col>
             </Row>
@@ -177,7 +196,7 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image4} className="listingPicture" onClick={handleShow} />
+                <img src={image4} className="listingPicture" onClick={() => { handleIndex(3, 'show') }} />
 
               </Col>
               <Col
@@ -187,11 +206,13 @@ const ListingImages = props => {
                   height: "150px"
                 }}
               >
-                <img src={image5} className="listingPicture" onClick={handleShow} />
+                <img src={image5} className="listingPicture" onClick={() => { handleIndex(4, 'show') }} />
                 <Button onClick={handleShow} id="listingModalButton">
                   Launch the super cool modal!
                 </Button>
                 <ListingModal
+                  handleIndex={handleIndex}
+                  index={index}
                   images={images}
                   show={show}
                   handleClose={handleClose}
