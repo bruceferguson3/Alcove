@@ -1,5 +1,4 @@
 @media screen and (max-width: 1300px) {
-
   #postFormCheckContainer {
     padding-bottom: 0px;
   }
@@ -46,7 +45,7 @@
     padding: 0px;
     padding-top: 1%;
   }
-  
+
   .postFormContainer {
     width: 60%;
     height: 90%;
@@ -57,7 +56,7 @@
     border-radius: 1rem;
     background-color: white;
   }
-  
+
   .step2Container {
     display: flex;
     flex-direction: column;
@@ -70,108 +69,108 @@
     border: white;
     margin-bottom: 0 !important;
   }
-  
+
   .step2Button {
     margin-right: 1em;
   }
-  
+
   #postItemOrPropertyImagesContainer1 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 5%;
   }
-  
+
   #postItemOrPropertyImagesContainer2 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 5%;
   }
-  
+
   #postPropertyImageContainer {
     height: 7em;
     width: 10em;
   }
-  
+
   #postItemImageContainer {
     height: 7em;
     width: 10em;
   }
-  
+
   #postPropertyImage {
     height: 100%;
     width: 100%;
   }
-  
+
   #postItemImage {
     height: 100%;
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
   }
-  
+
   #submitPic {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
-  
+
   .tsFiltersDropdowns button {
     width: 11rem;
   }
-  
+
   .tsDropdownContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
-  
+
   .tsDropdownText a {
     text-align: center;
     margin-left: 1rem;
   }
-  
+
   .tsDropdownText {
     height: 2.5rem;
     display: flex;
     align-items: center;
   }
-  
+
   .tsFilterCheckboxContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  
+
   #step1ContainerCard {
     min-width: 100%;
     min-height: 100%;
     border: none !important;
   }
-  
+
   #step3ContainerCard {
     min-width: 100%;
     min-height: 100%;
   }
-  
+
   #step1UL {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     vertical-align: middle;
   }
-  
+
   #extraSpaceContainer {
     margin: auto;
   }
-  
+
   #extraItemContainer {
     margin: auto;
   }
-  
+
   .tsTooltipIcon {
-    background-image: url("../../../dist/assets/question.png");
+    background-image: url('../../../dist/assets/question.png');
     height: 1.5rem;
     width: 1.5rem;
     background-size: contain;
@@ -179,7 +178,7 @@
     opacity: 0.5;
     cursor: pointer;
   }
-  
+
   .tsTooltipContainer .tsTooltip {
     visibility: hidden;
     position: absolute;
@@ -190,111 +189,109 @@
     z-index: 1;
     padding: 1rem;
   }
-  
+
   .tsTooltipContainer:hover .tsTooltip {
     visibility: visible;
   }
-  
+
   .tsTooltipContainer {
     position: relative;
-    right: .3rem;
+    right: 0.3rem;
     top: 0.25rem;
   }
-  
+
   .tsDropdownWrapper {
     display: flex;
   }
-  
+
   .tsAlert {
     color: red;
     font-weight: 600;
   }
-  
+
   .tsErrorHidden {
     visibility: hidden;
   }
-  
+
   .progress {
     height: 1.5vh;
     width: 59%;
     margin-bottom: 1%;
   }
-  
+
   .tsStepThreeHeader {
     margin: 1rem 0;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     font-size: 1.2rem;
     font-weight: bold;
   }
-  
+
   .btn-info:hover {
     background-color: #419abd;
     border-color: #419abd;
   }
-  
+
   .btn-info {
     background-color: #419abd;
   }
-  
+
   #postPropertyImageContainer:hover img {
     cursor: pointer;
     transform: scale(1.25);
   }
-  
+
   #postPropertyImageContainer img {
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
   }
-  
+
   #postItemImageContainer img {
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
   }
-  
+
   #postItemImageContainer:hover img {
     cursor: pointer;
     transform: scale(1.25);
   }
-  
+
   .post-form-option-button {
-    margin: 0 .4rem;
+    margin: 0 0.4rem;
     border-color: #2fb5e9;
     background-color: white;
     color: black;
   }
-  
+
   .post-form-option-button:hover {
     color: black;
     border-color: #2fb5e9;
     background-color: #9cddf7;
   }
-  
+
   .post-form-option-selected {
     background-color: #2fb5e9;
     color: white;
   }
-  
+
   .post-form-option-selected:hover {
     background-color: #2fb5e9;
     color: white;
   }
 }
 @media screen and (min-width: 1501px) {
+  #postTitle1 {
+    display: none;
+  }
 
+  #postTitle2 {
+    display: none;
+  }
 
-    #postTitle1 {
-        display: none;
-    }
+  #postTitle3 {
+    display: none;
+  }
 
-    #postTitle2 {
-        display: none;
-    }
-
-    #postTitle3 {
-        display: none;
-    }
-
-    #postTitle4 {
-        display: none;
-    }
+  #postTitle4 {
+    display: none;
+  }
 
   .mycustom-jumbotron {
     display: flex;
@@ -307,7 +304,7 @@
     width: 100%;
     background: #f6dae8;
   }
-  
+
   .postFormContainer {
     width: 60%;
     height: 90%;
@@ -318,7 +315,7 @@
     border-radius: 1rem;
     background-color: white;
   }
-  
+
   .step2Container {
     display: flex;
     flex-direction: column;
@@ -331,73 +328,73 @@
     border: white;
     margin-bottom: 0 !important;
   }
-  
+
   .step2Button {
     margin-right: 1em;
   }
-  
+
   #postItemOrPropertyImagesContainer1 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 5%;
   }
-  
+
   #postItemOrPropertyImagesContainer2 {
     display: flex;
     justify-content: space-evenly;
     padding-top: 5%;
   }
-  
+
   #postPropertyImageContainer {
     height: 7em;
     width: 10em;
   }
-  
+
   #postItemImageContainer {
     height: 7em;
     width: 10em;
   }
-  
+
   #postPropertyImage {
     height: 100%;
     width: 100%;
   }
-  
+
   #postItemImage {
     height: 100%;
     width: 100%;
     align-items: center;
     justify-content: space-evenly;
   }
-  
+
   #submitPic {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
-  
+
   .tsFiltersDropdowns button {
     width: 11rem;
   }
-  
+
   .tsDropdownContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
-  
+
   .tsDropdownText a {
     text-align: center;
     margin-left: 1rem;
   }
-  
+
   .tsDropdownText {
     height: 2.5rem;
     display: flex;
     align-items: center;
   }
-  
+
   .tsFilterCheckboxContainer {
     display: flex;
     flex-direction: column;
@@ -405,35 +402,35 @@
     justify-content: center;
     margin-top: 2rem;
   }
-  
+
   #step1ContainerCard {
     min-width: 100%;
     min-height: 100%;
     border: none !important;
   }
-  
+
   #step3ContainerCard {
     min-width: 100%;
     min-height: 100%;
   }
-  
+
   #step1UL {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     vertical-align: middle;
   }
-  
+
   #extraSpaceContainer {
     margin: auto;
   }
-  
+
   #extraItemContainer {
     margin: auto;
   }
-  
+
   .tsTooltipIcon {
-    background-image: url("../../../dist/assets/question.png");
+    background-image: url('../../../dist/assets/question.png');
     height: 1.5rem;
     width: 1.5rem;
     background-size: contain;
@@ -441,7 +438,7 @@
     opacity: 0.5;
     cursor: pointer;
   }
-  
+
   .tsTooltipContainer .tsTooltip {
     visibility: hidden;
     position: absolute;
@@ -452,369 +449,366 @@
     z-index: 1;
     padding: 1rem;
   }
-  
+
   .tsTooltipContainer:hover .tsTooltip {
     visibility: visible;
   }
-  
+
   .tsTooltipContainer {
     position: relative;
-    right: .3rem;
+    right: 0.3rem;
     top: 0.25rem;
   }
-  
+
   .tsDropdownWrapper {
     display: flex;
   }
-  
+
   .tsAlert {
     color: red;
     font-weight: 600;
   }
-  
+
   .tsErrorHidden {
     visibility: hidden;
   }
-  
+
   .progress {
     height: 1.25vh;
     width: 59%;
     margin-bottom: 1%;
   }
-  
+
   .tsStepThreeHeader {
     margin: 1rem 0;
     font-size: 1.2rem;
     font-weight: bold;
   }
-  
+
   .btn-info:hover {
     background-color: #419abd;
     border-color: #419abd;
   }
-  
+
   .btn-info {
     background-color: #419abd;
   }
-  
+
   #postPropertyImageContainer:hover img {
     cursor: pointer;
     transform: scale(1.25);
   }
-  
+
   #postPropertyImageContainer img {
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
   }
-  
+
   #postItemImageContainer img {
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
   }
-  
+
   #postItemImageContainer:hover img {
     cursor: pointer;
     transform: scale(1.25);
   }
-  
+
   .post-form-option-button {
-    margin: 0 .4rem;
+    margin: 0 0.4rem;
     border-color: #2fb5e9;
     background-color: white;
     color: black;
   }
-  
+
   .post-form-option-button:hover {
     color: black;
     border-color: #2fb5e9;
     background-color: #9cddf7;
   }
-  
+
   .post-form-option-selected {
     background-color: #2fb5e9;
     color: white;
   }
-  
+
   .post-form-option-selected:hover {
     background-color: #2fb5e9;
     color: white;
   }
 }
 
-@media only screen and (min-width: 1300px) and (max-width: 1501px)  {
+@media only screen and (min-width: 1300px) and (max-width: 1501px) {
+  #postTitle1 {
+    display: none;
+  }
 
-    #postTitle1 {
-        display: none;
-    }
+  #postTitle2 {
+    display: none;
+  }
 
-    #postTitle2 {
-        display: none;
-    }
+  #postTitle3 {
+    display: none;
+  }
 
-    #postTitle3 {
-        display: none;
-    }
+  #postTitle4 {
+    display: none;
+  }
 
-    #postTitle4 {
-        display: none;
-    }
+  #nameEmailPhoneContainer {
+    display: flex;
+    flex-direction: row;
+  }
 
-    #nameEmailPhoneContainer {
-        display: flex;
-        flex-direction: row;
-    }
+  .postFormNames {
+    margin-right: 1%;
+  }
 
-    .postFormNames {
-        margin-right: 1%;
-    }
+  .postFormEmail {
+    margin-right: 1%;
+  }
 
-    .postFormEmail {
-        margin-right: 1%;
-    }
+  .mycustom-jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 43em;
+    max-height: 100em;
+    width: 100%;
+    background: #f6dae8;
+    padding-top: 1em;
+  }
 
+  .postFormContainer {
+    width: 60%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid #8661c1 5px;
+    border-radius: 1rem;
+    background-color: white;
+  }
 
-    .mycustom-jumbotron {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        min-height: 43em;
-        max-height: 100em;
-        width: 100%;
-        background: #f6dae8;
-        padding-top: 1em;
-    }
+  .step2Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border: white;
+    margin-bottom: 0 !important;
+  }
 
-    .postFormContainer {
-        width: 60%;
-        height: 90%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: solid #8661c1 5px;
-        border-radius: 1rem;
-        background-color: white;
-    }
+  .step2Button {
+    margin-right: 1em;
+  }
 
-    .step2Container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 90%;
-        margin-right: auto;
-        margin-left: auto;
-        border: white;
-        margin-bottom: 0 !important;
-    }
+  #postItemOrPropertyImagesContainer1 {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+  }
 
-    .step2Button {
-        margin-right: 1em;
-    }
+  #postItemOrPropertyImagesContainer2 {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+  }
 
-    #postItemOrPropertyImagesContainer1 {
-        display: flex;
-        justify-content: space-evenly;
-        padding-top: 5%;
-    }
+  #postPropertyImageContainer {
+    height: 7em;
+    width: 10em;
+  }
 
-    #postItemOrPropertyImagesContainer2 {
-        display: flex;
-        justify-content: space-evenly;
-        padding-top: 5%;
-    }
+  #postItemImageContainer {
+    height: 7em;
+    width: 10em;
+  }
 
-    #postPropertyImageContainer {
-        height: 7em;
-        width: 10em;
-    }
+  #postPropertyImage {
+    height: 100%;
+    width: 100%;
+  }
 
-    #postItemImageContainer {
-        height: 7em;
-        width: 10em;
-    }
+  #postItemImage {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 
-    #postPropertyImage {
-        height: 100%;
-        width: 100%;
-    }
+  #submitPic {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 
-    #postItemImage {
-        height: 100%;
-        width: 100%;
-        align-items: center;
-        justify-content: space-evenly;
-    }
+  .tsFiltersDropdowns button {
+    width: 11rem;
+  }
 
-    #submitPic {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
+  .tsDropdownContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
-    .tsFiltersDropdowns button {
-        width: 11rem;
-    }
+  .tsDropdownText a {
+    text-align: center;
+    margin-left: 1rem;
+  }
 
-    .tsDropdownContainer {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
+  .tsDropdownText {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+  }
 
-    .tsDropdownText a {
-        text-align: center;
-        margin-left: 1rem;
-    }
+  .tsFilterCheckboxContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+  }
 
-    .tsDropdownText {
-        height: 2.5rem;
-        display: flex;
-        align-items: center;
-    }
+  #step1ContainerCard {
+    min-width: 100%;
+    min-height: 100%;
+    border: none !important;
+  }
 
-    .tsFilterCheckboxContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2rem;
-    }
+  #step3ContainerCard {
+    min-width: 100%;
+    min-height: 100%;
+  }
 
-    #step1ContainerCard {
-        min-width: 100%;
-        min-height: 100%;
-        border: none !important;
-    }
+  #step1UL {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    vertical-align: middle;
+  }
 
-    #step3ContainerCard {
-        min-width: 100%;
-        min-height: 100%;
-    }
+  #extraSpaceContainer {
+    margin: auto;
+  }
 
-    #step1UL {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        vertical-align: middle;
-    }
+  #extraItemContainer {
+    margin: auto;
+  }
 
-    #extraSpaceContainer {
-        margin: auto;
-    }
+  .tsTooltipIcon {
+    background-image: url('../../../dist/assets/question.png');
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    cursor: pointer;
+  }
 
-    #extraItemContainer {
-        margin: auto;
-    }
+  .tsTooltipContainer .tsTooltip {
+    visibility: hidden;
+    position: absolute;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    border-radius: 6px;
+    z-index: 1;
+    padding: 1rem;
+  }
 
-    .tsTooltipIcon {
-        background-image: url("../../../dist/assets/question.png");
-        height: 1.5rem;
-        width: 1.5rem;
-        background-size: contain;
-        background-repeat: no-repeat;
-        opacity: 0.5;
-        cursor: pointer;
-    }
+  .tsTooltipContainer:hover .tsTooltip {
+    visibility: visible;
+  }
 
-    .tsTooltipContainer .tsTooltip {
-        visibility: hidden;
-        position: absolute;
-        width: 300px;
-        background-color: black;
-        color: #fff;
-        border-radius: 6px;
-        z-index: 1;
-        padding: 1rem;
-    }
+  .tsTooltipContainer {
+    position: relative;
+    right: 0.3rem;
+    top: 0.25rem;
+  }
 
-    .tsTooltipContainer:hover .tsTooltip {
-        visibility: visible;
-    }
+  .tsDropdownWrapper {
+    display: flex;
+  }
 
-    .tsTooltipContainer {
-        position: relative;
-        right: .3rem;
-        top: 0.25rem;
-    }
+  .tsAlert {
+    color: red;
+    font-weight: 600;
+  }
 
-    .tsDropdownWrapper {
-        display: flex;
-    }
+  .tsErrorHidden {
+    visibility: hidden;
+  }
 
-    .tsAlert {
-        color: red;
-        font-weight: 600;
-    }
+  .progress {
+    height: 2.2vh;
+    width: 59%;
+    margin-bottom: 1%;
+    border: solid black 1px;
+  }
 
-    .tsErrorHidden {
-        visibility: hidden;
-    }
+  .tsStepThreeHeader {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 
-    .progress {
-        height: 2.2vh;
-        width: 59%;
-        margin-bottom: 1%;
-        border: solid black 1px;
+  .btn-info:hover {
+    background-color: #419abd;
+    border-color: #419abd;
+  }
 
-    }
+  .btn-info {
+    background-color: #419abd;
+  }
 
-    .tsStepThreeHeader {
-        margin: 1rem 0;
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
+  #postPropertyImageContainer:hover img {
+    cursor: pointer;
+    transform: scale(1.25);
+  }
 
-    .btn-info:hover {
-        background-color: #419abd;
-        border-color: #419abd;
-    }
+  #postPropertyImageContainer img {
+    transition: transform 0.1s ease;
+  }
 
-    .btn-info {
-        background-color: #419abd;
-    }
+  #postItemImageContainer img {
+    transition: transform 0.1s ease;
+  }
 
-    #postPropertyImageContainer:hover img {
-        cursor: pointer;
-        transform: scale(1.25);
-    }
+  #postItemImageContainer:hover img {
+    cursor: pointer;
+    transform: scale(1.25);
+  }
 
-    #postPropertyImageContainer img {
-        transition: transform .1s ease;
-    }
+  .post-form-option-button {
+    margin: 0 0.4rem;
+    border-color: #2fb5e9;
+    background-color: white;
+    color: black;
+  }
 
-    #postItemImageContainer img {
-        transition: transform .1s ease;
-    }
+  .post-form-option-button:hover {
+    color: black;
+    border-color: #2fb5e9;
+    background-color: #9cddf7;
+  }
 
-    #postItemImageContainer:hover img {
-        cursor: pointer;
-        transform: scale(1.25);
-    }
+  .post-form-option-selected {
+    background-color: #2fb5e9;
+    color: white;
+  }
 
-    .post-form-option-button {
-        margin: 0 .4rem;
-        border-color: #2fb5e9;
-        background-color: white;
-        color: black;
-    }
-
-    .post-form-option-button:hover {
-        color: black;
-        border-color: #2fb5e9;
-        background-color: #9cddf7;
-    }
-
-    .post-form-option-selected {
-        background-color: #2fb5e9;
-        color: white;
-    }
-
-    .post-form-option-selected:hover {
-        background-color: #2fb5e9;
-        color: white;
-    }
+  .post-form-option-selected:hover {
+    background-color: #2fb5e9;
+    color: white;
+  }
 }
 
 #image-upload {
@@ -825,11 +819,15 @@
   font-weight: bold;
   font-size: 1.2rem;
   margin-top: 1rem;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
 
 #postDescription {
   resize: none;
   width: 30em;
   height: 10em;
+}
+
+.it-post-input {
+  /* width: 277px; */
 }
