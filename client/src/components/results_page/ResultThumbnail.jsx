@@ -9,7 +9,7 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
 
   return (
     <Card
-      className="p-3"
+      className="p-3 results-card"
       style={{
         width: '18rem',
         height: '24.6rem',
