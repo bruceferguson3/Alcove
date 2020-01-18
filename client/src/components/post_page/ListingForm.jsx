@@ -12,7 +12,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import Descriptions from './Descriptions.jsx';
 import './PostForm.css';
 import axios from 'axios';
-const axios = require('axios');
 
 // <div className='jumbotron container col mb-2'>
 //             <h1 className="display-4 mt-2">Please submit this form</h1>
