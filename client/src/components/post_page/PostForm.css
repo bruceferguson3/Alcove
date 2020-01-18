@@ -828,6 +828,7 @@
   height: 10em;
 }
 
-.it-post-input {
-  /* width: 277px; */
+#postTitle {
+  width: 480px;
+  border: 1px solid #999;
 }
