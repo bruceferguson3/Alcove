@@ -8,8 +8,8 @@ const ListingModal = ({ images, show, handleClose }) => {
 
   const carouselItems = images.map((src, idx) => {
     return (
-      <Carousel.Item>
-        <img className="listingPicture" src={src} thumbnail/>
+      <Carousel.Item key={`listingCarouselBootstrapElement${idx}`}>
+        <img key={`listingCarouselImg${idx}`} className="listingPicture" src={src} thumbnail />
       </Carousel.Item>
     )
   });
