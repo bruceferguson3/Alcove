@@ -35,13 +35,12 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
                   if (shouldRoute) {
                     history.push('/results');
                     changePath('/results');
-                  } 
+                  }
                 }
               }}
               value={newZip}
             />
             <button
-            
               onClick={() => {
                 const shouldRoute = search();
                 if (shouldRoute) {
@@ -63,7 +62,7 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
           </div>
         </div>
         <div className="it-image">
-          <img className="it-cta-image" src="../../assets/landing-image.png" alt="image" />
+          <img className="it-cta-image" src="../../assets/landing-image.png" alt="Alcove Storage Image" />
         </div>
       </section>
     </>
