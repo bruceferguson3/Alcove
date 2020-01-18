@@ -93,6 +93,7 @@
   overflow: scroll;
   height: 55vh;
   width: 25vw;
+  overflow-x: hidden;
 }
 
 .listingDivider {
@@ -153,7 +154,8 @@
 #tsListingTooltipContainer .tsTooltipIcon {
   height: 1rem;
   width: 1rem;
-  margin-left: 1rem;
+  margin-left: .6rem;
+  transform: translateY(35%);
 }
 
 #listingPriceContainer {
@@ -193,6 +195,6 @@
 
 .listingPopoverSubcontainer {
   display: flex;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
