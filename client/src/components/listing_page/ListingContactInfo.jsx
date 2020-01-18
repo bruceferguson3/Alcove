@@ -69,50 +69,50 @@ class ListingContactInfo extends React.Component {
     // an error message appears.
 
     return (
-        <Form>
-          <h4>Reach out to {userName} about this listing:</h4>
-          <Form.Group>
-            <Form.Label>Enter your name:</Form.Label>
-            <Form.Control required type="text" placeholder="Example:  Jane Doe" />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Enter your e-mail address:</Form.Label>
-            <Form.Control required type="email" placeholder="Example:  name@example.com" />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Enter your phone number:</Form.Label>
-            <Form.Control required type="text" placeholder="Example: (555) 555-5555" />
-          </Form.Group>
-          <Form.Group>
-            <Form.Check type="checkbox" label={userTextPermission} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Select your dates:</Form.Label>
-            <ReactiveBase app="alcove-app" credentials="password">
+      <Form>
+        <h4>Reach out to {userName} about this listing:</h4>
+        <Form.Group>
+          <Form.Label>Enter your name:</Form.Label>
+          <Form.Control required type="text" placeholder="Example:  Jane Doe" />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Enter your e-mail address:</Form.Label>
+          <Form.Control required type="email" placeholder="Example:  name@example.com" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Enter your phone number:</Form.Label>
+          <Form.Control required type="text" placeholder="Example: (555) 555-5555" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Check type="checkbox" label={userTextPermission} />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Select your dates:</Form.Label>
+          <ReactiveBase app="alcove-app" credentials="password">
             <div className="dropdown">
-                <div className="dropdown-content">
-                    <DateRange
-                        dataField="date_from"
-                        componentId="DateRangeSensor"
-                        numberOfMonths={2}
-                        queryFormat="basic_date"
-                        initialMonth={new Date}
-                        className="dateFilter"
-                    />
-                </div>
+              <div className="dropdown-content">
+                <DateRange
+                  dataField="date_from"
+                  componentId="DateRangeSensor"
+                  numberOfMonths={2}
+                  queryFormat="basic_date"
+                  initialMonth={new Date}
+                  className="dateFilter"
+                />
               </div>
-            </ReactiveBase>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Describe your item or space:</Form.Label>
-            <Form.Control as="textarea" rows="6" placeholder={helpfulDetails}/>
-            <Form.Label>Upload images of your item or space:</Form.Label>
-            <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
-          </Form.Group>
-          <p>{contactText}</p>
-          <Button variant="primary" block>Submit</Button>
-        </Form>
+            </div>
+          </ReactiveBase>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Describe your item or space:</Form.Label>
+          <Form.Control as="textarea" rows="6" placeholder={helpfulDetails} />
+          <Form.Label>Upload images of your item or space:</Form.Label>
+          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
+        </Form.Group>
+        <p>{contactText}</p>
+        <Button variant="info" block>Submit</Button>
+      </Form>
     );
   };
 };
