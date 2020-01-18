@@ -302,8 +302,8 @@ export default class ListingForm extends React.Component {
             )
         } else if (this.state.cardCounter === 3) {
             return (
-                <div id="postTitle4" className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Posting Description</h1>
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 id="postTitle4" className="display-4 mb-3">Posting Description</h1>
                     <ProgressBar animated now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
