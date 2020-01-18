@@ -4,8 +4,8 @@ import { Button, Form } from 'react-bootstrap';
 import dummyData from './dummyData.js';
 
 class ListingContactInfo extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   };
 

@@ -16,6 +16,7 @@ const contactSchema = new mongoose.Schema({
   phone: String,
   text: Boolean,
   startDate: String,
+  images: Array,
   endDate: String,
   message: String
 });
@@ -38,4 +39,3 @@ async function createContact() {
   console.log(result);
 };
 
-createContact();
