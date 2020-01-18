@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import ListingModal from './ListingModal.jsx';
 import './Listing.css';
 
@@ -17,12 +17,6 @@ const ListingImages = props => {
     }
     setIndex(e);
   }
-  // const [current, setIndex] = useState(0);
-
-  // const handleIndex = (e, i) => {
-  //   console.log(e);
-  //   console.log(i);
-  // }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
