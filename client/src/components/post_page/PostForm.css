@@ -296,7 +296,6 @@
         display: none;
     }
 
-
   .mycustom-jumbotron {
     display: flex;
     flex-direction: column;
@@ -758,6 +757,7 @@
         width: 59%;
         margin-bottom: 1%;
         border: solid black 1px;
+
     }
 
     .tsStepThreeHeader {

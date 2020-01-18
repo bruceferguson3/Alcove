@@ -14,13 +14,9 @@ const ListingProductInfo = props => {
         </Col>
         <Col>
           <h4>{props.listing.title}</h4>
-          {/* <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-            <Button variant="success">Test popover for icon dictionary.</Button>
-          </OverlayTrigger> */}
           <h6 id="listingZipCode">Zip Code: {props.listing.zip}</h6>
         </Col>
         <Col md={1}>
-          {/* <div className="listingDivider"></div> */}
         </Col>
         <Col>
           <div id="listingPriceContainer">
