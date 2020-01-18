@@ -68,7 +68,7 @@ export default class Results extends React.Component {
       priceMax
     };
     this.setState({
-      waitingForResults: true
+      waitingForResults: true,
     });
     // console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
@@ -256,6 +256,7 @@ export default class Results extends React.Component {
                 Enter New Zip Code:
               </label>
               <input
+                id="results-zip-input"
                 type="text"
                 name="location"
                 value={newZip}
