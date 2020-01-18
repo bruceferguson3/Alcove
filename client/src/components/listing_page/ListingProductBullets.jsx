@@ -3,6 +3,9 @@ import { Container, Row, Popover, OverlayTrigger } from "react-bootstrap";
 import "./Listing.css";
 
 const ListingProductBullets = ({ bullets }) => {
+  let headerConditionalText = bullets.type === 'space' ? 'Features' : 'User Requests';
+
+
   const popover = (
     <Popover id="listingPopover">
       <Popover.Title as="h4" id="listingPopoverTitle">Icon Guide</Popover.Title>
@@ -124,7 +127,7 @@ const ListingProductBullets = ({ bullets }) => {
     <Container>
       <Row id="tsListingBulletHeaderOverride">
         <div id="tsListingTooltipContainer">
-          <h5>Features</h5>
+          <h5>{headerConditionalText}</h5>
           <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
             <div className="tsTooltipIcon"></div>
           </OverlayTrigger>
