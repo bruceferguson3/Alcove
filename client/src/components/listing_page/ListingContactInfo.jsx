@@ -69,7 +69,6 @@ class ListingContactInfo extends React.Component {
     // an error message appears.
 
     return (
-      < >
         <Form>
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
@@ -114,7 +113,6 @@ class ListingContactInfo extends React.Component {
           <p>{contactText}</p>
           <Button variant="primary" block>Submit</Button>
         </Form>
-      </ >
     );
   };
 };
