@@ -9,7 +9,7 @@ describe('Results Page', function() {
         cy.get('[type="text"]').type('78745')
         cy.get('#results-zip-change').click()
         cy.contains('78745')
-        cy.get('.card-columns > :nth-child(1)')
+        cy.get('#results-list-container > :nth-child(1)')
     })
     it('should display no results for zip code with no results', function() {
         cy.get('[type="text"]').type('00000')
@@ -114,56 +114,56 @@ describe('Results Page', function() {
         cy.get(':nth-child(2) > .dropdown-toggle').click()
         cy.get('[data-value="1"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Duration: Less than a week')
+            cy.contains('Less than a week')
         })
         cy.get(':nth-child(2) > .dropdown-toggle').click()
         cy.get('[data-value="2"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Duration: 1 to 4 weeks')
+            cy.contains('1 to 4 weeks')
         })
     })
     it('should change size filter on new selection', function() {
         cy.get(':nth-child(3) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="1"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Size: Extra-Small')
+            cy.contains('Extra-Small')
         })
         cy.get(':nth-child(3) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="2"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Size: Small')
+            cy.contains('Small')
         })
         cy.get(':nth-child(3) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="3"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Size: Medium')
+            cy.contains('Medium')
         })
         cy.get(':nth-child(3) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="4"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Size: Large')
+            cy.contains('Large')
         })
         cy.get(':nth-child(3) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="5"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Size: Extra-Large')
+            cy.contains('Extra-Large')
         })
     })
     it('should change access frequency filter on new selection', function() {
         cy.get(':nth-child(4) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="1"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Needed Access: Never')
+            cy.contains('Access Not Needed')
         })
         cy.get(':nth-child(4) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="2"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Needed Access: Infrequent')
+            cy.contains('Infrequent')
         })
         cy.get(':nth-child(4) > .dropdown-toggle').click()
         cy.get('.show.dropdown > .dropdown-menu > [data-value="3"]').click()
         cy.get('.ml-2').within(() => {
-            cy.contains('Needed Access: Frequent')
+            cy.contains('Frequent')
         })
     })
     it('should change indoors filter on new selection', function() {
