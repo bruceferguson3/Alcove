@@ -292,12 +292,7 @@ export default class ListingForm extends React.Component {
               recordStateInfo={this.recordStateInfo}
               zip={this.state.data.zip}
               price={this.state.data.filters.price}
-              userInfo={{
-                name: this.state.data.userInfo.name,
-                email: this.state.data.userInfo.email,
-                phone: this.state.data.userInfo.phone,
-                textAllowed: this.state.data.userInfo.textAllowed
-              }}
+              userInfo={this.state.data.userInfo}
             />
           </div>
         </div>
