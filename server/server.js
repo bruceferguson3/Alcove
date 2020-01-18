@@ -108,6 +108,17 @@ app.get('/getcoords', (req, res) => {
         })
 });
 
+app.post('/savecontact', (req, res) => {
+    let contact = req.body.data;
+    db.postContactInfo(contact)
+        .then(response => {
+            res.send(response);
+        })
+        .catch(error => {
+            res.end("Post listing error: ", error);
+        });
+});
+
 
 app.listen(process.env.PORT || 5500, function () {
     console.log("listening on port 5500!");
