@@ -23,6 +23,11 @@
 .results-banner-title {
   font-size: 1.5rem;
   font-weight: bold;
+  color: #a624c1;
+}
+
+.no-results-title {
+  color: black;
 }
 
 #filter-col {
@@ -35,9 +40,12 @@
   justify-content: center;
   align-items: center;
   padding-top: .6rem;
-  background-color: aliceblue;
   border-radius: .5rem;
   margin: .5rem 0;
+}
+
+.filters-active-background {
+background-color: aliceblue;
 }
 
 .flex-column {
