@@ -43,10 +43,10 @@ const Step2 = (props) => {
 
                 </div>
                     <Form.Group controlId="validationCustom06" className='step2Input mb-0'>
-                        <ul>
-                            <h4>
+                        <ul style={{paddingInlineStart: '0'}}>
+                            <h6>
                                 Allow text messages?
-                            </h4>
+                            </h6>
                             <div className="custom-control custom-radio">
                                 <input type="radio" id="textAllowedcustomRadio" name="textAllowedCustomRadio" value={true} className="custom-control-input" onChange={(e) => props.recordStateInfo(e, 'userInfo', 'textAllowed')}/>
                                 <label className="custom-control-label" htmlFor="textAllowedcustomRadio">Yes</label>

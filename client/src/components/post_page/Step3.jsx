@@ -238,7 +238,7 @@ const Step3 = ({
             </div>
           </div>
         </ul>
-        <div>
+        <div style={{marginTop: '4rem'}}>
           <span className="step2Button">
             <Button onClick={backButton} variant="info">
               Back
