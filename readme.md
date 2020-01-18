@@ -38,15 +38,17 @@ Alcove connects users with available storage space and users with items to store
 | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-bootstrap.jpg "React-Bootstrap") | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongodb.png "MongoDB") |
 ||![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongoose.png "Mongoose") |
 ### Front-End
+We employed a combination of React-Bootstrap and custom-built components and styling in order to best support the concepts outlined in our [wireframes](https://www.figma.com/file/oPlN0A0VpoUCKzjDIoo33W/Alcove?node-id=0%3A1).  We managed routes and user flow with React-Router.
 ### Back-End
 ### Deployment
 ### APIs
 ### Testing
 [ Insert Mark's GIF here ]
 
-## Get Started
+## Getting Started
 To run Alcove in your localhost:
-* Register to use both [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key) geolocation API _and_ [RapidAPI RedLine Zip Code](https://rapidapi.com/redline/api/redline-zipcode/) API.
+* Register to use [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key) geolocation API
+* Register to use [RapidAPI RedLine Zip Code](https://rapidapi.com/redline/api/redline-zipcode/) API
 
 From the terminal in the index directory:
 ```
