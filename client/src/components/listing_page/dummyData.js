@@ -9,13 +9,13 @@ let test = {
     dateSubmitted: "08/14/2017",
     filters: {
       climateControl: true,
-      size: 1 - 6,
-      easeOfAccess: 1 - 3,
+      size: 4,
+      easeOfAccess: 1,
       locked: true,
       standAlone: true,
       price: 56.99,
       indoors: true,
-      duration: 1 - 6,
+      duration: 5,
       type: "space"
     },
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non laoreet urna. Vivamus porta egestas ex, id pulvinar dui. Etiam id turpis sollicitudin, tristique mauris eget, mattis est. Phasellus pellentesque tellus gravida risus vehicula, molestie sodales tortor suscipit. Aenean elit nibh, gravida ut risus nec, porta mattis nisi. Duis eu volutpat sapien. Integer nisl sapien, luctus venenatis faucibus non, euismod in eros. Pellentesque convallis arcu ac metus eleifend congue. Integer fringilla interdum gravida. Praesent consequat aliquet ullamcorper.
