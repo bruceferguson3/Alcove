@@ -91,7 +91,7 @@
 #listingDescriptionText {
   margin-right: 5rem;
   overflow: scroll;
-  height: 40vh;
+  height: 55vh;
   width: 25vw;
 }
 
@@ -108,9 +108,9 @@
 
 .listingPictureContainer {
   overflow: hidden;
-  border-bottom: 1px solid #353b40;
   padding: 0;
   height: 275px;
+  box-shadow: 0 0 10px black;
 }
 
 .listingPictureContainer .listingPicture {
