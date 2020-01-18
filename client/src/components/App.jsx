@@ -57,6 +57,7 @@ export default class App extends React.Component {
       // console.log('Sending Axios request.');
       this.setState({
         currentlySearching: true,
+        searchResults: null,
       })
       Axios.get(`${baseURL}/getall`, { params: { zip: newZip } })
         .then(data => {
