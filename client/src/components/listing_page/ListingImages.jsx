@@ -9,7 +9,9 @@ const ListingImages = props => {
   // Some elements require both inline styling and the stylesheet due to border positioning.
 
   const [show, setShow] = useState(false);
+  // const [current, setIndex] = useState(0);
 
+  // const handleIndex = () => setShow()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
