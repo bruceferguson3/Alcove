@@ -31,14 +31,11 @@ const Header = ({ change, search, changePath, path, newZip }) => {
             <IndexLinkContainer to="/">
               <Nav.Link onClick={() => changePath('/')}>Home</Nav.Link>
             </IndexLinkContainer>
-            <LinkContainer to="/teams">
-              <Nav.Link onClick={() => changePath('/teams')}>Our Team</Nav.Link>
-            </LinkContainer>
             <LinkContainer to="/features">
               <Nav.Link onClick={() => changePath('/features')}>Features</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/contact">
-              <Nav.Link onClick={() => changePath('/contact')}>Contact Us</Nav.Link>
+            <LinkContainer to="/teams">
+              <Nav.Link onClick={() => changePath('/teams')}>Our Team</Nav.Link>
             </LinkContainer>
           </Nav>
           {path !== '/' ? (
@@ -64,7 +61,7 @@ const Header = ({ change, search, changePath, path, newZip }) => {
                 }}
               />
               <Button
-                variant="primary"
+                id="nav-search-button"
                 className="it-btn-header it-btn-primary"
                 onClick={() => {
                   const shouldRoute = search();
@@ -74,11 +71,11 @@ const Header = ({ change, search, changePath, path, newZip }) => {
                   }
                 }}
               >
-                Find Items/Units
+                Find Spaces/Items
               </Button>
               <LinkContainer to="/post">
-                <Button variant="secondary" className="it-btn-header it-btn-secondary">
-                  Post Items/Units
+                <Button variant="info" className="it-btn-header it-btn-secondary">
+                  Post a Space/Item
                 </Button>
               </LinkContainer>
             </Form>

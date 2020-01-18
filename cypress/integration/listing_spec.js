@@ -4,7 +4,7 @@ describe('Button shows modal', () => {
   });
 
   it('should display the modal on click', () => {
-    cy.get('button[id="listingModalButton"]').click();
-    cy.get('modal').should('be.visible');
+    cy.get('.listingPicture').click();
+    cy.get('.carousel-control-prev-icon')
   });
 })

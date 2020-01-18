@@ -270,7 +270,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 id="postTitle1" className="display-4 mb-3">What are your storage needs?</h1>
-                    <ProgressBar animated now={0} />
+                    <ProgressBar now={0} />
                     <div id="step1PostFormContainer" className='postFormContainer col shadow-lg p-3'>
                         <Step1 recordStateInfo={this.recordStateInfo} nextButton={this.nextButton} />
                     </div>
@@ -280,7 +280,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 id="postTitle2" className="display-4 mb-3">Contact Information</h1>
-                    <ProgressBar animated now={25} />
+                    <ProgressBar label={`${this.state.cardCounter * 25}%`} now={25} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step2 getCoords={this.getCoords} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                             zip={this.state.data.zip} price={this.state.data.filters.price} userInfo={{
@@ -294,7 +294,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 id="postTitle3" className="display-4 mb-3">Features</h1>
-                    <ProgressBar animated now={50} />
+                    <ProgressBar label={`${this.state.cardCounter * 25}%`} now={50} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step3 climateControl={this.state.data.filters.climateControl} standAlone={this.state.data.filters.standAlone} locked={this.state.data.filters.locked} storage={this.state.data.filters.type} invalidStepThree={this.state.invalidStepThree} indoors={this.state.data.filters.indoors} duration={this.state.data.filters.duration} easeOfAccess={this.state.data.filters.easeOfAccess} size={this.state.data.filters.size} recordFilterInfo={this.recordFilterInfo} recordStateInfo={this.recordStateInfo} backButton={this.backButton} validateStepThree={this.validateStepThree} />
                     </div>
@@ -302,9 +302,9 @@ export default class ListingForm extends React.Component {
             )
         } else if (this.state.cardCounter === 3) {
             return (
-                <div id="postTitle4" className='mycustom-jumbotron jumbotron container col mb-0'>
-                    <h1 className="display-4 mb-3">Posting Description</h1>
-                    <ProgressBar animated now={75} />
+                <div className='mycustom-jumbotron jumbotron container col mb-0'>
+                    <h1 id="postTitle4" className="display-4 mb-3">Posting Description</h1>
+                    <ProgressBar label={`${this.state.cardCounter * 25}%`} now={75} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step4 handleSubmit={this.handleSubmit} loadImageFile={this.loadImageFile} nextButton={this.nextButton} backButton={this.backButton} recordStateInfo={this.recordStateInfo}
                         data={this.state.data}/>
@@ -315,7 +315,7 @@ export default class ListingForm extends React.Component {
             return (
                 <div className='mycustom-jumbotron jumbotron container col mb-0'>
                     <h1 className="display-4 mb-3">Thank You!</h1>
-                    <ProgressBar animated now={100} />
+                    <ProgressBar label={`${this.state.cardCounter * 25}%`} now={100} />
                     <div className='postFormContainer col shadow-lg p-3'>
                         <Step5 backToStep1={this.backToStep1} />
                     </div>
