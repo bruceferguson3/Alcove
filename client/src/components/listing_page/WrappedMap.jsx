@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleMap, withScriptjs, withGoogleMap, Circle, Marker } from 'react-google-maps';
+import { GoogleMap, withScriptjs, withGoogleMap, Circle } from 'react-google-maps';
 
 const WrappedMap = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
@@ -9,7 +9,7 @@ const WrappedMap = withScriptjs(withGoogleMap((props) =>
     <Circle
       defaultCenter={{ lat: props.lat, lng: props.lng }}
       radius={300}
-      options={{ strokeColor: "#194553" }}
+      options={{ strokeColor: "#2fb5e9" }}
     />
   </GoogleMap>
 ))

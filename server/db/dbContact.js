@@ -17,7 +17,8 @@ const contactSchema = new mongoose.Schema({
   text: Boolean,
   startDate: String,
   endDate: String,
-  message: String
+  message: String,
+  images: Array
 });
 
 const Contact = mongoose.model('Contact', contactSchema, 'userContact');
