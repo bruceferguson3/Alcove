@@ -33,3 +33,13 @@
 .it-btn-secondary {
   margin: 0 10px;
 }
+
+#nav-search-button {
+  background-color: #be97c6;
+  border-color: #be97c6;
+}
+
+#nav-search-button:hover {
+  background-color: #97849b;
+  border-color: #97849b;
+}
