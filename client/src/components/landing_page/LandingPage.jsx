@@ -16,8 +16,11 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
       <section className="it-section">
         <div className="it-container">
           <div className="it-cta-text">
-            <h1>Alcove is here for all your storage needs!</h1>
-            <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <h1>Alcove is the alternative storage solution.</h1>
+            <p>
+              Whether you have items needing a space or a space owner needing items, for 25 years Alcove has been the one stop shop for all your
+              storage needs.
+            </p>
           </div>
           <div className="it-cta-form">
             <h2>Search Listings</h2>
@@ -35,13 +38,12 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
                   if (shouldRoute) {
                     history.push('/results');
                     changePath('/results');
-                  } 
+                  }
                 }
               }}
               value={newZip}
             />
             <button
-            
               onClick={() => {
                 const shouldRoute = search();
                 if (shouldRoute) {
@@ -63,7 +65,7 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
           </div>
         </div>
         <div className="it-image">
-          <img className="it-cta-image" src="../../assets/landing-image.png" alt="image" />
+          <img className="it-cta-image" src="../../assets/landing-image.png" alt="Alcove Storage Image" />
         </div>
       </section>
     </>

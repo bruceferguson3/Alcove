@@ -83,15 +83,17 @@
 }
 
 #listingPriceHeader {
-  float: right;
-  margin-right: 6rem;
+  font-size: 1.5rem;
+  color: #37a321fb;
+  margin-right: .2rem;
 }
 
 #listingDescriptionText {
   margin-right: 5rem;
   overflow: scroll;
-  height: 40vh;
+  height: 55vh;
   width: 25vw;
+  overflow-x: hidden;
 }
 
 .listingDivider {
@@ -107,9 +109,9 @@
 
 .listingPictureContainer {
   overflow: hidden;
-  border-bottom: 1px solid #353b40;
   padding: 0;
   height: 275px;
+  box-shadow: 0 0 10px black;
 }
 
 .listingPictureContainer .listingPicture {
@@ -140,6 +142,11 @@
   margin-bottom: 1rem !important;
 }
 
+#tsListingBulletHeaderOverride {
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+}
+
 #tsListingTooltipContainer {
   display: flex;
 }
@@ -147,36 +154,47 @@
 #tsListingTooltipContainer .tsTooltipIcon {
   height: 1rem;
   width: 1rem;
-  margin-left: 1rem;
+  margin-left: .6rem;
+  transform: translateY(35%);
 }
 
 #listingPriceContainer {
-  /* z-index: 2; */
   text-align: center;
-  font-size: .7rem;
-  width: 8rem;
-  height: 2.5rem;
-  /* max-width: 7.5rem;
-  margin-top: .5rem;
-  margin-bottom: .1rem; */
+  font-size: .8rem;
+  width: 8.5rem;
   background-color: aliceblue;
   border-radius: .4rem;
-  /* padding: 0 .3rem; */
+  padding: .2rem .3rem;
   font-weight: bold;
-  /* color: #635858; */
+  color: #635858;
+  float: right;
 }
 
-#listingPriceHeader {
-  font-size: 1.1rem;
-  color: #37a321fb;
-  margin: 0;
+#listingZipCode {
+  font-size: .9rem;
+  font-style: italic;
+  color: grey;
 }
-/* #emptyImage {
-  width: 100%;
-  height: 100%;
-  background-image: url("../../../dist/assets/alcove.jpg");
-} */
 
-/* #descriptionAndMapContainer {
-  margin-right: 1rem;
-} */
+.tsBulletText {
+  font-size: .9rem;
+}
+
+#listingPopover {
+  width: 43vw;
+  max-width: 90vw;
+}
+
+#listingPopover :not(#listingPopoverTitle) {
+  padding: .8rem;
+}
+
+#listingPopover > * {
+  margin: 0 !important;
+}
+
+.listingPopoverSubcontainer {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 0;
+}
