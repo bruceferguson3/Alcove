@@ -43,3 +43,6 @@ Alcove connects users with available storage space and users with items to store
 ### APIs
 ### Testing
 [ Insert Mark's GIF here ]
+
+## Contributors
+[Tom Chandler](https://github.com/tmchandler), [Jonathan Diaz](https://github.com/JCDiaz1201), [Bruce Ferguson](https://github.com/bruceferguson3), [Mark Fuechec](https://github.com/mfuechec), [Natalia Malesa](https://github.com/nmalesa), [Kytra Murphree](https://github.com/KytraScript), [Tim Sanderson](https://github.com/timsand), [Ish Tahir](https://github.com/ishtahir)
