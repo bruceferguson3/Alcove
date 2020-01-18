@@ -163,6 +163,7 @@ export default class App extends React.Component {
                 activeFilters={activeFilters}
                 changePath={this.changePath.bind(this)}
                 clearActive={this.clearActive.bind(this)}
+                returnToTop={this.returnToTop.bind(this)}
                 storeSearch={this.storeSearch.bind(this)}
                 changeFilter={this.changeFilter.bind(this)}
                 getSelectedListing={this.getSelectedListing.bind(this)}
