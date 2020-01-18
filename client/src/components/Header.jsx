@@ -31,14 +31,11 @@ const Header = ({ change, search, changePath, path, newZip }) => {
             <IndexLinkContainer to="/">
               <Nav.Link onClick={() => changePath('/')}>Home</Nav.Link>
             </IndexLinkContainer>
-            <LinkContainer to="/teams">
-              <Nav.Link onClick={() => changePath('/teams')}>Our Team</Nav.Link>
-            </LinkContainer>
             <LinkContainer to="/features">
               <Nav.Link onClick={() => changePath('/features')}>Features</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/contact">
-              <Nav.Link onClick={() => changePath('/contact')}>Contact Us</Nav.Link>
+            <LinkContainer to="/teams">
+              <Nav.Link onClick={() => changePath('/teams')}>Our Team</Nav.Link>
             </LinkContainer>
           </Nav>
           {path !== '/' ? (
