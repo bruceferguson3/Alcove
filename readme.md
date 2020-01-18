@@ -44,5 +44,19 @@ Alcove connects users with available storage space and users with items to store
 ### Testing
 [ Insert Mark's GIF here ]
 
+## Get Started
+To run Alcove in your localhost:
+* Register to use both [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key) geolocation API _and_ [RapidAPI RedLine Zip Code](https://rapidapi.com/redline/api/redline-zipcode/) API.
+
+From the terminal in the index directory:
+```
+npm install
+npm run react-dev
+npm run server-dev
+```
+
+To view the deployed application:
+* Visit [alcove.us-east-2.elasticbeanstalk.com/](alcove.us-east-2.elasticbeanstalk.com/).
+
 ## Contributors
 [Tom Chandler](https://github.com/tmchandler), [Jonathan Diaz](https://github.com/JCDiaz1201), [Bruce Ferguson](https://github.com/bruceferguson3), [Mark Fuechec](https://github.com/mfuechec), [Natalia Malesa](https://github.com/nmalesa), [Kytra Murphree](https://github.com/KytraScript), [Tim Sanderson](https://github.com/timsand), [Ish Tahir](https://github.com/ishtahir)
