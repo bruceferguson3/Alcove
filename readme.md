@@ -29,3 +29,10 @@ Alcove connects users with available storage space and users with items to store
 * As a user, I want confirmation that I have successfully completed the form and that my post will render correctly.
 * As a user, I want to search or post listings from multiple access points throughout the application.
 * As a user, I want a simple, clean UI.
+
+## Stack
+| Front-End      | Back-End           | Deployment  | API |
+| --------- |:-------------:| :-----:| :----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
