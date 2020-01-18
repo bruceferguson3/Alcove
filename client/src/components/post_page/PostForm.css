@@ -278,6 +278,24 @@
   }
 }
 @media screen and (min-width: 1501px) {
+
+
+    #postTitle1 {
+        display: none;
+    }
+
+    #postTitle2 {
+        display: none;
+    }
+
+    #postTitle3 {
+        display: none;
+    }
+
+    #postTitle4 {
+        display: none;
+    }
+
   .mycustom-jumbotron {
     display: flex;
     flex-direction: column;
@@ -735,9 +753,11 @@
     }
 
     .progress {
-        height: 1.125vh;
+        height: 2.2vh;
         width: 59%;
         margin-bottom: 1%;
+        border: solid black 1px;
+
     }
 
     .tsStepThreeHeader {
