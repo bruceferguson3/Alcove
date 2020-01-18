@@ -20,7 +20,7 @@ const PreviewImages = props => {
           <Col>
             <div className="imageSpacerLeft"></div>
           </Col>
-          <Col md={6} className="listingPictureContainer">
+          <Col md={6} className="previewPictureContainer">
             <img src="../../../dist/assets/alcove.jpg" className="listingPicture" />
           </Col>
           <Col>
@@ -38,7 +38,7 @@ const PreviewImages = props => {
           <Col>
             <div className="imageSpacerLeft"></div>
           </Col>
-          <Col md={6} className="listingPictureContainer">
+          <Col md={6} className="previewPictureContainer">
             <img src={image1} className="listingPicture" />
           </Col>
           <Col>
@@ -53,13 +53,13 @@ const PreviewImages = props => {
     return (
       <Container>
         <Row>
-          <Col className="listingPictureContainer"
+          <Col className="previewPictureContainer"
           style={{
             borderRight: "1px solid #353b40"
           }}>
             <img src={images[0]} className="listingPicture" />
           </Col>
-          <Col className="listingPictureContainer">
+          <Col className="previewPictureContainer">
             <img src={images[1]} className="listingPicture" />
           </Col>
         </Row>
@@ -72,18 +72,18 @@ const PreviewImages = props => {
       <Container>
         <Row>
           <Col
-            className="listingPictureContainer"
+            className="previewPictureContainer"
             style={{
               borderRight: "1px solid #353b40"
             }}
           >
             <img src={image1} className="listingPicture" />
           </Col>
-          <Col className="listingPictureContainer">
+          <Col className="previewPictureContainer">
             <img src={image2} className="listingPicture" />
           </Col>
           <Col
-            className="listingPictureContainer"
+            className="previewPictureContainer"
             style={{
               borderLeft: "1px solid #353b40"
             }}
@@ -101,7 +101,7 @@ const PreviewImages = props => {
         <Row>
         <Col
           md={6}
-          className="listingPictureContainer"
+          className="previewPictureContainer"
           style={{
             borderRight: "1px solid #353b40",
             height: "300px"
@@ -113,7 +113,7 @@ const PreviewImages = props => {
             <Row>
               <Col
                 md={6}
-                className="listingPictureContainer"
+                className="previewPictureContainer"
                 style={{
                   borderRight: "1px solid #353b40",
                   height: "150px"
@@ -123,7 +123,7 @@ const PreviewImages = props => {
               </Col>
               <Col md={6}
                 md={6}
-                className="listingPictureContainer"
+                className="previewPictureContainer"
                 style={{
                   height: "150px"
                 }}
@@ -133,7 +133,7 @@ const PreviewImages = props => {
             </Row>
             <Row>
               <Col md={6}
-                className="listingPictureContainer"
+                className="previewPictureContainer"
                 style={{
                   borderRight: "1px solid #353b40",
                   height: "150px"
@@ -143,7 +143,7 @@ const PreviewImages = props => {
               </Col>
               <Col
                 md={6}
-                className="listingPictureContainer"
+                className="previewPictureContainer"
                 style={{
                   height: "150px"
                 }}
