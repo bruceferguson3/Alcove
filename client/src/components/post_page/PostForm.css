@@ -42,7 +42,7 @@
     min-height: 35em;
     max-height: 100em;
     width: 100%;
-    background: linear-gradient(#f882bd, #be97c6);
+    background: #f6dae8;
     padding: 0px;
     padding-top: 1%;
   }
@@ -215,7 +215,7 @@
   }
   
   .progress {
-    height: 1.125vh;
+    height: 1.5vh;
     width: 59%;
     margin-bottom: 1%;
   }
@@ -287,7 +287,7 @@
     min-height: 60em;
     max-height: 100em;
     width: 100%;
-    background: linear-gradient(#f882bd, #be97c6);
+    background: #f6dae8;
   }
   
   .postFormContainer {
@@ -459,7 +459,7 @@
   }
   
   .progress {
-    height: 1.125vh;
+    height: 1.25vh;
     width: 59%;
     margin-bottom: 1%;
   }

@@ -17,7 +17,8 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         cursor: 'default',
         margin: '0',
         marginLeft: '.5rem',
-        marginBottom: '1rem'
+        marginBottom: '1rem',
+        boxShadow: 'rgba(0, 0, 0, .5) 4px 6px 6px'
       }}
     >
       {listing.thumbs ? (
@@ -48,7 +49,9 @@ const ResultThumbnail = ({ listing, getSelectedListing }) => {
         to="/listing"
         onClick={() => getSelectedListing(listing)} // CHANGE TO ID ON REFACTOR
       >
-        <Button variant="info" className="results-btn">View Listing</Button>
+        <Button variant="info" className="results-btn">
+          View Listing
+        </Button>
       </LinkContainer>
     </Card>
   );
