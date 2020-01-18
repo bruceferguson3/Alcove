@@ -16,6 +16,10 @@
     display: none;
   }
 
+  #postTitle4 {
+    display: none;
+  }
+
   #nameEmailPhoneContainer {
     display: flex;
     flex-direction: row;

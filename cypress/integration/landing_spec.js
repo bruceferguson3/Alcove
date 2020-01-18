@@ -4,21 +4,21 @@ describe('Navigation from landing page', function() {
       });
     it('should navigate to results page if valid zip entered and button clicked', function() {
         cy.get('input[placeholder="Enter zip code"]').type('78745')
-        cy.contains('Find Storage Units').click()
+        cy.contains('Find Spaces or Items').click()
         cy.url().should('include', 'results')
     })
     it('should not navigate to results page if invalid zip entered and button clicked', function() {
         cy.get('input[placeholder="Enter zip code"]').type('234')
-        cy.contains('Find Storage Units').click()
+        cy.contains('Find Spaces or Items').click()
         cy.url().should('eq', 'http://localhost:3030/')
     })
     it('should navigate to post page on button click', function() {
-        cy.contains('Post Items or Units').click()
+        cy.contains('Post a Space or Item').click()
         cy.url().should('include', 'post')
     })
-    it('should route to About page on link click', function() {
-        cy.contains('About').click()
-        cy.url().should('include', 'about')
+    it('should route to Our Team page on link click', function() {
+        cy.contains('Our Team').click()
+        cy.url().should('include', 'teams')
     })
     it('should route to Features page on link click', function() {
         cy.contains('Features').click()

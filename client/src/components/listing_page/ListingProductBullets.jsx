@@ -4,29 +4,41 @@ import "./Listing.css";
 
 const ListingProductBullets = ({ bullets }) => {
   const popover = (
-    <Popover>
-      <Popover.Title as="h4">Icon Guide</Popover.Title>
+    <Popover id="listingPopover">
+      <Popover.Title as="h4" id="listingPopoverTitle">Icon Guide</Popover.Title>
       <Popover.Content>
-        <Row>
+        <div className="listingPopoverSubcontainer">
           <div id="tsClimateIcon"></div>
-          <div className="tsBulletText">Climate Controlled</div>
-        </Row>
-        <Row>
+          <div className="tsBulletText">This icon means that the area is climate controlled.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
           <div id="tsIndoorsIcon"></div>
-          <div className="tsBulletText">Indoors</div>
-        </Row>
-        <Row>
+          <div className="tsBulletText">This icon means that the area is indoors.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
           <div id="tsLockedIcon"></div>
-          <div className="tsBulletText">Locked</div>
-        </Row>
-        <Row>
+          <div className="tsBulletText">This icon means that the unit is locked, or posseses some other security.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
           <div id="tsOutdoorsIcon"></div>
-          <div className="tsBulletText">Outdoors</div>
-        </Row>
-        <Row>
+          <div className="tsBulletText">This icon means that the area is outdoors.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
           <div id="tsSharedIcon"></div>
-          <div className="tsBulletText">Shared Space</div>
-        </Row>
+          <div className="tsBulletText">This icon means that the area may be shared with others.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
+          <div id="tsSizeIcon"></div>
+          <div className="tsBulletText">This icon denotes the relative size of the space.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
+          <div id="tsDurationIcon"></div>
+          <div className="tsBulletText">This icon denotes how long the space can be used for.</div>
+        </div>
+        <div className="listingPopoverSubcontainer">
+          <div id="tsAccessIcon"></div>
+          <div className="tsBulletText">This icons denotes how frequently the space can be accessed.</div>
+        </div>
       </Popover.Content>
     </Popover>
   )
@@ -110,11 +122,11 @@ const ListingProductBullets = ({ bullets }) => {
 
   return (
     <Container>
-      <Row className="tsListingBulletOverride">
+      <Row id="tsListingBulletHeaderOverride">
         <div id="tsListingTooltipContainer">
           <h5>Features</h5>
-          <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-            <div title="Click me to learn more about the icons" className="tsTooltipIcon"></div>
+          <OverlayTrigger trigger="hover" placement="right" overlay={popover}>
+            <div className="tsTooltipIcon"></div>
           </OverlayTrigger>
         </div>
       </Row>
@@ -127,11 +139,11 @@ const ListingProductBullets = ({ bullets }) => {
       </Row>
       <Row className="tsListingBulletOverride">
         <div title="Denotes how long space can be used for" id="tsDurationIcon"></div>
-        <div>{durationText}</div>
+        <div className="tsBulletText">{durationText}</div>
       </Row>
       <Row className="tsListingBulletOverride">
         <div title="Denotes how many times user can access space" id="tsAccessIcon"></div>
-        <div>{easeOfAccessText}</div>
+        <div className="tsBulletText">{easeOfAccessText}</div>
       </Row>
       {shared}
     </Container>
