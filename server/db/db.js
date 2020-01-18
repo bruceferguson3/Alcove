@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const mongooseConfig = require("./dbConfig/db.mongo.model");
+const mongooseContactInfo = require("./dbConfig/db.mongo.contact.model");
 const mongooseSecret = require("./dbConfig/db.mongo.configSecrets");
 
 mongoose
@@ -73,12 +74,22 @@ let postListing = params => {
 
             resolve("Success for post");
         })
-            .catch( e => {
-                console.log(e);
-            });
     });
 };
 
+let postContactInfo = params => {
+    let newContact = { data: params };
+    let newContactDocument = new mongooseContactInfo(newContact.data);
+    return new Promise((resolve, reject) => {
+        newContactDocument.save(err => {
+            if (err) {
+                reject(err);
+            }
+            resolve("Successfully stored new Contact Info");
+        })
+    });
+}
 
 
-module.exports = { getOne, getAll, postListing, getByPrice };
+
+module.exports = { getOne, getAll, postListing, getByPrice, postContactInfo };
