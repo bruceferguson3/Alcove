@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown, DropdownButton, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./PostForm.css";
 
 const Step3 = ({
@@ -88,7 +88,7 @@ const Step3 = ({
               key={`size${index}`}
               className={`post-form-option-button ${
                 size === index + 1 ? 'post-form-option-selected' : ''
-              }`}
+                }`}
               data-value={index + 1}
               onClick={(e) => {
                 recordFilterInfo(e, 'Size', e.target.dataset.value);
@@ -113,7 +113,7 @@ const Step3 = ({
                 key={`frequency${index}`}
                 className={`post-form-option-button ${
                   easeOfAccess === index + 1 ? 'post-form-option-selected' : ''
-                }`}
+                  }`}
                 data-value={index + 1}
                 onClick={(e) => {
                   recordFilterInfo(e, 'Frequency', e.target.dataset.value);
@@ -126,7 +126,7 @@ const Step3 = ({
           <div
             className={`tsAlert ${
               formError && !easeOfAccess ? '' : 'tsErrorHidden'
-            }`}
+              }`}
           >
             Field required.
           </div>
@@ -143,7 +143,7 @@ const Step3 = ({
                 key={`duration${index}`}
                 className={`post-form-option-button ${
                   duration === index + 1 ? 'post-form-option-selected' : ''
-                }`}
+                  }`}
                 data-value={index + 1}
                 onClick={(e) => {
                   recordFilterInfo(e, 'Duration', e.target.dataset.value);
@@ -156,14 +156,14 @@ const Step3 = ({
           <div
             className={`tsAlert ${
               formError && !duration ? '' : 'tsErrorHidden'
-            }`}
+              }`}
           >
             Field required.
           </div>
         </div>
       </div>
       <div className="tsFilterCheckboxContainer">
-        <ul style={{marginBottom: '0px'}}>
+        <ul style={{ marginBottom: '0px' }}>
           <div id="postFormCheckContainer" className="form-check">
             <input
               className="form-check-input"
@@ -188,7 +188,7 @@ const Step3 = ({
             />
             <label className="form-check-label">{exclusivePrompt}</label>
           </div>
-          <div style={{height: '2rem'}} className="form-check">
+          <div style={{ height: '2rem' }} className="form-check">
             <input
               className="form-check-input"
               type="checkbox"
@@ -238,7 +238,7 @@ const Step3 = ({
             </div>
           </div>
         </ul>
-        <div style={{marginTop: '4rem'}}>
+        <div style={{ marginTop: '4rem' }}>
           <span className="step2Button">
             <Button onClick={backButton} variant="info">
               Back

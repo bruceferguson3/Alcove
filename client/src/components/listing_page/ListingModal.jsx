@@ -1,18 +1,8 @@
-import React, { useState } from "react";
-import { Modal, Carousel, Container, Row, Col } from "react-bootstrap";
+import React from "react";
+import { Modal, Carousel } from "react-bootstrap";
 import "./Listing.css";
 
-import dummyData from './dummyData.js';
-
 const ListingModal = ({ handleIndex, index, images, show, handleClose }) => {
-
-  // const [index, setIndex] = useState(0);
-
-  // const handleIndex = (e, i) => {
-  //   console.log(e);
-  //   // console.log(i);
-  //   setIndex(e);
-  // }
 
   const carouselItems = images.map((src, idx) => {
     return (

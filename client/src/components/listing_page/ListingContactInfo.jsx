@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
@@ -18,17 +18,17 @@ class ListingContactInfo extends React.Component {
     this.onValueChange = this.onValueChange.bind(this);
   };
 
-  onValueChange(value){
-      this.setState({
-        startDate: value.start,
-        endDate: value.end,
-      })
-    }
+  onValueChange(value) {
+    this.setState({
+      startDate: value.start,
+      endDate: value.end,
+    })
+  }
 
   handleSubmit(e) {
     e.preventDefault();
     let isChecked = false;
-    if(document.getElementById('listing-contact-checkbox').checked){
+    if (document.getElementById('listing-contact-checkbox').checked) {
       isChecked = true;
     }
 
@@ -57,9 +57,9 @@ class ListingContactInfo extends React.Component {
       'message': document.getElementById('listing-contact-describe').value,
     };
 
-      axios.post('http://AlcoveAPI.us-east-2.elasticbeanstalk.com/savecontact', {data: { data: data}})
-          .then((response) => console.log('Successfully sent to server.', response))
-          .catch( err => console.error(err))
+    axios.post('http://AlcoveAPI.us-east-2.elasticbeanstalk.com/savecontact', { data: { data: data } })
+      .then((response) => console.log('Successfully sent to server.', response))
+      .catch(err => console.error(err))
   }
 
 
@@ -96,16 +96,16 @@ class ListingContactInfo extends React.Component {
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
             <Form.Label>Enter your name:</Form.Label>
-            <Form.Control required type="text" id={'listing-contact-name'} placeholder="Example:  Jane Doe" />
+            <Form.Control required type="text" id={'listing-contact-name'} placeholder="Jane Doe" />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your e-mail address:</Form.Label>
-            <Form.Control required type="email" id={'listing-contact-email'} placeholder="Example:  name@example.com" />
+            <Form.Control required type="email" id={'listing-contact-email'} placeholder="name@example.com" />
           </Form.Group>
           <Form.Group>
             <Form.Label>Enter your phone number:</Form.Label>
-            <Form.Control required type="text" id={'listing-contact-phone'} placeholder="Example: (555) 555-5555" />
+            <Form.Control required type="text" id={'listing-contact-phone'} placeholder="(555) 555-5555" />
           </Form.Group>
           <Form.Group>
             <Form.Check type="checkbox" id={'listing-contact-checkbox'} label={userTextPermission} />
@@ -113,24 +113,24 @@ class ListingContactInfo extends React.Component {
           <Form.Group>
             <Form.Label>Select your dates:</Form.Label>
             <ReactiveBase app="alcove-app" credentials="password">
-            <div className="dropdown">
+              <div className="dropdown">
                 <div className="dropdown-content">
-                    <DateRange
-                        dataField="date_from"
-                        componentId="DateRangeSensor"
-                        numberOfMonths={2}
-                        queryFormat="basic_date"
-                        initialMonth={new Date}
-                        className="dateFilter"
-                        onValueChange={this.onValueChange}
-                    />
+                  <DateRange
+                    dataField="date_from"
+                    componentId="DateRangeSensor"
+                    numberOfMonths={2}
+                    queryFormat="basic_date"
+                    initialMonth={new Date}
+                    className="dateFilter"
+                    onValueChange={this.onValueChange}
+                  />
                 </div>
               </div>
             </ReactiveBase>
           </Form.Group>
           <Form.Group>
             <Form.Label>Describe your item or space:</Form.Label>
-            <Form.Control as="textarea" rows="6" id={'listing-contact-describe'} placeholder={helpfulDetails}/>
+            <Form.Control as="textarea" rows="6" id={'listing-contact-describe'} placeholder={helpfulDetails} />
             <Form.Label>Upload images of your item or space:</Form.Label>
             <input id={'contact-image-upload'} type="file" label="Upload" accept=".jpg, .jpeg, .png" />
           </Form.Group>

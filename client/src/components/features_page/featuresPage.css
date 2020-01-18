@@ -4,7 +4,7 @@
     color: white;
     padding-top: 50px;
     /* padding-bottom: 40px; */
-    height: 130vh;
+    height: 250vh;
   }
 }
 
@@ -133,6 +133,7 @@
     border-radius: 9px;
     margin-left: 50px;
     height: 250px;
+    margin-right: 30px;
   }
   
   .jd-sub-img-one {
@@ -162,6 +163,7 @@
     margin-left: 50px;
     height: 310px;
     border-radius: 5px;
+    margin-right: 30px;
   }
 
   .jd-sub-three h1 {
@@ -198,6 +200,7 @@
     padding: 10px 15px;
     border-radius: 9px;
     margin-right: 50px;
+    margin-left: 30px;
   }
   
   .jd-sub-img-four {
