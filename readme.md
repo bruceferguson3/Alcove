@@ -31,8 +31,15 @@ Alcove connects users with available storage space and users with items to store
 * As a user, I want a simple, clean UI.
 
 ## Stack
-| Front-End      | Back-End           | Deployment  | API |
-| --------- |:-------------:| :-----:| :----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Front-End | Back-End | Deployment | APIs | Testing |
+| ----- |:-----:| :-----:| :-----: | :-----: |
+| ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react.png "React") | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodejs.png "Node.js") | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/docker.png "Docker") | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/rapid-api.png "RapidAPI") | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/cypress.png "Cypress")|
+| ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-router.png "React-Router")   | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/expressjs.png "Express")      |   ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/elastic-beanstalk.png "AWS Elastic Beanstalk") |![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/google-maps.png "Google Maps")
+| ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-bootstrap.jpg "React-Bootstrap") | ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongodb.png "MongoDB") |
+||![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongoose.png "Mongoose") |
+### Front-End
+### Back-End
+### Deployment
+### APIs
+### Testing
+[ Insert Mark's GIF here ]
