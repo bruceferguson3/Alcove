@@ -9,7 +9,8 @@ const Step2 = (props) => {
     return(
         <Form id="step2Form" action="#" onSubmit={() => {props.nextButton(); props.getCoords()}}>
             <Card className='step2Container'>
-                    <Form.Group controlId="validationCustom01" className='step2Input'>
+                <div id="nameEmailPhoneContainer">
+                    <Form.Group controlId="validationCustom01" className='step2Input postFormNames'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
                             required
@@ -19,7 +20,7 @@ const Step2 = (props) => {
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="validationCustom02" className='step2Input'>
+                    <Form.Group controlId="validationCustom02" className='step2Input postFormEmail'>
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             required
@@ -28,7 +29,7 @@ const Step2 = (props) => {
                             onChange={(e) => props.recordStateInfo(e, 'userInfo', 'email')}
                         />
                     </Form.Group>
-                    <Form.Group controlId="validationCustom03" className='step2Input'>
+                    <Form.Group controlId="validationCustom03" className='step2Input postFormPhone'>
                         <Form.Label>Phone</Form.Label>
                         <Form.Control
                             required
@@ -39,6 +40,8 @@ const Step2 = (props) => {
                             onChange={(e) => props.recordStateInfo(e, 'userInfo', 'phone')}
                         />
                     </Form.Group>
+
+                </div>
                     <Form.Group controlId="validationCustom06" className='step2Input mb-0'>
                         <ul>
                             <h4>

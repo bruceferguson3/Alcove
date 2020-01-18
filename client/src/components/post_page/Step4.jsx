@@ -6,7 +6,6 @@ import PreviewPage from '../preview_page/PreviewPage.jsx';
 import PreviewListing from '../preview_page/PreviewListing.jsx';
 
 const Step4 = (props) => {
-    console.log(props);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
