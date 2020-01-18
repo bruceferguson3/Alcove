@@ -23,7 +23,6 @@ class ListingContactInfo extends React.Component {
   };
 
 
-  userInfo = userInfo ? userInfo : dummyData.test.data.userInfo;
 
   handleSubmit() {
     axios.post('PLACEHOLDER', { data: this.state.data })
@@ -41,6 +40,9 @@ class ListingContactInfo extends React.Component {
   //
   //   setValidated(true);
   // };
+
+  render() {
+    const userInfo = this.props.userInfo ? this.props.userInfo : dummyData.test.data.userInfo;
 
     let userName = userInfo.name;
     let userEmail = userInfo.email;
@@ -68,7 +70,7 @@ class ListingContactInfo extends React.Component {
 
     return (
       < >
-        <Form noValidate validate={validated} onSubmit={handleSubmit}>
+        <Form>
           <h4>Reach out to {userName} about this listing:</h4>
           <Form.Group>
             <Form.Label>Enter your name:</Form.Label>
@@ -114,6 +116,7 @@ class ListingContactInfo extends React.Component {
         </Form>
       </ >
     );
+  };
 };
 
 export default ListingContactInfo;
