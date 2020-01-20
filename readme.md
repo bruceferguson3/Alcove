@@ -45,6 +45,13 @@ We employed a combination of React-Bootstrap and custom-built components and sty
 ### Testing
 [ Insert Mark's GIF here ]
 
+## Work Flow
+
+## Coming Soon
+* Mobile-first responsive design to better allow users to access Alcove on the go
+* Authentication to allow users to review and save listings
+* Search features allowing users to search by city
+
 ## Getting Started
 To run Alcove in your localhost:
 * Register to use [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key) geolocation API
