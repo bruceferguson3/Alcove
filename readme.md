@@ -42,6 +42,7 @@ We employed a combination of React-Bootstrap and custom-built components and sty
 ### Back-End
 ### Deployment
 ### APIs
+To support user searches by location, we used RapidAPI's RedLine Zip Code API because it allowed us to quickly and easily generate a latitude and longitude to plug into the Google Maps Platform geolocation API.  Google Maps supports marking map locations by radius proximity without pinning exact locations, which helps protect posters' privacy.  Finally, RedLine Zip Code API can be used to find all zip codes within a designated radius (e.g., 5, 10, 25 miles) from a given location.
 ### Testing
 [ Insert Mark's GIF here ]
 
