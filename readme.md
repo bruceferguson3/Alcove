@@ -41,6 +41,7 @@ Alcove connects users with available storage space and users with items to store
 We employed a combination of React-Bootstrap and custom-built components and styling in order to best support the concepts outlined in our [wireframes](https://www.figma.com/file/oPlN0A0VpoUCKzjDIoo33W/Alcove?node-id=0%3A1).  We managed routes and user flow with React-Router.
 ### Back-End
 ### Deployment
+We created two single-container Docker images (i.e., front-end and back-end) and deployed on AWS Elastic Beanstalk.
 ### APIs
 To support user searches by location, we used RapidAPI's RedLine Zip Code API because it allowed us to quickly and easily generate a latitude and longitude to plug into the Google Maps Platform geolocation API.  Google Maps supports marking map locations by radius proximity without pinning exact locations, which helps protect posters' privacy.  Finally, RedLine Zip Code API can be used to find all zip codes within a designated radius (e.g., 5, 10, 25 miles) from a given location.
 ### Testing
