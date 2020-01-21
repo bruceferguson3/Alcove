@@ -5,6 +5,7 @@ var mongoose = require("mongoose");
 var cors = require("cors");
 var app = express();
 var zipRoutes = require('./zipRoutes.js');
+var nodemailer = require('nodemailer');
 
 const db = require("./db/db");
 
@@ -108,15 +109,46 @@ app.get('/getcoords', (req, res) => {
         })
 });
 
+// app.post('/savecontact', (req, res) => {
+//     let contact = req.body.data;
+//     db.postContactInfo(contact)
+//         .then(response => {
+//             res.send(response);
+//         })
+//         .catch(error => {
+//             res.end("Post listing error: ", error);
+//         });
+// });
+
+// POST route from contact form
 app.post('/savecontact', (req, res) => {
-    let contact = req.body.data;
-    db.postContactInfo(contact)
-        .then(response => {
-            res.send(response);
-        })
-        .catch(error => {
-            res.end("Post listing error: ", error);
-        });
+  // Instantiate the SMTP server
+  const smtpTrans = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: GMAIL_USER,
+      pass: GMAIL_PASS
+    }
+  });
+
+  // Specify what the e-mail will look like
+  const mailOpts = {
+    from: 'Alcove',
+    to: GMAIL_USER,
+    subject: 'New message from contact form at Alcove',
+    text: `${req.body.name} (${req.body.email}, ${req.body.phone}) says ${req.body.message}.  Start date: ${req.body.startDate}; end date: ${req.body.endDate}. Text messages allowed: ${req.body.text}.`
+  }
+
+  // Attempt to send the e-mail
+  smtpTrans.sendMail(mailOpts, (error, response) => {
+    if (error) {
+      res.render('The contact form failed to send.');
+    } else {
+      res.render('The contact form was successfully submitted.');
+    }
+  });
 });
 
 

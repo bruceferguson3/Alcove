@@ -45,7 +45,7 @@ We created two single-container Docker images (i.e., front-end and back-end) and
 ### APIs
 To support user searches by location, we used RapidAPI's RedLine Zip Code API because it allowed us to quickly and easily generate a latitude and longitude to plug into the Google Maps Platform geolocation API.  Google Maps supports marking map locations by radius proximity without pinning exact locations, which helps protect posters' privacy.  Finally, RedLine Zip Code API can be used to find all zip codes within a designated radius (e.g., 5, 10, 25 miles) from a given location.
 ### Testing
-We implemented Cypress as our testing suite because it provided all tests needed to meet our user stories.  We testsed the user's ability to navigate through the site, search by zip code, filter search results, view results, and navigate forms.  Testing also checked that our input fields were validating correctly.  Additionally, Cypress has excellent documentation.
+We implemented Cypress as our testing suite because it provided all tests needed to meet our user stories.  We tested the user's ability to navigate through the site, search by zip code, filter search results, view results, and navigate forms.  Testing also checked that our input fields were validating correctly.  Additionally, Cypress has excellent documentation.
 
 [ Insert Mark's GIF here ]
 
@@ -54,10 +54,6 @@ We managed this project using git feature branch workflow.  Each feature was ass
 
 To help our team adhere to agile principles, we utilized a [Trello ticketing board](https://trello.com/b/fhb0HIhp/alcove) following kanban methodology, prioritizing continuous improvement and flexible processes.
 
-## Coming Soon
-* Mobile-first responsive design to better allow users to access Alcove on the go
-* Authentication to allow users to review and save listings
-* Search features allowing users to search by city
 
 ## Getting Started
 To run Alcove in your localhost:
@@ -73,6 +69,11 @@ npm run server-dev
 
 To view the deployed application:
 * Visit [alcove.us-east-2.elasticbeanstalk.com/](alcove.us-east-2.elasticbeanstalk.com/).
+
+## Coming Soon
+* Mobile-first responsive design to better allow users to access Alcove on the go
+* Authentication to allow users to review and save listings
+* Search features allowing users to search by city
 
 ## Contributors
 [Tom Chandler](https://github.com/tmchandler) (Architecture Owner), [Jonathan Diaz](https://github.com/JCDiaz1201), [Bruce Ferguson](https://github.com/bruceferguson3), [Mark Fuechec](https://github.com/mfuechec), [Natalia Malesa](https://github.com/nmalesa) (Product Manager), [Kytra Murphree](https://github.com/KytraScript), [Tim Sanderson](https://github.com/timsand), [Ish Tahir](https://github.com/ishtahir) (UI Owner)
