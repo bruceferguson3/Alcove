@@ -45,6 +45,8 @@ We created two single-container Docker images (i.e., front-end and back-end) and
 ### APIs
 To support user searches by location, we used RapidAPI's RedLine Zip Code API because it allowed us to quickly and easily generate a latitude and longitude to plug into the Google Maps Platform geolocation API.  Google Maps supports marking map locations by radius proximity without pinning exact locations, which helps protect posters' privacy.  Finally, RedLine Zip Code API can be used to find all zip codes within a designated radius (e.g., 5, 10, 25 miles) from a given location.
 ### Testing
+We implemented Cypress as our testing suite because it provided all tests needed to meet our user stories.  We testsed the user's ability to navigate through the site, search by zip code, filter search results, view results, and navigate forms.  Testing also checked that our input fields were validating correctly.  Additionally, Cypress has excellent documentation.
+
 [ Insert Mark's GIF here ]
 
 ## Work Flow
