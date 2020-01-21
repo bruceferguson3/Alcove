@@ -122,6 +122,8 @@ app.get('/getcoords', (req, res) => {
 //         });
 // });
 
+
+// ATTEMPT NUMBER ONE:
 // POST route from contact form
 // app.post('/savecontact', (req, res) => {
 //   // Instantiate the SMTP server
@@ -153,6 +155,7 @@ app.get('/getcoords', (req, res) => {
 //   });
 // });
 
+// ATTEMPT NUMBER TWO:
 // const transport = {
 //   host: 'smtp.gmail.com',
 //   auth: {
@@ -182,7 +185,7 @@ app.get('/getcoords', (req, res) => {
 //   const content = `${name} (${email}, ${phone}) says ${message}.  Start date: ${startDate}; end date: ${endDate}. Text messages allowed: ${text}.`;
 //
 //   const mail = {
-//     from: name,
+//     from: 'teamalcove@gmail.com',
 //     to: credentials.GMAIL_USER,
 //     subject: 'New message from contact form at Alcove',
 //     text: content
@@ -201,34 +204,50 @@ app.get('/getcoords', (req, res) => {
 //   })
 // })
 
-async function main() {
-  let testAccount = await nodemailer.createTestAccount();
 
-  let transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false,
-    auth: {
-      user: testAccount.user,
-      pass: testAccount.pass
-    }
-  });
+// ATTEMPT NUMBER THREE:
+app.post('/savecontact', (req, res) => {
+  const name = req.body.data.name;
+  const email = req.body.data.email;
+  const phone = req.body.data.phone;
+  const text = req.body.data.text;
+  const startDate = req.body.data.startDate;
+  const endDate = req.body.data.endDate;
+  const message = req.body.data.message;
+  const content = `${name} (${email}, ${phone}) says ${message}.  Start date: ${startDate}; end date: ${endDate}. Text messages allowed: ${text}.`;
 
-  let info = await transporter.sendMail({
-    from: 'Alcove <alcove@example.com>',
-    to: 'test@example.com',
-    subject: 'Hello',
-    text: 'Hello World!',
-    html: '<b>Hello World!</b>'
-  });
+  console.log(name);
 
-  console.log('Message sent: %s', info.messageId);
+  async function main() {
+    // let testAccount = await nodemailer.createTestAccount();
+    console.log("Am I a transporter?");
 
-  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-};
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: credentials.GMAIL_USER,
+        pass: credentials.GMAIL_PASS
+      }
+    });
 
-main().catch(console.error);
+    console.log(transporter);
 
+    let info = await transporter.sendMail({
+      from: 'Alcove <teamalcove@gmail.com>',
+      to: 'teamalcove@gmail.com',
+      subject: 'New message from contact form on Alcove',
+      text: content
+    });
+
+    console.log('Message sent: %s', info.messageId);
+
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+  }
+
+  main().catch(console.error);
+});
 
 app.listen(process.env.PORT || 5500, function () {
     console.log("listening on port 5500!");
