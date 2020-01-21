@@ -35,12 +35,13 @@ export default class Results extends React.Component {
 
   searchZip() {
     const { newZip } = this.state;
-    const { api, storeSearch } = this.props;
+    const { api, storeSearch, returnToTop } = this.props;
     if (newZip.match(/\d\d\d\d\d/)) {
       // console.log('Sending Axios request.');
       this.setState({
         waitingForResults: true
       });
+      returnToTop();
       Axios.get(`${api}/getall`, { params: { zip: newZip } })
         .then(data => {
           const listings = data.data.map(listing => listing.data);
@@ -61,7 +62,7 @@ export default class Results extends React.Component {
 
   searchPrice() {
     const { priceMin, priceMax } = this.state;
-    const { api, queriedZip, storeSearch } = this.props;
+    const { api, queriedZip, storeSearch, returnToTop } = this.props;
     const queryParams = {
       zip: queriedZip,
       priceMin,
@@ -70,6 +71,7 @@ export default class Results extends React.Component {
     this.setState({
       waitingForResults: true,
     });
+    returnToTop();
     // console.log('Sending price filter request');
     Axios.get(`${api}/getbyprice`, { params: queryParams })
       .then(data => {

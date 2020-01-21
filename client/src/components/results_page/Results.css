@@ -23,7 +23,7 @@
 .results-banner-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ba52d0;
+  color: #a44bb7;
 }
 
 .no-results-title {
@@ -46,7 +46,7 @@
 .results-filter-bar {
   position: -webkit-sticky;
   position: sticky;
-  top: 11.6rem;
+  top: 5rem;
   z-index: 30;
 }
 
@@ -257,4 +257,10 @@
 
 #results-zip-input {
   width: 10rem;
+}
+
+@media screen and (max-height: 700px) { 
+  .results-filter-bar {
+    top: -.9rem;
+  }
 }
