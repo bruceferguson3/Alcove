@@ -8,7 +8,7 @@ var zipRoutes = require('./zipRoutes.js');
 var nodemailer = require('nodemailer');
 var credentials = require('./mailerConfig.js');
 
-const db = require("./db/db");
+// const db = require("./db/db");
 
 
 app.use(cors());
@@ -153,53 +153,81 @@ app.get('/getcoords', (req, res) => {
 //   });
 // });
 
-const transport = {
-  host: 'smtp.gmail.com',
-  auth: {
-    user: credentials.GMAIL_USER,
-    pass: credentials.GMAIL_PASS
-  }
+// const transport = {
+//   host: 'smtp.gmail.com',
+//   auth: {
+//     user: credentials.GMAIL_USER,
+//     pass: credentials.GMAIL_PASS
+//   }
+// };
+//
+// const transporter = nodemailer.createTransport(transport);
+//
+// transporter.verify((error, success) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Server is ready to take messages...');
+//   }
+// });
+//
+// app.post('/savecontact', (req, res, next) => {
+//   const name = req.body.data.name;
+//   const email = req.body.data.email;
+//   const phone = req.body.data.phone;
+//   const text = req.body.data.text;
+//   const startDate = req.body.data.startDate;
+//   const endDate = req.body.data.endDate;
+//   const message = req.body.data.message;
+//   const content = `${name} (${email}, ${phone}) says ${message}.  Start date: ${startDate}; end date: ${endDate}. Text messages allowed: ${text}.`;
+//
+//   const mail = {
+//     from: name,
+//     to: credentials.GMAIL_USER,
+//     subject: 'New message from contact form at Alcove',
+//     text: content
+//   };
+//
+//   transporter.sendMail(mail, (err, data) => {
+//     if (err) {
+//       res.json({
+//         msg: 'fail'
+//       })
+//     } else {
+//       res.json({
+//         msg: 'success'
+//       })
+//     }
+//   })
+// })
+
+async function main() {
+  let testAccount = await nodemailer.createTestAccount();
+
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass
+    }
+  });
+
+  let info = await transporter.sendMail({
+    from: 'Alcove <alcove@example.com>',
+    to: 'test@example.com',
+    subject: 'Hello',
+    text: 'Hello World!',
+    html: '<b>Hello World!</b>'
+  });
+
+  console.log('Message sent: %s', info.messageId);
+
+  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 };
 
-const transporter = nodemailer.createTransport(transport);
-
-transporter.verify((error, success) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Server is ready to take messages...');
-  }
-});
-
-app.post('/savecontact', (req, res, next) => {
-  const name = req.body.data.name;
-  const email = req.body.data.email;
-  const phone = req.body.data.phone;
-  const text = req.body.data.text;
-  const startDate = req.body.data.startDate;
-  const endDate = req.body.data.endDate;
-  const message = req.body.data.message;
-  const content = `${name} (${email}, ${phone}) says ${message}.  Start date: ${startDate}; end date: ${endDate}. Text messages allowed: ${text}.`;
-
-  const mail = {
-    from: name,
-    to: credentials.GMAIL_USER,
-    subject: 'New message from contact form at Alcove',
-    text: content
-  };
-
-  transporter.sendMail(mail, (err, data) => {
-    if (err) {
-      res.json({
-        msg: 'fail'
-      })
-    } else {
-      res.json({
-        msg: 'success'
-      })
-    }
-  })
-})
+main().catch(console.error);
 
 
 app.listen(process.env.PORT || 5500, function () {
