@@ -50,6 +50,9 @@ We implemented Cypress as our testing suite because it provided all tests needed
 [ Insert Mark's GIF here ]
 
 ## Work Flow
+We managed this project using git feature branch workflow.  Each feature was associated with a development branch, which were merged into the master branch as features were completed.  Each pull request was associated with a ticket and reviewed by another developer before being merged.  We also pair programmed on most features.
+
+To help our team adhere to agile principles, we utilized a [Trello ticketing board](https://trello.com/b/fhb0HIhp/alcove) following kanban methodology, prioritizing continuous improvement and flexible processes.
 
 ## Coming Soon
 * Mobile-first responsive design to better allow users to access Alcove on the go
@@ -72,4 +75,4 @@ To view the deployed application:
 * Visit [alcove.us-east-2.elasticbeanstalk.com/](alcove.us-east-2.elasticbeanstalk.com/).
 
 ## Contributors
-[Tom Chandler](https://github.com/tmchandler), [Jonathan Diaz](https://github.com/JCDiaz1201), [Bruce Ferguson](https://github.com/bruceferguson3), [Mark Fuechec](https://github.com/mfuechec), [Natalia Malesa](https://github.com/nmalesa), [Kytra Murphree](https://github.com/KytraScript), [Tim Sanderson](https://github.com/timsand), [Ish Tahir](https://github.com/ishtahir)
+[Tom Chandler](https://github.com/tmchandler) (Architecture Owner), [Jonathan Diaz](https://github.com/JCDiaz1201), [Bruce Ferguson](https://github.com/bruceferguson3), [Mark Fuechec](https://github.com/mfuechec), [Natalia Malesa](https://github.com/nmalesa) (Product Manager), [Kytra Murphree](https://github.com/KytraScript), [Tim Sanderson](https://github.com/timsand), [Ish Tahir](https://github.com/ishtahir) (UI Owner)
