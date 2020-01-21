@@ -207,6 +207,8 @@ app.get('/getcoords', (req, res) => {
 
 // ATTEMPT NUMBER THREE:
 app.post('/savecontact', (req, res) => {
+  console.log(req.body.data);
+
   const name = req.body.data.name;
   const email = req.body.data.email;
   const phone = req.body.data.phone;
@@ -219,7 +221,6 @@ app.post('/savecontact', (req, res) => {
   console.log(name);
 
   async function main() {
-    // let testAccount = await nodemailer.createTestAccount();
     console.log("Am I a transporter?");
 
     let transporter = nodemailer.createTransport({
@@ -231,8 +232,6 @@ app.post('/savecontact', (req, res) => {
         pass: credentials.GMAIL_PASS
       }
     });
-
-    console.log(transporter);
 
     let info = await transporter.sendMail({
       from: 'Alcove <teamalcove@gmail.com>',
