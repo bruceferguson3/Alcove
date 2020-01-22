@@ -122,92 +122,7 @@ app.get('/getcoords', (req, res) => {
 //         });
 // });
 
-
-// ATTEMPT NUMBER ONE:
-// POST route from contact form
-// app.post('/savecontact', (req, res) => {
-//   // Instantiate the SMTP server
-//   const smtpTrans = nodemailer.createTransport({
-//     host: 'smtp.gmail.com',
-//     port: 465,
-//     secure: true,
-//     auth: {
-//       user: credentials.GMAIL_USER,
-//       pass: credentials.GMAIL_PASS
-//     }
-//   });
-//
-//   // Specify what the e-mail will look like
-//   const mailOpts = {
-//     from: 'Alcove',
-//     to: GMAIL_USER,
-//     subject: 'New message from contact form at Alcove',
-//     text: `${req.body.name} (${req.body.email}, ${req.body.phone}) says ${req.body.message}.  Start date: ${req.body.startDate}; end date: ${req.body.endDate}. Text messages allowed: ${req.body.text}.`
-//   }
-//
-//   // Attempt to send the e-mail
-//   smtpTrans.sendMail(mailOpts, (error, response) => {
-//     if (error) {
-//       console.log('The contact form failed to send.');
-//     } else {
-//       console.log('The contact form was successfully submitted.');
-//     }
-//   });
-// });
-
-// ATTEMPT NUMBER TWO:
-// const transport = {
-//   host: 'smtp.gmail.com',
-//   auth: {
-//     user: credentials.GMAIL_USER,
-//     pass: credentials.GMAIL_PASS
-//   }
-// };
-//
-// const transporter = nodemailer.createTransport(transport);
-//
-// transporter.verify((error, success) => {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log('Server is ready to take messages...');
-//   }
-// });
-//
-// app.post('/savecontact', (req, res, next) => {
-//   const name = req.body.data.name;
-//   const email = req.body.data.email;
-//   const phone = req.body.data.phone;
-//   const text = req.body.data.text;
-//   const startDate = req.body.data.startDate;
-//   const endDate = req.body.data.endDate;
-//   const message = req.body.data.message;
-//   const content = `${name} (${email}, ${phone}) says ${message}.  Start date: ${startDate}; end date: ${endDate}. Text messages allowed: ${text}.`;
-//
-//   const mail = {
-//     from: 'teamalcove@gmail.com',
-//     to: credentials.GMAIL_USER,
-//     subject: 'New message from contact form at Alcove',
-//     text: content
-//   };
-//
-//   transporter.sendMail(mail, (err, data) => {
-//     if (err) {
-//       res.json({
-//         msg: 'fail'
-//       })
-//     } else {
-//       res.json({
-//         msg: 'success'
-//       })
-//     }
-//   })
-// })
-
-
-// ATTEMPT NUMBER THREE:
 app.post('/savecontact', (req, res) => {
-  console.log(req.body.data);
 
   const name = req.body.data.name;
   const email = req.body.data.email;
@@ -218,18 +133,16 @@ app.post('/savecontact', (req, res) => {
   const message = req.body.data.message;
   const content = `${name} (${email}, ${phone}) says ${message}.  Start date: ${startDate}; end date: ${endDate}. Text messages allowed: ${text}.`;
 
-  console.log(name);
-
   async function main() {
-    console.log("Am I a transporter?");
+    let testAccount = await nodemailer.createTestAccount();
 
     let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false,
       auth: {
-        user: credentials.GMAIL_USER,
-        pass: credentials.GMAIL_PASS
+        user: testAccount.user,
+        pass: testAccount.pass
       }
     });
 
