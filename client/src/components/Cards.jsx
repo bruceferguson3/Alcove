@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 const Cards = ({ img, name, role, github, linkedin }) => (
   <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="https://via.placeholder.com/200x160" />
+    <Card.Img variant="top" src={img} />
     <Card.Body>
       <Card.Title>{name}</Card.Title>
       <Card.Text>{role}</Card.Text>
