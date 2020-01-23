@@ -17,10 +17,7 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
         <div className="it-container">
           <div className="it-cta-text">
             <h1>Alcove is the alternative storage solution.</h1>
-            <p>
-              Whether you have items needing a space or a space owner needing items, for 25 years Alcove has been the one stop shop for all your
-              storage needs.
-            </p>
+            <p>Whether you have items needing a space or a space owner needing items, Alcove is the one stop shop for all your storage needs.</p>
           </div>
           <div className="it-cta-form">
             <h2>Search Listings</h2>
