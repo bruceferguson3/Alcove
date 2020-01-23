@@ -1,7 +1,7 @@
 import React from "react";
 import ListingProductBullets from "./ListingProductBullets.jsx";
 import ListingMap from "./ListingMap.jsx";
-import { Container, Row, Col, Button, Popover, OverlayTrigger } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import ListingProductDescription from "./ListingProductDescription.jsx";
 
@@ -20,7 +20,7 @@ const ListingProductInfo = props => {
         </Col>
         <Col>
           <div id="listingPriceContainer">
-            <span id="listingPriceHeader">${props.listing.filters.price}</span>/ day
+            <span id="listingPriceHeader">${props.listing.filters.price.toFixed(2)}</span>/ day
           </div>
         </Col>
       </Row>

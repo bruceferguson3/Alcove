@@ -1,15 +1,13 @@
 import React from "react";
-import { Modal, Carousel, Container, Row, Col } from "react-bootstrap";
+import { Modal, Carousel } from "react-bootstrap";
 import "./Listing.css";
 
-import dummyData from './dummyData.js';
-
-const ListingModal = ({ images, show, handleClose }) => {
+const ListingModal = ({ handleIndex, index, images, show, handleClose }) => {
 
   const carouselItems = images.map((src, idx) => {
     return (
       <Carousel.Item key={`listingCarouselBootstrapElement${idx}`}>
-        <img key={`listingCarouselImg${idx}`} className="listingPicture" src={src} thumbnail />
+        <img key={`listingCarouselImg${idx}`} className="listingPicture" src={src} thumbnail="true" />
       </Carousel.Item>
     )
   });
@@ -22,7 +20,7 @@ const ListingModal = ({ images, show, handleClose }) => {
       show={show}
       onHide={handleClose}
     >
-      <Carousel style={{ interval: false }}>
+      <Carousel activeIndex={index} onSelect={(e) => { handleIndex(e) }} style={{ interval: false }}>
         {carouselItems}
       </Carousel>
     </Modal>

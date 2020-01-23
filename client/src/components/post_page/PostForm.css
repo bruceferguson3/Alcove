@@ -214,9 +214,10 @@
   }
 
   .progress {
-    height: 1.5vh;
+    height: 2vh;
     width: 59%;
     margin-bottom: 1%;
+    border: 1px solid black;
   }
 
   .tsStepThreeHeader {

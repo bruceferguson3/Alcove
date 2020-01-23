@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from 'react-bootstrap';
+import axios from 'axios';
 import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
 
 import dummyData from './dummyData.js';
@@ -9,37 +10,58 @@ class ListingContactInfo extends React.Component {
     super(props);
     this.state = {
       data: {
-        name: '',
-        email: '',
-        phone: '',
-        text: false,
         startDate: '',
         endDate: '',
-        message: '',
-        images: []
       }
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onValueChange = this.onValueChange.bind(this);
   };
 
-
-
-  handleSubmit() {
-    axios.post('PLACEHOLDER', { data: this.state.data })
-      .then(() => console.log('Successfully sent to server.'))
-      .catch(() => console.error(err))
+  onValueChange(value) {
+    this.setState({
+      startDate: value.start,
+      endDate: value.end,
+    })
   }
 
-  // const handleSubmit = event => {
-  //   const form = event.currentTarget;
-  //
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-  //
-  //   setValidated(true);
-  // };
+  handleSubmit(e) {
+    e.preventDefault();
+    let isChecked = false;
+    if (document.getElementById('listing-contact-checkbox').checked) {
+      isChecked = true;
+    }
+
+    // let imgStr;
+    // let files = document.getElementById('contact-image-upload').files;
+    // let thumbsArr = [];
+    //
+    // for (var file of files) {
+    //   let imageReader = new FileReader();
+    //   let type = file.type;
+    //   imageReader.readAsBinaryString(file);
+    //   imageReader.onload = () => {
+    //     let base64str = btoa(imageReader.result);
+    //     imgStr = `data:${type};base64, ` + base64str;
+    //     thumbsArr.push(imgStr);
+    //   }
+    // }
+
+    let data = {
+      'name': document.getElementById('listing-contact-name').value,
+      'email': document.getElementById('listing-contact-email').value,
+      'phone': document.getElementById('listing-contact-phone').value,
+      'text': isChecked,
+      'startDate': this.state.startDate,
+      'endDate': this.state.endDate,
+      'message': document.getElementById('listing-contact-describe').value,
+    };
+
+    axios.post('http://AlcoveAPI.us-east-2.elasticbeanstalk.com/savecontact', { data: { data: data } })
+      .then((response) => console.log('Successfully sent to server.', response))
+      .catch(err => console.error(err))
+  }
+
 
   render() {
     const userInfo = this.props.userInfo ? this.props.userInfo : dummyData.test.data.userInfo;
@@ -69,50 +91,53 @@ class ListingContactInfo extends React.Component {
     // an error message appears.
 
     return (
-      <Form>
-        <h4>Reach out to {userName} about this listing:</h4>
-        <Form.Group>
-          <Form.Label>Enter your name:</Form.Label>
-          <Form.Control required type="text" placeholder="Example:  Jane Doe" />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Enter your e-mail address:</Form.Label>
-          <Form.Control required type="email" placeholder="Example:  name@example.com" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Enter your phone number:</Form.Label>
-          <Form.Control required type="text" placeholder="Example: (555) 555-5555" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Check type="checkbox" label={userTextPermission} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Select your dates:</Form.Label>
-          <ReactiveBase app="alcove-app" credentials="password">
-            <div className="dropdown">
-              <div className="dropdown-content">
-                <DateRange
-                  dataField="date_from"
-                  componentId="DateRangeSensor"
-                  numberOfMonths={2}
-                  queryFormat="basic_date"
-                  initialMonth={new Date}
-                  className="dateFilter"
-                />
+      <div>
+        <Form>
+          <h4>Reach out to {userName} about this listing:</h4>
+          <Form.Group>
+            <Form.Label>Enter your name:</Form.Label>
+            <Form.Control required type="text" id={'listing-contact-name'} placeholder="Jane Doe" />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Enter your e-mail address:</Form.Label>
+            <Form.Control required type="email" id={'listing-contact-email'} placeholder="name@example.com" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Enter your phone number:</Form.Label>
+            <Form.Control required type="text" id={'listing-contact-phone'} placeholder="(555) 555-5555" />
+          </Form.Group>
+          <Form.Group>
+            <Form.Check type="checkbox" id={'listing-contact-checkbox'} label={userTextPermission} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Select your dates:</Form.Label>
+            <ReactiveBase app="alcove-app" credentials="password">
+              <div className="dropdown">
+                <div className="dropdown-content">
+                  <DateRange
+                    dataField="date_from"
+                    componentId="DateRangeSensor"
+                    numberOfMonths={2}
+                    queryFormat="basic_date"
+                    initialMonth={new Date}
+                    className="dateFilter"
+                    onValueChange={this.onValueChange}
+                  />
+                </div>
               </div>
-            </div>
-          </ReactiveBase>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Describe your item or space:</Form.Label>
-          <Form.Control as="textarea" rows="6" placeholder={helpfulDetails} />
-          <Form.Label>Upload images of your item or space:</Form.Label>
-          <input type="file" label="Upload" accept=".jpg, .jpeg, .png" />
-        </Form.Group>
-        <p>{contactText}</p>
-        <Button variant="info" block>Submit</Button>
-      </Form>
+            </ReactiveBase>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Describe your item or space:</Form.Label>
+            <Form.Control as="textarea" rows="6" id={'listing-contact-describe'} placeholder={helpfulDetails} />
+            <Form.Label>Upload images of your item or space:</Form.Label>
+            <input id={'contact-image-upload'} type="file" label="Upload" accept=".jpg, .jpeg, .png" />
+          </Form.Group>
+          <p>{contactText}</p>
+          <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
+        </Form>
+      </div>
     );
   };
 };
