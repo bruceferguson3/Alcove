@@ -16,11 +16,10 @@ const Footer = props => {
             </Navbar.Brand>
           </Col>
           <Col>
-            <h3 className="it-footer-title">About Us</h3>
+            <h3 className="it-footer-title">Guarantee</h3>
             <p className="it-footer-p">
-              Chirp at birds steal the warm chair right after you get up, pee on walls it smells like breakfast for fight own tail lay on arms while
-              you're using the keyboard. Sitting in a box human is washing you why halp oh the horror flee scratch but get my claw stuck in the dog's
-              ear destroy couch, yet make meme, make cute face.
+              At Alcove we believe you shouldn't have to worry about your stored items. We will treat your items like they're our own. That's the full
+              Alcove guarantee.
             </p>
           </Col>
           <Col>
