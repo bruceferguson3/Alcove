@@ -25,12 +25,19 @@ const Teams = props => {
       <Container className="it-teams-container">
         <Row>
           <Col>
-            <Cards className="it-teams-card" img="" name="Natalia Malesa" role="Product Manager/Engineer" github="nmalesa" linkedin="nmalesa" />
+            <Cards
+              className="it-teams-card"
+              img="https://media-exp2.licdn.com/dms/image/C4E03AQEs_eC631Pdaw/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=v4hEaT_dryiOYdDNrBfPvlXtel9y0P5nEFgl29gmkQk"
+              name="Natalia Malesa"
+              role="Product Manager/Engineer"
+              github="nmalesa"
+              linkedin="nmalesa"
+            />
           </Col>
           <Col>
             <Cards
               className="it-teams-card"
-              img=""
+              img="https://media-exp2.licdn.com/dms/image/C4E03AQGH4VJ0cDF00g/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=AoNWfpglPyx3Hzz8NZ3P4-TtOhzeUiVLkqsobm0h8kE"
               name="Tom Chandler"
               role="Architecture Owner/Engineer"
               github="tmchandler"
@@ -38,17 +45,31 @@ const Teams = props => {
             />
           </Col>
           <Col>
-            <Cards className="it-teams-card" img="" name="Ish Tahir" role="UI Owner/Engineer" github="ishtahir" linkedin="ishtahir" />
+            <Cards
+              className="it-teams-card"
+              img="https://media-exp2.licdn.com/dms/image/C4E03AQGOAdGdGXCJhQ/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=alDTCxS9L69eT7h-3wyakNNZmG7TcWFeh-sGQpCSciI"
+              name="Ish Tahir"
+              role="UI Owner/Engineer"
+              github="ishtahir"
+              linkedin="ishtahir"
+            />
           </Col>
         </Row>
         <Row>
           <Col>
-            <Cards className="it-teams-card" img="" name="Jonathan Diaz" role="Engineer" github="JCDiaz1201" linkedin="JCDiaz1201" />
+            <Cards
+              className="it-teams-card"
+              img="https://media-exp2.licdn.com/dms/image/C5103AQEKHwlZsHNx4A/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=Q-HK-fKOTaUE8xQ6MM6CNDAPo_fbR5fOPKuW9pZJ_nw"
+              name="Jonathan Diaz"
+              role="Engineer"
+              github="JCDiaz1201"
+              linkedin="JCDiaz1201"
+            />
           </Col>
           <Col>
             <Cards
               className="it-teams-card"
-              img=""
+              img="https://media-exp2.licdn.com/dms/image/C4D03AQGajem99fQUCA/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=3BCbDN3qQ_uHaNMGe3Alk7tinLNYVM65ySc8l-qR53c"
               name="Bruce Ferguson"
               role="Engineer"
               github="bruceferguson3"
@@ -57,12 +78,26 @@ const Teams = props => {
           </Col>
 
           <Col>
-            <Cards className="it-teams-card" img="" name="Mark Fuechec" role="Engineer" github="mfuechec" linkedin="mfuechec" />
+            <Cards
+              className="it-teams-card"
+              img="https://media-exp2.licdn.com/dms/image/C5603AQHLyqNKuDSxZQ/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=r87WaQy2mDSUckN1YysKnkJgjlbvKQn5yP0HeS-37eY"
+              name="Mark Fuechec"
+              role="Engineer"
+              github="mfuechec"
+              linkedin="mfuechec"
+            />
           </Col>
         </Row>
         <Row className="justify-content-lg-center">
           <Col>
-            <Cards className="it-teams-card" img="" name="Kytra Murphree" role="Engineer" github="KytraScript" linkedin="kytrascript" />
+            <Cards
+              className="it-teams-card"
+              img="https://media-exp2.licdn.com/dms/image/C4E03AQHbdUwLfRXpEw/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=oEWbncsan5NvbK4cNw2Rb4Z8K6wXWR_3A2jupyKlbQo"
+              name="Kytra Murphree"
+              role="Engineer"
+              github="KytraScript"
+              linkedin="kytrascript"
+            />
           </Col>
 
           <Col className="quack">
@@ -70,7 +105,14 @@ const Teams = props => {
           </Col>
 
           <Col>
-            <Cards className="it-teams-card" img="" name="Tim Sanderson" role="Engineer" github="timsand" linkedin="timsand" />
+            <Cards
+              className="it-teams-card"
+              img="https://media-exp2.licdn.com/dms/image/C4E03AQGGF_zNzrflGg/profile-displayphoto-shrink_200_200/0?e=1585180800&v=beta&t=5AzVNHLr952n6bb2c467kp0cq86RobDQVd6V9wCX9b8"
+              name="Tim Sanderson"
+              role="Engineer"
+              github="timsand"
+              linkedin="timsand"
+            />
           </Col>
         </Row>
       </Container>
