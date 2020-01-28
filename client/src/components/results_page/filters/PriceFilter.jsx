@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Results.css';
 
-const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, maxMatch, minMatch }) => {
+const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, }) => {
     return (
       <div id="price-filter-container">
         Min Price: <span className="pricefilter-prices">${priceMin}</span> /day
@@ -13,7 +13,6 @@ const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, maxMatch, minMa
           id="min-price-slider"
           className="price-slider"
           onChange={() => minChange(Number(event.target.value))}
-          // onMouseUp={() => maxMatch()}
         />
         Max Price: <span className="pricefilter-prices">${priceMax}</span> /day
         <input
@@ -24,7 +23,6 @@ const PriceFilter = ({ minChange, maxChange, priceMin, priceMax, maxMatch, minMa
           id="max-price-slider"
           className="price-slider"
           onChange={() => maxChange(Number(event.target.value))}
-          // onMouseUp={() => minMatch()}
         />
       </div>
     );
