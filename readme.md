@@ -31,7 +31,7 @@ Alcove connects users with available storage space and users with items to store
 * Simple, clean UI
 
 ## Stack
-<table style="width:60%">
+<table>
   <tr>
     <th>Front-End</th>
     <th>Back-End</th>
@@ -41,7 +41,7 @@ Alcove connects users with available storage space and users with items to store
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react.png" alt="React"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodejs.png" alt="Node.js"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodejs.png" alt="Node.js" style="width:60%"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/docker.png" alt="Docker"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/rapid-api.png" alt="RapidAPI"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/cypress.png" alt="Cypress"></td>
