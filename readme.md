@@ -101,5 +101,5 @@ To view the deployed application:
 * Authentication to allow users to review and save listings
 * Search features allowing users to search by city
 
-## Contributors
+## Alcove Team
 [Tom Chandler](https://github.com/tmchandler) (Architecture Owner), [Jonathan Diaz](https://github.com/JCDiaz1201), [Bruce Ferguson](https://github.com/bruceferguson3), [Mark Fuechec](https://github.com/mfuechec), [Natalia Malesa](https://github.com/nmalesa) (Product Manager), [Kytra Murphree](https://github.com/KytraScript), [Tim Sanderson](https://github.com/timsand), [Ish Tahir](https://github.com/ishtahir) (UI Owner)
