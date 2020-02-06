@@ -6,7 +6,9 @@ Alcove connects users with available storage space and users with items to store
 
 ## Alcove In Action
 
-[ INSERT GIFS HERE ]
+![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/alcove-form.gif "Alcove Form")
+
+![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/alcove-listing.gif "Alcove Listing Page")
 
 ## User Stories
 * Easily find a space to store items or items to store in a space within a designated geographic location
@@ -40,25 +42,25 @@ Alcove connects users with available storage space and users with items to store
     <th>Testing</th>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react.png" alt="React"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodejs.png" alt="Node.js" style="width:60%"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/docker.png" alt="Docker"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/rapid-api.png" alt="RapidAPI"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/cypress.png" alt="Cypress"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react.png" alt="React" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodejs.png" alt="Node.js" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/docker.png" alt="Docker" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/rapid-api.png" alt="RapidAPI" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/cypress.png" alt="Cypress" width="80px"></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-router.png" alt="React-Router"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/expressjs.png" alt="Express"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/elastic-beanstalk.png" alt="AWS Elastic Beanstalk"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/google-maps.png" alt="Google Maps"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-router.png" alt="React-Router" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/expressjs.png" alt="Express" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/elastic-beanstalk.png" alt="AWS Elastic Beanstalk" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/google-maps.png" alt="Google Maps" width="80px"></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-bootstrap.jpg" alt="React-Bootstrap"></td>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongodb.png" alt="MongoDB"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-bootstrap.jpg" alt="React-Bootstrap" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongodb.png" alt="MongoDB" width="80px"></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongoose.png" alt="Mongoose"</td>
-    <td>Nodemailer Placeholder</td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongoose.png" alt="Mongoose" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodemailer.png" alt="Nodemailer" width="80px"></td>
   </tr>
 </table>
 
@@ -72,9 +74,6 @@ We created two single-container Docker images (i.e., front-end and back-end) and
 To support user searches by location, we used RapidAPI's RedLine Zip Code API because it allowed us to quickly and easily generate a latitude and longitude to plug into the Google Maps Platform geolocation API.  Google Maps supports marking map locations by radius proximity without pinning exact locations, which helps protect posters' privacy.  Finally, RedLine Zip Code API can be used to find all zip codes within a designated radius (e.g., 5, 10, 25 miles) from a given location.
 ### Testing
 We implemented Cypress as our testing suite because it provided all tests needed to meet our user stories.  We tested the user's ability to navigate through the site, search by zip code, filter search results, view results, and navigate forms.  Testing also checked that our input fields were validating correctly.
-
-[ Insert Mark's GIF here ]
-
 ## Work Flow
 We managed this project using git feature branch workflow.  Each feature was associated with a development branch, which were merged into the master branch as features were completed.  Each pull request was associated with a ticket and reviewed by another developer before being merged.  We also pair programmed on most features.
 
@@ -83,10 +82,9 @@ To help our team adhere to agile principles, we utilized a [Trello ticketing boa
 ## Getting Started
 To run Alcove in your localhost:
 * Register to use [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key) geolocation API
- + Add environmental variable for Google Maps API key to [CONFIG? ENV?] file in [ROOT DIRECTORY? CLIENT DIRECTORY?]
 * Register to use [RapidAPI RedLine Zip Code](https://rapidapi.com/redline/api/redline-zipcode/) API
- + [ IS THERE A SECRET PLACE FOR THE ZIP CODE API KEY?]
-* Add username and password for MongoDB to [SECRET CONFIG FILE?]
+* Add environmental variables for Google Maps API key and RedLine Zip Code API key to .env file in root directory.
+* Add username and password for MongoDB to dbConfig file in server directory.
 
 From the terminal in the index directory:
 ```
