@@ -58,7 +58,7 @@ class ListingContactInfo extends React.Component {
       'message': document.getElementById('listing-contact-describe').value,
     };
 
-    axios.post('http://localhost:5500/savecontact', { data: data })
+    axios.post('http://alcove.us-east-2.elasticbeanstalk.com/savecontact', { data: data })
       .then(response => {
         console.log('Successfully sent to server.', response)
         this.setState({
