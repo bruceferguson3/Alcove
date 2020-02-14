@@ -8,6 +8,8 @@ Alcove connects users with available storage space and users with items to store
 
 ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/alcove-form.gif "Alcove Form")
 
+![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/alcove-results.gif "Alcove Results Page")
+
 ![alt text](https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/alcove-listing.gif "Alcove Listing Page")
 
 ## User Stories
@@ -49,18 +51,32 @@ Alcove connects users with available storage space and users with items to store
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/cypress.png" alt="Cypress" width="80px"></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-router.png" alt="React-Router" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-bootstrap.jpg" alt="React-Bootstrap" width="80px"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/expressjs.png" alt="Express" width="80px"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/elastic-beanstalk.png" alt="AWS Elastic Beanstalk" width="80px"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/google-maps.png" alt="Google Maps" width="80px"></td>
+    <td></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-bootstrap.jpg" alt="React-Bootstrap" width="80px"></td>
+    <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/react-router.png" alt="React-Router" width="80px"></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongodb.png" alt="MongoDB" width="80px"></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
+    <td></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/mongoose.png" alt="Mongoose" width="80px"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
     <td><img src="https://raw.githubusercontent.com/hratx-blue-ocean/Alcove/master/client/dist/assets/stack_images/nodemailer.png" alt="Nodemailer" width="80px"></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
 
