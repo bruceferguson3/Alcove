@@ -5,6 +5,7 @@ import "./PostForm.css";
 
 
 const StepThreeButtons = ({ type, recordFilterInfo, tooltipText, typeValue, formError }) => {
+
   const durationOptions = [
     'Less than a week',
     '1 to 4 Weeks',
@@ -12,7 +13,6 @@ const StepThreeButtons = ({ type, recordFilterInfo, tooltipText, typeValue, form
     '3 to 6 Months',
     'More Than 6 Months'
   ];
-
   const sizeOptions = [
     'Extra Small',
     'Small',
@@ -20,12 +20,7 @@ const StepThreeButtons = ({ type, recordFilterInfo, tooltipText, typeValue, form
     'Large',
     'Extra Large'
   ];
-
   const accessOptions = ['Never', 'Infrequent', 'Frequent'];
-
-
-
-
 
   if (type === "Size") {
     return (
@@ -56,10 +51,37 @@ const StepThreeButtons = ({ type, recordFilterInfo, tooltipText, typeValue, form
         </div>
       </>
     )
-  } else if (type === "duration") {
+  } else if (type === "Duration") {
     return (
-      <div>
-
+      <div className="tsDropdownContainer">
+        <h4 className="tsStepThreeHeader">Select a Duration</h4>
+        <div className="tsDropdownWrapper">
+          <div className="tsTooltipContainer">
+            <div className="tsTooltipIcon"></div>
+            <span className="tsTooltip">{tooltipText}</span>
+          </div>
+          {durationOptions.map((item, index) => (
+            <Button
+              key={`duration${index}`}
+              className={`post-form-option-button ${
+                typeValue === index + 1 ? 'post-form-option-selected' : ''
+                }`}
+              data-value={index + 1}
+              onClick={(e) => {
+                recordFilterInfo(e, 'Duration', e.target.dataset.value);
+              }}
+            >
+              {item}
+            </Button>
+          ))}
+        </div>
+        <div
+          className={`tsAlert ${
+            formError && !typeValue ? '' : 'tsErrorHidden'
+            }`}
+        >
+          Field required.
+      </div>
       </div>
     )
   } else {

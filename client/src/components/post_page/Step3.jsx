@@ -32,114 +32,12 @@ const Step3 = ({
 
   const formError = (duration === 0 || size === 0 || easeOfAccess === 0) && invalidStepThree ? true : false;
 
-  const durationOptions = [
-    'Less than a week',
-    '1 to 4 Weeks',
-    '1 to 3 Months',
-    '3 to 6 Months',
-    'More Than 6 Months'
-  ];
-
-  // const sizeOptions = [
-  //   'Extra Small',
-  //   'Small',
-  //   'Medium',
-  //   'Large',
-  //   'Extra Large'
-  // ];
-
-  const accessOptions = ['Never', 'Infrequent', 'Frequent'];
-
   return (
     <div>
       <div className="tsDropdownContainer">
         <StepThreeButtons type="Size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} typeValue={size} />
         <StepThreeButtons type="Frequency" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={frequencyTooltipText} typeValue={easeOfAccess} />
-        {/* <h4 className="tsStepThreeHeader">Select a Size</h4>
-        <StepThreeButtons type="Size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} typeValue={size} />
-        <div className="tsDropdownWrapper">
-          <div className="tsTooltipContainer">
-            <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">{sizeTooltipText}</span>
-          </div>
-          {sizeOptions.map((item, index) => (
-            <Button
-              key={`size${index}`}
-              className={`post-form-option-button ${
-                size === index + 1 ? 'post-form-option-selected' : ''
-                }`}
-              data-value={index + 1}
-              onClick={(e) => {
-                recordFilterInfo(e, 'Size', e.target.dataset.value);
-              }}
-            >
-              {item}
-            </Button>
-          ))}
-        </div>
-        <div className={`tsAlert ${formError && !size ? '' : 'tsErrorHidden'}`}>
-          Field required.
-        </div> */}
-        {/* <div className="tsDropdownContainer">
-          <h4 className="tsStepThreeHeader">Select Access Availability</h4>
-          <div className="tsDropdownWrapper">
-            <div className="tsTooltipContainer">
-              <div className="tsTooltipIcon"></div>
-              <span className="tsTooltip">{frequencyTooltipText}</span>
-            </div>
-            {accessOptions.map((item, index) => (
-              <Button
-                key={`frequency${index}`}
-                className={`post-form-option-button ${
-                  easeOfAccess === index + 1 ? 'post-form-option-selected' : ''
-                  }`}
-                data-value={index + 1}
-                onClick={(e) => {
-                  recordFilterInfo(e, 'Frequency', e.target.dataset.value);
-                }}
-              >
-                {item}
-              </Button>
-            ))}
-          </div>
-          <div
-            className={`tsAlert ${
-              formError && !easeOfAccess ? '' : 'tsErrorHidden'
-              }`}
-          >
-            Field required.
-          </div>
-        </div> */}
-        <div className="tsDropdownContainer">
-          <h4 className="tsStepThreeHeader">Select a Duration</h4>
-          <div className="tsDropdownWrapper">
-            <div className="tsTooltipContainer">
-              <div className="tsTooltipIcon"></div>
-              <span className="tsTooltip">{durationTooltipText}</span>
-            </div>
-            {durationOptions.map((item, index) => (
-              <Button
-                key={`duration${index}`}
-                className={`post-form-option-button ${
-                  duration === index + 1 ? 'post-form-option-selected' : ''
-                  }`}
-                data-value={index + 1}
-                onClick={(e) => {
-                  recordFilterInfo(e, 'Duration', e.target.dataset.value);
-                }}
-              >
-                {item}
-              </Button>
-            ))}
-          </div>
-          <div
-            className={`tsAlert ${
-              formError && !duration ? '' : 'tsErrorHidden'
-              }`}
-          >
-            Field required.
-          </div>
-        </div>
+        <StepThreeButtons type="Duration" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={durationTooltipText} typeValue={duration} />
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul style={{ marginBottom: '0px' }}>
