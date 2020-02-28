@@ -148,7 +148,8 @@ export default class ListingForm extends React.Component {
   }
 
   recordFilterInfo(key, value) {
-    //value is optional in some cases
+    //value is optional in climateControl case
+    //climateControl needs to be flipped off if listing is outside
     let stateObject = { ...this.state.data };
     switch (key) {
       case "Indoors":
