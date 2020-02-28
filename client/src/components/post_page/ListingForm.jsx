@@ -147,27 +147,23 @@ export default class ListingForm extends React.Component {
     List.hidden = List.hidden !== true;
   }
 
-  recordFilterInfo(e, key, value) {
-    var stateObject = { ...this.state.data };
-    if (key === 'Duration') {
-      value = Number(value);
-      stateObject.filters.duration = value;
-    } else if (key === 'Size') {
-      value = Number(value);
-      stateObject.filters.size = value;
-    } else if (key === 'Frequency') {
-      //clarify this
-      value = Number(value);
-      stateObject.filters.easeOfAccess = value;
-    } else if (key === 'Indoors') {
-      if (value === 'false') {
-        stateObject.filters.indoors = true;
-      } else {
-        stateObject.filters.climateControl = false;
-        stateObject.filters.indoors = false;
-      }
-    } else if (key === 'climateControl') {
-      stateObject.filters.climateControl = !stateObject.filters.climateControl;
+  recordFilterInfo(key, value) {
+    //value is optional in some cases
+    let stateObject = { ...this.state.data };
+    switch (key) {
+      case "Indoors":
+        if (value === 'false') {
+          stateObject.filters.indoors = true;
+        } else {
+          stateObject.filters.climateControl = false;
+          stateObject.filters.indoors = false;
+        }
+        break;
+      case "climateControl":
+        stateObject.filters.climateControl = !stateObject.filters.climateControl;
+        break;
+      default:
+        stateObject.filters[key] = Number(value);
     }
 
     this.setState({ data: stateObject });

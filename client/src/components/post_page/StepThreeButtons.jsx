@@ -24,7 +24,7 @@ const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, form
 
 
   switch (type) {
-    case "Size":
+    case "size":
       return (
         <>
           <h4 className="tsStepThreeHeader">Select a Size</h4>
@@ -41,7 +41,7 @@ const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, form
                   }`}
                 data-value={index + 1}
                 onClick={(e) => {
-                  recordFilterInfo(e, 'Size', e.target.dataset.value);
+                  recordFilterInfo('size', e.target.dataset.value);
                 }}
               >
                 {item}
@@ -53,7 +53,7 @@ const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, form
         </div>
         </>
       )
-    case "Duration":
+    case "duration":
       return (
         <div className="tsDropdownContainer">
           <h4 className="tsStepThreeHeader">Select a Duration</h4>
@@ -70,7 +70,7 @@ const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, form
                   }`}
                 data-value={index + 1}
                 onClick={(e) => {
-                  recordFilterInfo(e, 'Duration', e.target.dataset.value);
+                  recordFilterInfo('duration', e.target.dataset.value);
                 }}
               >
                 {item}
@@ -86,7 +86,7 @@ const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, form
       </div>
         </div>
       )
-    case "Frequency":
+    case "frequency":
       return (
         <div className="tsDropdownContainer">
           <h4 className="tsStepThreeHeader">Select Access Availability</h4>
@@ -103,7 +103,7 @@ const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, form
                   }`}
                 data-value={index + 1}
                 onClick={(e) => {
-                  recordFilterInfo(e, 'Frequency', e.target.dataset.value);
+                  recordFilterInfo('easeOfAccess', e.target.dataset.value);
                 }}
               >
                 {item}

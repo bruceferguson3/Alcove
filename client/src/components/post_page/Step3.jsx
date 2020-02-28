@@ -35,9 +35,9 @@ const Step3 = ({
   return (
     <div>
       <div className="tsDropdownContainer">
-        <StepThreeButtons type="Size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} typeValue={size} />
-        <StepThreeButtons type="Frequency" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={frequencyTooltipText} typeValue={easeOfAccess} />
-        <StepThreeButtons type="Duration" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={durationTooltipText} typeValue={duration} />
+        <StepThreeButtons type="size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} typeValue={size} />
+        <StepThreeButtons type="frequency" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={frequencyTooltipText} typeValue={easeOfAccess} />
+        <StepThreeButtons type="duration" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={durationTooltipText} typeValue={duration} />
       </div>
       <div className="tsFilterCheckboxContainer">
         <ul style={{ marginBottom: '0px' }}>
@@ -72,7 +72,7 @@ const Step3 = ({
               id="indoors"
               value={indoors}
               checked={indoors}
-              onChange={(e) => recordFilterInfo(e, 'Indoors', e.target.value)}
+              onChange={(e) => recordFilterInfo('Indoors', e.target.value)}
             />
             <label className="form-check-label">{indoorsPrompt}</label>
             <div style={climateControlBoolean}>
@@ -85,7 +85,7 @@ const Step3 = ({
                     value={true}
                     id="climateControl"
                     checked={climateControl}
-                    onChange={(e) => recordFilterInfo(e, 'climateControl')}
+                    onChange={(e) => recordFilterInfo('climateControl')}
                   />
                   <label
                     className="custom-control-label"
@@ -102,7 +102,7 @@ const Step3 = ({
                     value={false}
                     id="climateControl2"
                     checked={!climateControl}
-                    onChange={(e) => recordFilterInfo(e, 'climateControl')}
+                    onChange={(e) => recordFilterInfo('climateControl')}
                   />
                   <label
                     className="custom-control-label"
