@@ -53,9 +53,11 @@ const Step3 = ({
   return (
     <div>
       <div className="tsDropdownContainer">
-        <h4 className="tsStepThreeHeader">Select a Size</h4>
-        <StepThreeButtons type="Size" recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} size={size} />
-        {/* <div className="tsDropdownWrapper">
+        <StepThreeButtons type="Size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} typeValue={size} />
+        <StepThreeButtons type="Frequency" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={frequencyTooltipText} typeValue={easeOfAccess} />
+        {/* <h4 className="tsStepThreeHeader">Select a Size</h4>
+        <StepThreeButtons type="Size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} typeValue={size} />
+        <div className="tsDropdownWrapper">
           <div className="tsTooltipContainer">
             <div className="tsTooltipIcon"></div>
             <span className="tsTooltip">{sizeTooltipText}</span>
@@ -74,11 +76,11 @@ const Step3 = ({
               {item}
             </Button>
           ))}
-        </div> */}
+        </div>
         <div className={`tsAlert ${formError && !size ? '' : 'tsErrorHidden'}`}>
           Field required.
-        </div>
-        <div className="tsDropdownContainer">
+        </div> */}
+        {/* <div className="tsDropdownContainer">
           <h4 className="tsStepThreeHeader">Select Access Availability</h4>
           <div className="tsDropdownWrapper">
             <div className="tsTooltipContainer">
@@ -107,7 +109,7 @@ const Step3 = ({
           >
             Field required.
           </div>
-        </div>
+        </div> */}
         <div className="tsDropdownContainer">
           <h4 className="tsStepThreeHeader">Select a Duration</h4>
           <div className="tsDropdownWrapper">
