@@ -4,7 +4,7 @@ import "./PostForm.css";
 
 
 
-const StepThreeButtons = ({ type, recordFilterInfo, tooltipText, typeValue, formError }) => {
+const StepThreeButtons = ({ type, typeValue, tooltipText, recordFilterInfo, formError }) => {
 
   const durationOptions = [
     'Less than a week',
@@ -22,101 +22,107 @@ const StepThreeButtons = ({ type, recordFilterInfo, tooltipText, typeValue, form
   ];
   const accessOptions = ['Never', 'Infrequent', 'Frequent'];
 
-  if (type === "Size") {
-    return (
-      <>
-        <h4 className="tsStepThreeHeader">Select a Size</h4>
-        <div className="tsDropdownWrapper">
-          <div className="tsTooltipContainer">
-            <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">{tooltipText}</span>
+
+  switch (type) {
+    case "Size":
+      return (
+        <>
+          <h4 className="tsStepThreeHeader">Select a Size</h4>
+          <div className="tsDropdownWrapper">
+            <div className="tsTooltipContainer">
+              <div className="tsTooltipIcon"></div>
+              <span className="tsTooltip">{tooltipText}</span>
+            </div>
+            {sizeOptions.map((item, index) => (
+              <Button
+                key={`size${index}`}
+                className={`post-form-option-button ${
+                  typeValue === index + 1 ? 'post-form-option-selected' : ''
+                  }`}
+                data-value={index + 1}
+                onClick={(e) => {
+                  recordFilterInfo(e, 'Size', e.target.dataset.value);
+                }}
+              >
+                {item}
+              </Button>
+            ))}
           </div>
-          {sizeOptions.map((item, index) => (
-            <Button
-              key={`size${index}`}
-              className={`post-form-option-button ${
-                typeValue === index + 1 ? 'post-form-option-selected' : ''
-                }`}
-              data-value={index + 1}
-              onClick={(e) => {
-                recordFilterInfo(e, 'Size', e.target.dataset.value);
-              }}
-            >
-              {item}
-            </Button>
-          ))}
+          <div className={`tsAlert ${formError && !typeValue ? '' : 'tsErrorHidden'}`}>
+            Field required.
         </div>
-        <div className={`tsAlert ${formError && !typeValue ? '' : 'tsErrorHidden'}`}>
-          Field required.
-        </div>
-      </>
-    )
-  } else if (type === "Duration") {
-    return (
-      <div className="tsDropdownContainer">
-        <h4 className="tsStepThreeHeader">Select a Duration</h4>
-        <div className="tsDropdownWrapper">
-          <div className="tsTooltipContainer">
-            <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">{tooltipText}</span>
+        </>
+      )
+    case "Duration":
+      return (
+        <div className="tsDropdownContainer">
+          <h4 className="tsStepThreeHeader">Select a Duration</h4>
+          <div className="tsDropdownWrapper">
+            <div className="tsTooltipContainer">
+              <div className="tsTooltipIcon"></div>
+              <span className="tsTooltip">{tooltipText}</span>
+            </div>
+            {durationOptions.map((item, index) => (
+              <Button
+                key={`duration${index}`}
+                className={`post-form-option-button ${
+                  typeValue === index + 1 ? 'post-form-option-selected' : ''
+                  }`}
+                data-value={index + 1}
+                onClick={(e) => {
+                  recordFilterInfo(e, 'Duration', e.target.dataset.value);
+                }}
+              >
+                {item}
+              </Button>
+            ))}
           </div>
-          {durationOptions.map((item, index) => (
-            <Button
-              key={`duration${index}`}
-              className={`post-form-option-button ${
-                typeValue === index + 1 ? 'post-form-option-selected' : ''
-                }`}
-              data-value={index + 1}
-              onClick={(e) => {
-                recordFilterInfo(e, 'Duration', e.target.dataset.value);
-              }}
-            >
-              {item}
-            </Button>
-          ))}
+          <div
+            className={`tsAlert ${
+              formError && !typeValue ? '' : 'tsErrorHidden'
+              }`}
+          >
+            Field required.
+      </div>
         </div>
-        <div
-          className={`tsAlert ${
-            formError && !typeValue ? '' : 'tsErrorHidden'
-            }`}
-        >
-          Field required.
-      </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className="tsDropdownContainer">
-        <h4 className="tsStepThreeHeader">Select Access Availability</h4>
-        <div className="tsDropdownWrapper">
-          <div className="tsTooltipContainer">
-            <div className="tsTooltipIcon"></div>
-            <span className="tsTooltip">{tooltipText}</span>
+      )
+    case "Frequency":
+      return (
+        <div className="tsDropdownContainer">
+          <h4 className="tsStepThreeHeader">Select Access Availability</h4>
+          <div className="tsDropdownWrapper">
+            <div className="tsTooltipContainer">
+              <div className="tsTooltipIcon"></div>
+              <span className="tsTooltip">{tooltipText}</span>
+            </div>
+            {accessOptions.map((item, index) => (
+              <Button
+                key={`frequency${index}`}
+                className={`post-form-option-button ${
+                  typeValue === index + 1 ? 'post-form-option-selected' : ''
+                  }`}
+                data-value={index + 1}
+                onClick={(e) => {
+                  recordFilterInfo(e, 'Frequency', e.target.dataset.value);
+                }}
+              >
+                {item}
+              </Button>
+            ))}
           </div>
-          {accessOptions.map((item, index) => (
-            <Button
-              key={`frequency${index}`}
-              className={`post-form-option-button ${
-                typeValue === index + 1 ? 'post-form-option-selected' : ''
-                }`}
-              data-value={index + 1}
-              onClick={(e) => {
-                recordFilterInfo(e, 'Frequency', e.target.dataset.value);
-              }}
-            >
-              {item}
-            </Button>
-          ))}
+          <div
+            className={`tsAlert ${
+              formError && !typeValue ? '' : 'tsErrorHidden'
+              }`}
+          >
+            Field required.
+      </div>
         </div>
-        <div
-          className={`tsAlert ${
-            formError && !typeValue ? '' : 'tsErrorHidden'
-            }`}
-        >
-          Field required.
-      </div>
-      </div>
-    )
+      )
+    default:
+      return (
+        <div>An error occured</div>
+      )
   }
 }
 
