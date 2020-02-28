@@ -2,6 +2,55 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "./PostForm.css";
 
+const assignText = (storageType, tooltip) => {
+  switch (storageType) {
+    case "storage":
+      switch (tooltip) {
+        case "size":
+          return "Choose the relative size of your space here. Small denotes an area about the size of a pantry, medium a room, large a garage";
+        case "frequency":
+          return "Choose how often you are willing to let items be picked up from your area";
+        case "duration":
+          return "Choose how long you are willing to rent the space out for";
+        case "locked":
+          return "Is this space locked?";
+        case "exclusive":
+          return "Can multiple items be stored here?";
+        case "indoors":
+          return "Is this area indoors?";
+        case "climateControlNegative":
+          return "Space is climate controlled";
+        case "climateControlPositive":
+          return "Space is not climate controlled";
+        default:
+          return "Invalid Tooltip"
+      }
+    case "item":
+      switch (tooltip) {
+        case "size":
+          return "Choose the relative size of your item here. A small item might be a snowboard, medium a twin bed, large a motorcycle";
+        case "frequency":
+          return "Choose how often you need to pick up your item from the storage space.";
+        case "duration":
+          return "Choose how long you need to store the item for.";
+        case "locked":
+          return "Do you need the area to be locked?";
+        case "exclusive":
+          return "Are you ok with sharing the space with other items?";
+        case "indoors":
+          return "Do you need the area to be indoors?";
+        case "climateControlNegative":
+          return "I need the area to be climate controlled";
+        case "climateControlPositive":
+          return "I do not need the area to be climate controlled";
+        default:
+          return "Invalid Toooltip"
+      }
+    default:
+      return "Invalid storage type";
+  }
+}
+
 const Step3 = ({
   size,
   duration,
@@ -17,42 +66,42 @@ const Step3 = ({
   standAlone,
   climateControl
 }) => {
-  let sizeTooltipText;
-  let frequencyTooltipText;
-  let durationTooltipText;
-  let lockedPrompt;
-  let exclusivePrompt;
-  let indoorsPrompt;
-  let climateControlPromptPositive;
-  let climateControlPromptNegative;
+  let sizeTooltipText = assignText(storage, "size");
+  let frequencyTooltipText = assignText(storage, "frequency");
+  let durationTooltipText = assignText(storage, "duration");
+  let lockedPrompt = assignText(storage, "locked");
+  let exclusivePrompt = assignText(storage, "exclusive");
+  let indoorsPrompt = assignText(storage, "indoors");
+  let climateControlPromptPositive = assignText(storage, "climateControlPositive");
+  let climateControlPromptNegative = assignText(storage, "climateControlNegative");
 
   let climateControlBoolean = indoors ? {} : { visibility: "hidden" };
 
-  if (storage === "storage") {
-    sizeTooltipText =
-      "Choose the relative size of your space here. Small denotes an area about the size of a pantry, medium a room, large a garage";
-    frequencyTooltipText =
-      "Choose how often you are willing to let items be picked up from your area";
-    durationTooltipText =
-      "Choose how long you are willing to rent the space out for";
-    lockedPrompt = "Is this space locked?";
-    exclusivePrompt = "Can multiple items be stored here?";
-    indoorsPrompt = "Is this area indoors?";
-    climateControlPromptPositive = "Space is climate controlled";
-    climateControlPromptNegative = "Space is not climate controlled";
-  } else {
-    sizeTooltipText =
-      "Choose the relative size of your item here. A small item might be a snowboard, medium a twin bed, large a motorcycle";
-    frequencyTooltipText =
-      "Choose how often you need to pick up your item from the storage space.";
-    durationTooltipText = "Choose how long you need to store the item for.";
-    lockedPrompt = "Do you need the area to be locked?";
-    exclusivePrompt = "Are you ok with sharing the space with other items?";
-    indoorsPrompt = "Do you need the area to be indoors?";
-    climateControlPromptPositive = "I need the area to be climate controlled";
-    climateControlPromptNegative =
-      "I do not need the area to be climate controlled";
-  }
+  // if (storage === "storage") {
+  //   sizeTooltipText =
+  //     "Choose the relative size of your space here. Small denotes an area about the size of a pantry, medium a room, large a garage";
+  //   frequencyTooltipText =
+  //     "Choose how often you are willing to let items be picked up from your area";
+  //   durationTooltipText =
+  //     "Choose how long you are willing to rent the space out for";
+  //   lockedPrompt = "Is this space locked?";
+  //   exclusivePrompt = "Can multiple items be stored here?";
+  //   indoorsPrompt = "Is this area indoors?";
+  //   climateControlPromptPositive = "Space is climate controlled";
+  //   climateControlPromptNegative = "Space is not climate controlled";
+  // } else {
+  //   sizeTooltipText =
+  //     "Choose the relative size of your item here. A small item might be a snowboard, medium a twin bed, large a motorcycle";
+  //   frequencyTooltipText =
+  //     "Choose how often you need to pick up your item from the storage space.";
+  //   durationTooltipText = "Choose how long you need to store the item for.";
+  //   lockedPrompt = "Do you need the area to be locked?";
+  //   exclusivePrompt = "Are you ok with sharing the space with other items?";
+  //   indoorsPrompt = "Do you need the area to be indoors?";
+  //   climateControlPromptPositive = "I need the area to be climate controlled";
+  //   climateControlPromptNegative =
+  //     "I do not need the area to be climate controlled";
+  // }
 
   const formError = (duration === 0 || size === 0 || easeOfAccess === 0) && invalidStepThree ? true : false;
 
