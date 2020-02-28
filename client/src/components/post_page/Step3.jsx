@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import StepThreeButtons from "./StepThreeButtons.jsx";
 import "./PostForm.css";
 
 
@@ -39,13 +40,13 @@ const Step3 = ({
     'More Than 6 Months'
   ];
 
-  const sizeOptions = [
-    'Extra Small',
-    'Small',
-    'Medium',
-    'Large',
-    'Extra Large'
-  ];
+  // const sizeOptions = [
+  //   'Extra Small',
+  //   'Small',
+  //   'Medium',
+  //   'Large',
+  //   'Extra Large'
+  // ];
 
   const accessOptions = ['Never', 'Infrequent', 'Frequent'];
 
@@ -53,7 +54,8 @@ const Step3 = ({
     <div>
       <div className="tsDropdownContainer">
         <h4 className="tsStepThreeHeader">Select a Size</h4>
-        <div className="tsDropdownWrapper">
+        <StepThreeButtons type="Size" recordFilterInfo={recordFilterInfo} tooltipText={sizeTooltipText} size={size} />
+        {/* <div className="tsDropdownWrapper">
           <div className="tsTooltipContainer">
             <div className="tsTooltipIcon"></div>
             <span className="tsTooltip">{sizeTooltipText}</span>
@@ -72,7 +74,7 @@ const Step3 = ({
               {item}
             </Button>
           ))}
-        </div>
+        </div> */}
         <div className={`tsAlert ${formError && !size ? '' : 'tsErrorHidden'}`}>
           Field required.
         </div>
