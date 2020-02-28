@@ -59,7 +59,7 @@ export default class ListingForm extends React.Component {
           price: 0.0,
           indoors: false,
           duration: 0,
-          type: 'item'
+          type: ''
         },
         description: '',
         thumbs: [],
@@ -68,7 +68,7 @@ export default class ListingForm extends React.Component {
         geoLocation: [],
         zip: ''
       },
-      cardCounter: 2,
+      cardCounter: 0,
       invalidStepThree: false
     };
 
@@ -303,15 +303,8 @@ export default class ListingForm extends React.Component {
           <ProgressBar label={`${this.state.cardCounter * 25}%`} now={50} />
           <div className="postFormContainer col shadow-lg p-3">
             <Step3
-              climateControl={this.state.data.filters.climateControl}
-              standAlone={this.state.data.filters.standAlone}
-              locked={this.state.data.filters.locked}
-              storage={this.state.data.filters.type}
+              filters={this.state.data.filters}
               invalidStepThree={this.state.invalidStepThree}
-              indoors={this.state.data.filters.indoors}
-              duration={this.state.data.filters.duration}
-              easeOfAccess={this.state.data.filters.easeOfAccess}
-              size={this.state.data.filters.size}
               recordFilterInfo={this.recordFilterInfo}
               recordStateInfo={this.recordStateInfo}
               backButton={this.backButton}

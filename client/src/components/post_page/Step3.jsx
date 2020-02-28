@@ -5,28 +5,30 @@ import "./PostForm.css";
 
 
 const Step3 = ({
-  size,
-  duration,
-  easeOfAccess,
+  filters: {
+    size,
+    duration,
+    easeOfAccess,
+    indoors,
+    type,
+    locked,
+    standAlone,
+    climateControl
+  },
   recordFilterInfo,
   recordStateInfo,
-  indoors,
   validateStepThree,
   invalidStepThree,
-  backButton,
-  storage,
-  locked,
-  standAlone,
-  climateControl
+  backButton
 }) => {
-  let sizeTooltipText = assignText(storage, "size");
-  let frequencyTooltipText = assignText(storage, "frequency");
-  let durationTooltipText = assignText(storage, "duration");
-  let lockedPrompt = assignText(storage, "locked");
-  let exclusivePrompt = assignText(storage, "exclusive");
-  let indoorsPrompt = assignText(storage, "indoors");
-  let climateControlPromptPositive = assignText(storage, "climateControlPositive");
-  let climateControlPromptNegative = assignText(storage, "climateControlNegative");
+  let sizeTooltipText = assignText(type, "size");
+  let frequencyTooltipText = assignText(type, "frequency");
+  let durationTooltipText = assignText(type, "duration");
+  let lockedPrompt = assignText(type, "locked");
+  let exclusivePrompt = assignText(type, "exclusive");
+  let indoorsPrompt = assignText(type, "indoors");
+  let climateControlPromptPositive = assignText(type, "climateControlPositive");
+  let climateControlPromptNegative = assignText(type, "climateControlNegative");
 
   let climateControlBoolean = indoors ? {} : { visibility: "hidden" };
 
