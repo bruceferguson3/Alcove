@@ -59,7 +59,7 @@ export default class ListingForm extends React.Component {
           price: 0.0,
           indoors: false,
           duration: 0,
-          type: ''
+          type: 'item'
         },
         description: '',
         thumbs: [],
@@ -68,7 +68,7 @@ export default class ListingForm extends React.Component {
         geoLocation: [],
         zip: ''
       },
-      cardCounter: 0,
+      cardCounter: 2,
       invalidStepThree: false
     };
 

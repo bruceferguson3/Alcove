@@ -46,7 +46,7 @@ const Step3 = ({
               className="form-check-input"
               type="checkbox"
               id="defaultCheck6"
-              checked={!!locked}
+              checked={locked}
               onChange={(e) =>
                 recordStateInfo(e, 'filters', 'locked', 'defaultCheck6')
               }
@@ -58,7 +58,7 @@ const Step3 = ({
               className="form-check-input"
               type="checkbox"
               id="defaultCheck7"
-              checked={!!standAlone}
+              checked={standAlone}
               onChange={(e) =>
                 recordStateInfo(e, 'filters', 'standAlone', 'defaultCheck7')
               }
@@ -71,7 +71,7 @@ const Step3 = ({
               type="checkbox"
               id="indoors"
               value={indoors}
-              checked={!!indoors}
+              checked={indoors}
               onChange={(e) => recordFilterInfo(e, 'Indoors', e.target.value)}
             />
             <label className="form-check-label">{indoorsPrompt}</label>
@@ -84,7 +84,7 @@ const Step3 = ({
                     className="custom-control-input"
                     value={true}
                     id="climateControl"
-                    checked={!!climateControl}
+                    checked={climateControl}
                     onChange={(e) => recordFilterInfo(e, 'climateControl')}
                   />
                   <label
@@ -101,7 +101,7 @@ const Step3 = ({
                     className="custom-control-input"
                     value={false}
                     id="climateControl2"
-                    checked={!!!climateControl}
+                    checked={!climateControl}
                     onChange={(e) => recordFilterInfo(e, 'climateControl')}
                   />
                   <label
@@ -154,9 +154,9 @@ const assignText = (storageType, tooltip) => {
         case "indoors":
           return "Is this area indoors?";
         case "climateControlNegative":
-          return "Space is climate controlled";
-        case "climateControlPositive":
           return "Space is not climate controlled";
+        case "climateControlPositive":
+          return "Space is climate controlled";
         default:
           return "Invalid Tooltip"
       }
@@ -175,9 +175,9 @@ const assignText = (storageType, tooltip) => {
         case "indoors":
           return "Do you need the area to be indoors?";
         case "climateControlNegative":
-          return "I need the area to be climate controlled";
-        case "climateControlPositive":
           return "I do not need the area to be climate controlled";
+        case "climateControlPositive":
+          return "I need the area to be climate controlled";
         default:
           return "Invalid Toooltip"
       }
