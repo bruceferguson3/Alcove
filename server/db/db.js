@@ -20,7 +20,6 @@ mongoose
     console.log("Error: ", error);
   });
 
-
 let getOne = params => {
   return new Promise((resolve, reject) => {
     mongooseConfig
@@ -33,7 +32,6 @@ let getOne = params => {
       });
   });
 };
-
 
 let getAll = params => {
   return new Promise((resolve, reject) => {
@@ -48,7 +46,6 @@ let getAll = params => {
   });
 };
 
-
 let getByPrice = (zip, min, max) => {
   return new Promise((resolve, reject) => {
     mongooseConfig
@@ -62,32 +59,31 @@ let getByPrice = (zip, min, max) => {
   });
 };
 
-
 let postListing = params => {
-    let newObj = { data: params }
-    let newDocument = new mongooseConfig(newObj);
-    return new Promise((resolve, reject) => {
-        newDocument.save(err => {
-            if (err) {
-                reject(err);
-            }
+  let newObj = { data: params }
+  let newDocument = new mongooseConfig(newObj);
+  return new Promise((resolve, reject) => {
+    newDocument.save(err => {
+      if (err) {
+        reject(err);
+      }
 
-            resolve("Success for post");
-        })
-    });
+      resolve("Success for post");
+    })
+  });
 };
 
 let postContactInfo = params => {
-    let newContact = { data: params };
-    let newContactDocument = new mongooseContactInfo(newContact.data);
-    return new Promise((resolve, reject) => {
-        newContactDocument.save(err => {
-            if (err) {
-                reject(err);
-            }
-            resolve("Successfully stored new Contact Info");
-        })
-    });
+  let newContact = { data: params };
+  let newContactDocument = new mongooseContactInfo(newContact.data);
+  return new Promise((resolve, reject) => {
+    newContactDocument.save(err => {
+      if (err) {
+        reject(err);
+      }
+      resolve("Successfully stored new Contact Info");
+    })
+  });
 }
 
 

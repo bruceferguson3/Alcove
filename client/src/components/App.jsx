@@ -14,6 +14,7 @@ import PreviewPage from './preview_page/PreviewPage.jsx';
 import 'react-bootstrap/dist/react-bootstrap.min.js';
 
 const baseURL = 'http://alcoveapi.us-east-2.elasticbeanstalk.com';
+const testURL = 'http://localhost:5500'
 
 export default class App extends React.Component {
   constructor(props) {

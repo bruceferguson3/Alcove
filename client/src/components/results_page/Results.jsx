@@ -137,7 +137,7 @@ export default class Results extends React.Component {
   };
 
   minChange(priceMin) {
-    if(priceMin % 5 === 0) {
+    if (priceMin % 5 === 0) {
       this.setState(
         {
           priceMin
@@ -148,7 +148,7 @@ export default class Results extends React.Component {
   }
 
   maxChange(priceMax) {
-    if(priceMax % 5 === 0) {
+    if (priceMax % 5 === 0) {
       this.setState(
         {
           priceMax
@@ -160,7 +160,7 @@ export default class Results extends React.Component {
 
   maxMatch() {
     const { priceMax, priceMin } = this.state;
-    if(priceMax - 10 < priceMin) {
+    if (priceMax - 10 < priceMin) {
       this.setState({
         priceMax: priceMin + 10
       });
@@ -169,7 +169,7 @@ export default class Results extends React.Component {
 
   minMatch() {
     const { priceMax, priceMin } = this.state;
-    if(priceMax - 10 < priceMin) {
+    if (priceMax - 10 < priceMin) {
       this.setState({
         priceMin: priceMax - 10
       });
@@ -190,7 +190,7 @@ export default class Results extends React.Component {
 
   clearFilter(filterType) {
     const { clearActive } = this.props;
-    clearActive(filterType, () => this.applyFilters()); 
+    clearActive(filterType, () => this.applyFilters());
   };
 
   render() {
@@ -207,7 +207,7 @@ export default class Results extends React.Component {
 
     if (filteredResults) {
       listings = filteredResults;
-    } else if(searchResults) {
+    } else if (searchResults) {
       listings = searchResults;
     }
 
@@ -230,11 +230,11 @@ export default class Results extends React.Component {
             <h2 className="results-banner-title">No Results Found</h2>
           </div>
         ) : (
-          <div className="flex-centered active-filters no-filters-active">
-            <h2 className="results-banner-title">Listings in Your Area</h2>
-            <p>Add Filters to Refine Your Search!</p>
-          </div>
-        )}
+                <div className="flex-centered active-filters no-filters-active">
+                  <h2 className="results-banner-title">Listings in Your Area</h2>
+                  <p>Add Filters to Refine Your Search!</p>
+                </div>
+              )}
         <Row id="results-row">
           <Col id="filter-col">
             <div className="results-filter-bar flex-column">
@@ -250,8 +250,8 @@ export default class Results extends React.Component {
                       className="results-spinner"
                     />
                   ) : (
-                    queriedZip || '-'
-                  )}
+                      queriedZip || '-'
+                    )}
                 </div>
               </div>
               <label className="filter-section-title" htmlFor="location">
@@ -303,18 +303,18 @@ export default class Results extends React.Component {
             </div>
           </Col>
           <Col>
-              {listings.length === 0 ? (
-                <Jumbotron className="no-listings flex-column">
-                  <h4 className="results-banner-title no-results-title">Sorry!</h4>
-                  <p>
-                    It appears the area you searched has no listings meeting
-                    your criteria.
+            {listings.length === 0 ? (
+              <Jumbotron className="no-listings flex-column">
+                <h4 className="results-banner-title no-results-title">Sorry!</h4>
+                <p>
+                  It appears the area you searched has no listings meeting
+                  your criteria.
                   </p>
-                  <p>
-                    Please enter a new zip code, or adjust your filter settings.
+                <p>
+                  Please enter a new zip code, or adjust your filter settings.
                   </p>
-                </Jumbotron>
-              ) : (
+              </Jumbotron>
+            ) : (
                 <ResultsList listings={filteredResults ? filteredResults : listings} getSelectedListing={getSelectedListing} />
               )}
           </Col>

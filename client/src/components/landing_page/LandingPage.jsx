@@ -11,6 +11,7 @@ const LandingPage = ({ search, change, newZip, changePath }) => {
     changePath('/');
   }, []);
 
+
   return (
     <>
       <section className="it-section">
