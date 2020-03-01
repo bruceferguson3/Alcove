@@ -76,9 +76,7 @@ export default class ListingForm extends React.Component {
     this.recordStateInfo = this.recordStateInfo.bind(this);
     this.nextButton = this.nextButton.bind(this);
     this.backButton = this.backButton.bind(this);
-    this.recordFilterInfo = this.recordFilterInfo.bind(this);
     this.loadImageFile = this.loadImageFile.bind(this);
-    this.validateStepThree = this.validateStepThree.bind(this);
     this.getCoords = this.getCoords.bind(this);
     this.backToStep1 = this.backToStep1.bind(this);
   }
@@ -147,27 +145,24 @@ export default class ListingForm extends React.Component {
     List.hidden = List.hidden !== true;
   }
 
-  recordFilterInfo(e, key, value) {
-    var stateObject = { ...this.state.data };
-    if (key === 'Duration') {
-      value = Number(value);
-      stateObject.filters.duration = value;
-    } else if (key === 'Size') {
-      value = Number(value);
-      stateObject.filters.size = value;
-    } else if (key === 'Frequency') {
-      //clarify this
-      value = Number(value);
-      stateObject.filters.easeOfAccess = value;
-    } else if (key === 'Indoors') {
-      if (value === 'false') {
-        stateObject.filters.indoors = true;
-      } else {
-        stateObject.filters.climateControl = false;
-        stateObject.filters.indoors = false;
-      }
-    } else if (key === 'climateControl') {
-      stateObject.filters.climateControl = !stateObject.filters.climateControl;
+  recordFilterInfo(key, value) {
+    //value is optional in climateControl case
+    //climateControl needs to be flipped off if listing is outside
+    const stateObject = { ...this.state.data };
+    switch (key) {
+      case "Indoors":
+        if (value === 'false') {
+          stateObject.filters.indoors = true;
+        } else {
+          stateObject.filters.climateControl = false;
+          stateObject.filters.indoors = false;
+        }
+        break;
+      case "climateControl":
+        stateObject.filters.climateControl = !stateObject.filters.climateControl;
+        break;
+      default:
+        stateObject.filters[key] = Number(value);
     }
 
     this.setState({ data: stateObject });
@@ -306,19 +301,12 @@ export default class ListingForm extends React.Component {
           <ProgressBar label={`${this.state.cardCounter * 25}%`} now={50} />
           <div className="postFormContainer col shadow-lg p-3">
             <Step3
-              climateControl={this.state.data.filters.climateControl}
-              standAlone={this.state.data.filters.standAlone}
-              locked={this.state.data.filters.locked}
-              storage={this.state.data.filters.type}
+              filters={this.state.data.filters}
               invalidStepThree={this.state.invalidStepThree}
-              indoors={this.state.data.filters.indoors}
-              duration={this.state.data.filters.duration}
-              easeOfAccess={this.state.data.filters.easeOfAccess}
-              size={this.state.data.filters.size}
-              recordFilterInfo={this.recordFilterInfo}
+              recordFilterInfo={this.recordFilterInfo.bind(this)}
               recordStateInfo={this.recordStateInfo}
               backButton={this.backButton}
-              validateStepThree={this.validateStepThree}
+              validateStepThree={this.validateStepThree.bind(this)}
             />
           </div>
         </div>
