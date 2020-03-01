@@ -26,6 +26,8 @@ const Step3 = ({
   const formError = (duration === 0 || size === 0 || easeOfAccess === 0) && invalidStepThree ? true : false;
 
   return (
+    //TODO - Refactor checkbox to sub-component
+    //TODO - Change in-line styling to classnames/ID
     <div>
       <div className="tsDropdownContainer">
         <StepThreeButtons type="size" formError={formError} recordFilterInfo={recordFilterInfo} tooltipText={tooltipText.size} typeValue={size} />
