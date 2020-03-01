@@ -21,18 +21,8 @@ const Step3 = ({
   invalidStepThree,
   backButton
 }) => {
-  let tooltipText = assignText(type);
-  // let sizeTooltipText = assignText(type, "size");
-  // let frequencyTooltipText = assignText(type, "frequency");
-  // let durationTooltipText = assignText(type, "duration");
-  // let lockedPrompt = assignText(type, "locked");
-  // let exclusivePrompt = assignText(type, "exclusive");
-  // let indoorsPrompt = assignText(type, "indoors");
-  // let climateControlPromptPositive = assignText(type, "climateControlPositive");
-  // let climateControlPromptNegative = assignText(type, "climateControlNegative");
-
-  let climateControlBoolean = indoors ? {} : { visibility: "hidden" };
-
+  const tooltipText = assignText(type);
+  const climateControlBoolean = indoors ? {} : { visibility: "hidden" };
   const formError = (duration === 0 || size === 0 || easeOfAccess === 0) && invalidStepThree ? true : false;
 
   return (
@@ -54,7 +44,7 @@ const Step3 = ({
                 recordStateInfo(e, 'filters', 'locked', 'defaultCheck6')
               }
             />
-            <label className="form-check-label">{toooltipText.locked}</label>
+            <label className="form-check-label">{tooltipText.locked}</label>
           </div>
           <div className="form-check">
             <input

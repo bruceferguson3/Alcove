@@ -76,9 +76,7 @@ export default class ListingForm extends React.Component {
     this.recordStateInfo = this.recordStateInfo.bind(this);
     this.nextButton = this.nextButton.bind(this);
     this.backButton = this.backButton.bind(this);
-    this.recordFilterInfo = this.recordFilterInfo.bind(this);
     this.loadImageFile = this.loadImageFile.bind(this);
-    this.validateStepThree = this.validateStepThree.bind(this);
     this.getCoords = this.getCoords.bind(this);
     this.backToStep1 = this.backToStep1.bind(this);
   }
@@ -305,10 +303,10 @@ export default class ListingForm extends React.Component {
             <Step3
               filters={this.state.data.filters}
               invalidStepThree={this.state.invalidStepThree}
-              recordFilterInfo={this.recordFilterInfo}
+              recordFilterInfo={this.recordFilterInfo.bind(this)}
               recordStateInfo={this.recordStateInfo}
               backButton={this.backButton}
-              validateStepThree={this.validateStepThree}
+              validateStepThree={this.validateStepThree.bind(this)}
             />
           </div>
         </div>
